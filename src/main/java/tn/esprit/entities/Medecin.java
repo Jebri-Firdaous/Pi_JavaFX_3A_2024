@@ -77,7 +77,8 @@ public class Medecin {
         this.specialite_medecin = specialite_medecin;
     }
 
-    @Override
+//    toString()
+  /*  @Override
     public String toString() {
         return "medecin{" +
                 "id_medecin=" + id_medecin +
@@ -87,5 +88,14 @@ public class Medecin {
                 ", address_medecin='" + address_medecin + '\'' +
                 ", specialite_medecin='" + specialite_medecin + '\'' +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return String.format("%s %s, Numéro de téléphone: %d, Adresse: %s, Spécialité: %s",
+                prenom_medecin_medecin, nom_medecin, numero_telephone_medecin,
+                address_medecin, specialite_medecin);
     }
+
+
 }

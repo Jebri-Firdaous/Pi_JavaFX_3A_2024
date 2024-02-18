@@ -28,17 +28,20 @@ public class ServiceMedecin implements IService<Medecin>{
 
     }
 
+
+
     @Override
-    public void modifier(Medecin medecin) throws SQLException {
+    public void modifier(int id, String nom, String prenom, int numTel,
+                         String adresse, String specialite) throws SQLException {
         String sql = "UPDATE `medecin` SET `nom_medecin`= ? ,`prenom_medecin_medecin`= ? ,`numero_telephone_medecin`= ? ," +
                 "`address_medecin`= ? ,`specialite_medecin`= ? WHERE  `id_medecin`= ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, "samir");
-        preparedStatement.setString(2, medecin.getPrenom_medecin_medecin());
-        preparedStatement.setInt(3, medecin.getNumero_telephone_medecin());
-        preparedStatement.setString(4, medecin.getAddress_medecin());
-        preparedStatement.setString(5, medecin.getSpecialite_medecin());
-        preparedStatement.setInt(6, medecin.getId_medecin());
+        preparedStatement.setString(1, nom);
+        preparedStatement.setString(2, prenom);
+        preparedStatement.setInt(3, numTel);
+        preparedStatement.setString(4, adresse);
+        preparedStatement.setString(5, specialite);
+        preparedStatement.setInt(6, id);
 
 
 
