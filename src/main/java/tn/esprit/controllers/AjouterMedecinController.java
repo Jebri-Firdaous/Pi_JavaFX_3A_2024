@@ -29,7 +29,7 @@ public class AjouterMedecinController implements Initializable {
 
     public TextField numeroTel;
     public TextField addresse;
-    public TextField specialite;
+
     public ComboBox<String> specialiteR;
 
 
@@ -55,7 +55,7 @@ public class AjouterMedecinController implements Initializable {
     public void AjouterMedecin(ActionEvent actionEvent) {
         try {
             serviceMedecin.ajouter(new Medecin(nom.getText(), prenom.getText(), Integer.parseInt(numeroTel.getText()),
-                    addresse.getText(), specialite.getText()));
+                    addresse.getText(), specialiteR.getValue()));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setContentText("Medecin insérée avec succées!");

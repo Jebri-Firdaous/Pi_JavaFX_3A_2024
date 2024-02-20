@@ -99,18 +99,18 @@ public class Medecin {
 //                prenom_medecin_medecin, nom_medecin, numero_telephone_medecin,
 //                address_medecin, specialite_medecin);
 //    }
-    public String toStringWithoutSpeciality() {
+    public String toStringNomPrenom() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Médecin: ");
         sb.append(prenom_medecin_medecin).append(" ").append(nom_medecin).append("\n");
-        sb.append("Numéro de téléphone: ").append(numero_telephone_medecin).append("\n");
-        sb.append("Adresse: ").append(address_medecin).append("\n");
         return sb.toString();
     }
 
+
+
+
     @Override
     public String toString() {
-        return String.format("%s %s, Numéro de téléphone: %d, Adresse: %s, Spécialité: %s",
+        return String.format("%s %s",
                 prenom_medecin_medecin, nom_medecin, numero_telephone_medecin,
                 address_medecin, specialite_medecin);
     }

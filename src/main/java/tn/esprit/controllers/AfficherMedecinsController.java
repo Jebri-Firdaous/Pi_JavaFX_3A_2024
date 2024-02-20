@@ -1,4 +1,5 @@
 package tn.esprit.controllers;
+import javafx.util.Callback;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import tn.esprit.entities.Medecin;
@@ -35,7 +37,7 @@ public class AfficherMedecinsController {
 
 
     //    To can populate our list view with data
-    public void initialize() {
+    /*public void initialize() {
         ObservableList<Medecin> medecinList = FXCollections.observableArrayList();
         listViewMedecins.setItems(medecinList);
         try {
@@ -46,11 +48,11 @@ public class AfficherMedecinsController {
                 public void changed(ObservableValue<? extends Number> observableValue, Number oldIndex, Number newIndex) {
                     currentDoctorSelected = listViewMedecins.getSelectionModel().getSelectedItem();
 //                    display selected item
-                    /*if (currentDoctorSelected != null) {
+                    *//*if (currentDoctorSelected != null) {
                         selectedDoctor.setText(currentDoctorSelected.toString());
                     } else {
                         selectedDoctor.setText("");
-                    }*/
+                    }*//*
                 }
             });
 
@@ -58,6 +60,57 @@ public class AfficherMedecinsController {
             throw new RuntimeException(e);
         }
 
+    }*/
+    public void initialize() {
+        ObservableList<Medecin> medecinList = FXCollections.observableArrayList();
+        listViewMedecins.setItems(medecinList);
+        try {
+            List<Medecin> medecinsFromService = serviceMedecin.afficher();
+            medecinList.addAll(medecinsFromService);
+
+            // Set a custom CellFactory for the ListView
+            listViewMedecins.setCellFactory(new Callback<ListView<Medecin>, ListCell<Medecin>>() {
+                @Override
+                public ListCell<Medecin> call(ListView<Medecin> param) {
+                    return new ListCell<Medecin>() {
+                        @Override
+                        protected void updateItem(Medecin medecin, boolean empty) {
+                            super.updateItem(medecin, empty);
+                            if (empty || medecin == null) {
+                                setText(null);
+                                setGraphic(null);
+                            } else {
+                                // Customize the display of the Medecin object
+                                String doctorName = medecin.getNom_medecin();
+                                String doctorSurname = medecin.getPrenom_medecin_medecin();
+                                String specialty = medecin.getSpecialite_medecin();
+                                int phoneNumber = medecin.getNumero_telephone_medecin();
+                                String address = medecin.getAddress_medecin();
+                                String formattedText = String.format("Dr. %s %s - %s Phone: %s Address: %s",
+                                        doctorName, doctorSurname, specialty, phoneNumber, address);
+                                setText(formattedText);
+                            }
+                        }
+                    };
+                }
+            });
+
+            listViewMedecins.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observableValue, Number oldIndex, Number newIndex) {
+                    currentDoctorSelected = listViewMedecins.getSelectionModel().getSelectedItem();
+                    // Display the selected item
+                    if (currentDoctorSelected != null) {
+                        selectedDoctor.setText(currentDoctorSelected.getNom_medecin() + " - " + currentDoctorSelected.getSpecialite_medecin());
+                    } else {
+                        selectedDoctor.setText("");
+                    }
+                }
+            });
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void BT_supprimer(ActionEvent actionEvent) {

@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 public class AjouterRendezVousController implements Initializable {
 
     public ComboBox<String> specialiteR;
+    public Label adresse_TextField;
+    public Label n_TelTextField;
     @FXML
     private ComboBox<Integer> hourComboBox;
 
@@ -69,6 +71,7 @@ public class AjouterRendezVousController implements Initializable {
             minutes.add(i);
         }
         minuteComboBox.setItems(minutes);
+
     }
 //    public void initialiserComboboxMedecin(){
 //        ServiceMedecin serviceMedecin = new ServiceMedecin();
@@ -91,11 +94,16 @@ public void initialiserComboboxMedecin() {
             super.updateItem(item, empty);
             if (empty || item == null) {
                 setText(null);
+                n_TelTextField.setText("N°Tel");
+                adresse_TextField.setText("Adresse");
             } else {
-                setText(item.toStringWithoutSpeciality());
+                setText(item.toStringNomPrenom());
+                n_TelTextField.setText(Integer.toString(item.getNumero_telephone_medecin()));
+                adresse_TextField.setText(item.getAddress_medecin());
             }
         }
     });
+
 }
 
 
