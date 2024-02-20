@@ -14,10 +14,10 @@
       <TextField fx:id="nom" layoutX="65.0" layoutY="143.0" />
       <TextField fx:id="prenom" layoutX="59.0" layoutY="214.0" />
       <TextField fx:id="numeroTel" layoutX="59.0" layoutY="291.0" />
+      <ComboBox fx:id="specialiteR" layoutX="65.0" layoutY="434.0" prefHeight="38.0" prefWidth="187.0" />
       <Button layoutX="65.0" layoutY="494.0" mnemonicParsing="false" onAction="#AjouterMedecin" prefHeight="31.0" prefWidth="187.0" text="Ajouter" />
       <Label layoutX="56.0" layoutY="335.0" text="Addresse" />
       <Label layoutX="65.0" layoutY="399.0" text="specialité" />
       <TextField fx:id="addresse" layoutX="59.0" layoutY="362.0" />
-      <TextField fx:id="specialite" layoutX="59.0" layoutY="426.0" />
    </children>
 </AnchorPane>

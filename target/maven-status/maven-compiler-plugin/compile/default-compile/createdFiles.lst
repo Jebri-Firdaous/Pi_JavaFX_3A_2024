@@ -1,3 +1,7 @@
 tn\esprit\controllers\ModifierMedecinController.class
+tn\esprit\services\ServiceRendezVous.class
+tn\esprit\controllers\AjouterRendezVousController$2.class
 tn\esprit\controllers\AfficherMedecinsController.class
+tn\esprit\controllers\AjouterRendezVousController$1.class
+tn\esprit\controllers\AfficherListRendezVousController.class
 tn\esprit\controllers\AfficherMedecinsController$1.class

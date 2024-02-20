@@ -1,10 +1,14 @@
 package tn.esprit.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.entities.Medecin;
@@ -12,9 +16,13 @@ import tn.esprit.services.ServiceMedecin;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AjouterMedecinController {
+public class AjouterMedecinController implements Initializable {
     public ServiceMedecin serviceMedecin = new ServiceMedecin();
     public TextField nom;
     public TextField prenom;
@@ -22,6 +30,9 @@ public class AjouterMedecinController {
     public TextField numeroTel;
     public TextField addresse;
     public TextField specialite;
+    public ComboBox<String> specialiteR;
+
+
 
     public void switchToDisplayAllDoctorsPage() {
         try {
@@ -57,4 +68,26 @@ public class AjouterMedecinController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<String> listSpecialite = Arrays.asList(
+                "Anesthesiology",
+                "Cardiology",
+                "Dermatology",
+                "Endocrinology",
+                "Gastroenterology",
+                "Neurology",
+                "Obstetrics and Gynecology",
+                "Ophthalmology",
+                "Orthopedics",
+                "Pediatrics",
+                "Psychiatry",
+                "Radiology",
+                "Urology"
+        );
+        ObservableList<String> specialiteList = FXCollections.observableArrayList();
+        specialiteR.setItems(specialiteList);
+
+            specialiteList.addAll(listSpecialite);
+    }
 }

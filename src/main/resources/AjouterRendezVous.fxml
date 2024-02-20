@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="535.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
+   <children>
+      <Label layoutX="71.0" layoutY="104.0" text="Specialite" />
+      <Label layoutX="74.0" layoutY="202.0" text="Medecin" />
+      <Label layoutX="60.0" layoutY="297.0" text="Date" />
+      <ComboBox fx:id="specialiteR" layoutX="63.0" layoutY="143.0" prefHeight="31.0" prefWidth="150.0" />
+      <ComboBox fx:id="medecinR" layoutX="57.0" layoutY="237.0" prefHeight="52.0" prefWidth="161.0" />
+      <DatePicker fx:id="dateR" layoutX="57.0" layoutY="333.0" prefHeight="21.0" prefWidth="262.0" />
+      <Button layoutX="63.0" layoutY="444.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="31.0" prefWidth="115.0" text="Réserver" />
+      <Label layoutX="75.0" layoutY="371.0" text="Hour" />
+      <ComboBox fx:id="hourComboBox" layoutX="121.0" layoutY="366.0" prefHeight="31.0" prefWidth="64.0" />
+      <Label layoutX="213.0" layoutY="371.0" text="Minute" />
+      <ComboBox fx:id="minuteComboBox" layoutX="261.0" layoutY="366.0" prefHeight="37.0" prefWidth="58.0" />
+   </children>
+</AnchorPane>

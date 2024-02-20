@@ -7,11 +7,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceMedecin implements IService<Medecin>{
+public class ServiceMedecin implements IService<Medecin> {
     private Connection connection;
-    public ServiceMedecin(){
+
+    public ServiceMedecin() {
         connection = MyDataBase.getInstance().getConnection();
     }
+
     @Override
     public void ajouter(Medecin medecin) throws SQLException {
 //        Using a prepared statement not only prevents SQL injection but also helps to avoid syntax errors
@@ -29,7 +31,6 @@ public class ServiceMedecin implements IService<Medecin>{
     }
 
 
-
     @Override
     public void modifier(int id, String nom, String prenom, int numTel,
                          String adresse, String specialite) throws SQLException {
@@ -44,25 +45,23 @@ public class ServiceMedecin implements IService<Medecin>{
         preparedStatement.setInt(6, id);
 
 
-
-
     }
 
     @Override
     public void supprimer(int id) throws SQLException {
         String sql = "DELETE FROM `medecin` WHERE `id_medecin`= ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(1, id);
         preparedStatement.executeUpdate();
     }
 
     @Override
     public List<Medecin> afficher() throws SQLException {
-        List<Medecin> medecins= new ArrayList<>();
+        List<Medecin> medecins = new ArrayList<>();
         String sql = "select * from Medecin";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
-        while (rs.next()){
+        while (rs.next()) {
             Medecin medecin = new Medecin();
             medecin.setId_medecin(rs.getInt("id_medecin"));
             medecin.setNom_medecin(rs.getString("nom_medecin"));
@@ -74,4 +73,39 @@ public class ServiceMedecin implements IService<Medecin>{
         }
         return medecins;
     }
+
+    public List<String> getAllSpecialié() throws SQLException {
+        List<String> listSpecialté = new ArrayList<>();
+        String sql = "SELECT DISTINCT `specialite_medecin` FROM `medecin` ";
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        while (rs.next()) {
+            listSpecialté.add(rs.getString("specialite_medecin"));
+        }
+        return listSpecialté;
+    }
+
+    public List<Medecin> getMedecinBySpecialite(String specialite) {
+        List<Medecin> listMedecin = new ArrayList<>();
+        String sql = "SELECT * FROM `medecin` WHERE `specialite_medecin` LIKE ? ";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, specialite);
+            ResultSet rs = preparedStatement.executeQuery(); // Corrected line
+            while (rs.next()) {
+                Medecin medecin = new Medecin();
+                medecin.setId_medecin(rs.getInt("id_medecin"));
+                medecin.setNom_medecin(rs.getString("nom_medecin"));
+                medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+                medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+                medecin.setAddress_medecin(rs.getString("address_medecin"));
+                medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+                listMedecin.add(medecin);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listMedecin;
+    }
+
 }
