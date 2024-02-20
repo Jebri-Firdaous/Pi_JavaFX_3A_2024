@@ -108,4 +108,27 @@ public class ServiceMedecin implements IService<Medecin> {
         return listMedecin;
     }
 
+    public Medecin getMedecinById(int id) {
+        Medecin medecin = new Medecin();
+        String sql = "SELECT * FROM `medecin` WHERE `id_medecin` = ? ";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery(); // Corrected line
+            if(rs.next()){
+            medecin.setId_medecin(rs.getInt("id_medecin"));
+            medecin.setNom_medecin(rs.getString("nom_medecin"));
+            medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+            medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+            medecin.setAddress_medecin(rs.getString("address_medecin"));
+            medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return medecin;
+
+
+    }
 }

@@ -14,7 +14,8 @@
             <Font size="23.0" />
          </font>
       </Label>
-       <ListView fx:id="listViewRendezVous" layoutX="50.0" layoutY="117.0" prefHeight="262.0" prefWidth="675.0" />
+       <ListView fx:id="listViewRendezVous" layoutX="50.0" layoutY="117.0" prefHeight="221.0" prefWidth="675.0" />
+      <Button layoutX="619.0" layoutY="363.0" mnemonicParsing="false" onAction="#suprrimerRDBT" text="Suprrimer" />
    </children>
 
 </AnchorPane>

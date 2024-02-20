@@ -56,4 +56,5 @@ public class RendezVous {
                 ", id_medecin=" + id_medecin +
                 '}';
     }
+
 }

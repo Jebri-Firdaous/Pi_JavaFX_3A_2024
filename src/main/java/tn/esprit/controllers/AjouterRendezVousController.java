@@ -56,6 +56,8 @@ public class AjouterRendezVousController implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
                 // Call method to initialize medecinR based on the selected speciality
                 initialiserComboboxMedecin();
+                n_TelTextField.setText("N°Tel");
+                adresse_TextField.setText("Adresse");
             }
         });
         // Initialize the hour ComboBox with values from  0 to  23
@@ -108,23 +110,41 @@ public void initialiserComboboxMedecin() {
 
 
 
+
+
+// ...
+
+    @FXML
     public void reserverBT(ActionEvent actionEvent) {
-        ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
-        LocalDate date = dateR.getValue(); // Get the date from the DatePicker
-        int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
-        int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
-
-        // Combine the date, hour, and minute into a LocalDateTime
-        LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
-        try {
-            serviceRendezVous.ajouter(new RendezVous(dateTime,medecinR.getValue().id_medecin));
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setContentText("Medecin insérée avec succées!");
+        // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
+        if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null) {
+            // Show an alert if any field is empty
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields: Medecin, Specialite, Hour, and Minute.");
             alert.showAndWait();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        } else {
+            ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
+            LocalDate date = dateR.getValue(); // Get the date from the DatePicker
+            int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
+            int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
 
+            // Combine the date, hour, and minute into a LocalDateTime
+            LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
+
+            try {
+                serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin));
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Information Dialog");
+                successAlert.setContentText("Rendez-vous reserved successfully!");
+                successAlert.showAndWait();
+            } catch (SQLException e) {
+                // Handle the exception appropriately
+                e.printStackTrace();
+                // You may want to show an error message to the user
+            }
+        }
     }
+
 }
