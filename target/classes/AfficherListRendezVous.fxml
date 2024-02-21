@@ -7,19 +7,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8"
-                xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
-
+<AnchorPane prefHeight="429.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
    <children>
-       <fx:include source="navBar.fxml" />
-       <Label fx:id="labelListRV" layoutX="507.0" layoutY="175.0" prefHeight="37.0" prefWidth="191.0" text=" List Rendez-vous ">
+       <Label layoutX="292.0" layoutY="58.0" prefHeight="37.0" prefWidth="191.0" text=" List Rendez-vous ">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-       <ListView fx:id="listViewRendezVous" layoutX="175.0" layoutY="228.0" prefHeight="368.0" prefWidth="893.0" />
-      <Button layoutX="726.0" layoutY="606.0" mnemonicParsing="false" onAction="#suprrimerRDBT" prefHeight="37.0" prefWidth="185.0" text="Suprrimer" />
-      <Button layoutX="259.0" layoutY="609.0" mnemonicParsing="false" onAction="#ajouterRV" prefHeight="31.0" prefWidth="171.0" text="Ajouter" />
+       <ListView fx:id="listViewRendezVous" layoutX="50.0" layoutY="117.0" prefHeight="221.0" prefWidth="675.0" />
+      <Button layoutX="619.0" layoutY="363.0" mnemonicParsing="false" onAction="#suprrimerRDBT" text="Suprrimer" />
    </children>
 
-</BorderPane>
+</AnchorPane>

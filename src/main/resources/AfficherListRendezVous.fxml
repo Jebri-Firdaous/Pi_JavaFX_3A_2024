@@ -11,7 +11,7 @@
                 xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
 
    <children>
-       <fx:include source="navBar.fxml" />
+<!--       <fx:include source="navBar.fxml" />-->
        <Label fx:id="labelListRV" layoutX="507.0" layoutY="175.0" prefHeight="37.0" prefWidth="191.0" text=" List Rendez-vous ">
          <font>
             <Font size="23.0" />
