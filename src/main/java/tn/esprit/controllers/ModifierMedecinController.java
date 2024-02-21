@@ -1,21 +1,30 @@
 package tn.esprit.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.entities.Medecin;
 import tn.esprit.services.ServiceMedecin;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class ModifierMedecinController {
-
+public class ModifierMedecinController implements Initializable {
+    @FXML
+    public ComboBox<String> specialiteM;
     @FXML
     private TextField prenom;
     @FXML
@@ -24,19 +33,18 @@ public class ModifierMedecinController {
     private TextField nom;
     @FXML
     private TextField addresse;
-    @FXML
-    private TextField specialite;
+
     private int medecinId;
     private ServiceMedecin serviceMedecin = new ServiceMedecin();
 
     public void initializeValues(int id, String nomM, String prenomM, int numTelM,
-                                 String addresseM, String specialiteM) {
+                                 String addresseM, String specialityM) {
         medecinId = id;
         nom.setText(nomM);
         prenom.setText(prenomM);
         numeroTel.setText(Integer.toString(numTelM));
         addresse.setText(addresseM);
-        specialite.setText(specialiteM);
+        specialiteM.setValue(specialityM);
 
     }
 
@@ -63,7 +71,7 @@ public class ModifierMedecinController {
     public void ModifierMedecin(ActionEvent actionEvent) {
         try {
             serviceMedecin.modifier(medecinId, nom.getText(), prenom.getText(), Integer.parseInt(numeroTel.getText())
-                    , addresse.getText(), specialite.getText());
+                    , addresse.getText(), specialiteM.getValue());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setContentText("Medecin modifier avec succées!");
@@ -74,5 +82,29 @@ public class ModifierMedecinController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<String> listSpecialite = Arrays.asList(
+                "Anesthesiology",
+                "Cardiology",
+                "Dermatology",
+                "Endocrinology",
+                "Gastroenterology",
+                "Neurology",
+                "Obstetrics and Gynecology",
+                "Ophthalmology",
+                "Orthopedics",
+                "Pediatrics",
+                "Psychiatry",
+                "Radiology",
+                "Urology"
+        );
+        ObservableList<String> specialiteList = FXCollections.observableArrayList();
+        specialiteM.setItems(specialiteList);
+
+        specialiteList.addAll(listSpecialite);
+
     }
 }

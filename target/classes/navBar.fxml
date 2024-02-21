@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
 
-<BorderPane prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.NavBarController">
-    <top>
-        <Pane fx:id="contentPane" opacity="0.95" prefHeight="117.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
+<BorderPane prefHeight="740.0" prefWidth="1226.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.NavBarController">
+    <center>
+        <!-- Contenu de l'interface qui changera en fonction des actions -->
+        <Pane fx:id="contentPane" opacity="0.95" prefHeight="740.0" prefWidth="1258.0" BorderPane.alignment="CENTER">
             <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" height="101.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1312.0">
-                    <fill>
-                        <LinearGradient cycleMethod="REPEAT" endX="0" endY="1.0" startX="0" startY="0">
-                            <stops>
-                                <Stop color="#5ee1e5a6" />
-                                <Stop color="#5ee1e500" offset="1.0" />
-                            </stops>
-                        </LinearGradient>
-                    </fill>
-                </Rectangle>
-                <MenuBar layoutX="168.0" layoutY="59.0" prefHeight="35.0" prefWidth="1025.0">
+                <ImageView fitHeight="740.0" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">
+                    <image>
+                        <Image url="@bk5.png" />
+                    </image>
+                </ImageView>
+                <MenuBar layoutX="177.0" layoutY="60.0" prefHeight="32.0" prefWidth="1002.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="Accueil">
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion Sante">
                             <items>
-                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin" />
-                                <MenuItem onAction="#afficherRV" text="Gerer RV" />
-                                <!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
-                                <!--                                <Menu mnemonicParsing="false" >-->
-                                <!--                                    <items>-->
-                                <!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
-                                <!--                                    </items>-->
-                                <!--                                </Menu>-->
-                                <!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
-                                <!--                                </Menu>-->
+                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>
+                                <MenuItem onAction="#afficherRV" text="Gerer RV"/>
+<!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
+<!--                                <Menu mnemonicParsing="false" >-->
+<!--                                    <items>-->
+<!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
+<!--                                    </items>-->
+<!--                                </Menu>-->
+<!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
+<!--                                </Menu>-->
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion shopping">
@@ -78,22 +76,6 @@
                 </MenuBar>
             </children>
         </Pane>
-    </top>
-    <center>
-        <!-- Contenu de l'interface qui changera en fonction des actions -->
-
     </center>
-    <bottom>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="-5.0" layoutY="623.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1312.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
-                    <stops>
-                        <Stop color="#5ee1e5a6" />
-                        <Stop color="#5ee1e500" offset="1.0" />
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-    </bottom>
 
 </BorderPane>

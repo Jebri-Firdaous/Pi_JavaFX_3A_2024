@@ -19,6 +19,6 @@
       <Label layoutX="91.0" layoutY="402.0" text="Addresse" />
       <Label layoutX="100.0" layoutY="466.0" text="specialité" />
       <TextField fx:id="addresse" layoutX="94.0" layoutY="429.0" />
-      <TextField fx:id="specialite" layoutX="94.0" layoutY="493.0" />
+      <ComboBox fx:id="specialiteM" layoutX="100.0" layoutY="502.0" prefHeight="31.0" prefWidth="187.0" />
    </children>
 </AnchorPane>

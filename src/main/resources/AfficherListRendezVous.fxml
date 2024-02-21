@@ -7,11 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8"
-                xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
-
+<AnchorPane prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
    <children>
-<!--       <fx:include source="navBar.fxml" />-->
+       <fx:include source="navBar.fxml" />
        <Label fx:id="labelListRV" layoutX="507.0" layoutY="175.0" prefHeight="37.0" prefWidth="191.0" text=" List Rendez-vous ">
          <font>
             <Font size="23.0" />
@@ -22,4 +20,4 @@
       <Button layoutX="259.0" layoutY="609.0" mnemonicParsing="false" onAction="#ajouterRV" prefHeight="31.0" prefWidth="171.0" text="Ajouter" />
    </children>
 
-</BorderPane>
+</AnchorPane>
