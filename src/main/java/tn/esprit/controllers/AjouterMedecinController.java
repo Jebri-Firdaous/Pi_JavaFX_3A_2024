@@ -55,17 +55,6 @@ public class AjouterMedecinController implements Initializable {
     }
 
 
-
-
-// ...
-
-
-
-// ...
-
-
-// ...
-
     public void AjouterMedecin(ActionEvent actionEvent) {
         String nomText = nom.getText();
         String prenomText = prenom.getText();

@@ -8,6 +8,7 @@
 
 <AnchorPane prefHeight="561.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierMedecinController">
    <children>
+      <fx:include source="navBar.fxml" />
       <Label layoutX="65.0" layoutY="122.0" text="nom :" />
       <Label layoutX="59.0" layoutY="193.0" text="Prenom:" />
       <Label layoutX="59.0" layoutY="270.0" text="Numéro de téléphone" />

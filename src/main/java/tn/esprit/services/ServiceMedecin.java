@@ -128,7 +128,6 @@ public class ServiceMedecin implements IService<Medecin> {
             throw new RuntimeException(e);
         }
         return medecin;
-
-
     }
+
 }

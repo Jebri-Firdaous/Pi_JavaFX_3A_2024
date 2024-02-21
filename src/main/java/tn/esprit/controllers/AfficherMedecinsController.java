@@ -1,4 +1,5 @@
 package tn.esprit.controllers;
+import javafx.scene.control.Alert;
 import javafx.util.Callback;
 
 import javafx.beans.value.ChangeListener;
@@ -152,6 +153,8 @@ public class AfficherMedecinsController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterMedecin.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
+            newPageScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
             // Get the current stage and set the new scene
             Stage stage = (Stage) selectedDoctor.getScene().getWindow();
             stage.setScene(newPageScene);
@@ -162,6 +165,14 @@ public class AfficherMedecinsController {
     }
 
     public void BT_Modifier(ActionEvent actionEvent) {
+        if(currentDoctorSelected == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Choose one doctor ");
+            alert.showAndWait();
+            return;
+        }
         switchToUpdatePage();
     }
 

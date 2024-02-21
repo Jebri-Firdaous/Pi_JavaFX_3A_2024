@@ -8,6 +8,8 @@
 
 <AnchorPane prefHeight="561.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterMedecinController">
    <children>
+      <fx:include source="navBar.fxml" />
+
       <Label layoutX="65.0" layoutY="122.0" text="nom :" />
       <Label layoutX="59.0" layoutY="193.0" text="Prenom:" />
       <Label layoutX="59.0" layoutY="270.0" text="Numéro de téléphone" />
@@ -15,9 +17,10 @@
       <TextField fx:id="prenom" layoutX="59.0" layoutY="214.0" />
       <TextField fx:id="numeroTel" layoutX="59.0" layoutY="291.0" />
       <ComboBox fx:id="specialiteR" layoutX="65.0" layoutY="434.0" prefHeight="38.0" prefWidth="187.0" />
-      <Button layoutX="65.0" layoutY="494.0" mnemonicParsing="false" onAction="#AjouterMedecin" prefHeight="31.0" prefWidth="187.0" text="Ajouter" />
+      <Button layoutX="65.0" layoutY="494.0" mnemonicParsing="false" onAction="#AjouterMedecin" prefHeight="31.0" prefWidth="187.0" text="Ajouter"   />
       <Label layoutX="56.0" layoutY="335.0" text="Addresse" />
       <Label layoutX="65.0" layoutY="399.0" text="specialité" />
       <TextField fx:id="addresse" layoutX="59.0" layoutY="362.0" />
+
    </children>
 </AnchorPane>

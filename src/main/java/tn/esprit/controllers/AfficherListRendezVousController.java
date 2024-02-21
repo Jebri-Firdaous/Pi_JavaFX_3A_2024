@@ -5,19 +5,26 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.Medecin;
 import tn.esprit.entities.RendezVous;
 import tn.esprit.services.ServiceMedecin;
 import tn.esprit.services.ServiceRendezVous;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class AfficherListRendezVousController {
     public ListView<RendezVous> listViewRendezVous;
+    public Label labelListRV;
     RendezVous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
 
@@ -76,11 +83,28 @@ public class AfficherListRendezVousController {
             throw new RuntimeException(e);
         }
     }
+
     public void suprrimerRDBT(ActionEvent actionEvent) {
         try {
             serviceRendezVous.supprimer(currentRendezVousSelected.getRef_rendez_vous());
             initialize();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void ajouterRV(ActionEvent actionEvent) {
+
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterRendezVous.fxml"));
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) labelListRV.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

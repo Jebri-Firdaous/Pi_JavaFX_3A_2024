@@ -6,18 +6,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import tn.esprit.entities.Medecin;
 import tn.esprit.entities.RendezVous;
 import tn.esprit.services.ServiceMedecin;
 import tn.esprit.services.ServiceRendezVous;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AjouterRendezVousController implements Initializable {
@@ -107,17 +115,36 @@ public void initialiserComboboxMedecin() {
     });
 
 }
+    public void switchToDisplayAllRVPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListRendezVous.fxml"));
+            Parent newPageRoot = loader.load();
+            AfficherListRendezVousController afficherListRendezVousController = loader.getController();
 
+            // Create a new scene with the newPageRoot
+            Scene pageScene = new Scene(newPageRoot);
 
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) adresse_TextField.getScene().getWindow();
+            stage.setScene(pageScene);
 
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    private List<Timestamp> getUnavailableTimesForDoctor(Medecin doctor) {
+        List<Timestamp> unavailableTimes = new ArrayList<>();
 
-// ...
+        return unavailableTimes;
+    }
+
 
     @FXML
     public void reserverBT(ActionEvent actionEvent) {
         // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
-        if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null) {
+        if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null
+            || dateR.getValue() == null ) {
             // Show an alert if any field is empty
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Missing Information");
@@ -139,6 +166,7 @@ public void initialiserComboboxMedecin() {
                 successAlert.setTitle("Information Dialog");
                 successAlert.setContentText("Rendez-vous reserved successfully!");
                 successAlert.showAndWait();
+                switchToDisplayAllRVPage();
             } catch (SQLException e) {
                 // Handle the exception appropriately
                 e.printStackTrace();
@@ -147,4 +175,9 @@ public void initialiserComboboxMedecin() {
         }
     }
 
+    public void backOneMonth(ActionEvent actionEvent) {
+    }
+
+    public void forwardOneMonth(ActionEvent actionEvent) {
+    }
 }
