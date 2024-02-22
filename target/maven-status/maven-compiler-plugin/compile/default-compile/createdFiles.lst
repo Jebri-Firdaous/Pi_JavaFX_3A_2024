@@ -3,11 +3,14 @@ tn\esprit\controllers\AjouterRendezVousController$2.class
 tn\esprit\controllers\AfficherMedecinsController$1$1.class
 tn\esprit\controllers\AfficherMedecinsController.class
 tn\esprit\controllers\AfficherListRendezVousController.class
+tn\esprit\controllers\MofidierRvController$1.class
 tn\esprit\controllers\AfficherMedecinsController$2.class
 tn\esprit\controllers\AfficherListRendezVousController$1$1.class
 tn\esprit\controllers\AfficherListRendezVousController$1.class
 tn\esprit\controllers\ModifierMedecinController.class
 tn\esprit\services\ServiceRendezVous.class
+tn\esprit\controllers\MofidierRvController.class
 tn\esprit\controllers\NavBarController.class
 tn\esprit\controllers\AjouterRendezVousController$1.class
 tn\esprit\controllers\AfficherMedecinsController$1.class
+tn\esprit\controllers\MofidierRvController$2.class

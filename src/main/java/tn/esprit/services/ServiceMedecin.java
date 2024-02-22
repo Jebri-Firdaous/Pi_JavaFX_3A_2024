@@ -43,6 +43,8 @@ public class ServiceMedecin implements IService<Medecin> {
         preparedStatement.setString(4, adresse);
         preparedStatement.setString(5, specialite);
         preparedStatement.setInt(6, id);
+        preparedStatement.executeUpdate();
+
 
 
     }

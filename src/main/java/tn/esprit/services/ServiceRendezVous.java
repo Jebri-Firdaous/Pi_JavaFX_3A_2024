@@ -5,6 +5,7 @@ import tn.esprit.entities.RendezVous;
 import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +23,23 @@ public class ServiceRendezVous implements IService<RendezVous>{
         preparedStatement.setInt(2, rendezVous.getId_medecin());
         preparedStatement.executeUpdate();
     }
+    public void modifier(int refRv, Timestamp date_rendez_vous, int id_medecin) throws SQLException {
+        String sql = "UPDATE `rendez-vous` SET `date_rendez_vous`= ?,`id_medecin`= ? WHERE `ref_rendez_vous`= ? ";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setTimestamp(1,date_rendez_vous);
+        preparedStatement.setInt(2,id_medecin);
+        preparedStatement.setInt(3,refRv);
+        preparedStatement.executeUpdate();
 
+    }
+
+
+    // Not this modifier method
     @Override
     public void modifier(int id, String nom, String prenom, int numTel, String adresse, String specialite) throws SQLException {
 
     }
+
 
     @Override
     public void supprimer(int id) throws SQLException {

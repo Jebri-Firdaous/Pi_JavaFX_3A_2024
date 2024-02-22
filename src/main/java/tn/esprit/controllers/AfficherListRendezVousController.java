@@ -5,9 +5,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -24,6 +26,7 @@ import java.util.List;
 
 public class AfficherListRendezVousController {
     public ListView<RendezVous> listViewRendezVous;
+    @FXML
     public Label labelListRV;
     RendezVous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
@@ -111,4 +114,40 @@ public class AfficherListRendezVousController {
         }
     }
 
+
+    public void BT_Modifier(ActionEvent actionEvent) {
+        if(currentRendezVousSelected == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Choose one Rv ");
+            alert.showAndWait();
+            return;
+        }
+        switchToUpdatePage();
+    }
+    public void switchToUpdatePage() {
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MofidierRv.fxml"));
+            Parent newPageRoot = loader.load();
+            // Get the controller instance created by the FXMLLoader
+            MofidierRvController mofidierRvController = loader.getController();
+            mofidierRvController.initializeValues(currentRendezVousSelected.getRef_rendez_vous(),
+                    currentRendezVousSelected.getDate_rendez_vous(),
+                    currentRendezVousSelected.getId_medecin()
+            );
+
+            // Create a new scene with the newPageRoot
+            Scene newPageScene = new Scene(newPageRoot);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) labelListRV.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
