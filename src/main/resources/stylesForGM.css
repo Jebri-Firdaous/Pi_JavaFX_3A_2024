@@ -1,0 +1,24 @@
+.button-transparent {
+    -fx-background-color: transparent;
+}
+Label{
+    -fx-font-size: 18;
+    -fx-font-family: Arial;
+    -fx-font-style: Bold;
+
+}
+Button{
+    -fx-background-color: #2467C3;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 50px;
+    -fx-text-fill: white;
+   -fx-pref-width: 187;
+    -fx-pref-height: 40;
+}
+ComboBox , TextField{
+    -fx-pref-width: 187;
+    -fx-pref-height: 40;
+}
+TextField{
+    -fx-font-size: 18;
+}

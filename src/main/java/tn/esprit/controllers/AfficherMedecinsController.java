@@ -7,23 +7,19 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.VBox;
 import tn.esprit.entities.Medecin;
 import tn.esprit.services.ServiceMedecin;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import javafx.stage.Stage;
 
@@ -153,7 +149,7 @@ public class AfficherMedecinsController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterMedecin.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/stylesForGM.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) selectedDoctor.getScene().getWindow();

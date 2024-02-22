@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="535.0" prefWidth="807.0" stylesheets="styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherMedecinsController">
+<AnchorPane prefHeight="535.0" prefWidth="807.0" stylesheets="stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherMedecinsController">
    <children>
       <fx:include source="navBar.fxml" />
       <ListView fx:id="listViewMedecins" layoutX="50.0" layoutY="117.0" prefHeight="303.0" prefWidth="706.0" />

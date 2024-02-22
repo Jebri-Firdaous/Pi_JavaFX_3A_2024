@@ -14,19 +14,19 @@
 <AnchorPane prefHeight="628.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
       <fx:include source="navBar.fxml" />
    <children>
-      <Label layoutX="42.0" layoutY="145.0" text="Specialite" />
-      <Label layoutX="39.0" layoutY="220.0" text="Medecin" />
-      <Label layoutX="41.0" layoutY="349.0" text="Date" />
+      <Label layoutX="42.0" layoutY="145.0" text="Specialite" styleClass="styleFortext-field"/>
+      <Label layoutX="39.0" layoutY="220.0" text="Medecin" styleClass="styleFortext-field"/>
+      <Label layoutX="41.0" layoutY="349.0" text="Date" styleClass="styleFortext-field" />
       <ComboBox fx:id="specialiteR" layoutX="39.0" layoutY="166.0" prefHeight="31.0" prefWidth="169.0" />
       <ComboBox fx:id="medecinR" layoutX="34.0" layoutY="248.0" prefHeight="31.0" prefWidth="169.0" />
       <DatePicker fx:id="dateR" layoutX="36.0" layoutY="378.0" prefHeight="21.0" prefWidth="262.0" />
       <Button layoutX="52.0" layoutY="546.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="31.0" prefWidth="115.0" text="Réserver" />
-      <Label layoutX="57.0" layoutY="452.0" text="Hour" />
+      <Label layoutX="57.0" layoutY="452.0" text="Hour" styleClass="styleFortext-field" />
       <ComboBox fx:id="hourComboBox" layoutX="103.0" layoutY="447.0" prefHeight="31.0" prefWidth="64.0" />
-      <Label layoutX="195.0" layoutY="452.0" text="Minute" />
+      <Label layoutX="195.0" layoutY="452.0" text="Minute" styleClass="styleFortext-field" />
       <ComboBox fx:id="minuteComboBox" layoutX="243.0" layoutY="447.0" prefHeight="37.0" prefWidth="58.0" />
-      <Label fx:id="adresse_TextField" layoutX="135.0" layoutY="291.0" prefHeight="11.0" prefWidth="90.0" text="Adresse" />
-      <Label fx:id="n_TelTextField" layoutX="40.0" layoutY="291.0" prefHeight="21.0" prefWidth="90.0" text="N°Tel" />
+      <Label fx:id="adresse_TextField" layoutX="135.0" layoutY="291.0" prefHeight="11.0" prefWidth="90.0" text="Adresse" styleClass="styleFortext-field" />
+      <Label fx:id="n_TelTextField" layoutX="40.0" layoutY="291.0" prefHeight="21.0" prefWidth="90.0" text="N°Tel" styleClass="styleFortext-field"/>
    </children>
    <children>
 <!--        &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#4-->

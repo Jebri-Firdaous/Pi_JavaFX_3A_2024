@@ -55,6 +55,8 @@ public class AfficherListRendezVousController {
                                 String specialty = medecin.getSpecialite_medecin();
                                 int phoneNumber = medecin.getNumero_telephone_medecin();
                                 String address = medecin.getAddress_medecin();
+//                                "https://stackoverflow.com/questions/56990008/javafx-textfield-changing-padding-to-0-on-focus"
+//                                change to display try this link "https://stackoverflow.com/questions/45144853/javafx-combobox-displayed-item-font-size"
                                 String formattedText = String.format("Dr. %s %s - %s Phone: %s Address: %s",
                                         doctorName, doctorSurname, specialty, phoneNumber, address);
                                 setText(formattedText);
