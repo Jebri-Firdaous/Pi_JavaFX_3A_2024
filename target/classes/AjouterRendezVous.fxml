@@ -1,38 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="628.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
+<AnchorPane stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
+   <children>
       <fx:include source="navBar.fxml" />
-   <children>
-      <Label layoutX="42.0" layoutY="145.0" text="Specialite" styleClass="styleFortext-field"/>
-      <Label layoutX="39.0" layoutY="220.0" text="Medecin" styleClass="styleFortext-field"/>
-      <Label layoutX="41.0" layoutY="349.0" text="Date" styleClass="styleFortext-field" />
-      <ComboBox fx:id="specialiteR" layoutX="39.0" layoutY="166.0" prefHeight="31.0" prefWidth="169.0" />
-      <ComboBox fx:id="medecinR" layoutX="34.0" layoutY="248.0" prefHeight="31.0" prefWidth="169.0" />
-      <DatePicker fx:id="dateR" layoutX="36.0" layoutY="378.0" prefHeight="21.0" prefWidth="262.0" />
-      <Button layoutX="52.0" layoutY="546.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="31.0" prefWidth="115.0" text="Réserver" />
-      <Label layoutX="57.0" layoutY="452.0" text="Hour" styleClass="styleFortext-field" />
-      <ComboBox fx:id="hourComboBox" layoutX="103.0" layoutY="447.0" prefHeight="31.0" prefWidth="64.0" />
-      <Label layoutX="195.0" layoutY="452.0" text="Minute" styleClass="styleFortext-field" />
-      <ComboBox fx:id="minuteComboBox" layoutX="243.0" layoutY="447.0" prefHeight="37.0" prefWidth="58.0" />
-      <Label fx:id="adresse_TextField" layoutX="135.0" layoutY="291.0" prefHeight="11.0" prefWidth="90.0" text="Adresse" styleClass="styleFortext-field" />
-      <Label fx:id="n_TelTextField" layoutX="40.0" layoutY="291.0" prefHeight="21.0" prefWidth="90.0" text="N°Tel" styleClass="styleFortext-field"/>
-   </children>
-   <children>
-<!--        &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#4-->
-      <FlowPane fx:id="calendar" hgap="10.0" layoutX="470.0" layoutY="182.0" prefHeight="498.0" prefWidth="716.0" vgap="5.0">
+      <VBox layoutX="75.0" layoutY="188.0" prefHeight="417.0" prefWidth="367.0" spacing="27.5">
          <children>
-            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="716.0" spacing="88.75">
+            <VBox>
+               <children>
+                  <Label text="Specialite" />
+                  <ComboBox fx:id="specialiteR" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="344.0" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <Label text="Medecin" />
+                  <ComboBox fx:id="medecinR" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="321.0" />
+               </children>
+            </VBox>
+            <HBox>
+               <children>
+                  <Label fx:id="adresse_TextField" prefHeight="11.0" prefWidth="90.0" text="Adresse" />
+                  <Label fx:id="n_TelTextField" prefHeight="21.0" prefWidth="90.0" text="N°Tel" />
+               </children>
+            </HBox>
+            <VBox>
+               <children>
+                  <Label text="Date" />
+                  <DatePicker fx:id="dateR" prefHeight="26.0" prefWidth="346.0" />
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="175.0">
+               <children>
+                  <HBox spacing="26.5">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="Hour" />
+                              <ComboBox fx:id="hourComboBox" prefHeight="31.0" prefWidth="64.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Minute" />
+                              <ComboBox fx:id="minuteComboBox" prefHeight="38.0" prefWidth="96.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="75.0" layoutY="603.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="31.0" prefWidth="115.0" text="Réserver" />
+   
+      <FlowPane />
+   
+      <!--        &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#4-->
+      <FlowPane fx:id="calendar" hgap="10.0" layoutX="470.0" layoutY="228.0" prefHeight="417.0" prefWidth="713.0" vgap="5.0">
+      <children>
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="716.0" spacing="88.75">
+               <padding>
+                  <Insets right="9.0" />
+               </padding>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
                   <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />
@@ -42,13 +80,10 @@
                   <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" />
                   <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" />
                </children>
-               <padding>
-                  <Insets right="9.0" />
-               </padding>
             </HBox>
-         </children>
+      </children>
       </FlowPane>
-      <HBox alignment="CENTER" layoutX="494.0" layoutY="127.0" prefHeight="44.0" prefWidth="663.0" spacing="5.0">
+      <HBox alignment="CENTER" layoutX="470.0" layoutY="183.0" prefHeight="44.0" prefWidth="663.0" spacing="5.0">
          <children>
             <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
             <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
@@ -61,9 +96,8 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+            <Button mnemonicParsing="false" onAction="#forwardOneMonth" styleClass="btForwardAndBackOneMonth" text="&gt;" />
          </children>
       </HBox>
    </children>
-
 </AnchorPane>
