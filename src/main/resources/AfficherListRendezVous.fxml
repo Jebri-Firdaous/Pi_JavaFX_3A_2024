@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane  prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
+<AnchorPane stylesheets="@stylesForGM.css" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherListRendezVousController">
    <children>
        <fx:include source="navBar.fxml" />
        <Label fx:id="labelListRV" layoutX="507.0" layoutY="175.0" prefHeight="37.0" prefWidth="191.0" text="List Rendez-vous">

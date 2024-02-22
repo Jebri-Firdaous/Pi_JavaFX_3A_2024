@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.entities.Medecin;
+import tn.esprit.entities.RendezVous;
 import tn.esprit.services.ServiceMedecin;
 import tn.esprit.services.ServiceRendezVous;
 
@@ -35,7 +36,7 @@ public class MofidierRvController implements Initializable {
     int ref_rendez_vous;
     ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
 
-    public void initializeValues(int ref_rendez_vous , Timestamp date_rendez_vous, int id_medecin) {
+    public void initializeValues(int ref_rendez_vous, Timestamp date_rendez_vous, int id_medecin) {
         this.ref_rendez_vous = ref_rendez_vous;
         dateR.setValue(date_rendez_vous.toLocalDateTime().toLocalDate());
         hourComboBox.setValue(date_rendez_vous.getHours());
@@ -50,26 +51,49 @@ public class MofidierRvController implements Initializable {
     }
 
     public void modiferRvBT(ActionEvent actionEvent) {
-        try {
+        // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
+        if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null
+                || dateR.getValue() == null) {
+            // Show an alert if any field is empty
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields: Medecin, Specialite, Hour, and Minute.");
+            alert.showAndWait();
+        } else {
             LocalDate date = dateR.getValue(); // Get the date from the DatePicker
             int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
             int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
 
             // Combine the date, hour, and minute into a LocalDateTime
             LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
-            Timestamp timestamp = Timestamp.valueOf(dateTime);
-            serviceRendezVous.modifier(ref_rendez_vous,timestamp,medecinR.getValue().id_medecin);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setContentText("Medecin modifier avec succées!");
+            if (dateTime.isBefore(LocalDateTime.now())) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Choose a date that after now ");
+                alert.setHeaderText(null);
+                alert.setContentText("Choose a date that after now");
+                alert.showAndWait();
+
+            } else {
+                ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
+                try {
+                    Timestamp timestamp = Timestamp.valueOf(dateTime);
+                    serviceRendezVous.modifier(ref_rendez_vous, timestamp, medecinR.getValue().id_medecin);
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setContentText("RV modifier avec succées!");
 //          block the execution until the user closes the alert dialog.
-            alert.showAndWait();
-            switchToDisplayAllRV();
+                    alert.showAndWait();
+                    switchToDisplayAllRV();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
+
 
     }
 
@@ -96,7 +120,7 @@ public class MofidierRvController implements Initializable {
         });
         // Initialize the hour ComboBox with values from  0 to  23
         ObservableList<Integer> hours = FXCollections.observableArrayList();
-        for (int i =  8; i <  17; i++) {
+        for (int i = 8; i < 17; i++) {
             hours.add(i);
         }
         hourComboBox.setItems(hours);
@@ -104,11 +128,12 @@ public class MofidierRvController implements Initializable {
         // Initialize the minute ComboBox with values from  0 to  59
         ObservableList<Integer> minutes = FXCollections.observableArrayList();
 
-        for (int i =  0; i <  60; i+=30) {
+        for (int i = 0; i < 60; i += 30) {
             minutes.add(i);
         }
         minuteComboBox.setItems(minutes);
-}
+    }
+
     @FXML
     public void initialiserComboboxMedecin() {
         ServiceMedecin serviceMedecin = new ServiceMedecin();
@@ -134,6 +159,7 @@ public class MofidierRvController implements Initializable {
         });
 
     }
+
     public void switchToDisplayAllRV() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListRendezVous.fxml"));
@@ -151,9 +177,11 @@ public class MofidierRvController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     public void forwardOneMonth(ActionEvent actionEvent) {
     }
 
     public void backOneMonth(ActionEvent actionEvent) {
-    }}
+    }
+}
 

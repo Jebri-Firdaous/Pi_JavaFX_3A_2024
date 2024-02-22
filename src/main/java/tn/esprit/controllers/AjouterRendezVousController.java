@@ -46,7 +46,6 @@ public class AjouterRendezVousController implements Initializable {
     private DatePicker dateR;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialize ComboBox specialiteCombobox
@@ -70,51 +69,53 @@ public class AjouterRendezVousController implements Initializable {
         });
         // Initialize the hour ComboBox with values from  0 to  23
         ObservableList<Integer> hours = FXCollections.observableArrayList();
-        for (int i =  8; i <  17; i++) {
+        for (int i = 8; i < 17; i++) {
             hours.add(i);
         }
         hourComboBox.setItems(hours);
 
         // Initialize the minute ComboBox with values from  0 to  59
         ObservableList<Integer> minutes = FXCollections.observableArrayList();
-        for (int i =  0; i <  60; i+=30) {
+        for (int i = 0; i < 60; i += 30) {
             minutes.add(i);
         }
         minuteComboBox.setItems(minutes);
 
     }
-//    public void initialiserComboboxMedecin(){
+
+    //    public void initialiserComboboxMedecin(){
 //        ServiceMedecin serviceMedecin = new ServiceMedecin();
 //        ObservableList<Medecin> medecinListBySpecialite = FXCollections.observableArrayList();
 //        medecinR.setItems(medecinListBySpecialite);
 //        medecinListBySpecialite.addAll(serviceMedecin.getMedecinBySpecialite(specialiteR.getValue()));
 //
 //    }
-@FXML
-public void initialiserComboboxMedecin() {
-    ServiceMedecin serviceMedecin = new ServiceMedecin();
-    ObservableList<Medecin> medecinListBySpecialite = FXCollections.observableArrayList();
-    medecinR.setItems(medecinListBySpecialite);
+    @FXML
+    public void initialiserComboboxMedecin() {
+        ServiceMedecin serviceMedecin = new ServiceMedecin();
+        ObservableList<Medecin> medecinListBySpecialite = FXCollections.observableArrayList();
+        medecinR.setItems(medecinListBySpecialite);
         medecinListBySpecialite.addAll(serviceMedecin.getMedecinBySpecialite(specialiteR.getValue()));
 
-    // Display the medecinR ComboBox items using toStringWithSpeciality() method
-    medecinR.setCellFactory(listView -> new ListCell<Medecin>() {
-        @Override
-        protected void updateItem(Medecin item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty || item == null) {
-                setText(null);
-                n_TelTextField.setText("N°Tel");
-                adresse_TextField.setText("Adresse");
-            } else {
-                setText(item.toStringNomPrenom());
-                n_TelTextField.setText(Integer.toString(item.getNumero_telephone_medecin()));
-                adresse_TextField.setText(item.getAddress_medecin());
+        // Display the medecinR ComboBox items using toStringWithSpeciality() method
+        medecinR.setCellFactory(listView -> new ListCell<Medecin>() {
+            @Override
+            protected void updateItem(Medecin item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    n_TelTextField.setText("N°Tel");
+                    adresse_TextField.setText("Adresse");
+                } else {
+                    setText(item.toStringNomPrenom());
+                    n_TelTextField.setText(Integer.toString(item.getNumero_telephone_medecin()));
+                    adresse_TextField.setText(item.getAddress_medecin());
+                }
             }
-        }
-    });
+        });
 
-}
+    }
+
     public void switchToDisplayAllRVPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherListRendezVous.fxml"));
@@ -144,7 +145,7 @@ public void initialiserComboboxMedecin() {
     public void reserverBT(ActionEvent actionEvent) {
         // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
         if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null
-            || dateR.getValue() == null ) {
+                || dateR.getValue() == null) {
             // Show an alert if any field is empty
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Missing Information");
@@ -152,7 +153,6 @@ public void initialiserComboboxMedecin() {
             alert.setContentText("Please fill in all fields: Medecin, Specialite, Hour, and Minute.");
             alert.showAndWait();
         } else {
-            ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
             LocalDate date = dateR.getValue(); // Get the date from the DatePicker
             int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
             int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
@@ -160,17 +160,34 @@ public void initialiserComboboxMedecin() {
             // Combine the date, hour, and minute into a LocalDateTime
             LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
 
-            try {
-                serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin));
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Information Dialog");
-                successAlert.setContentText("Rendez-vous reserved successfully!");
-                successAlert.showAndWait();
-                switchToDisplayAllRVPage();
-            } catch (SQLException e) {
-                // Handle the exception appropriately
-                e.printStackTrace();
-                // You may want to show an error message to the user
+            if (dateTime.isBefore(LocalDateTime.now())) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Choose a date that after now ");
+                alert.setHeaderText(null);
+                alert.setContentText("Choose a date that after now");
+                alert.showAndWait();
+
+            } else {
+                ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
+//                LocalDate date = dateR.getValue(); // Get the date from the DatePicker
+//                int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
+//                int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
+//
+//                // Combine the date, hour, and minute into a LocalDateTime
+//                LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
+
+                try {
+                    serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin));
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Information Dialog");
+                    successAlert.setContentText("Rendez-vous reserved successfully!");
+                    successAlert.showAndWait();
+                    switchToDisplayAllRVPage();
+                } catch (SQLException e) {
+                    // Handle the exception appropriately
+                    e.printStackTrace();
+                    // You may want to show an error message to the user
+                }
             }
         }
     }

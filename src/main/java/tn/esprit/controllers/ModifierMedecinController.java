@@ -69,19 +69,42 @@ public class ModifierMedecinController implements Initializable {
 
 
     public void ModifierMedecin(ActionEvent actionEvent) {
-        try {
-            serviceMedecin.modifier(medecinId, nom.getText(), prenom.getText(), Integer.parseInt(numeroTel.getText())
-                    , addresse.getText(), specialiteM.getValue());
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setContentText("Medecin modifier avec succées!");
-//          block the execution until the user closes the alert dialog.
-            alert.showAndWait();
-            switchToDisplayAllDoctorsPage();
+        String nomText = nom.getText();
+        String prenomText = prenom.getText();
+        String numeroTelText = numeroTel.getText();
+        String addresseText = addresse.getText();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        // Check if all fields are filled
+        if (nomText.isEmpty() || prenomText.isEmpty() || numeroTelText.isEmpty() || addresseText.isEmpty()) {
+            // Show an alert if any field is empty
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields: Nom, Prenom, Numero Tel, and Addresse.");
+            alert.showAndWait();
+        } else if (numeroTelText.length() !=   8 || !numeroTelText.matches("\\d+") || !numeroTelText.startsWith("5") && !numeroTelText.startsWith("2") && !numeroTelText.startsWith("9")) {
+            // Show an alert if the phone number is not valid
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid Phone Number");
+            alert.setHeaderText(null);
+            alert.setContentText("The phone number must be exactly   8 numeric characters and start with   5,   2, or   9.");
+            alert.showAndWait();
+        } else {
+            try {
+                serviceMedecin.modifier(medecinId, nom.getText(), prenom.getText(), Integer.parseInt(numeroTel.getText())
+                        , addresse.getText(), specialiteM.getValue());
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setContentText("Medecin modifier avec succées!");
+//          block the execution until the user closes the alert dialog.
+                alert.showAndWait();
+                switchToDisplayAllDoctorsPage();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 
     @Override
