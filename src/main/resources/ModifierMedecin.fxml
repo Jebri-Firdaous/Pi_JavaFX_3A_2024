@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="561.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierMedecinController">
+<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierMedecinController">
    <children>
       <fx:include source="navBar.fxml" />
-      <Label layoutX="100.0" layoutY="189.0" text="nom :" />
-      <Label layoutX="94.0" layoutY="260.0" text="Prenom:" />
-      <Label layoutX="94.0" layoutY="337.0" text="Numéro de téléphone" />
-      <TextField fx:id="nom" layoutX="100.0" layoutY="210.0" />
-      <TextField fx:id="prenom" layoutX="94.0" layoutY="281.0" />
-      <TextField fx:id="numeroTel" layoutX="94.0" layoutY="358.0" />
-      <Button layoutX="100.0" layoutY="561.0" mnemonicParsing="false" onAction="#ModifierMedecin" prefHeight="31.0" prefWidth="187.0" text="Modifier" />
-      <Label layoutX="91.0" layoutY="402.0" text="Addresse" />
-      <Label layoutX="100.0" layoutY="466.0" text="specialité" />
-      <TextField fx:id="addresse" layoutX="94.0" layoutY="429.0" />
-      <ComboBox fx:id="specialiteM" layoutX="100.0" layoutY="502.0" prefHeight="31.0" prefWidth="187.0" />
+      <VBox layoutX="91.0" layoutY="189.0" prefHeight="402.0" prefWidth="287.0" spacing="6.0">
+         <children>
+            <Label layoutX="100.0" layoutY="189.0" text="Nom :" />
+            <TextField fx:id="nom" layoutX="100.0" layoutY="210.0" />
+            <Label layoutX="94.0" layoutY="260.0" text="Prenom:" />
+            <TextField fx:id="prenom" layoutX="94.0" layoutY="281.0" />
+            <Label layoutX="94.0" layoutY="337.0" text="Numéro de téléphone" />
+            <TextField fx:id="numeroTel" layoutX="94.0" layoutY="358.0" />
+            <Label layoutX="91.0" layoutY="402.0" text="Addresse" />
+            <TextField fx:id="addresse" layoutX="94.0" layoutY="429.0" />
+            <Label layoutX="100.0" layoutY="466.0" text="specialité" />
+            <ComboBox fx:id="specialiteM" layoutX="100.0" layoutY="502.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="187.0" />
+         </children>
+      </VBox>
+      <Button layoutX="91.0" layoutY="597.0" mnemonicParsing="false" onAction="#ModifierMedecin" prefHeight="31.0" prefWidth="187.0" text="Modifier" />
+      <ImageView fitHeight="393.0" fitWidth="614.0" layoutX="500.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@modifiermedecinImage.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

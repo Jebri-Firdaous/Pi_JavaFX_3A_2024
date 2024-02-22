@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.MofidierRvController">
+<AnchorPane stylesheets="@stylesForGM.css" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.MofidierRvController">
     <children>
         <fx:include source="navBar.fxml" />
         <VBox layoutX="75.0" layoutY="188.0" prefHeight="417.0" prefWidth="367.0" spacing="27.5">
