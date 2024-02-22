@@ -22,6 +22,10 @@ import tn.esprit.services.ServiceRendezVous;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class AfficherListRendezVousController {
@@ -58,10 +62,13 @@ public class AfficherListRendezVousController {
                                 String specialty = medecin.getSpecialite_medecin();
                                 int phoneNumber = medecin.getNumero_telephone_medecin();
                                 String address = medecin.getAddress_medecin();
+                                Timestamp timestamp = rendezVous.getDate_rendez_vous();
 //                                "https://stackoverflow.com/questions/56990008/javafx-textfield-changing-padding-to-0-on-focus"
 //                                change to display try this link "https://stackoverflow.com/questions/45144853/javafx-combobox-displayed-item-font-size"
+                                DateFormat format = new SimpleDateFormat( "dd-MM-YYYY hh:mm " );
+                                String timestampAsString = format.format( timestamp );
                                 String formattedText = String.format("Dr. %s %s - %s Phone: %s Address: %s",
-                                        doctorName, doctorSurname, specialty, phoneNumber, address);
+                                        doctorName, doctorSurname, timestampAsString, phoneNumber, address);
                                 setText(formattedText);
                             }
                         }
