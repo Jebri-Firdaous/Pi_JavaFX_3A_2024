@@ -86,6 +86,7 @@ public class AfficherMedecinsController {
                                 String formattedText = String.format("Dr. %s %s - %s Phone: %s Address: %s",
                                         doctorName, doctorSurname, specialty, phoneNumber, address);
                                 setText(formattedText);
+
                             }
                         }
                     };
@@ -97,11 +98,11 @@ public class AfficherMedecinsController {
                 public void changed(ObservableValue<? extends Number> observableValue, Number oldIndex, Number newIndex) {
                     currentDoctorSelected = listViewMedecins.getSelectionModel().getSelectedItem();
                     // Display the selected item
-                    if (currentDoctorSelected != null) {
+                   /* if (currentDoctorSelected != null) {
                         selectedDoctor.setText(currentDoctorSelected.getNom_medecin() + " - " + currentDoctorSelected.getSpecialite_medecin());
                     } else {
                         selectedDoctor.setText("");
-                    }
+                    }*/
                 }
             });
 

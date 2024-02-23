@@ -7,19 +7,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherMedecinsController">
+<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherMedecinsController">
    <children>
       <fx:include source="navBar.fxml" />
-      <ListView fx:id="listViewMedecins" layoutX="166.0" layoutY="212.0" prefHeight="356.0" prefWidth="845.0" />
-      <Label layoutX="346.0" layoutY="67.0" prefHeight="21.0" prefWidth="116.0" text=" " />
+      <ListView fx:id="listViewMedecins" layoutX="166.0" layoutY="265.0" prefHeight="303.0" prefWidth="845.0" />
+      <HBox layoutX="169.0" layoutY="236.0" prefHeight="21.0" prefWidth="837.0" spacing="117.0">
+         <children>
+            <Label layoutX="200.0" layoutY="236.0" text="Nom" />
+            <Label layoutX="385.0" layoutY="236.0" prefHeight="21.0" prefWidth="116.0" text="Prenom" />
+            <Label layoutX="579.0" layoutY="236.0" text="Specialité" />
+            <Label layoutX="717.0" layoutY="236.0" text="N°Tel" />
+            <Label layoutX="874.0" layoutY="236.0" text="Adresse" />
+         </children>
+      </HBox>
       <Button layoutX="810.0" layoutY="593.0" mnemonicParsing="false" onAction="#BT_supprimer" prefHeight="13.0" prefWidth="197.0" text="Supprimer " />
-      <Label fx:id="selectedDoctor" layoutX="14.0" layoutY="547.0" prefHeight="21.0" prefWidth="146.0" textFill="WHITE" />
       <Button layoutX="491.0" layoutY="593.0" mnemonicParsing="false" onAction="#BT_Modifier" prefHeight="31.0" prefWidth="197.0" text="Modifier" />
       <Button layoutX="211.0" layoutY="593.0" mnemonicParsing="false" onAction="#SwitchToAdd" prefHeight="31.0" prefWidth="174.0" text="Ajouter" />
-      <Label layoutX="462.0" layoutY="161.0" prefHeight="21.0" prefWidth="297.0" text="List Medecins">
-         <font>
-            <Font size="35.0" />
-         </font>
+      <Label layoutX="453.0" layoutY="142.0" styleClass="heading" text="List Medecins" fx:id="selectedDoctor">
       </Label>
    </children>
 </AnchorPane>
