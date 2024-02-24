@@ -65,15 +65,15 @@ public class ServiceRendezVous implements IService<RendezVous>{
         }
         return desrendezVous;
     }
-    public List<Timestamp> getAllDateRendezVousByidMedeicn(int id) throws SQLException {
-        List<Timestamp> dateRendezVous = new ArrayList<>();
+    public List<LocalDateTime> getAllDateRendezVousByidMedeicn(int id) throws SQLException {
+        List<LocalDateTime> dateRendezVous = new ArrayList<>();
         String sql = "SELECT `date_rendez_vous` FROM `rendez-vous` WHERE `id_medecin` = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.getResultSet();
         while (resultSet.next()) {
-            dateRendezVous.add(resultSet.getTimestamp("date_rendez_vous"));
+            dateRendezVous.add(resultSet.getTimestamp("date_rendez_vous").toLocalDateTime());
         }
         return  dateRendezVous;
     }

@@ -142,7 +142,7 @@ public class AjouterRendezVousController implements Initializable {
 
 
     @FXML
-    public void reserverBT(ActionEvent actionEvent) {
+    public void reserverBT(ActionEvent actionEvent) throws SQLException {
         // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
         if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null
                 || dateR.getValue() == null) {
@@ -152,44 +152,47 @@ public class AjouterRendezVousController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Please fill in all fields: Medecin, Specialite, Hour, and Minute.");
             alert.showAndWait();
-        } else {
-            LocalDate date = dateR.getValue(); // Get the date from the DatePicker
-            int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
-            int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
-
-            // Combine the date, hour, and minute into a LocalDateTime
-            LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
-
-            if (dateTime.isBefore(LocalDateTime.now())) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Choose a date that after now ");
-                alert.setHeaderText(null);
-                alert.setContentText("Choose a date that after now");
-                alert.showAndWait();
-
-            } else {
-                ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
-//                LocalDate date = dateR.getValue(); // Get the date from the DatePicker
-//                int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
-//                int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
-//
-//                // Combine the date, hour, and minute into a LocalDateTime
-//                LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
-
-                try {
-                    serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin));
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                    successAlert.setTitle("Information Dialog");
-                    successAlert.setContentText("Rendez-vous reserved successfully!");
-                    successAlert.showAndWait();
-                    switchToDisplayAllRVPage();
-                } catch (SQLException e) {
-                    // Handle the exception appropriately
-                    e.printStackTrace();
-                    // You may want to show an error message to the user
-                }
-            }
+            return;
         }
+        LocalDate date = dateR.getValue(); // Get the date from the DatePicker
+        int hour = hourComboBox.getValue(); // Get the hour from the ComboBox
+        int minute = minuteComboBox.getValue(); // Get the minute from the ComboBox
+
+        // Combine the date, hour, and minute into a LocalDateTime
+        LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
+        ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
+        List<LocalDateTime> listRVbyidMedecin = serviceRendezVous.getAllDateRendezVousByidMedeicn(medecinR.getValue().getId_medecin());
+        if (listRVbyidMedecin.contains(dateTime)) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("the doctor have an appoitment in this date");
+            alert.setHeaderText(null);
+            alert.setContentText("Choose an other date or time ");
+            alert.showAndWait();
+            return;
+        }
+        if (dateTime.isBefore(LocalDateTime.now())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Choose a date that after now ");
+            alert.setHeaderText(null);
+            alert.setContentText("Choose a date that after now");
+            alert.showAndWait();
+            return;
+
+        }
+        try {
+            serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin));
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Information Dialog");
+            successAlert.setContentText("Rendez-vous reserved successfully!");
+            successAlert.showAndWait();
+            switchToDisplayAllRVPage();
+        } catch (SQLException e) {
+            // Handle the exception appropriately
+            e.printStackTrace();
+            // You may want to show an error message to the user
+        }
+
+
     }
 
     public void backOneMonth(ActionEvent actionEvent) {

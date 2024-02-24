@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MofidierRvController implements Initializable {
@@ -50,7 +51,7 @@ public class MofidierRvController implements Initializable {
 
     }
 
-    public void modiferRvBT(ActionEvent actionEvent) {
+    public void modiferRvBT(ActionEvent actionEvent) throws SQLException {
         // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
         if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null
                 || dateR.getValue() == null) {
@@ -67,7 +68,16 @@ public class MofidierRvController implements Initializable {
 
             // Combine the date, hour, and minute into a LocalDateTime
             LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(hour, minute));
-
+            ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
+            List<LocalDateTime> listRVbyidMedecin = serviceRendezVous.getAllDateRendezVousByidMedeicn(medecinR.getValue().getId_medecin());
+            if (listRVbyidMedecin.contains(dateTime)) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("the doctor have an appoitment in this date");
+                alert.setHeaderText(null);
+                alert.setContentText("Choose an other date or time ");
+                alert.showAndWait();
+                return;
+            }
             if (dateTime.isBefore(LocalDateTime.now())) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Choose a date that after now ");
@@ -76,7 +86,6 @@ public class MofidierRvController implements Initializable {
                 alert.showAndWait();
 
             } else {
-                ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
                 try {
                     Timestamp timestamp = Timestamp.valueOf(dateTime);
                     serviceRendezVous.modifier(ref_rendez_vous, timestamp, medecinR.getValue().id_medecin);
