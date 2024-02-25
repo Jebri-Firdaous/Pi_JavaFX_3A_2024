@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.Medecin;
@@ -54,7 +55,7 @@ public class AfficherListRendezVousController {
                                 setText(null);
                                 setGraphic(null);
                             } else {
-                                // Customize the display of the RendezVous object
+                                // Assuming this code is inside a method where you have access to the rendezVous object
                                 ServiceMedecin sm = new ServiceMedecin();
                                 Medecin medecin = sm.getMedecinById(rendezVous.getId_medecin());
                                 String doctorName = medecin.getNom_medecin();
@@ -63,13 +64,39 @@ public class AfficherListRendezVousController {
                                 int phoneNumber = medecin.getNumero_telephone_medecin();
                                 String address = medecin.getAddress_medecin();
                                 Timestamp timestamp = rendezVous.getDate_rendez_vous();
-//                                "https://stackoverflow.com/questions/56990008/javafx-textfield-changing-padding-to-0-on-focus"
-//                                change to display try this link "https://stackoverflow.com/questions/45144853/javafx-combobox-displayed-item-font-size"
-                                DateFormat format = new SimpleDateFormat( "dd-MM-YYYY hh:mm " );
-                                String timestampAsString = format.format( timestamp );
-                                String formattedText = String.format("Dr. %s %s - %s Phone: %s Address: %s",
-                                        doctorName, doctorSurname, timestampAsString, phoneNumber, address);
-                                setText(formattedText);
+
+// Format the timestamp to include the full month name
+                                DateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
+                                String timestampAsString = format.format(timestamp);
+
+// Create an HBox to hold the details
+                                HBox hbox = new HBox();
+                                hbox.setSpacing(70); // Adjust spacing as needed
+
+// Add details to the HBox with styled Labels
+                                Label nomLabel = new Label(doctorName);
+                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+
+                                Label prenomLabel = new Label(doctorSurname);
+                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+
+                                Label dateLabel = new Label(timestampAsString);
+                                dateLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
+
+                                Label specialiteLabel = new Label(specialty);
+                                specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
+
+                                Label adresseLabel = new Label(address);
+                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+
+// Add the date Label with the full month name
+
+// Add the Labels to the HBox
+                                hbox.getChildren().addAll(nomLabel, prenomLabel, specialiteLabel, dateLabel, adresseLabel);
+
+// Assuming this is inside a ListCell or similar where you can set the graphic
+                                setGraphic(hbox);
+
                             }
                         }
                     };

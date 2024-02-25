@@ -15,11 +15,32 @@
             <Font size="23.0" />
          </font>
       </Label>
-       <ListView fx:id="listViewRendezVous" layoutX="175.0" layoutY="228.0" prefHeight="368.0" prefWidth="893.0" />
+       <ListView fx:id="listViewRendezVous" layoutX="82.0" layoutY="294.0" prefHeight="302.0" prefWidth="1051.0" />
       <Button layoutX="815.0" layoutY="606.0" mnemonicParsing="false" onAction="#suprrimerRDBT" prefHeight="37.0" prefWidth="185.0" text="Suprrimer" />
        <Button layoutX="534.0" layoutY="609.0" mnemonicParsing="false" onAction="#BT_Modifier" prefHeight="31.0" prefWidth="197.0" text="Modifier" />
 
        <Button layoutX="272.0" layoutY="609.0" mnemonicParsing="false" onAction="#ajouterRV" prefHeight="31.0" prefWidth="171.0" text="Ajouter" />
+      <HBox layoutX="111.0" layoutY="247.0" prefHeight="47.0" prefWidth="1008.0" spacing="140.0">
+         <children>
+            <Label text="Dr.nom">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="Prenom">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label lineSpacing="22.0" text="Specialité">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label text="DateRV" />
+            <Label text="Adresse" />
+         </children>
+      </HBox>
    </children>
 
 </AnchorPane>

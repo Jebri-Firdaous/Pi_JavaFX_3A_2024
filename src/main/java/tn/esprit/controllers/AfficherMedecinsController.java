@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 import javafx.beans.value.ChangeListener;
@@ -9,9 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import tn.esprit.entities.Medecin;
 import tn.esprit.services.ServiceMedecin;
 import javafx.collections.FXCollections;
@@ -77,15 +75,31 @@ public class AfficherMedecinsController {
                                 setText(null);
                                 setGraphic(null);
                             } else {
-                                // Customize the display of the Medecin object
-                                String doctorName = medecin.getNom_medecin();
-                                String doctorSurname = medecin.getPrenom_medecin_medecin();
-                                String specialty = medecin.getSpecialite_medecin();
-                                int phoneNumber = medecin.getNumero_telephone_medecin();
-                                String address = medecin.getAddress_medecin();
-                                String formattedText = String.format("Dr. %s %s - %s Phone: %s Address: %s",
-                                        doctorName, doctorSurname, specialty, phoneNumber, address);
-                                setText(formattedText);
+                                HBox hbox = new HBox();
+                                hbox.setSpacing(75); // Adjust spacing as needed
+
+                                // Add details to the HBox
+                                Label nomLabel = new Label(medecin.getNom_medecin());
+                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 118; -fx-pref-height: 21");
+
+                                Label prenomLabel = new Label(medecin.getPrenom_medecin_medecin());
+
+                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
+                                Label specialiteLabel = new Label(medecin.getSpecialite_medecin());
+                                specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 150; -fx-pref-height: 21");
+
+                                Label numTelLabel = new Label(String.valueOf(medecin.getNumero_telephone_medecin()));
+                                numTelLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
+
+                                Label adresseLabel = new Label(medecin.getAddress_medecin());
+                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 118; -fx-pref-height: 21");
+
+
+                                // Add the TextFields to the HBox
+                                hbox.getChildren().addAll(nomLabel, prenomLabel, specialiteLabel, numTelLabel, adresseLabel);
+
+                                // Set the HBox as the graphic for the cell
+                                setGraphic(hbox);
 
                             }
                         }
