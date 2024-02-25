@@ -12,7 +12,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdminInterfaceControllers">
    <children>
-      <fx:include source="NavBar.fxml" />
       <ImageView fx:id="connecter" fitHeight="677.0" fitWidth="896.0" layoutX="200.0" layoutY="107.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image1.png" />

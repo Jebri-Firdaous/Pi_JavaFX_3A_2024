@@ -90,7 +90,8 @@ public class ServiceAdmin implements IService <Administrateur> {
 
     @Override
     public List<Administrateur> afficher() throws SQLException {
-        List<Administrateur> administrateurList = new ArrayList<>();
+        List<Administrateur>
+                administrateurList = new ArrayList<>();
         String sql = "SELECT a.role, p.nom_personne, p.prenom_personne, p.numero_telephone, p.mail_personne, p.mdp_personne " +
                 "FROM administrateur a JOIN personne p ON p.id_personne = a.id_personne";
 

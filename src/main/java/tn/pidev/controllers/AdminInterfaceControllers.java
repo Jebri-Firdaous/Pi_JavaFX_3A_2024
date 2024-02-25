@@ -86,6 +86,9 @@ public class AdminInterfaceControllers{
         navigateToPage("Acceuil.fxml");
     }
 
+    public void ToaddPage(ActionEvent actionEvent) {
+    }
+
 
 //se connecter
 
