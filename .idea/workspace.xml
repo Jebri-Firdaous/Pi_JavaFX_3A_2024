@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="23ae8f1b-544a-4809-8a84-3ba4692dadda" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/ModifierAdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/entities/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/services/ServiceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/services/test3.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Acceuil.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FirdaousCpt.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/confirmermail.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mdpoubliee.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/modifier.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/pageConnexion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AdminInterfaceControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AdminInterfaceControllers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AdministrateurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AfficheAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AfficheAdministrateurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AjoutAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/controllers/AjoutAdministrateurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/services/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/services/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/services/ServiceAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/pidev/test/MainFx.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/pidev/test/MainFx.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminInterface.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/NavBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/NavBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/afficherAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/afficherAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/afficherListeAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/afficherListeAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/creercpt.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/creercpt.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/file.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/firstpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/firstpage.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2cbfxHHqhgl0SWOFZd2TwCjFfS9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;userBranch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ProjetPDEV3A8-Smart-City-Codemasters-crudmedecin&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/GestionUser/src/main/java/tn/pidev/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GestionUser\src\main\resources" />
+      <recent name="D:\Projet\GestionUser\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GestionUser\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.e-city">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.pidev.test.Main" />
+      <module name="gestionuser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tn.pidev.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="e-city" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="tn.pidev.test.MainFx" />
+      <module name="gestionuser" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;D:\javafx-sdk-17.0.10\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="23ae8f1b-544a-4809-8a84-3ba4692dadda" name="Changes" comment="" />
+      <created>1708385474711</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708385474711</updated>
+      <workItem from="1708385475725" duration="314000" />
+      <workItem from="1708385797290" duration="2970000" />
+      <workItem from="1708412497325" duration="10018000" />
+      <workItem from="1708427384934" duration="27553000" />
+      <workItem from="1708508808190" duration="5819000" />
+      <workItem from="1708520500075" duration="130000" />
+      <workItem from="1708522826070" duration="688000" />
+      <workItem from="1708524401360" duration="21000" />
+      <workItem from="1708524451773" duration="4205000" />
+      <workItem from="1708529262626" duration="10857000" />
+      <workItem from="1708608156753" duration="8152000" />
+      <workItem from="1708636388436" duration="11727000" />
+      <workItem from="1708648687192" duration="1423000" />
+      <workItem from="1708650143996" duration="11324000" />
+      <workItem from="1708670212329" duration="4121000" />
+      <workItem from="1708680642617" duration="1370000" />
+      <workItem from="1708695571302" duration="5112000" />
+      <workItem from="1708765188503" duration="1931000" />
+      <workItem from="1708783279224" duration="16328000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/tn/pidev/test/Main.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
