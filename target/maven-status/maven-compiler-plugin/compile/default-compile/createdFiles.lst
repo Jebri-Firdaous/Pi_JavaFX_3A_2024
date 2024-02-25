@@ -1,6 +1,7 @@
 tn\esprit\services\ServiceAdmin.class
 tn\esprit\controllers\AjouterRendezVousController.class
 tn\esprit\controllers\AjouterRendezVousController$2.class
+tn\esprit\CalendarActivity.class
 tn\esprit\controllers\AfficherMedecinsController$1$1.class
 tn\esprit\entities\Client.class
 tn\esprit\controllers\AfficherMedecinsController.class

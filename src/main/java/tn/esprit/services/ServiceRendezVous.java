@@ -52,7 +52,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
 
     @Override
-    public List afficher() throws SQLException {
+    public List<RendezVous> afficher() throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
         String sql = "select * from `rendez-vous` ";
         Statement statement = connection.createStatement();

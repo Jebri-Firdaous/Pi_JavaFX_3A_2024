@@ -1,92 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
-   <fx:include source="navBar.fxml"/>
-   <VBox layoutX="75.0" layoutY="132.0" prefHeight="496.0" prefWidth="367.0" spacing="27.5">
-      <VBox spacing="16.0">
-         <VBox>
-            <VBox spacing="11.0">
-               <Label fx:id="labelClient" layoutX="516.0" layoutY="665.0" prefHeight="21.0"
-                      prefWidth="104.0" text="Client"/>
-               <ComboBox fx:id="comboboxClient" layoutX="561.0" layoutY="665.0"
-                         maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"/>
-            </VBox>
-            <Label text="Specialite"/>
-            <ComboBox fx:id="specialiteR" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                      prefHeight="18.0" prefWidth="344.0"/>
-         </VBox>
-      </VBox>
-      <VBox>
-         <Label text="Medecin"/>
-         <ComboBox fx:id="medecinR" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="321.0"/>
-      </VBox>
-      <HBox spacing="94.0">
-         <Label fx:id="adresse_TextField" prefHeight="11.0" prefWidth="90.0" text="Adresse"/>
-         <Label fx:id="n_TelTextField" prefHeight="21.0" prefWidth="90.0" text="N°Tel"/>
-      </HBox>
-      <VBox>
-         <Label text="Date"/>
-         <DatePicker fx:id="dateR" prefHeight="26.0" prefWidth="346.0"/>
-      </VBox>
-      <HBox prefHeight="100.0" prefWidth="175.0">
-         <HBox spacing="26.5">
-            <VBox>
-               <Label text="Hour"/>
-               <ComboBox fx:id="hourComboBox" prefHeight="31.0" prefWidth="64.0"/>
+<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
+   <children>
+      <fx:include source="navBar.fxml" />
+      <VBox layoutX="15.0" layoutY="132.0" prefHeight="496.0" prefWidth="326.0" spacing="27.5">
+         <children>
+            <VBox spacing="16.0">
+               <children>
+                  <VBox>
+                     <children>
+                        <VBox spacing="11.0">
+                           <children>
+                              <Label fx:id="labelClient" layoutX="516.0" layoutY="665.0" prefHeight="21.0" prefWidth="104.0" text="Client" />
+                              <ComboBox fx:id="comboboxClient" layoutX="561.0" layoutY="665.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                           </children>
+                        </VBox>
+                        <Label text="Specialite" />
+                        <ComboBox fx:id="specialiteR" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="344.0" />
+                     </children>
+                  </VBox>
+               </children>
             </VBox>
             <VBox>
-               <Label text="Minute"/>
-               <ComboBox fx:id="minuteComboBox" prefHeight="38.0" prefWidth="96.0"/>
+               <children>
+                  <Label text="Medecin" />
+                  <ComboBox fx:id="medecinR" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="321.0" />
+               </children>
             </VBox>
-         </HBox>
+            <HBox spacing="94.0">
+               <children>
+                  <Label fx:id="adresse_TextField" prefHeight="11.0" prefWidth="90.0" text="Adresse" />
+                  <Label fx:id="n_TelTextField" prefHeight="21.0" prefWidth="90.0" text="N°Tel" />
+               </children>
+            </HBox>
+            <VBox>
+               <children>
+                  <Label text="Date" />
+                  <DatePicker fx:id="dateR" prefHeight="26.0" prefWidth="346.0" />
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="175.0">
+               <children>
+                  <HBox spacing="26.5">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="Hour" />
+                              <ComboBox fx:id="hourComboBox" prefHeight="31.0" prefWidth="64.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Minute" />
+                              <ComboBox fx:id="minuteComboBox" prefHeight="38.0" prefWidth="96.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="65.0" layoutY="628.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="52.0" prefWidth="262.0" text="Réserver" />
+   
+      <FlowPane />
+   
+      <!-- Calender ///////////////////////////////////     -->
+      <FlowPane fx:id="calendar" hgap="10.0" layoutX="380.0" layoutY="259.0" prefHeight="445.0" prefWidth="817.0" vgap="5.0" />
+      <HBox alignment="CENTER" layoutX="529.0" layoutY="148.0" prefHeight="78.0" prefWidth="527.0" spacing="5.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
+            <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+         </children>
       </HBox>
-   </VBox>
-   <Button layoutX="75.0" layoutY="645.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="31.0"
-           prefWidth="115.0" text="Réserver"/>
-
-   <FlowPane/>
-
-   <!--        &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#4-->
-   <FlowPane fx:id="calendar" hgap="10.0" layoutX="470.0" layoutY="228.0" prefHeight="417.0" prefWidth="713.0"
-             vgap="5.0">
-      <HBox alignment="CENTER" prefHeight="45.0" prefWidth="716.0" spacing="88.75">
+      <HBox alignment="CENTER" layoutX="323.0" layoutY="215.0" prefHeight="44.0" prefWidth="915.0" spacing="105.75">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
+            <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />
+            <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER" />
+            <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER" />
+            <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER" />
+            <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" />
+            <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" />
+         </children>
          <padding>
-            <Insets right="9.0"/>
+            <Insets right="9.0" />
          </padding>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER"/>
-         <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo"
-               textAlignment="CENTER"/>
-         <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu"
-               textAlignment="CENTER"/>
-         <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We"
-               textAlignment="CENTER"/>
-         <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th"
-               textAlignment="CENTER"/>
-         <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr"
-               textAlignment="CENTER"/>
-         <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa"
-               textAlignment="CENTER"/>
       </HBox>
-   </FlowPane>
-   <HBox alignment="CENTER" layoutX="470.0" layoutY="183.0" prefHeight="44.0" prefWidth="663.0" spacing="5.0">
-      <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;"/>
-      <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
-         <font>
-            <Font size="22.0"/>
-         </font>
-      </Text>
-      <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
-         <font>
-            <Font size="22.0"/>
-         </font>
-      </Text>
-      <Button mnemonicParsing="false" onAction="#forwardOneMonth" styleClass="btForwardAndBackOneMonth" text="&gt;"/>
-   </HBox>
+   </children>
 </AnchorPane>
