@@ -76,17 +76,17 @@ public class AfficherListRendezVousController {
 
 // Create an HBox to hold the details
                                 HBox hbox = new HBox();
-                                hbox.setSpacing(60); // Adjust spacing as needed
+                                hbox.setSpacing(65); // Adjust spacing as needed
 
                                 Label nomClientLabel = new Label(client.getNom_personne());
-                                nomClientLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
+                                nomClientLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
 
 // Add details to the HBox with styled Labels
-                                Label nomLabel = new Label(doctorName);
-                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
+                                Label nomPrenomDoctorLabel = new Label("Dr. "+doctorName+" "+doctorSurname);
+                                nomPrenomDoctorLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
 
-                                Label prenomLabel = new Label(doctorSurname);
-                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
+                                /*Label prenomLabel = new Label(doctorSurname);
+                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");*/
 
                                 Label dateLabel = new Label(timestampAsString);
                                 dateLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
@@ -95,12 +95,12 @@ public class AfficherListRendezVousController {
                                 specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
 
                                 Label adresseLabel = new Label(address);
-                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
+                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
 
 // Add the date Label with the full month name
 
 // Add the Labels to the HBox
-                                hbox.getChildren().addAll(nomClientLabel,nomLabel, prenomLabel, specialiteLabel, dateLabel, adresseLabel);
+                                hbox.getChildren().addAll(nomClientLabel,nomPrenomDoctorLabel, specialiteLabel, dateLabel, adresseLabel);
 
 // Assuming this is inside a ListCell or similar where you can set the graphic
                                 setGraphic(hbox);

@@ -20,15 +20,10 @@
        <Button layoutX="515.0" layoutY="606.0" mnemonicParsing="false" onAction="#BT_Modifier" prefHeight="31.0" prefWidth="197.0" text="Modifier" />
 
        <Button layoutX="169.0" layoutY="606.0" mnemonicParsing="false" onAction="#ajouterRV" prefHeight="31.0" prefWidth="171.0" text="Ajouter" />
-      <HBox layoutX="36.0" layoutY="247.0" prefHeight="47.0" prefWidth="1114.0" spacing="100.0">
+      <HBox layoutX="36.0" layoutY="247.0" prefHeight="47.0" prefWidth="1167.0" spacing="142.0">
          <children>
             <Label prefHeight="21.0" prefWidth="87.0" text="Client" />
-            <Label prefHeight="21.0" prefWidth="89.0" text="Dr.nom">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Label prefHeight="21.0" prefWidth="109.0" text="Dr.Prenom">
+            <Label prefHeight="21.0" prefWidth="141.0" text="Dr Nom Prenom">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

@@ -29,6 +29,8 @@ public class Client extends Personne{
         this.age = age;
     }
 
-
-
+    @Override
+    public String toString() {
+        return getNom_personne()+" "+getNom_personne();
+    }
 }
