@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdminInterfaceControllers">
+   <children>
+      <fx:include source="NavBar.fxml" />
+      <ImageView fx:id="connecter" fitHeight="677.0" fitWidth="896.0" layoutX="200.0" layoutY="107.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image1.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="70.0" arcWidth="70.0" height="364.0" layoutX="415.0" layoutY="245.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
+      <Label fx:id="label" layoutX="559.0" layoutY="257.0" text="Connexion">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <VBox layoutX="442.0" layoutY="313.0" prefHeight="287.0" prefWidth="397.0">
+         <children>
+            <VBox prefHeight="43.0" prefWidth="397.0">
+               <children>
+                  <Label prefHeight="46.0" prefWidth="406.0" text=" Nom Utilisateur">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <TextField prefHeight="48.0" prefWidth="397.0" promptText="Entrer le nom d’Administrateur">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="48.0" prefWidth="397.0">
+               <children>
+                  <Label prefHeight="66.0" prefWidth="221.0" text="Mot de passe">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <TextField prefHeight="48.0" prefWidth="397.0" promptText="Entrer le nom d’Administrateur">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="27.0" prefWidth="397.0">
+               <children>
+                  <Hyperlink onAction="#reinitialisermdp" text="Mot de passe oublié?" textFill="#1740ff">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Hyperlink>
+               </children></VBox>
+            <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="397.0" style="-fx-background-color: #B0E847;" text="Se Connecter">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font></Button>
+         </children>
+      </VBox>
+      <Label layoutX="453.0" layoutY="616.0" text="Vous n’avez pas de compte?">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="673.0" layoutY="612.0" onAction="#ToaddPage" text="Créer un Compte" textFill="#1740ff">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>
