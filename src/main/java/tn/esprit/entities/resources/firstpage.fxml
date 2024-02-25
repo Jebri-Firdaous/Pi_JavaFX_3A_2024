@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="770.0" prefWidth="1300.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdministrateurController">
+    <children>
+        <ImageView fitHeight="859.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@smartcity.png" />
+            </image>
+        </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="770.0" opacity="0.53" stroke="BLACK" strokeType="INSIDE" width="1300.0" />
+        <Button layoutX="557.0" layoutY="422.0" mnemonicParsing="false" onAction="#ToLogin" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: B0E847;" styleClass="bouton-transparent" text="Get Started">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+      <ImageView fx:id="ToAcceuil" fitHeight="281.0" fitWidth="344.0" layoutX="478.0" layoutY="163.0">
+         <image>
+            <Image url="@logoblanc.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="label" layoutX="210.0" layoutY="93.0" />
+      <Label fx:id="label" layoutX="297.0" layoutY="124.0" />
+  
+    </children>
+</AnchorPane>

@@ -17,10 +17,11 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
     @Override
     public void ajouter(RendezVous rendezVous) throws SQLException {
-        String sql = "INSERT INTO `rendez-vous`(`date_rendez_vous`, `id_medecin`) VALUES (?,?)";
+        String sql = "INSERT INTO `rendez-vous`(`date_rendez_vous`, `id_medecin`, `id_personne`) VALUES (?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setTimestamp(1, rendezVous.getDate_rendez_vous());
         preparedStatement.setInt(2, rendezVous.getId_medecin());
+        preparedStatement.setInt(3,rendezVous.getId_personne());
         preparedStatement.executeUpdate();
     }
     public void modifier(int refRv, Timestamp date_rendez_vous, int id_medecin) throws SQLException {
@@ -61,6 +62,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
             rendezVous.setRef_rendez_vous(rs.getInt("ref_rendez_vous"));
             rendezVous.setDate_rendez_vous(rs.getTimestamp("date_rendez_vous"));
             rendezVous.setId_medecin(rs.getInt("id_medecin"));
+            rendezVous.setId_personne(rs.getInt("id_personne"));
             desrendezVous.add(rendezVous);
         }
         return desrendezVous;

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<BorderPane prefHeight="770.0" prefWidth="1300.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdministrateurController">
+   <top>
+      <AnchorPane prefHeight="770.0" prefWidth="1300.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdministrateurController">
+         <children>
+            <ImageView fitHeight="859.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@smartcity.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="770.0" opacity="0.53" stroke="BLACK" strokeType="INSIDE" width="1300.0" />
+            <Button layoutX="557.0" layoutY="422.0" mnemonicParsing="false" onAction="#ToConnexion" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: B0E847;" styleClass="bouton-transparent" text="Get Started">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="281.0" fitWidth="344.0" layoutX="478.0" layoutY="163.0">
+               <image>
+                  <Image url="@logoblanc.png" />
+               </image>
+            </ImageView>
+
+         </children>
+      </AnchorPane>
+   </top>
+
+
+
+   <ImageView fitHeight="859.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@smartcity.png" />
+      </image>
+   </ImageView>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" height="770.0" opacity="0.53" stroke="BLACK" strokeType="INSIDE" width="1300.0" />
+   <Button layoutX="557.0" layoutY="422.0" mnemonicParsing="false" onAction="#ToConnexion" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: B0E847;" styleClass="bouton-transparent" text="Get Started">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Button>
+   <ImageView fitHeight="281.0" fitWidth="344.0" layoutX="478.0" layoutY="163.0">
+      <image>
+         <Image url="@logoblanc.png" />
+      </image>
+   </ImageView>
+   <center>
+
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdministrateurController">
+         <children>
+            <ImageView fitHeight="795.0" fitWidth="1031.0" layoutX="159.0" layoutY="-24.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image1.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="70.0" arcWidth="70.0" height="599.0" layoutX="391.0" layoutY="134.0" opacity="0.08" stroke="TRANSPARENT" strokeType="INSIDE" width="577.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="120.0" layoutX="1.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1299.0">
+               <fill>
+                  <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#5ee1e5a6" />
+                        <Stop color="#5ee1e500" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="150.0" layoutX="-5.0" layoutY="623.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1299.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
+                     <stops>
+                        <Stop color="#5ee1e5a6" />
+                        <Stop color="#5ee1e500" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <ImageView fitHeight="164.0" fitWidth="158.0" layoutX="585.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="inscrire" layoutX="458.0" layoutY="660.0" mnemonicParsing="false" onAction="#AjouterAdmin" prefHeight="42.0" prefWidth="450.0" style="-fx-background-color: #B0E847;" text="Ajouter">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <TextField fx:id="nom" layoutX="458.0" layoutY="234.0" prefHeight="52.0" prefWidth="447.0" promptText="Entrer votre nom">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="prenom" layoutX="458.0" layoutY="303.0" prefHeight="52.0" prefWidth="447.0" promptText="Entrer votre prenom">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="tel" layoutX="458.0" layoutY="373.0" prefHeight="52.0" prefWidth="447.0" promptText="Entrer votre numero de telephone">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="role" layoutX="458.0" layoutY="443.0" prefHeight="52.0" prefWidth="447.0" promptText="Role">
+               <style>
+                  -fx-font-family: Arial;
+                  -fx-font-size: 20px;
+                  -fx-font-weight: normal; /* ou bold pour gras */
+                  -fx-font-style: normal; /* ou italic pour italique */
+               </style>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Gestion Utilisateur" />
+                     <String fx:value="Gestion Transport" />
+                     <String fx:value="Gestion Santé" />
+                     <String fx:value="Gestion Parking" />
+                     <String fx:value="Gestion Tourisme" />
+                     <String fx:value="Gestion Shopping" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <TextField fx:id="mail" layoutX="458.0" layoutY="510.0" prefHeight="52.0" prefWidth="447.0" promptText="Entrer votre adresse mail">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="mdp" layoutX="458.0" layoutY="571.0" prefHeight="52.0" prefWidth="447.0" promptText="Choisissez le mot de passe">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="530.0" layoutY="161.0" text="Ajouter Administrateur">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdministrateurController">
+         <children>
+            <ListView fx:id="listViewAdmin" layoutX="51.0" layoutY="36.0" prefHeight="267.0" prefWidth="505.0" />
+            <Button layoutX="51.0" layoutY="316.0" mnemonicParsing="false" onAction="#ToAjouterAdmin" text="Ajouter" />
+            <Button layoutX="271.0" layoutY="316.0" mnemonicParsing="false" text="Modifier" />
+            <Button layoutX="467.0" layoutY="316.0" mnemonicParsing="false" text="Supprimer" />
+            <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
+         </children>
+      </AnchorPane>
+
+   </bottom>
+</BorderPane>

@@ -16,8 +16,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import tn.esprit.entities.Client;
 import tn.esprit.entities.Medecin;
 import tn.esprit.entities.RendezVous;
+import tn.esprit.services.ServiceClient;
 import tn.esprit.services.ServiceMedecin;
 import tn.esprit.services.ServiceRendezVous;
 
@@ -57,12 +59,15 @@ public class AfficherListRendezVousController {
                             } else {
                                 // Assuming this code is inside a method where you have access to the rendezVous object
                                 ServiceMedecin sm = new ServiceMedecin();
+                                ServiceClient serviceClient = new ServiceClient();
                                 Medecin medecin = sm.getMedecinById(rendezVous.getId_medecin());
+                                Client client = serviceClient.getClientById(rendezVous.getId_personne());
                                 String doctorName = medecin.getNom_medecin();
                                 String doctorSurname = medecin.getPrenom_medecin_medecin();
                                 String specialty = medecin.getSpecialite_medecin();
                                 int phoneNumber = medecin.getNumero_telephone_medecin();
                                 String address = medecin.getAddress_medecin();
+
                                 Timestamp timestamp = rendezVous.getDate_rendez_vous();
 
 // Format the timestamp to include the full month name
@@ -71,14 +76,17 @@ public class AfficherListRendezVousController {
 
 // Create an HBox to hold the details
                                 HBox hbox = new HBox();
-                                hbox.setSpacing(70); // Adjust spacing as needed
+                                hbox.setSpacing(60); // Adjust spacing as needed
+
+                                Label nomClientLabel = new Label(client.getNom_personne());
+                                nomClientLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
 
 // Add details to the HBox with styled Labels
                                 Label nomLabel = new Label(doctorName);
-                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
 
                                 Label prenomLabel = new Label(doctorSurname);
-                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
 
                                 Label dateLabel = new Label(timestampAsString);
                                 dateLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
@@ -87,12 +95,12 @@ public class AfficherListRendezVousController {
                                 specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
 
                                 Label adresseLabel = new Label(address);
-                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   110; -fx-pref-height:   21");
 
 // Add the date Label with the full month name
 
 // Add the Labels to the HBox
-                                hbox.getChildren().addAll(nomLabel, prenomLabel, specialiteLabel, dateLabel, adresseLabel);
+                                hbox.getChildren().addAll(nomClientLabel,nomLabel, prenomLabel, specialiteLabel, dateLabel, adresseLabel);
 
 // Assuming this is inside a ListCell or similar where you can set the graphic
                                 setGraphic(hbox);

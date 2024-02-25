@@ -11,14 +11,24 @@ public class RendezVous {
     private Timestamp date_rendez_vous;
 //    id_medecin is foreign key
     private int id_medecin;
+    private int id_personne;
+
+    public int getId_personne() {
+        return id_personne;
+    }
+
+    public void setId_personne(int id_personne) {
+        this.id_personne = id_personne;
+    }
 
     public RendezVous() {
     }
 
-    public RendezVous(LocalDateTime dateTime, int idMedecin) {
+    public RendezVous(LocalDateTime dateTime, int idMedecin, int id_personne) {
         // Convert the LocalDateTime to java.sql.Timestamp
         this.date_rendez_vous = new Timestamp(dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
         this.id_medecin = idMedecin;
+        this.id_personne = id_personne;
     }
 
 

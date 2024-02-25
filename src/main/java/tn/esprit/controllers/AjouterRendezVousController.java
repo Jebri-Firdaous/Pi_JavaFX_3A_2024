@@ -11,9 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import tn.esprit.entities.Client;
 import tn.esprit.entities.Medecin;
 import tn.esprit.entities.RendezVous;
+import tn.esprit.services.ServiceClient;
 import tn.esprit.services.ServiceMedecin;
 import tn.esprit.services.ServiceRendezVous;
 
@@ -33,6 +37,11 @@ public class AjouterRendezVousController implements Initializable {
     public ComboBox<String> specialiteR;
     public Label adresse_TextField;
     public Label n_TelTextField;
+    public ComboBox<Client> comboboxClient;
+    public Label labelClient;
+    public FlowPane calendar;
+    public Text year;
+    public Text month;
     @FXML
     private ComboBox<Integer> hourComboBox;
 
@@ -48,6 +57,15 @@ public class AjouterRendezVousController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize Combobox Client
+        ServiceClient serviceClient = new ServiceClient();
+        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        comboboxClient.setItems(clientsList);
+        try {
+            clientsList.addAll(serviceClient.afficher());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         // Initialize ComboBox specialiteCombobox
         ServiceMedecin serviceMedecin = new ServiceMedecin();
         ObservableList<String> specialiteList = FXCollections.observableArrayList();
@@ -180,7 +198,7 @@ public class AjouterRendezVousController implements Initializable {
 
         }
         try {
-            serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin));
+            serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin, comboboxClient.getValue().getId_personne()));
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Information Dialog");
             successAlert.setContentText("Rendez-vous reserved successfully!");
