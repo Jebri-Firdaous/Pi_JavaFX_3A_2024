@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="462.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierParkingController">
+   <children>
+      <Button fx:id="submitB" layoutX="481.0" layoutY="373.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
+      <Button fx:id="annulerB" layoutX="382.0" layoutY="373.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" text="Annuler" />
+      <TextField fx:id="nomTF" layoutX="174.0" layoutY="159.0" onKeyReleased="#testNom" />
+      <Label fx:id="errNom" layoutX="174.0" layoutY="190.0" lineSpacing="1.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
+      <TextField fx:id="addresseTF" layoutX="174.0" layoutY="230.0" onKeyReleased="#testAddresse" />
+      <Label fx:id="errAddr" layoutX="174.0" layoutY="261.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
+      <TextField fx:id="nbPlacesTF" layoutX="174.0" layoutY="303.0" onKeyReleased="#testNb" />
+      <Label fx:id="errNb" layoutX="174.0" layoutY="334.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
+      <TextField fx:id="idTF" editable="false" layoutX="174.0" layoutY="101.0" />
+   </children>
+</AnchorPane>

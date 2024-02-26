@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AfficherPlaceController">
+    <children>
+        <ListView fx:id="listid" layoutX="50.0" layoutY="67.0" prefHeight="252.0" prefWidth="497.0" />
+        <Button fx:id="addB" layoutX="25.0" layoutY="341.0" mnemonicParsing="false" onAction="#naviguerVersAjouter" text="Ajouter" />
+        <Button fx:id="modifB" layoutX="143.0" layoutY="341.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
+        <Button fx:id="delB" layoutX="265.0" layoutY="341.0" mnemonicParsing="false" onAction="#supprimerPlace" text="Supprimer" />
+      <Button fx:id="listParkingB" layoutX="25.0" layoutY="23.0" mnemonicParsing="false" onAction="#naviguerVersParkings" text="Afficher Liste Parking" />
+      <Button fx:id="res" layoutX="448.0" layoutY="326.0" mnemonicParsing="false" onAction="#reserverPlace" text="Reserver" />
+      <Button fx:id="cancelRes" layoutX="410.0" layoutY="363.0" mnemonicParsing="false" onAction="#annulerReservation" text="Annuler Reservation" />
+    </children>
+
+</AnchorPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierPlaceController">
+    <children>
+        <Button fx:id="submitB" layoutX="475.0" layoutY="348.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
+        <Button fx:id="annulerB" layoutX="376.0" layoutY="348.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" text="Annuler" />
+        <Label layoutX="226.0" layoutY="51.0" text="Modifier Place" />
+        <Label fx:id="idL" layoutX="91.0" layoutY="122.0" text="Ref" />
+        <TextField fx:id="idTF" disable="true" editable="false" layoutX="174.0" layoutY="117.0" />
+        <Label fx:id="numL" layoutX="91.0" layoutY="194.0" text="Num" />
+        <TextField fx:id="numTF" layoutX="173.0" layoutY="189.0" onKeyReleased="#testNum" />
+        <Label fx:id="errNum" layoutX="173.0" layoutY="220.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="typeL" layoutX="91.0" layoutY="277.0" text="Type" />
+        <ComboBox fx:id="typeCB" layoutX="174.0" layoutY="272.0" prefWidth="150.0" promptText="&lt;---------&gt;" />
+        <Label fx:id="errType" layoutX="173.0" layoutY="303.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

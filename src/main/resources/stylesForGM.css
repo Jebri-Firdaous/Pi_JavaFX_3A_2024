@@ -1,0 +1,88 @@
+.button-transparent {
+    -fx-background-color: transparent;
+}
+Label{
+    -fx-font-size: 18;
+    -fx-font-family: Arial;
+    -fx-font-style: Bold;
+
+}
+Button{
+    -fx-background-color: #2467C3;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 50px;
+    -fx-text-fill: white;
+   -fx-pref-width: 187;
+    -fx-pref-height: 40;
+}
+ComboBox , TextField{
+    -fx-pref-width: 187;
+    -fx-pref-height: 40;
+}
+TextField{
+    -fx-font-size: 18;
+}
+
+.btForwardAndBackOneMonth {
+
+}
+
+/* stylesForGM.css */
+/* stylesForGM.css */
+
+/* Style for the ListView itself */
+.list-view {
+    -fx-background-color: #ffffff; /* Light background */
+    -fx-border-color: #e0e0e0; /* Light grey border */
+    -fx-border-width:  1px; /* Slight border for separation */
+    -fx-padding:  10px; /* Padding inside the ListView */
+}
+
+/* Style for each cell in the ListView */
+.list-cell {
+    -fx-background-color: #ffffff; /* Light background for cells */
+    -fx-border-color: #e0e0e0; /* Light grey border for cells */
+    -fx-border-width:  1px; /* Slight border for separation */
+    -fx-padding:  5px; /* Padding inside each cell */
+    -fx-text-fill: #333333; /* Dark text for readability */
+}
+
+/* Style for selected cells */
+.list-cell:selected {
+    -fx-background-color: #f0f0f0; /* Slightly darker background for selected cells */
+}
+
+/* Style for TextFields within cells */
+.list-cell .text-field {
+    -fx-font-size:  14px; /* Larger font size for readability */
+    -fx-background-color: #ffffff; /* Match the cell background */
+    -fx-border-color: #e0e0e0; /* Light grey border */
+    -fx-border-width:  1px; /* Slight border */
+    -fx-padding:  5px; /* Padding inside the TextField */
+}
+
+/* Optional: Style for HBox within cells */
+.list-cell .hbox {
+    -fx-spacing:  10px; /* Spacing between items in the HBox */
+}
+
+
+
+.labelDisplayDataMDAndRV{
+    -fx-pref-width: 116;
+    -fx-pref-height: 21;
+}
+.heading {
+    /*-fx-pref-height: 40;*/
+    /*-fx-pref-width: 130;*/
+    -fx-font-size: 40;
+    -fx-max-height: fit-content;
+    -fx-max-width: fit-content;
+    -fx-min-height: fit-content;
+    -fx-min-width: fit-content;
+    -fx-border-radius: 12px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-padding: 12px;
+;
+}
