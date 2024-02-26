@@ -30,6 +30,6 @@
             <Image url="@modifiermedecinImage.png" />
          </image>
       </ImageView>
-      <Button layoutX="54.0" layoutY="146.0" mnemonicParsing="false" onAction="#returnToDisplayM" prefWidth="218.0" text="&lt;==Afficher Les medecins" />
+      <Button layoutX="54.0" layoutY="146.0" mnemonicParsing="false" onAction="#returnToDisplayM" styleClass="returnToDisplayPage" prefWidth="218.0" text="&lt;==Afficher Les medecins" />
    </children>
 </AnchorPane>

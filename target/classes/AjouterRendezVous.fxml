@@ -35,8 +35,8 @@
             </VBox>
             <HBox prefHeight="21.0" prefWidth="309.0" spacing="94.0">
                <children>
-                  <Label fx:id="adresse_TextField" prefHeight="21.0" prefWidth="421.0" text="Adresse" />
-                  <Label fx:id="n_TelTextField" prefHeight="21.0" prefWidth="327.0" text="N°Tel" />
+                  <Label fx:id="adresse_TextField"  text="Adresse" />
+                  <Label fx:id="n_TelTextField"  text="N°Tel" />
                </children>
             </HBox>
             <VBox>

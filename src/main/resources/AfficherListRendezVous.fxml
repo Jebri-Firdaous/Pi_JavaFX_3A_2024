@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -37,6 +38,21 @@
             <Label prefHeight="21.0" prefWidth="85.0" text="Adresse" />
          </children>
       </HBox>
+      <ImageView fitHeight="21.0" fitWidth="48.0" layoutX="143.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="48.0" layoutX="489.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/modifier.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="39.0" layoutX="791.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/delete.png" />
+         </image>
+      </ImageView>
    </children>
 
 </AnchorPane>

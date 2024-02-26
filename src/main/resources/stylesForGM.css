@@ -21,6 +21,10 @@ ComboBox , TextField{
 }
 TextField{
     -fx-font-size: 18;
+
+}
+Label{
+    -fx-pref-width: fit-content;
 }
 
 .btForwardAndBackOneMonth {

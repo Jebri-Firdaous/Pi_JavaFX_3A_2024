@@ -121,5 +121,6 @@ public class AjouterMedecinController implements Initializable {
     }
 
     public void returnToDisplay(ActionEvent actionEvent) {
+        switchToDisplayAllDoctorsPage();
     }
 }

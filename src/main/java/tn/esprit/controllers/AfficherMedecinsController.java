@@ -76,11 +76,11 @@ public class AfficherMedecinsController {
                                 setGraphic(null);
                             } else {
                                 HBox hbox = new HBox();
-                                hbox.setSpacing(75); // Adjust spacing as needed
+                                hbox.setSpacing(85); // Adjust spacing as needed
 
                                 // Add details to the HBox
                                 Label nomLabel = new Label(medecin.getNom_medecin());
-                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 118; -fx-pref-height: 21");
+                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 130; -fx-pref-height: 21");
 
                                 Label prenomLabel = new Label(medecin.getPrenom_medecin_medecin());
 
