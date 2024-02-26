@@ -92,7 +92,7 @@ public class AfficherMedecinsController {
                                 numTelLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
 
                                 Label adresseLabel = new Label(medecin.getAddress_medecin());
-                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 118; -fx-pref-height: 21");
+                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 150; -fx-pref-height: 21");
 
 
                                 // Add the TextFields to the HBox

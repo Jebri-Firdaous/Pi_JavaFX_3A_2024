@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVousController">
    <children>
       <fx:include source="navBar.fxml" />
-      <VBox layoutX="15.0" layoutY="132.0" prefHeight="496.0" prefWidth="326.0" spacing="27.5">
+      <VBox layoutX="14.0" layoutY="208.0" prefHeight="496.0" prefWidth="326.0" spacing="27.5">
          <children>
             <VBox spacing="16.0">
                <children>
@@ -33,10 +33,10 @@
                   <ComboBox fx:id="medecinR" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="321.0" />
                </children>
             </VBox>
-            <HBox spacing="94.0">
+            <HBox prefHeight="21.0" prefWidth="309.0" spacing="94.0">
                <children>
-                  <Label fx:id="adresse_TextField" prefHeight="11.0" prefWidth="90.0" text="Adresse" />
-                  <Label fx:id="n_TelTextField" prefHeight="21.0" prefWidth="90.0" text="N°Tel" />
+                  <Label fx:id="adresse_TextField" prefHeight="21.0" prefWidth="421.0" text="Adresse" />
+                  <Label fx:id="n_TelTextField" prefHeight="21.0" prefWidth="327.0" text="N°Tel" />
                </children>
             </HBox>
             <VBox>
@@ -67,7 +67,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="65.0" layoutY="628.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="52.0" prefWidth="262.0" text="Réserver" />
+      <Button layoutX="50.0" layoutY="664.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="52.0" prefWidth="262.0" text="Réserver" />
    
       <FlowPane />
    
@@ -103,5 +103,6 @@
             <Insets right="9.0" />
          </padding>
       </HBox>
+      <Button layoutX="14.0" layoutY="135.0" mnemonicParsing="false" onAction="#returnToDisplayRV" styleClass="returnToDisplayPage" text="&lt;==Afficher Les RVs" />
    </children>
 </AnchorPane>

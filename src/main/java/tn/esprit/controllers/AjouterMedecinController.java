@@ -119,4 +119,7 @@ public class AjouterMedecinController implements Initializable {
             specialiteList.addAll(listSpecialite);
 
     }
+
+    public void returnToDisplay(ActionEvent actionEvent) {
+    }
 }

@@ -372,5 +372,8 @@ public class MofidierRvController implements Initializable {
         return createCalendarMap(calendarActivities);
     }
 
+    public void returnDisplayRv(ActionEvent actionEvent) {
+        switchToDisplayAllRV();
+    }
 }
 

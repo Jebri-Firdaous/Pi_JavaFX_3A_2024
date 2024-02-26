@@ -98,6 +98,7 @@
                 <Insets right="9.0" />
             </padding>
         </HBox>
+      <Button layoutX="48.0" layoutY="133.0" mnemonicParsing="false" onAction="#returnDisplayRv" text="&lt;==Afficher Les RVs" styleClass="returnToDisplayPage" />
     </children>
 
 </AnchorPane>

@@ -166,6 +166,9 @@ public class AjouterRendezVousController implements Initializable {
 
         return unavailableTimes;
     }
+    public void returnToDisplayRV(ActionEvent actionEvent) {
+        switchToDisplayAllRVPage();
+    }
 
 
     @FXML
@@ -221,8 +224,7 @@ public class AjouterRendezVousController implements Initializable {
 
 
     }
-
-
+//-----------------------------------------------------------------------------------------------
 //    CalenderController ------------------------------------------------------------
 
     ZonedDateTime dateFocus;
@@ -396,5 +398,5 @@ public class AjouterRendezVousController implements Initializable {
 
 
 
-    }
+}
 

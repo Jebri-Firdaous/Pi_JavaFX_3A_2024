@@ -130,4 +130,8 @@ public class ModifierMedecinController implements Initializable {
         specialiteList.addAll(listSpecialite);
 
     }
+
+    public void returnToDisplayM(ActionEvent actionEvent) {
+        switchToDisplayAllDoctorsPage();
+    }
 }
