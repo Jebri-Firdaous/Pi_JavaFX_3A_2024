@@ -13,7 +13,7 @@
 <?import javafx.scene.image.Image?>
 <?import java.net.URL?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierParkingController">
+<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierParkingController">
    <children>
       <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -111,12 +111,24 @@
                   </Label>
                   <TextField fx:id="nbPlacesTF" layoutX="174.0" layoutY="303.0" onKeyReleased="#testNb" />
                   <Button fx:id="submitB" layoutX="481.0" layoutY="373.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
-                  <TextField fx:id="idTF" editable="false" layoutX="174.0" layoutY="101.0" />
                   <TextField fx:id="addresseTF" layoutX="174.0" layoutY="230.0" onKeyReleased="#testAddresse" />
-                  <Label layoutX="66.0" layoutY="106.0" text="id Parking" />
-                  <Label layoutX="66.0" layoutY="308.0" text="Nb places" />
-                  <Label layoutX="66.0" layoutY="235.0" text="Addresse" />
-                  <Label layoutX="66.0" layoutY="164.0" text="Nom" />
+                  <Label layoutX="23.0" layoutY="305.0" text="Nb places">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font></Label>
+                  <Label layoutX="23.0" layoutY="232.0" text="Addresse">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font></Label>
+                  <Label layoutX="23.0" layoutY="161.0" text="Nom">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font></Label>
+                  <Label layoutX="152.0" layoutY="35.0" prefHeight="41.0" prefWidth="319.0" text="Modifier Parking">
+                     <font>
+                        <Font name="Cooper Black" size="36.0" />
+                     </font>
+                  </Label>
                </children>
             </Group>
          </center>

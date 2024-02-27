@@ -12,14 +12,15 @@
 }
 
 Button {
-  /*-fx-background-color: blue;*/
-  /*fx-color: white;*/
-  /*padding: 10px 20px;*/
-  /*border: none;*/
-  /*text-align: center;*/
-  /*text-decoration: none;*/
-  /*display: inline-block;*/
-  /*font-size: 16px;*/
+  -fx-background-color: #00C4FF9E; /* Red background color */
+  -fx-text-fill: black; /* White text color */
+  -fx-font-size: 14px; /* Font size */
+  -fx-border-radius: 10px;
+  -fx-background-radius: 50px;
+  -fx-pref-width: 98px;
+  -fx-pref-height: 35px;
+  -fx-font-size: 18;
+  -fx-font-family: "Arial Rounded MT Bold";
   /*margin: 4px 2px;*/
   /*cursor: pointer;*/
 }

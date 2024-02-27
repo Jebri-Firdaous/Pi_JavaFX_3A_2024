@@ -12,7 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AfficherParkingController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css, @Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AfficherParkingController">
     <children>
         <!--      <fx:include source="navBar.fxml" />-->
         <!--      <BorderPane layoutX="19.0" layoutY="31.0" prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
@@ -127,7 +127,7 @@
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Gestion tourisme">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="fa lse" text="Action 1" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Gestion utilisateur">

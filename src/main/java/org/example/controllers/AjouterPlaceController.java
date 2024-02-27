@@ -5,12 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.entities.Parking;
 import org.example.entities.Place;
 import org.example.services.ParkingService;
@@ -91,6 +89,16 @@ public class AjouterPlaceController implements Initializable {
     public void testNum(KeyEvent keyEvent) {
         Stage stage = (Stage) typeCB.getScene().getWindow();
         Parking parking = (Parking) stage.getUserData();
+        TextFormatter<Integer> formatter = new TextFormatter<>(new IntegerStringConverter(), 0, change ->
+        {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+            return null;
+        });
+
+        numTF.setTextFormatter(formatter);
         if(!numTF.getText().isEmpty()) {
             if (numTF.getText().matches("[0-9]+")) {
                 errNum.setText("");

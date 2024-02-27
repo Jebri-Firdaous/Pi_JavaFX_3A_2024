@@ -6,8 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.entities.Parking;
 import org.example.services.ParkingService;
 
@@ -24,13 +26,14 @@ public class ModifierParkingController {
     public Label errNom;
     public Label errAddr;
     public Label errNb;
+    int id;
     private boolean test1=true, test2=true, test3=true;
 
     public void init(String nom, String addresse, int nbPlaces, int id) {
         this.nomTF.setText(nom);
         this.addresseTF.setText(addresse);
         this.nbPlacesTF.setText(Integer.toString(nbPlaces));
-        this.idTF.setText(Integer.toString(id));
+        this.id=id;
 //        Stage stage=(Stage) nomTF.getScene().getWindow();
 //        Parking parking=(Parking) stage.getUserData();
 //        System.out.println(2);
@@ -70,7 +73,7 @@ public class ModifierParkingController {
         if(test1 && test2 && test3) {
             try {
                 //System.out.println(ps.recupererUn(Integer.parseInt(idTF.getText())).getRef());
-                Parking p = new Parking(Integer.parseInt(idTF.getText()),
+                Parking p = new Parking(id,
                         nomTF.getText(),
                         addresseTF.getText(),
                         Integer.parseInt(nbPlacesTF.getText()));
@@ -135,13 +138,23 @@ public class ModifierParkingController {
     }
 
     public void testNb(KeyEvent keyEvent) {
+        TextFormatter<Integer> formatter = new TextFormatter<>(new IntegerStringConverter(), 0, change ->
+        {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+            return null;
+        });
+
+        nbPlacesTF.setTextFormatter(formatter);
         if(!nbPlacesTF.getText().isEmpty()) {
             if (nbPlacesTF.getText().matches("[0-9]+")) {
                 errNb.setText("");
                 if (Integer.parseInt(nbPlacesTF.getText())<=100) {
                     errNb.setText("");
                     try {
-                        if (Integer.parseInt(nbPlacesTF.getText()) >= ps.calculNbPlace(Integer.parseInt(idTF.getText()))){
+                        if (Integer.parseInt(nbPlacesTF.getText()) >= ps.calculNbPlace(id)){
                             errNb.setText("");
                             test3=true;
                         }else{

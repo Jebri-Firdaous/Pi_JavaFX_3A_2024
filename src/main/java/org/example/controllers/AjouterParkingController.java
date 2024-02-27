@@ -8,9 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.entities.Parking;
 import org.example.services.ParkingService;
 
@@ -115,6 +117,16 @@ public class AjouterParkingController {
     }
 
     public void testNb(KeyEvent keyEvent) {
+        TextFormatter<Integer> formatter = new TextFormatter<>(new IntegerStringConverter(), 0, change ->
+        {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+            return null;
+        });
+
+        nbMaxTF.setTextFormatter(formatter);
         if(!nbMaxTF.getText().isEmpty()) {
             if (nbMaxTF.getText().matches("[0-9]+")) {
                 errNb.setText("");

@@ -18,7 +18,7 @@ public class ParkingService implements IService<Parking> {
 
     @Override
     public void ajouter(Parking parking) throws SQLException {
-        String sql = "insert into parking(nom_parking, address_parking, nombre_place_max, nombre_place_occ, etat_parking) values (?, ?, ?, '0', '0')";
+        String sql = "insert into parking(nom_parking, address_parking, nombre_place_max, nombre_place_occ, etat_parking) values (?, ?, ?, '0', 'Disponible')";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, parking.getNom());
         preparedStatement.setString(2, parking.getAddresse());

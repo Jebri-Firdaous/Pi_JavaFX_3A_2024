@@ -16,7 +16,7 @@ public class PlaceService implements IService<Place>{
     }
     @Override
     public void ajouter(Place place) throws SQLException {
-        String sql = "insert into place(num_place, type_place, etat, id_parking) values (?, ?, 'Disponible', ?)";
+        String sql = "insert into place(num_place, type_place, etat, id_parking) values (?, ?, 'Libre', ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, place.getNum_place());
         preparedStatement.setString(2, place.getType_place());

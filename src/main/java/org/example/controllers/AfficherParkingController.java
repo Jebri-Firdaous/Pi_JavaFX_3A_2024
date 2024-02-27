@@ -58,7 +58,7 @@ public class AfficherParkingController {
                                     String etat = parking.getEtat();
 // Create an HBox to hold the details
                                     HBox hbox = new HBox();
-                                    hbox.setSpacing(65); // Adjust spacing as needed
+                                    hbox.setSpacing(20); // Adjust spacing as needed
 
 // Add details to the HBox with styled Labels
                                     Label nomPrenomDoctorLabel = new Label(parkingName);

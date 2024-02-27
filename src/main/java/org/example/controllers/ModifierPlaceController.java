@@ -8,8 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.entities.Parking;
 import org.example.entities.Place;
 import org.example.services.ParkingService;
@@ -29,13 +31,14 @@ public class ModifierPlaceController  implements Initializable {
     public Label errNum;
     public Label errType;
     private boolean test;
+    int id;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         typeCB.setItems(FXCollections.observableArrayList("normal", "moto", "handicap"));
     }
     public void init(int idTF, int num, String type){
-        this.idTF.setText(Integer.toString(idTF));
+        this.id=idTF;
         this.numTF.setText(Integer.toString(num));
         this.typeCB.setValue(type);
     }
@@ -46,7 +49,7 @@ public class ModifierPlaceController  implements Initializable {
             errType.setText("Ce champ est obligatoire!");}
         if (test && !typeCB.getSelectionModel().isEmpty()) {
             try {
-                Place p = new Place(Integer.parseInt(idTF.getText()),
+                Place p = new Place(id,
                         Integer.parseInt(numTF.getText()),
                         typeCB.getValue());
                 ps.modifier(p);
@@ -84,6 +87,16 @@ public class ModifierPlaceController  implements Initializable {
     public void testNum(KeyEvent keyEvent) {
         Stage stage = (Stage) typeCB.getScene().getWindow();
         Parking parking = (Parking) stage.getUserData();
+        TextFormatter<Integer> formatter = new TextFormatter<>(new IntegerStringConverter(), 0, change ->
+        {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+            return null;
+        });
+
+        numTF.setTextFormatter(formatter);
         if(!numTF.getText().isEmpty()) {
             if (numTF.getText().matches("[0-9]+")) {
                 errNum.setText("");
