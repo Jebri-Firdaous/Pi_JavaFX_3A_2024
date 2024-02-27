@@ -27,20 +27,26 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-      <VBox layoutX="844.0" layoutY="238.0" prefHeight="422.0" prefWidth="397.0">
+      <VBox layoutX="844.0" layoutY="238.0" prefHeight="440.0" prefWidth="397.0">
          <children>
               <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                   <font>
                       <Font name="Arial" size="20.0" />
                   </font>
               </TextField>
-            <VBox prefHeight="18.0" prefWidth="397.0" />
+            <VBox prefHeight="18.0" prefWidth="397.0">
+               <children>
+                  <Label fx:id="nomInvalid" prefHeight="21.0" prefWidth="388.0" text="Nom Invalide" textFill="RED" visible="false" />
+               </children></VBox>
               <TextField fx:id="prenom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre prenom">
                   <font>
                       <Font name="Arial" size="20.0" />
                   </font>
               </TextField>
-            <VBox prefHeight="15.0" prefWidth="397.0" />
+            <VBox prefHeight="15.0" prefWidth="397.0">
+               <children>
+                  <Label fx:id="prenomInvalid" text="Prenom Invalide" textFill="RED" visible="false" />
+               </children></VBox>
               <TextField fx:id="tel" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre numero de telephone">
                   <font>
                       <Font name="Arial" size="20.0" />
@@ -48,11 +54,7 @@
               </TextField>
             <VBox prefHeight="15.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="210.0" text="Numero Invalide" textFill="RED" visible="false" />
                </children>
             </VBox>
               <ComboBox fx:id="role" prefHeight="42.0" prefWidth="401.0" promptText="Role">
@@ -75,37 +77,26 @@
               </ComboBox>
             <VBox prefHeight="15.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="SelectionnerRole" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="roleInvalid" prefHeight="21.0" prefWidth="210.0" text="Veuillez choisir un Role" textFill="RED" visible="false" />
                </children></VBox>
               <TextField fx:id="mail" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre adresse mail">
                   <font>
                       <Font name="Arial" size="20.0" />
                   </font>
               </TextField>
-            <VBox prefHeight="62.0" prefWidth="397.0">
+            <VBox prefHeight="82.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="mailInvalid1" prefHeight="15.0" prefWidth="397.0" textFill="#dd0f0f">
+                  <Label fx:id="mailInvalid" prefHeight="21.0" prefWidth="210.0" text="Mail Invalide" textFill="RED" visible="false" />
+                  <PasswordField fx:id="mdp" prefHeight="46.0" prefWidth="387.0" promptText="Choisissez le mot de passe" />
+                  <Label fx:id="mdpInvalid" prefHeight="15.0" prefWidth="397.0" text="Le mot de passe doit contenir 8 caractere et des caractere speciaux et au moin une lettre majiscule" textFill="RED" visible="false">
                      <font>
-                        <Font size="11.0" />
+                        <Font size="9.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="mdp" prefHeight="46.0" prefWidth="387.0" promptText="Choisissez le mot de passe" />
 
                </children>
             </VBox>
-            <VBox prefHeight="15.0" prefWidth="397.0">
-               <children>
-                  <Label fx:id="mdpCourt" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
+            <VBox prefHeight="15.0" prefWidth="397.0" />
               <Button fx:id="inscrire" mnemonicParsing="false" onAction="#AjouterAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #B0E847;" text="Ajouter">
                   <font>
                       <Font name="System Bold" size="17.0" />

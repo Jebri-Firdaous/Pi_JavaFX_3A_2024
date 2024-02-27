@@ -56,7 +56,31 @@ public class AjoutAdministrateurController {
     @FXML
     private ImageView backgroundImage;
 
+    private boolean isValidEmail(String email) {
+        // Diviser l'e-mail en parties distinctes
+        String[] parts = email.split("@");
+        if (parts.length != 2) {
+            return false; // L'e-mail doit contenir exactement un symbole '@'
+        }
 
+        // Vérifier la partie locale de l'e-mail
+        String localPart = parts[0];
+        if (localPart.isEmpty()) {
+            return false; // La partie locale ne peut pas être vide
+        }
+
+        // Vérifier le domaine de l'e-mail
+        String[] domainParts = parts[1].split("\\.");
+        if (domainParts.length != 2) {
+            return false; // Le domaine doit contenir exactement un point séparant le nom de domaine et l'extension
+        }
+
+        // Vérifier le domaine et l'extension
+        String domain = domainParts[0];
+        String extension = domainParts[1];
+        return (domain.equals("gmail") || domain.equals("hotmail") || domain.equals("yahoo")|| domain.equals("esprit")) &&
+                (extension.equals("com") || extension.equals("tn"));
+    }
     @FXML
     void ToConnexion(ActionEvent event) {
         try
@@ -93,6 +117,7 @@ public class AjoutAdministrateurController {
         // Vérifier si le numéro de téléphone est composé de 8 chiffres et qu'il s'agit d'un entier
         return telephone != null && telephone.matches("\\d{8}");
     }
+
 
     @FXML
     void AjouterAdmin(ActionEvent event) {
