@@ -89,7 +89,7 @@
             <Group BorderPane.alignment="CENTER">
                <children>
                     <ComboBox fx:id="typeCB" layoutX="174.0" layoutY="272.0" prefWidth="150.0" promptText="&lt;---------&gt;" />
-                    <Button fx:id="annulerB" layoutX="376.0" layoutY="348.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" text="Annuler" />
+                    <Button fx:id="annulerB" layoutX="376.0" layoutY="348.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" styleClass="my-button" stylesheets="@Button.css" text="Annuler" />
                     <Button fx:id="submitB" layoutX="475.0" layoutY="348.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
                     <TextField fx:id="numTF" layoutX="173.0" layoutY="189.0" onKeyReleased="#testNum" />
                     <Label fx:id="errNum" layoutX="173.0" layoutY="220.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
@@ -114,5 +114,6 @@
     <stylesheets>
         <URL value="@style.css" />
         <URL value="@BG.css" />
+        <URL value="@Button.css" />
     </stylesheets>
 </AnchorPane>

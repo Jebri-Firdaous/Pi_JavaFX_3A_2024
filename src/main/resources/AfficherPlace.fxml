@@ -68,9 +68,9 @@
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" onAction="#naviguerVersParkings" text="Gestion parking">
-                                    <!--                                     <items>-->
-                                    <!--                                         <MenuItem mnemonicParsing="false" text="L" />-->
-                                    <!--                                     </items>-->
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#naviguerVersParkings" text="Liste Parkings" />
+                                    </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Gestion tourisme">
                                     <items>
@@ -90,13 +90,16 @@
          <center>
             <Group BorderPane.alignment="CENTER">
                <children>
-                    <Button fx:id="listParkingB" layoutX="-202.0" layoutY="-151.0" mnemonicParsing="false" onAction="#naviguerVersParkings" text="Afficher Liste Parking" />
+                    <Button fx:id="listParkingB" layoutX="-221.0" layoutY="-183.0" mnemonicParsing="false" onAction="#naviguerVersParkings" text="Afficher Liste Parking" />
                     <Button fx:id="modifB" layoutX="110.0" layoutY="339.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
                     <Button fx:id="cancelRes" layoutX="462.0" layoutY="358.0" mnemonicParsing="false" onAction="#annulerReservation" text="Annuler Reservation" />
                     <Button fx:id="delB" layoutX="242.0" layoutY="339.0" mnemonicParsing="false" onAction="#supprimerPlace" text="Supprimer" />
                     <Button fx:id="addB" layoutX="-8.0" layoutY="339.0" mnemonicParsing="false" onAction="#naviguerVersAjouter" text="Ajouter" />
                     <Button fx:id="res" layoutX="500.0" layoutY="321.0" mnemonicParsing="false" onAction="#reserverPlace" text="Reserver" />
                     <ListView fx:id="listid" layoutX="-176.0" layoutY="-103.0" prefHeight="410.0" prefWidth="810.0" />
+                  <Label layoutX="-157.0" layoutY="-132.0" text="Num" />
+                  <Label layoutX="104.0" layoutY="-132.0" text="Type" />
+                  <Label layoutX="379.0" layoutY="-132.0" text="Etat" />
                </children>
             </Group>
          </center>

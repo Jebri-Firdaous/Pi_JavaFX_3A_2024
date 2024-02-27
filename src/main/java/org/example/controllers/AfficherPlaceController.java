@@ -70,7 +70,7 @@ public class AfficherPlaceController {
                                     String placeEtat = place.getEtat();
 // Create an HBox to hold the details
                                     HBox hbox = new HBox();
-                                    hbox.setSpacing(65); // Adjust spacing as needed
+                                    hbox.setSpacing(40); // Adjust spacing as needed
 
 // Add details to the HBox with styled Labels
                                     Label numLabel = new Label(Integer.toString(numPlace));
@@ -85,8 +85,15 @@ public class AfficherPlaceController {
                                     Label etatLabel = new Label(placeEtat);
                                     etatLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
 // Add the date Label with the full month name
+                                    HBox hbox2 = new HBox();
+                                    hbox.setSpacing(5); // Adjust spacing as needed
+//
+//                                    Button modifB = new Button("Modifier");
+//                                    modifB.setOnAction(Eve);
+//                                    Button suppB = new Button("Supprimer");
 
 // Add the Labels to the HBox
+//                                    hbox2.getChildren().addAll(modifB, suppB);
                                     hbox.getChildren().addAll(numLabel, typeLabel, etatLabel);
 
 // Assuming this is inside a ListCell or similar where you can set the graphic
