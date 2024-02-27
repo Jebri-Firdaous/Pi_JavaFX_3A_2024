@@ -64,9 +64,9 @@ public class MofidierRvController implements Initializable {
                 || dateR.getValue() == null) {
             // Show an alert if any field is empty
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Missing Information");
+            alert.setTitle("Information manquante");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields: Medecin, Specialite, Hour, and Minute.");
+            alert.setContentText("Veuillez remplir tous les champs.");
             alert.showAndWait();
         } else {
             LocalDate date = dateR.getValue(); // Get the date from the DatePicker
@@ -79,17 +79,17 @@ public class MofidierRvController implements Initializable {
             List<LocalDateTime> listRVbyidMedecin = serviceRendezVous.getAllDateRendezVousByidMedeicn(medecinR.getValue().getId_medecin());
             if (listRVbyidMedecin.contains(dateTime)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("the doctor have an appoitment in this date");
+                alert.setTitle("Le médecin a un rendez-vous à cette date.");
                 alert.setHeaderText(null);
-                alert.setContentText("Choose an other date or time ");
+                alert.setContentText("Choisissez une autre date ou heure. ");
                 alert.showAndWait();
                 return;
             }
             if (dateTime.isBefore(LocalDateTime.now())) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Choose a date that after now ");
+                alert.setTitle("Sélectionnez une date future ");
                 alert.setHeaderText(null);
-                alert.setContentText("Choose a date that after now");
+                alert.setContentText("Sélectionnez une date future");
                 alert.showAndWait();
 
             } else {
@@ -98,8 +98,8 @@ public class MofidierRvController implements Initializable {
                     serviceRendezVous.modifier(ref_rendez_vous, timestamp, medecinR.getValue().id_medecin);
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setContentText("RV modifier avec succées!");
+                    alert.setTitle("Boîte de dialogue d'information");
+                    alert.setContentText("Rendez-vous modifié avec succès !");
 //          block the execution until the user closes the alert dialog.
                     alert.showAndWait();
                     switchToDisplayAllRV();

@@ -65,24 +65,24 @@ public class AjouterMedecinController implements Initializable {
         if (nomText.isEmpty() || prenomText.isEmpty() || numeroTelText.isEmpty() || addresseText.isEmpty()) {
             // Show an alert if any field is empty
             Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Missing Information");
+            alert.setTitle("Information manquante");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields: Nom, Prenom, Numero Tel, and Addresse.");
+            alert.setContentText("Veuillez remplir tous les champs : Nom, Prénom, Numéro de téléphone et Adresse.");
             alert.showAndWait();
         } else if (numeroTelText.length() !=   8 || !numeroTelText.matches("\\d+") || !numeroTelText.startsWith("5") && !numeroTelText.startsWith("2") && !numeroTelText.startsWith("9")) {
             // Show an alert if the phone number is not valid
             Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("Invalid Phone Number");
+            alert.setTitle("Numéro de téléphone invalide");
             alert.setHeaderText(null);
-            alert.setContentText("The phone number must be exactly   8 numeric characters and start with   5,   2, or   9.");
+            alert.setContentText("Le numéro de téléphone doit comporter exactement 8 caractères numériques et commencer par 5, 2 ou 9");
             alert.showAndWait();
         } else {
             try {
                 serviceMedecin.ajouter(new Medecin(nomText, prenomText, Integer.parseInt(numeroTelText),
                         addresseText, specialiteR.getValue()));
                 Alert successAlert = new Alert(AlertType.INFORMATION);
-                successAlert.setTitle("Information Dialog");
-                successAlert.setContentText("Medecin added successfully!");
+                successAlert.setTitle("Boîte de dialogue d'information");
+                successAlert.setContentText("Médecin ajouté avec succès !");
                 successAlert.showAndWait();
                 switchToDisplayAllDoctorsPage();
             } catch (SQLException e) {

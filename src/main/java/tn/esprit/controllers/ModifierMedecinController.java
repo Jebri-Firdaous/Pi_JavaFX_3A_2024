@@ -78,24 +78,24 @@ public class ModifierMedecinController implements Initializable {
         if (nomText.isEmpty() || prenomText.isEmpty() || numeroTelText.isEmpty() || addresseText.isEmpty()) {
             // Show an alert if any field is empty
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Missing Information");
+            alert.setTitle("Information manquante");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields: Nom, Prenom, Numero Tel, and Addresse.");
+            alert.setContentText("Veuillez remplir tous les champs : Nom, Prénom, Numéro de téléphone et Adresse.");
             alert.showAndWait();
         } else if (numeroTelText.length() !=   8 || !numeroTelText.matches("\\d+") || !numeroTelText.startsWith("5") && !numeroTelText.startsWith("2") && !numeroTelText.startsWith("9")) {
             // Show an alert if the phone number is not valid
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Invalid Phone Number");
+            alert.setTitle("Numéro de téléphone invalide");
             alert.setHeaderText(null);
-            alert.setContentText("The phone number must be exactly   8 numeric characters and start with   5,   2, or   9.");
+            alert.setContentText("Le numéro de téléphone doit comporter exactement 8 caractères numériques et commencer par 5, 2 ou 9");
             alert.showAndWait();
         } else {
             try {
                 serviceMedecin.modifier(medecinId, nom.getText(), prenom.getText(), Integer.parseInt(numeroTel.getText())
                         , addresse.getText(), specialiteM.getValue());
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setContentText("Medecin modifier avec succées!");
+                alert.setTitle("Boîte de dialogue d'information");
+                alert.setContentText("Médecin modifié avec succès !");
 //          block the execution until the user closes the alert dialog.
                 alert.showAndWait();
                 switchToDisplayAllDoctorsPage();
