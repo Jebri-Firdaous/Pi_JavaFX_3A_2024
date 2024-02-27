@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import tn.esprit.CalendarActivity;
 import tn.esprit.entities.Medecin;
@@ -303,8 +304,33 @@ public class MofidierRvController implements Initializable {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
-                    //On ... click print all activities for given date
-                    System.out.println(calendarActivities);
+                    Popup popup = new Popup();
+                    popup.setAutoHide(true); // The popup will automatically hide when clicked outside
+
+                    // Create a ListView to display the activities
+                    ListView<String> listView = new ListView<>();
+                    for (CalendarActivity activity : calendarActivities) {
+                        listView.getItems().add(activity.getClientName() + ", " + activity.getDate().toLocalTime());
+                    }
+                    listView.setCellFactory(param -> new ListCell<String>() {
+                        @Override
+                        protected void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (item == null || empty) {
+                                setText(null);
+                            } else {
+                                setText(item);
+                            }
+                        }
+                    });
+
+                    VBox popupVbox = new VBox(listView);
+                    popup.getContent().add(popupVbox);
+
+                    // Position the popup near the source of the click event
+                    popup.show(moreActivities.getScene().getWindow(),
+                            600,
+                            300);
                 });
                 break;
             }

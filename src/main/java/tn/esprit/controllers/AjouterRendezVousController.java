@@ -17,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import tn.esprit.CalendarActivity;
 import tn.esprit.entities.Client;
@@ -175,12 +177,12 @@ public class AjouterRendezVousController implements Initializable {
     public void reserverBT(ActionEvent actionEvent) throws SQLException {
         // Check if the medecinR, specialiteR, hourComboBox, and minuteComboBox fields are filled
         if (medecinR.getValue() == null || specialiteR.getValue() == null || hourComboBox.getValue() == null || minuteComboBox.getValue() == null
-                || dateR.getValue() == null) {
+                || dateR.getValue() == null || comboboxClient.getValue() == null) {
             // Show an alert if any field is empty
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Missing Information");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields: Medecin, Specialite, Hour, and Minute.");
+            alert.setContentText("Please fill  all the fields.");
             alert.showAndWait();
             return;
         }
@@ -326,8 +328,36 @@ public class AjouterRendezVousController implements Initializable {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
-                    //On ... click print all activities for given date
-                    System.out.println(calendarActivities);
+                    Popup popup = new Popup();
+                    popup.setAutoHide(true); // The popup will automatically hide when clicked outside
+
+                    // Create a ListView to display the activities
+                    ListView<String> listView = new ListView<>();
+                    for (CalendarActivity activity : calendarActivities) {
+                        listView.getItems().add(activity.getClientName() + ", " + activity.getDate().toLocalTime());
+                    }
+                    listView.setCellFactory(param -> new ListCell<String>() {
+                        @Override
+                        protected void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (item == null || empty) {
+                                setText(null);
+                            } else {
+                                setText(item);
+                            }
+                        }
+                    });
+
+                    VBox popupVbox = new VBox(listView);
+                    popup.getContent().add(popupVbox);
+
+                    // Position the popup near the source of the click event
+                    /*popup.show(moreActivities.getScene().getWindow(),
+                            moreActivities.getX(),
+                            moreActivities.getY());*/
+                    popup.show(moreActivities.getScene().getWindow(),
+                            600,
+                            300);
                 });
                 break;
             }
