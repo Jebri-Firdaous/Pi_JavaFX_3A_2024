@@ -20,12 +20,12 @@ public class ModifierAdminController {
 
     @FXML
     private Label mdpCourt;
-    private ServiceAdmin sa =new ServiceAdmin();
+    private ServiceAdmin sa = new ServiceAdmin();
     @FXML
     private ComboBox<String> role;
 
     @FXML
-    private Label mailInvalid1;
+    private Label mailInvalide;
 
     @FXML
     private TextField mail;
@@ -59,16 +59,13 @@ public class ModifierAdminController {
 
     @FXML
     private Label remplirChamps;
-    private  Administrateur admin =new Administrateur();
+    private Administrateur admin;
 
 
 
-
-    public void initialize(Administrateur administrateur)
-    {
-        this.admin=administrateur;
-        if (administrateur!=null)
-        {
+    void initData(Administrateur administrateur) {
+        this.admin = administrateur;
+        if (administrateur != null) {
             nom.setText(administrateur.getNom_personne());
             prenom.setText(administrateur.getPrenom_personne());
             tel.setText(String.valueOf(administrateur.getNumero_telephone()));
@@ -78,6 +75,7 @@ public class ModifierAdminController {
         }
 
     }
+
     public void ToAfficherListeAdmine() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherAdmin.fxml"));
@@ -94,54 +92,51 @@ public class ModifierAdminController {
         }
     }
 
+
     public void modifierAdmin(ActionEvent actionEvent) {
-        if (admin != null) {
+
+            // Récupérer les nouvelles valeurs des champs de la page de modification
             String nouveauNom = nom.getText();
             String nouveauPrenom = prenom.getText();
-            Integer nouveauNumero = Integer.parseInt(tel.getText());
+            String nouveauNumero = tel.getText();
             String nouveauRole = role.getValue();
             String nouveauMail = mail.getText();
             String nouveauMdp = mdp.getText();
-            try {
-                    admin.setNom_personne(nouveauNom);
-                    admin.setPrenom_personne(nouveauPrenom);
-                    admin.setNumero_telephone(nouveauNumero);
-                    admin.setRole(nouveauRole);
-                    admin.setMail_personne(nouveauMail);
-                    admin.setMdp_personne(nouveauMdp);
 
-                    sa.ajouter(admin);
-
-
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Administrateur modifié avec succès !");
-                    alert.showAndWait();
-                    ToAfficherListeAdmine();
-                } catch (SQLException e) {
-                    // Handle SQL exception
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Erreur lors de la modification de l'administrateur : " + e.getMessage());
-                    alert.showAndWait();
-
-            } catch (NumberFormatException e) {
-            // Handle number format exception (if tel is not a valid integer)
+            // Créer un nouvel objet Administrateur avec les nouvelles valeurs
+admin.setNom_personne(nouveauNom);
+admin.setPrenom_personne(nouveauPrenom);
+admin.setNumero_telephone(Integer.parseInt(nouveauNumero));
+admin.setRole(nouveauRole);
+admin.setMail_personne(nouveauMail);
+admin.setMdp_personne(nouveauMdp);
+        try {
+            sa.modifier(admin);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("L'administrateur a été modifié avec succès !");
+            alert.showAndWait();
+            ToAfficherListeAdmine();
+        } catch (SQLException e) {
+            // Afficher une alerte en cas d'erreur
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Le numéro de téléphone doit être un entier.");
+            alert.setHeaderText("Erreur lors de la modification de l'administrateur");
+            alert.setContentText("Une erreur s'est produite lors de la modification de l'administrateur. Veuillez réessayer.");
             alert.showAndWait();
-        }
-
-        } else {
-            System.err.println("L'objet administrateur n'est pas initialisé. Appeler initData pour l'initialiser.");
         }
     }
 
 
+    private void afficherAlerte(Alert.AlertType type, String titre, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
 
 
 
@@ -200,5 +195,3 @@ public class ModifierAdminController {
 //    }
 
 
-
-}

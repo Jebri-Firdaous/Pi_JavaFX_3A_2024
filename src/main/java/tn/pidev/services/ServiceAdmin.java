@@ -11,8 +11,8 @@ import java.util.List;
 public class ServiceAdmin implements IService <Administrateur> {
     private Connection connection;
 
-    public ServiceAdmin(){
-        connection= MyDataBase.getInstance().getConnection();
+    public ServiceAdmin() {
+        connection = MyDataBase.getInstance().getConnection();
     }
 
 
@@ -22,7 +22,7 @@ public class ServiceAdmin implements IService <Administrateur> {
         // Insertion dans la table "personne"
         String sqlInsertPersonne = "INSERT INTO `personne`(`nom_personne`, `prenom_personne`, `numero_telephone`, `mail_personne`, `mdp_personne`) VALUES (?, ?, ?, ?, ?)";
 
-              PreparedStatement preparedStatementPersonne = connection.prepareStatement(sqlInsertPersonne);
+        PreparedStatement preparedStatementPersonne = connection.prepareStatement(sqlInsertPersonne);
         preparedStatementPersonne.setInt(1, 1);
         preparedStatementPersonne.setString(1, administrateur.getNom_personne());
         preparedStatementPersonne.setString(2, administrateur.getPrenom_personne());
@@ -52,38 +52,20 @@ public class ServiceAdmin implements IService <Administrateur> {
     /*--------------------------------------------------MODIFIER------------------------------------------------------*/
 
     public void modifier(Administrateur administrateur) throws SQLException {
+        String sqlUpdate = "UPDATE personne p INNER JOIN administrateur a ON p.id_personne = a.id_personne " +
+                "SET p.nom_personne = ?, p.prenom_personne = ?, p.numero_telephone = ?, " +
+                "p.mail_personne = ?, p.mdp_personne = ?, a.role = ? WHERE p.id_personne = ?";
 
-        int id_personne = administrateur.getId_personne();
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate);
+        preparedStatement.setString(1, administrateur.getNom_personne());
+        preparedStatement.setString(2, administrateur.getPrenom_personne());
+        preparedStatement.setInt(3, administrateur.getNumero_telephone());
+        preparedStatement.setString(4, administrateur.getMail_personne());
+        preparedStatement.setString(5, administrateur.getMdp_personne());
+        preparedStatement.setString(6, administrateur.getRole());
+        preparedStatement.setInt(7, administrateur.getId_personne());
 
-        // Mise à jour dans la table "administrateur"
-        try {
-            String sqlUpdateAdmin = "UPDATE administrateur SET role = ? WHERE id_personne = ?";
-            PreparedStatement preparedStatementAdmin = connection.prepareStatement(sqlUpdateAdmin);
-            preparedStatementAdmin.setString(1, administrateur.getRole());
-            preparedStatementAdmin.setInt(2, id_personne);
-            preparedStatementAdmin.executeUpdate();
-        } catch (SQLException e) {
-            // Gérer l'exception
-            System.err.println("Erreur lors de la mise à jour de l'administrateur dans la table 'administrateur' : " + e.getMessage());
-            throw e;
-        }
-
-        // Mise à jour dans la table "personne"
-        try {
-            String sqlUpdatePersonne = "UPDATE personne SET nom_personne = ?, prenom_personne = ?, numero_telephone = ?, mail_personne = ?, mdp_personne = ? WHERE id_personne = ?";
-            PreparedStatement preparedStatementPersonne = connection.prepareStatement(sqlUpdatePersonne);
-            preparedStatementPersonne.setString(1, administrateur.getNom_personne());
-            preparedStatementPersonne.setString(2, administrateur.getPrenom_personne());
-            preparedStatementPersonne.setInt(3, administrateur.getNumero_telephone());
-            preparedStatementPersonne.setString(4, administrateur.getMail_personne());
-            preparedStatementPersonne.setString(5, administrateur.getMdp_personne());
-            preparedStatementPersonne.setInt(6, id_personne);
-            preparedStatementPersonne.executeUpdate();
-        } catch (SQLException e) {
-            // Gérer l'exception
-            System.err.println("Erreur lors de la mise à jour de l'administrateur dans la table 'personne' : " + e.getMessage());
-            throw e;
-        }
+        preparedStatement.executeUpdate();
 
     }
     /*--------------------------------------------------AFFICHE------------------------------------------------------*/
@@ -111,7 +93,21 @@ public class ServiceAdmin implements IService <Administrateur> {
         return administrateurList;
     }
 
-}
+    @Override
+    public void supprimer(int id) throws SQLException {
+        String sqlDeleteAdmin = "DELETE FROM administrateur WHERE id_perspnne = ? ";
+
+        // Préparer la déclaration SQL
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlDeleteAdmin)) {
+            // Définir le paramètre de l'identifiant
+            preparedStatement.setInt(1, id);
+
+            // Exécuter la requête de suppression
+            preparedStatement.executeUpdate();
+        }
+    }}
+
+
 
 
 

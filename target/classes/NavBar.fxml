@@ -9,9 +9,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdminInterfaceControllers">
    <top>
-            <Pane fx:id="contentPane" BorderPane.alignment="CENTER">
+            <Pane fx:id="contentPane" prefHeight="111.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
                <children>
-                  <Rectangle height="101.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1300.0">
+                  <Rectangle height="101.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1312.0">
                      <fill>
                         <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -22,47 +22,30 @@
                      </fill>
                   </Rectangle>
 
-            <MenuBar layoutX="139.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="900.0">
+            <MenuBar layoutX="240.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="900.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Accueil">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#Acceuil" text="Acceuil" />
+                     </items>
                </Menu>
                   <Menu mnemonicParsing="false" text="Gestion Medecin">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Gestion shopping">
-                     <items>
-                        <Menu mnemonicParsing="false" text="Article">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Liste d'article" />
-                           </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Commande">
-                              <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                           </items>
-                        </Menu>
-                     </items>
-                  </Menu>
+
                   <Menu mnemonicParsing="false" text="Gestion transport">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Gestion parking">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Gestion tourisme">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Gestion utilisateur">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#afficherAdmin" text="Afficher Administrateur" />
+                     </items>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#AjouterAdmin" text="Ajouter Administrateur" />
                      </items>
                   </Menu>
                </menus>
@@ -77,16 +60,11 @@
          </children>
       </Pane>
    </top>
-   <bottom>
-      <Rectangle height="101.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1300.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
-               <stops>
-                  <Stop color="#5ee1e5a6" />
-                  <Stop color="#5ee1e500" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-   </bottom>
+   <center>
+      <AnchorPane prefHeight="672.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="665.0" fitWidth="1312.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

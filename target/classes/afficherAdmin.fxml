@@ -11,7 +11,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AfficheAdministrateurController">
    <children>
       <fx:include source="NavBar.fxml" />
-      <fx:include source="Acceuil.fxml" />
       <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
       <SplitPane layoutY="124.0" orientation="VERTICAL" prefHeight="591.0" prefWidth="1300.0">
          <items>
@@ -64,7 +63,7 @@
                                     <HBox prefHeight="35.0" prefWidth="77.0" />
                                     <HBox prefHeight="31.0" prefWidth="379.0">
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#ToModifierPage" prefHeight="10.0" prefWidth="392.0" style="-fx-background-color: B0E847;" text="Modifier">
+                                          <Button mnemonicParsing="false" onAction="#modifier" prefHeight="10.0" prefWidth="392.0" style="-fx-background-color: B0E847;" text="Modifier">
                                              <font>
                                                 <Font name="System Bold" size="17.0" />
                                              </font>
@@ -74,7 +73,7 @@
                                     <HBox prefHeight="44.0" prefWidth="63.0" />
                                     <HBox prefHeight="31.0" prefWidth="411.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="449.0" style="-fx-background-color: B0E847;" text="Supprimer">
+                                          <Button mnemonicParsing="false" onAction="#supprimer" prefHeight="10.0" prefWidth="449.0" style="-fx-background-color: B0E847;" text="Supprimer">
                                              <font>
                                                 <Font name="System Bold" size="17.0" />
                                              </font>

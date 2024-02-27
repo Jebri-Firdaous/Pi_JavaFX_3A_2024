@@ -1,7 +1,5 @@
 package tn.pidev.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tn.pidev.entities.Administrateur;
 import tn.pidev.entities.Personne;
@@ -19,10 +16,13 @@ import tn.pidev.services.ServiceAdmin;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
 public class AfficheAdministrateurController {
+    ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
 
     private final  ServiceAdmin serviceAdmin=new ServiceAdmin();
     @FXML
@@ -74,32 +74,10 @@ public class AfficheAdministrateurController {
         }
     }
 
-    /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA LISTVIEW--------------------------------*/
-
-
-/*
-    public void initialize() {
-        ObservableList<Administrateur> AdminList=FXCollections.observableArrayList();
-        listViewAdmin.setItems(AdminList);
-        try {
-            List<Administrateur> AdminsFromService=serviceAdmin.afficher();
-            AdminList.addAll(AdminsFromService);
-            listViewAdmin.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observableValue, Number oldIndex, Number newIndex) {
-                    currentAdminSelected=listViewAdmin.getSelectionModel().getSelectedItem();
-                }
-            });
-        }catch (SQLException e)
-        {
-            throw new RuntimeException(e);
-        }
-
-*/
 
     public void ToAjouterAdmin() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/creercpt.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCompte.fxml"));
             Parent root = loader.load();
             AjoutAdministrateurController AjoutAdministrateurController = loader.getController();
             Scene pageScene = new Scene(root);
@@ -113,47 +91,36 @@ public class AfficheAdministrateurController {
         }
 
     }
-    public void ToModifierPage() {
-        try {
-            // Récupérez l'administrateur sélectionné dans TableView
-            Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
-
-            if (adminSelectionne != null) {
-                // Chargez la vue de la page de modification
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifier.fxml"));
-                Parent root = loader.load();
-                Scene pageScene = new Scene(root);
-
-                // Accédez au contrôleur de la page de modification
-                ModifierAdminController modifierAdminController = loader.getController();
-
-                // Initialisez les champs de formulaire avec les données de l'administrateur sélectionné
-                modifierAdminController.initialize(adminSelectionne);
-
-                // Affichez la scène de la page de modification dans une nouvelle fenêtre
-                Stage stage = (Stage) label.getScene().getWindow();
-                stage.setScene(pageScene);
-                stage.show();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
     @FXML
     void toAddpage(ActionEvent event) {
         ToAjouterAdmin();
     }
-/*
-    @FXML
-    void toUpdatePage(ActionEvent event) {
+
+    public void supprimer(ActionEvent actionEvent) {
 
     }
 
-    @FXML
-    void ToDeletePage(ActionEvent event) {
-    }*/
+    public void modifier(ActionEvent actionEvent) {
+        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        if (adminSelectionne != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifier.fxml"));
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                ModifierAdminController modifierController = loader.getController();
+                modifierController.initData(adminSelectionne); // Passez l'administrateur sélectionné au contrôleur de la vue de modification
+
+                Stage stage = (Stage) label.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+        }
+    }
 
 }

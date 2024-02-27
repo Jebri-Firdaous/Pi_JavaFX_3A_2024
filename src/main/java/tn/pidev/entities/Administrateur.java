@@ -17,7 +17,11 @@ public class Administrateur extends Personne {
         this.id_admin = id_admin;
         this.role = role;
     }
-
+    public Administrateur(String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne, int id_admin, String role) {
+        super(nom_personne, prenom_personne, numero_telephone, mail_personne, mdp_personne);
+        this.id_admin = id_admin;
+        this.role = role;
+    }
     public int getId_admin() {
         return id_admin;
     }

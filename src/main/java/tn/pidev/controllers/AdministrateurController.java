@@ -31,4 +31,24 @@ public class AdministrateurController {
     }
 
     }
+
+    public void ToaddPage(ActionEvent actionEvent) {
+        try
+        {FXMLLoader loader = new FXMLLoader(getClass().getResource("/creerCompte.fxml"));
+            Parent root = loader.load();
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) label.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (
+                IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
+    }
+
+    public void reinitialisermdp(ActionEvent actionEvent) {
+    }
 }

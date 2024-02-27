@@ -1,5 +1,7 @@
 package tn.pidev.controllers;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,28 +32,11 @@ public class AdminInterfaceControllers{
     @FXML
     private MenuItem listeUtilisateurMenuItem;
 
-    @FXML
-    void afficherAdmin() {
-
-        navigateToPage("afficherAdmin.fxml");
-    }
 
 
 
-    @FXML
-    void Connecter(ActionEvent event) {
-        navigateToPage("pageConnexion.fxml");
-    }
 
 
-    public void reinitialisermdp(ActionEvent actionEvent) {
-        navigateToPage("confirmermail.fxml");
-    }
-
-   /* @FXML
-    void listeUtilisateur() {
-        // Handle list utilisateur
-    }*/
 
     private void navigateToPage(String fxmlFileName) {
         try {
@@ -67,29 +53,51 @@ public class AdminInterfaceControllers{
             e.printStackTrace();
         }
     }
-
-
-
-    public void ToAcceuil(ActionEvent actionEvent) {
-        navigateToPage("Acceuil.fxml");
-
-    }
-
-
-
+    @FXML
     public void modifierAdmin(ActionEvent actionEvent) {
         navigateToPage("modifier.fxml");
 
     }
+    @FXML
+    void Connecter(ActionEvent event) {
+        navigateToPage("pageConnexion.fxml");
+    }
 
-    public void SwitchToAcceuil(ActionEvent actionEvent) {
+
+    public void reinitialisermdp(ActionEvent actionEvent) {
+        navigateToPage("confirmermail.fxml");
+    }
+
+    public void AjouterAdmin(ActionEvent actionEvent) {
+        navigateToPage("AjouterCompte.fxml");
+
+    }
+    @FXML
+    public void Acceuil(ActionEvent actionEvent) {
         navigateToPage("Acceuil.fxml");
+
+    }
+    @FXML
+    void afficherAdmin() {
+
+        navigateToPage("afficherAdmin.fxml");
     }
 
-    public void ToaddPage(ActionEvent actionEvent) {
+
+    public void goBack(ActionEvent actionEvent) {
+    }
+    @FXML
+    private Label bienvenue;
+
+    public void initialize() {
+        // Créer une transition de translation
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(15), bienvenue);
+        transition.setFromX(1312); // Position de départ en X (hors de l'écran à droite)
+        transition.setToX(-1312);
+        transition.setCycleCount(Animation.INDEFINITE); // Répéter indéfiniment
+// Position finale en X (0)
+        transition.play(); // Démarrer la transition
     }
 
-
-//se connecter
 
 }

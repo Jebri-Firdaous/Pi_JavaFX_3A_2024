@@ -113,7 +113,8 @@
                         </Label>
                     </children>
                 </VBox>
-                <Button fx:id="Modifier" mnemonicParsing="false" onAction="#modifierAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #B0E847;" text="Modifier">
+
+                <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#modifierAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #B0E847;" text="Modifier">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
