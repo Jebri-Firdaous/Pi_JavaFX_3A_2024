@@ -1,14 +1,18 @@
 package org.example.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import org.example.entities.Parking;
 import org.example.entities.Place;
 import org.example.services.ParkingService;
@@ -26,12 +30,92 @@ public class AfficherPlaceController {
     PlaceService ps=new PlaceService();
     public ListView<Place> listid;
     public int ref;
+    private Place currentPlaceSelected;
     public void init(int ref){
         this.ref=ref;
         System.out.println(ref);
         try{
         List<Place>list=ps.recupererFiltrer(ref);
         listid.getItems().addAll(list);
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        try{
+            List<Place>list=ps.recupererFiltrer(ref);
+            //listid.getItems().addAll(list);
+            ObservableList<Place> listPlace = FXCollections.observableArrayList();
+            listid.setItems(listPlace);
+            try {
+                List<Place> rendezvousFromService = ps.recuperer();
+                listPlace.addAll(list);
+
+                // Set a custom CellFactory for the ListView
+                listid.setCellFactory(new Callback<ListView<Place>, ListCell<Place>>() {
+                    @Override
+                    public ListCell<Place> call(ListView<Place> param) {
+                        return new ListCell<Place>() {
+                            @Override
+                            protected void updateItem(Place place, boolean empty) {
+                                super.updateItem(place, empty);
+                                if (empty || place == null) {
+                                    setText(null);
+                                    setGraphic(null);
+                                } else {
+                                    // Assuming this code is inside a method where you have access to the rendezVous object
+                                    int numPlace = place.getNum_place();
+                                    String typePlace = place.getType_place();
+                                    String placeEtat = place.getEtat();
+// Create an HBox to hold the details
+                                    HBox hbox = new HBox();
+                                    hbox.setSpacing(65); // Adjust spacing as needed
+
+// Add details to the HBox with styled Labels
+                                    Label numLabel = new Label(Integer.toString(numPlace));
+                                    numLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
+
+                                /*Label prenomLabel = new Label(doctorSurname);
+                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");*/
+
+                                    Label typeLabel = new Label(typePlace);
+                                    typeLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
+
+                                    Label etatLabel = new Label(placeEtat);
+                                    etatLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
+// Add the date Label with the full month name
+
+// Add the Labels to the HBox
+                                    hbox.getChildren().addAll(numLabel, typeLabel, etatLabel);
+
+// Assuming this is inside a ListCell or similar where you can set the graphic
+                                    setGraphic(hbox);
+
+                                }
+                            }
+                        };
+                    }
+                });
+
+                listid.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Place>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Place> observableValue, Place oldPlace, Place newPlace) {
+                        currentPlaceSelected = newPlace;
+                        // Display the selected item
+                        if (currentPlaceSelected != null) {
+                            // Assuming you have a Label to display the selected RendezVous
+                            // selectedRendezVousLabel.setText(currentRendezVousSelected.toString());
+                        } else {
+                            // Assuming you have a Label to display the selected RendezVous
+                            // selectedRendezVousLabel.setText("");
+                        }
+                    }
+                });
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }catch (SQLException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

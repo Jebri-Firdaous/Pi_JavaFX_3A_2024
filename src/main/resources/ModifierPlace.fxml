@@ -1,33 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
+<?import java.net.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierPlaceController">
+<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierPlaceController">
     <children>
-        <Button fx:id="submitB" layoutX="475.0" layoutY="348.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
-        <Button fx:id="annulerB" layoutX="376.0" layoutY="348.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" text="Annuler" />
-        <Label layoutX="226.0" layoutY="51.0" text="Modifier Place" />
-        <Label fx:id="idL" layoutX="91.0" layoutY="122.0" text="Ref" />
-        <TextField fx:id="idTF" disable="true" editable="false" layoutX="174.0" layoutY="117.0" />
-        <Label fx:id="numL" layoutX="91.0" layoutY="194.0" text="Num" />
-        <TextField fx:id="numTF" layoutX="173.0" layoutY="189.0" onKeyReleased="#testNum" />
-        <Label fx:id="errNum" layoutX="173.0" layoutY="220.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
-            <font>
-                <Font size="12.0" />
-            </font>
-        </Label>
-        <Label fx:id="typeL" layoutX="91.0" layoutY="277.0" text="Type" />
-        <ComboBox fx:id="typeCB" layoutX="174.0" layoutY="272.0" prefWidth="150.0" promptText="&lt;---------&gt;" />
-        <Label fx:id="errType" layoutX="173.0" layoutY="303.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
-            <font>
-                <Font size="12.0" />
-            </font>
-        </Label>
+        <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@logo.png" />
+                            </image>
+                        </ImageView>
+                        <!--                   <ImageView fitHeight="850" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">-->
+                        <!--                       <image>-->
+                        <!--                           <Image url="@bk5.png" />-->
+                        <!--                       </image>-->
+                        <!--                   </ImageView>-->
+                        <MenuBar prefHeight="39.0" prefWidth="1160.0">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="Accueil">
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion Sante">
+                                    <items>
+                                        <MenuItem text="Gerer medecin" />
+                                        <MenuItem text="Gerer RV" />
+                                        <!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
+                                        <!--                                <Menu mnemonicParsing="false" >-->
+                                        <!--                                    <items>-->
+                                        <!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
+                                        <!--                                    </items>-->
+                                        <!--                                </Menu>-->
+                                        <!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
+                                        <!--                                </Menu>-->
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion shopping">
+                                    <items>
+                                        <Menu mnemonicParsing="false" text="Article">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Liste d'article" />
+                                            </items>
+                                        </Menu>
+                                        <Menu mnemonicParsing="false" text="Commande">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                            </items>
+                                        </Menu>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion transport">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="About" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" onAction="#naviguezVersParking" text="Gestion parking">
+                                    <!--                                     <items>-->
+                                    <!--                                         <MenuItem mnemonicParsing="false" text="L" />-->
+                                    <!--                                     </items>-->
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion tourisme">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion utilisateur">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                    </children>
+                </HBox>
+            </top>
+         <center>
+            <Group BorderPane.alignment="CENTER">
+               <children>
+                    <ComboBox fx:id="typeCB" layoutX="174.0" layoutY="272.0" prefWidth="150.0" promptText="&lt;---------&gt;" />
+                    <Button fx:id="annulerB" layoutX="376.0" layoutY="348.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" text="Annuler" />
+                    <Button fx:id="submitB" layoutX="475.0" layoutY="348.0" mnemonicParsing="false" onAction="#Update" text="Modifier" />
+                    <TextField fx:id="numTF" layoutX="173.0" layoutY="189.0" onKeyReleased="#testNum" />
+                    <Label fx:id="errNum" layoutX="173.0" layoutY="220.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="idL" layoutX="91.0" layoutY="122.0" text="Ref" />
+                    <Label fx:id="numL" layoutX="91.0" layoutY="194.0" text="Num" />
+                    <Label fx:id="typeL" layoutX="91.0" layoutY="277.0" text="Type" />
+                    <Label fx:id="errType" layoutX="173.0" layoutY="303.0" prefHeight="21.0" prefWidth="187.0" textAlignment="CENTER" textFill="RED">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="idTF" disable="true" editable="false" layoutX="174.0" layoutY="117.0" />
+               </children>
+            </Group>
+         </center>
+        </BorderPane>
     </children>
+    <stylesheets>
+        <URL value="@style.css" />
+        <URL value="@BG.css" />
+    </stylesheets>
 </AnchorPane>

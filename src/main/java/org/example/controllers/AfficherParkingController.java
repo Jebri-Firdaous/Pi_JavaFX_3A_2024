@@ -36,7 +36,7 @@ public class AfficherParkingController {
             ObservableList<Parking> listParking = FXCollections.observableArrayList();
             listid.setItems(listParking);
             try {
-                List<Parking> rendezvousFromService = ps.recuperer();
+                List<Parking> parkingsFromService = ps.recuperer();
                 listParking.addAll(list);
 
                 // Set a custom CellFactory for the ListView
@@ -144,13 +144,7 @@ public class AfficherParkingController {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParking.fxml"));
-            Parent root=loader.load();
-            addB.getScene().setRoot(root);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        refresh(actionEvent);
     }
 
     public void afficherPlace(ActionEvent actionEvent) {
@@ -177,6 +171,16 @@ public class AfficherParkingController {
             addB.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    public void refresh(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParking.fxml"));
+            Parent root=loader.load();
+            addB.getScene().setRoot(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

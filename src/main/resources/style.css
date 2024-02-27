@@ -51,14 +51,14 @@
 }
 /* Style du texte en gras */
 .menu-item {
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
 
 }
 
 /* Style pour rendre le menu invisible */
 .menu-bar {
     -fx-background-color: transparent;
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
 

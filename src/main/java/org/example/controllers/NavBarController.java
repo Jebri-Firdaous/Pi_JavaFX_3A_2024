@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class NavBarController {
 
@@ -88,6 +90,15 @@ public class NavBarController {
         } catch (IOException e) {
             System.err.println("Erreur lors du chargement de la page : " + fxmlFileName);
             e.printStackTrace();
+        }
+    }
+
+    public void afficherParking(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AfficherParking.fxml")));
+            contentPane.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 }

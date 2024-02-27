@@ -114,4 +114,14 @@ public class ModifierPlaceController  implements Initializable {
             test = false;
         }
     }
+
+    public void naviguezVersParking(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParking.fxml"));
+            Parent root = loader.load();
+            typeCB.getScene().setRoot(root);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }
 }
