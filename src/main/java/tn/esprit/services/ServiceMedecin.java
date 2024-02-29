@@ -93,6 +93,78 @@ public class ServiceMedecin implements IService<Medecin> {
         }
         return medecins;
     }
+    public List<Medecin> searchByPrenom(String prenom) throws SQLException {
+        List<Medecin> medecins = new ArrayList<>();
+        String sql = "select * from Medecin where prenom_medecin_medecin LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,prenom+"%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Medecin medecin = new Medecin();
+            medecin.setId_medecin(rs.getInt("id_medecin"));
+            medecin.setNom_medecin(rs.getString("nom_medecin"));
+            medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+            medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+            medecin.setAddress_medecin(rs.getString("address_medecin"));
+            medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+            medecins.add(medecin);
+        }
+        return medecins;
+    }
+    public List<Medecin> searchBySpacialite(String speacialite) throws SQLException {
+        List<Medecin> medecins = new ArrayList<>();
+        String sql = "select * from Medecin where specialite_medecin LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,speacialite+"%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Medecin medecin = new Medecin();
+            medecin.setId_medecin(rs.getInt("id_medecin"));
+            medecin.setNom_medecin(rs.getString("nom_medecin"));
+            medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+            medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+            medecin.setAddress_medecin(rs.getString("address_medecin"));
+            medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+            medecins.add(medecin);
+        }
+        return medecins;
+    }
+    public List<Medecin> searchByNum (String numTel) throws SQLException {
+        List<Medecin> medecins = new ArrayList<>();
+        String sql = "SELECT * FROM Medecin WHERE CAST(numero_telephone_medecin AS CHAR) LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, numTel + '%');
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Medecin medecin = new Medecin();
+            medecin.setId_medecin(rs.getInt("id_medecin"));
+            medecin.setNom_medecin(rs.getString("nom_medecin"));
+            medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+            medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+            medecin.setAddress_medecin(rs.getString("address_medecin"));
+            medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+            medecins.add(medecin);
+        }
+        return medecins;
+    }
+    public List<Medecin> searchByAdresse (String adresse) throws SQLException {
+        List<Medecin> medecins = new ArrayList<>();
+        String sql = "select * from Medecin where address_medecin LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, adresse + '%');
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Medecin medecin = new Medecin();
+            medecin.setId_medecin(rs.getInt("id_medecin"));
+            medecin.setNom_medecin(rs.getString("nom_medecin"));
+            medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+            medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+            medecin.setAddress_medecin(rs.getString("address_medecin"));
+            medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+            medecins.add(medecin);
+        }
+        return medecins;
+    }
 
     public List<String> getAllSpecialié() throws SQLException {
         List<String> listSpecialté = new ArrayList<>();

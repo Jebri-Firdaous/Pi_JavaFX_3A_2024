@@ -24,12 +24,12 @@
       <HBox layoutX="36.0" layoutY="247.0" prefHeight="47.0" prefWidth="1167.0" spacing="142.0">
          <children>
             <Label prefHeight="21.0" prefWidth="87.0" text="Client" />
-            <Label prefHeight="21.0" prefWidth="141.0" text="Dr Nom Prenom">
+            <Label prefHeight="21.0" prefWidth="141.0" text="Dr.Nom ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label lineSpacing="22.0" prefHeight="21.0" prefWidth="103.0" text="Specialité">
+            <Label lineSpacing="22.0" prefHeight="21.0" prefWidth="103.0" text="Specialite">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -53,7 +53,7 @@
             <Image url="@icons/delete.png" />
          </image>
       </ImageView>
-      <TextField fx:id="textFieldSearchByNomClient" layoutX="909.0" layoutY="165.0" onKeyReleased="#searchByNom" prefWidth="246.0" promptText=" Par nom Client">
+      <TextField fx:id="textFieldSearch" layoutX="909.0" layoutY="165.0" onKeyReleased="#searchByAttribut" prefWidth="246.0" promptText="_attribut val">
          <font>
             <Font size="8.0" />
          </font>

@@ -19,6 +19,8 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
 
@@ -26,7 +28,7 @@ public class AfficherMedecinsController {
 
     @FXML
     public Label selectedDoctor;
-    public TextField textFieldSearchByNom;
+    public TextField textFieldSearch;
     @FXML
     private ListView<Medecin> listViewMedecins;
     private final ServiceMedecin serviceMedecin = new ServiceMedecin();
@@ -195,11 +197,64 @@ public class AfficherMedecinsController {
         switchToAddPage();
     }
 
-    public void searchByNom(KeyEvent keyEvent) throws SQLException {
-        if(textFieldSearchByNom.getText()!=null){
-            medecinList.clear();
-            medecinList.addAll(serviceMedecin.searchByNom(textFieldSearchByNom.getText()));
+    public void searchByAttribut(KeyEvent keyEvent) throws SQLException {
+        String valChamp = textFieldSearch.getText();
+        String val = extractValue(valChamp);
+        String attribut = extractAttribute(valChamp);
+        if (textFieldSearch.getText().equals("")){
+            initialize();
         }
-        else initialize();
+//        if(valChamp!=null){
+//           TextField erreur = new TextField();
+//           erreur.setText("tu dois repecter le régle");
+//           return;
+//        }
+        if (attribut.toLowerCase().equals("nom")){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchByNom(val));
+        }
+        if (attribut.toLowerCase().equals("prenom")){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchByPrenom(val));
+        }
+        if (attribut.toLowerCase().equals("prenom")){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchByPrenom(val));
+        }
+        if (attribut.toLowerCase().equals("specialite")){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchBySpacialite(val));
+        }
+        if (attribut.toLowerCase().equals("n°tel")){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchByNum(val));
+        }
+        if (attribut.toLowerCase().equals("adresse")){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchByAdresse(val));
+        }
+
+
+    }
+    public static String extractAttribute(String input) {
+        Pattern pattern = Pattern.compile("_(.+?)\\s");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1); // Retourne l'attribut
+        } else {
+            return "No attribute found.";
+        }
+    }
+
+    public static String extractValue(String input) {
+        Pattern pattern = Pattern.compile("\\s(.+)");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1); // Retourne la valeur
+        } else {
+            return "No value found.";
+        }
     }
 }

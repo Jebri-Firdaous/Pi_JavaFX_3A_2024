@@ -16,7 +16,7 @@
          <children>
             <Label layoutX="200.0" layoutY="236.0" prefHeight="21.0" prefWidth="100.0" text="Nom" />
             <Label layoutX="385.0" layoutY="236.0" prefHeight="21.0" prefWidth="118.0" text="Prenom" />
-            <Label layoutX="579.0" layoutY="236.0" prefHeight="21.0" prefWidth="118.0" text="Specialité" />
+            <Label layoutX="579.0" layoutY="236.0" prefHeight="21.0" prefWidth="118.0" text="Specialite" />
             <Label layoutX="717.0" layoutY="236.0" prefHeight="21.0" prefWidth="118.0" text="N°Tel" />
             <Label layoutX="874.0" layoutY="236.0" prefHeight="21.0" prefWidth="118.0" text="Adresse" />
          </children>
@@ -36,11 +36,16 @@
             <Image url="@icons/modifier.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="775.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="21.0" fitWidth="33.0" layoutX="767.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons/delete.png" />
          </image>
       </ImageView>
-      <TextField fx:id="textFieldSearchByNom" layoutX="904.0" layoutY="136.0" onKeyReleased="#searchByNom" promptText="Recherche avec nom" />
+      <TextField fx:id="textFieldSearch" layoutX="904.0" layoutY="136.0" onKeyReleased="#searchByAttribut" promptText="_attibut valeur" />
+      <ImageView fitHeight="21.0" fitWidth="41.0" layoutX="867.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@searchIcon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

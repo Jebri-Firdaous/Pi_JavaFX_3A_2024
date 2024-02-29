@@ -28,13 +28,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AfficherListRendezVousController {
     public ListView<RendezVous> listViewRendezVous;
     @FXML
     public Label labelListRV;
 
-    public TextField textFieldSearchByNomClient;
+
+    public TextField textFieldSearch;
     RendezVous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
     ObservableList<RendezVous> listRndezVous;
@@ -194,11 +197,63 @@ public class AfficherListRendezVousController {
         }
     }
 
-    public void searchByNom(KeyEvent keyEvent) throws SQLException {
-        if(textFieldSearchByNomClient.getText()!=null){
-            listRndezVous.clear();
-            listRndezVous.addAll(serviceRendezVous.afficherByNomClient(textFieldSearchByNomClient.getText()));
+    public void searchByAttribut(KeyEvent keyEvent) throws SQLException {
+        String valChamp = textFieldSearch.getText();
+        String val = extractValue(valChamp);
+        String attribut = extractAttribute(valChamp);
+        if (textFieldSearch.getText().equals("")){
+            initialize();
         }
-        else initialize();
+//        if(valChamp!=null){
+//           TextField erreur = new TextField();
+//           erreur.setText("tu dois repecter le régle");
+//           return;
+//        }
+        if (attribut.toLowerCase().equals("client")){
+            listRndezVous.clear();
+            listRndezVous.addAll(serviceRendezVous.afficherByNomClient(val));
+        }
+        if (attribut.toLowerCase().equals("dr.nom")){
+            listRndezVous.clear();
+            listRndezVous.addAll(serviceRendezVous.afficherByNomDoctor(val));
+        }
+        if (attribut.toLowerCase().equals("specialite")){
+            listRndezVous.clear();
+            listRndezVous.addAll(serviceRendezVous.afficherBySpecialite(val));
+        }
+        if (attribut.toLowerCase().equals("daterv")){
+            listRndezVous.clear();
+            listRndezVous.addAll(serviceRendezVous.afficherByDate(val));
+        }
+        if (attribut.toLowerCase().equals("adresse")){
+            listRndezVous.clear();
+            listRndezVous.addAll(serviceRendezVous.afficherByAdresse(val));
+        }
+//        if (attribut.toLowerCase().equals("adresse")){
+//            medecinList.clear();
+//            medecinList.addAll(serviceMedecin.searchByAdresse(val));
+//        }
+
+    }
+    public static String extractAttribute(String input) {
+        Pattern pattern = Pattern.compile("_(.+?)\\s");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1); // Retourne l'attribut
+        } else {
+            return "No attribute found.";
+        }
+    }
+
+    public static String extractValue(String input) {
+        Pattern pattern = Pattern.compile("\\s(.+)");
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            return matcher.group(1); // Retourne la valeur
+        } else {
+            return "No value found.";
+        }
     }
 }
