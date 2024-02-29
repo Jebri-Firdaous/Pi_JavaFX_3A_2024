@@ -16,7 +16,7 @@
     <children>
       <ImageView fitHeight="774.0" fitWidth="1312.0" layoutX="1.0" layoutY="1.0">
          <image>
-            <Image url="smartcity.png" />
+            <Image url="@../../../../Projet/GestionUser/src/main/resources/smartcity.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
@@ -90,7 +90,7 @@
               </ComboBox>
             <VBox prefHeight="15.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="SelectionnerRole" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
+                  <Label fx:id="roleInvalid" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -112,7 +112,7 @@
             </VBox>
             <VBox prefHeight="43.0" prefWidth="397.0">
                <children>
-                  <PasswordField prefHeight="47.0" prefWidth="397.0" promptText="Choisissez le mot de passe" />
+                  <PasswordField fx:id="mdp" prefHeight="47.0" prefWidth="397.0" promptText="Choisissez le mot de passe" />
                </children>
             </VBox>
             <VBox prefHeight="20.0" prefWidth="397.0" />

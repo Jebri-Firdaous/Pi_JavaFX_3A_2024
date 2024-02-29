@@ -1,5 +1,5 @@
+    /*---------------------------------------------------- Import -----------------------------------------------------------*/
 package tn.pidev.controllers;
-
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -8,8 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -19,25 +22,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+    /*------------------------------------------------- Conntroller  --------------------------------------------------------*/
 public class AdminInterfaceControllers{
-    @FXML
-    private Label label;
+    /*--------------------------------------------------- Attribut ----------------------------------------------------------*/
 
+        @FXML
+    private Label label;
     @FXML
     private MenuItem afficherListeArticlesMenuItem;
-
     @FXML
     private MenuItem action1MenuItem;
-
     @FXML
     private MenuItem listeUtilisateurMenuItem;
 
 
-
-
-
-
-
+    /*------------------------------------------------------------------------------------------------------------------------*/
+    /*------------------------------------Methode generale pour naviguer dans le meme stage-----------------------------------*/
     private void navigateToPage(String fxmlFileName) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlFileName));
@@ -53,6 +53,23 @@ public class AdminInterfaceControllers{
             e.printStackTrace();
         }
     }
+        public void ToLogin(ActionEvent actionEvent) {
+            try
+            {FXMLLoader loader = new FXMLLoader(getClass().getResource("/pageConnexion.fxml"));
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) label.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (
+                    IOException e) {
+                System.err.println("Erreur lors du chargement de la page ");
+                e.printStackTrace();
+            }
+
+        }
     @FXML
     public void modifierAdmin(ActionEvent actionEvent) {
         navigateToPage("modifier.fxml");
@@ -83,13 +100,28 @@ public class AdminInterfaceControllers{
         navigateToPage("afficherAdmin.fxml");
     }
 
-
+    @FXML
+        private ImageView ProfileImage;
     public void goBack(ActionEvent actionEvent) {
     }
     @FXML
     private Label bienvenue;
 
+
+
+
     public void initialize() {
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem voirProfilItem = new MenuItem("Voir le profil");
+        MenuItem parametresItem = new MenuItem("Paramètres");
+        contextMenu.getItems().addAll(voirProfilItem, parametresItem);
+
+//        // Associez le menu contextuel à l'ImageView
+//        ProfileImage.setOnMouseClicked(event -> {
+//            if (event.getButton() == MouseButton.SECONDARY) { // Clic droit
+//                contextMenu.show(ProfileImage, event.getScreenX(), event.getScreenY());
+//            }
+//        });
         // Créer une transition de translation
         TranslateTransition transition = new TranslateTransition(Duration.seconds(15), bienvenue);
         transition.setFromX(1312); // Position de départ en X (hors de l'écran à droite)
@@ -97,7 +129,12 @@ public class AdminInterfaceControllers{
         transition.setCycleCount(Animation.INDEFINITE); // Répéter indéfiniment
 // Position finale en X (0)
         transition.play(); // Démarrer la transition
+
     }
 
 
-}
+        public void ToConnexion(ActionEvent actionEvent) {
+            navigateToPage("pageConnexion.fxml");
+
+        }
+    }

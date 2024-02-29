@@ -31,16 +31,12 @@
             <Bloom threshold="0.0" />
          </effect>
       </Label>
-      <ImageView fitHeight="88.0" fitWidth="88.0" layoutX="1200.0">
+      <!--image de profile-->
+      <ImageView fx:id="ProfileImage" fitHeight="88.0" fitWidth="88.0" layoutX="1210.0" layoutY="25.0">
          <image>
             <Image url="@login.png" />
          </image>
       </ImageView>
-      <Label layoutX="1189.0" layoutY="84.0" text="Nom Adminidtrateur">
-         <font>
-            <Font name="System Bold Italic" size="11.0" />
-         </font>
-      </Label>
 
    </children>
 </AnchorPane>

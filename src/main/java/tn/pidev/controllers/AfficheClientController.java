@@ -15,13 +15,10 @@ import tn.pidev.entities.Personne;
 import tn.pidev.services.ServiceAdmin;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AfficheAdministrateurController {
+public class AfficheClientController {
     ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
 
     private final  ServiceAdmin sa=new ServiceAdmin();

@@ -34,7 +34,7 @@ public class Main {
 
 try
         {
-            sA.modifier(new Administrateur(6, "faffoulmzyana", "JOUJOU",24500297,"saida.jebri@gmail.com", "abc",6 , "Gestion Santé"));
+            sA.modifier(new Administrateur(22, "Firdaousffff", "jj",21027918,"saida.jebri@gmail.com", "abc" , "Gestion Transport"));
            System.out.println("Modification completé");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -46,13 +46,13 @@ try
             System.out.println(e.getMessage());
         }*/
         /*----------------------------------------------------Supprimer Admin -----------------------------------------------------*/
-
+/*
        try {
-            sA.supprimer(2);
+            sA.supprimer(22);
             System.out.println("suppression avec succées");
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
         /*----------------------------------------------------ajouter Client-----------------------------------------------------*/
         ServiceClient sC = new ServiceClient();
       /*  try {

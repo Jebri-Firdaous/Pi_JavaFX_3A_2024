@@ -124,7 +124,7 @@
                <children>
                   <AnchorPane prefHeight="28.0" prefWidth="397.0">
                      <children>
-                        <Hyperlink layoutX="-7.0" layoutY="-7.0" onAction="#reinitialisermdp" text="Mot de passe oublié?" textFill="#002fff">
+                        <Hyperlink layoutX="-7.0" layoutY="-7.0" onAction="#confirmermail" text="Mot de passe oublié?" textFill="#002fff">
                            <font>
                               <Font size="17.0" />
                            </font>

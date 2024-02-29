@@ -73,7 +73,7 @@
                                     <HBox prefHeight="44.0" prefWidth="63.0" />
                                     <HBox prefHeight="31.0" prefWidth="411.0">
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#supprimer" prefHeight="10.0" prefWidth="449.0" style="-fx-background-color: B0E847;" text="Supprimer">
+                                          <Button mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="10.0" prefWidth="449.0" style="-fx-background-color: B0E847;" text="Supprimer">
                                              <font>
                                                 <Font name="System Bold" size="17.0" />
                                              </font>

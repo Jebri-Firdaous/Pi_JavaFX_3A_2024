@@ -41,20 +41,20 @@ public class ServiceAdmin implements IService <Administrateur> {
         }
 
         // Insertion dans la table "administrateur" en utilisant les données de la table "personne"
-        String sqlInsertAdmin = "INSERT INTO `administrateur` (`id_admin`, `role`, `id_personne`) SELECT ?, ?, id_personne FROM personne WHERE id_personne = ?";
+        String sqlInsertAdmin = "INSERT INTO administrateur (role, id_personne) " +
+                "SELECT ?, id_personne FROM personne WHERE id_personne = ?";
         PreparedStatement preparedStatementAdmin = connection.prepareStatement(sqlInsertAdmin);
-        preparedStatementAdmin.setInt(1, administrateur.getId_admin());
-        preparedStatementAdmin.setString(2, administrateur.getRole());
-        preparedStatementAdmin.setInt(3, idPersonne); // Utilisation de l'ID de la personne récupérée précédemment
+        preparedStatementAdmin.setString(1, administrateur.getRole());
+        preparedStatementAdmin.setInt(2, idPersonne); // Utilisation de l'ID de la personne récupérée précédemment
         preparedStatementAdmin.executeUpdate();
     }
 
     /*--------------------------------------------------MODIFIER------------------------------------------------------*/
 
     public void modifier(Administrateur administrateur) throws SQLException {
-        String sqlUpdate = "UPDATE personne p INNER JOIN administrateur a ON p.id_personne = a.id_personne " +
+        String sqlUpdate = "UPDATE administrateur a INNER JOIN personne p ON p.id_personne = a.id_personne " +
                 "SET p.nom_personne = ?, p.prenom_personne = ?, p.numero_telephone = ?, " +
-                "p.mail_personne = ?, p.mdp_personne = ?, a.role = ? WHERE p.id_personne = ?";
+                "p.mail_personne = ?, p.mdp_personne = ?, a.role = ? WHERE a.id_personne = ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate);
         preparedStatement.setString(1, administrateur.getNom_personne());
@@ -74,12 +74,13 @@ public class ServiceAdmin implements IService <Administrateur> {
     public List<Administrateur> afficher() throws SQLException {
         List<Administrateur>
                 administrateurList = new ArrayList<>();
-        String sql = "SELECT a.role, p.nom_personne, p.prenom_personne, p.numero_telephone, p.mail_personne, p.mdp_personne " +
+        String sql = "SELECT * " +
                 "FROM administrateur a JOIN personne p ON p.id_personne = a.id_personne";
 
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         while (rs.next()) {
+            int id_personne = rs.getInt("id_personne");
             String role = rs.getString("role");
             String nom = rs.getString("nom_personne");
             String prenom = rs.getString("prenom_personne");
@@ -87,7 +88,7 @@ public class ServiceAdmin implements IService <Administrateur> {
             String mail = rs.getString("mail_personne");
             String mdp = rs.getString("mdp_personne");
 
-            Administrateur administrateur = new Administrateur(nom, prenom, tel, mail, mdp, role);
+            Administrateur administrateur = new Administrateur(id_personne,nom, prenom, tel, mail, mdp, role);
             administrateurList.add(administrateur);
         }
         return administrateurList;
@@ -95,7 +96,7 @@ public class ServiceAdmin implements IService <Administrateur> {
 
     @Override
     public void supprimer(int id) throws SQLException {
-        String sqlDeleteAdmin = "DELETE FROM administrateur WHERE id_perspnne = ? ";
+        String sqlDeleteAdmin = "DELETE FROM administrateur WHERE id_personne = ?";
 
         // Préparer la déclaration SQL
         try (PreparedStatement preparedStatement = connection.prepareStatement(sqlDeleteAdmin)) {

@@ -60,19 +60,20 @@ public class ModifierAdminController {
     @FXML
     private Label remplirChamps;
     private Administrateur admin;
-
+    private int id_personne;
 
 
     void initData(Administrateur administrateur) {
         this.admin = administrateur;
-        if (administrateur != null) {
-            nom.setText(administrateur.getNom_personne());
-            prenom.setText(administrateur.getPrenom_personne());
-            tel.setText(String.valueOf(administrateur.getNumero_telephone()));
-            mail.setText(administrateur.getMail_personne());
-            mdp.setText(administrateur.getMdp_personne());
-            role.setValue(administrateur.getRole());
-        }
+        id_personne = administrateur.getId_personne();
+
+        nom.setText(administrateur.getNom_personne());
+        prenom.setText(administrateur.getPrenom_personne());
+        tel.setText(String.valueOf(administrateur.getNumero_telephone()));
+        mail.setText(administrateur.getMail_personne());
+        mdp.setText(administrateur.getMdp_personne());
+        role.setValue(administrateur.getRole());
+
 
     }
 
@@ -94,32 +95,41 @@ public class ModifierAdminController {
 
 
     public void modifierAdmin(ActionEvent actionEvent) {
+        Administrateur administrateur = new Administrateur();
+        // Récupérer les nouvelles valeurs des champs de la page de modification
+        String nouveauNom = nom.getText();
+        String nouveauPrenom = prenom.getText();
+        String nouveauNumero = tel.getText();
+        String nouveauRole = role.getValue();
+        String nouveauMail = mail.getText();
+        String nouveauMdp = mdp.getText();
 
-            // Récupérer les nouvelles valeurs des champs de la page de modification
-            String nouveauNom = nom.getText();
-            String nouveauPrenom = prenom.getText();
-            String nouveauNumero = tel.getText();
-            String nouveauRole = role.getValue();
-            String nouveauMail = mail.getText();
-            String nouveauMdp = mdp.getText();
+        // Mettre à jour les valeurs de l'objet admin
+        admin.setId_personne(id_personne);
+        admin.setNom_personne(nouveauNom);
+        admin.setPrenom_personne(nouveauPrenom);
+        admin.setNumero_telephone(Integer.parseInt(nouveauNumero));
+        admin.setMail_personne(nouveauMail);
+        admin.setRole(nouveauRole);
+        admin.setMdp_personne(nouveauMdp);
 
-            // Créer un nouvel objet Administrateur avec les nouvelles valeurs
-admin.setNom_personne(nouveauNom);
-admin.setPrenom_personne(nouveauPrenom);
-admin.setNumero_telephone(Integer.parseInt(nouveauNumero));
-admin.setRole(nouveauRole);
-admin.setMail_personne(nouveauMail);
-admin.setMdp_personne(nouveauMdp);
         try {
+            // Appeler la méthode de service pour modifier l'administrateur dans la base de données
+            System.out.println(id_personne);
+            System.out.println(admin.getId_personne());
             sa.modifier(admin);
+
+            // Afficher un message de succès
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");
             alert.setHeaderText(null);
             alert.setContentText("L'administrateur a été modifié avec succès !");
             alert.showAndWait();
+
+            // Naviguer vers la liste des administrateurs
             ToAfficherListeAdmine();
         } catch (SQLException e) {
-            // Afficher une alerte en cas d'erreur
+            // Gérer les erreurs de modification
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur lors de la modification de l'administrateur");
@@ -137,7 +147,6 @@ admin.setMdp_personne(nouveauMdp);
         alert.showAndWait();
     }
 }
-
 
 
 //    public void modifierAdmin(ActionEvent actionEvent) {

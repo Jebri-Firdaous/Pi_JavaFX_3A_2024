@@ -45,7 +45,7 @@
               </TextField>
             <VBox prefHeight="15.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="prenomInvalid" text="Prenom Invalide" textFill="RED" visible="false" />
+                  <Label fx:id="prenomInvalid" prefHeight="21.0" prefWidth="339.0" text="Prenom Invalide" textFill="RED" visible="false" />
                </children></VBox>
               <TextField fx:id="tel" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre numero de telephone">
                   <font>
@@ -54,7 +54,7 @@
               </TextField>
             <VBox prefHeight="15.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="210.0" text="Numero Invalide" textFill="RED" visible="false" />
+                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="347.0" text="Numero Invalide" textFill="RED" visible="false" />
                </children>
             </VBox>
               <ComboBox fx:id="role" prefHeight="42.0" prefWidth="401.0" promptText="Role">
@@ -77,7 +77,7 @@
               </ComboBox>
             <VBox prefHeight="15.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="roleInvalid" prefHeight="21.0" prefWidth="210.0" text="Veuillez choisir un Role" textFill="RED" visible="false" />
+                  <Label fx:id="roleInvalid" prefHeight="21.0" prefWidth="343.0" text="Veuillez choisir un Role" textFill="RED" visible="false" />
                </children></VBox>
               <TextField fx:id="mail" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre adresse mail">
                   <font>

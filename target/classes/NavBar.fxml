@@ -22,7 +22,7 @@
                      </fill>
                   </Rectangle>
 
-            <MenuBar layoutX="240.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="900.0">
+            <MenuBar layoutX="197.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="900.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Accueil">
                      <items>
@@ -41,12 +41,23 @@
                   <Menu mnemonicParsing="false" text="Gestion tourisme">
                   </Menu>
                   <Menu mnemonicParsing="false" text="Gestion utilisateur">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#afficherAdmin" text="Afficher Administrateur" />
-                     </items>
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#AjouterAdmin" text="Ajouter Administrateur" />
-                     </items>
+                     <Menu mnemonicParsing="false" text="Administrateurs">
+                        <items>
+                           <MenuItem mnemonicParsing="false" onAction="#afficherAdmin" text="Afficher" />
+                        </items>
+                        <items>
+                           <MenuItem mnemonicParsing="false" onAction="#AjouterAdmin" text="Ajouter" />
+                        </items>
+                     </Menu>
+                     <Menu mnemonicParsing="false" text="Clients">
+                        <items>
+                           <MenuItem mnemonicParsing="false" onAction="#afficherAdmin" text="Afficher" />
+                        </items>
+                        <items>
+                           <MenuItem mnemonicParsing="false" onAction="#AjouterAdmin" text="Ajouter" />
+                        </items>
+                     </Menu>
+
                   </Menu>
                </menus>
             </MenuBar>
