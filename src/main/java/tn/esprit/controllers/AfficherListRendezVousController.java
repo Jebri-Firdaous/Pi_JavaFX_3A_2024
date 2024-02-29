@@ -9,10 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -35,11 +33,14 @@ public class AfficherListRendezVousController {
     public ListView<RendezVous> listViewRendezVous;
     @FXML
     public Label labelListRV;
+
+    public TextField textFieldSearchByNomClient;
     RendezVous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
+    ObservableList<RendezVous> listRndezVous;
 
     public void initialize() {
-        ObservableList<RendezVous> listRndezVous = FXCollections.observableArrayList();
+        listRndezVous = FXCollections.observableArrayList();
         listViewRendezVous.setItems(listRndezVous);
         try {
             List<RendezVous> rendezvousFromService = serviceRendezVous.afficher();
@@ -191,5 +192,13 @@ public class AfficherListRendezVousController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void searchByNom(KeyEvent keyEvent) throws SQLException {
+        if(textFieldSearchByNomClient.getText()!=null){
+            listRndezVous.clear();
+            listRndezVous.addAll(serviceRendezVous.afficherByNomClient(textFieldSearchByNomClient.getText()));
+        }
+        else initialize();
     }
 }

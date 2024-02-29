@@ -75,6 +75,24 @@ public class ServiceMedecin implements IService<Medecin> {
         }
         return medecins;
     }
+    public List<Medecin> searchByNom(String nom) throws SQLException {
+        List<Medecin> medecins = new ArrayList<>();
+        String sql = "select * from Medecin where nom_medecin LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,nom+"%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Medecin medecin = new Medecin();
+            medecin.setId_medecin(rs.getInt("id_medecin"));
+            medecin.setNom_medecin(rs.getString("nom_medecin"));
+            medecin.setPrenom_medecin_medecin(rs.getString("prenom_medecin_medecin"));
+            medecin.setNumero_telephone_medecin(rs.getInt("numero_telephone_medecin"));
+            medecin.setAddress_medecin(rs.getString("address_medecin"));
+            medecin.setSpecialite_medecin(rs.getString("specialite_medecin"));
+            medecins.add(medecin);
+        }
+        return medecins;
+    }
 
     public List<String> getAllSpecialié() throws SQLException {
         List<String> listSpecialté = new ArrayList<>();
@@ -131,5 +149,8 @@ public class ServiceMedecin implements IService<Medecin> {
         }
         return medecin;
     }
+
+
+
 
 }

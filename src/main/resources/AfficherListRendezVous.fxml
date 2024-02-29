@@ -53,6 +53,16 @@
             <Image url="@icons/delete.png" />
          </image>
       </ImageView>
+      <TextField fx:id="textFieldSearchByNomClient" layoutX="909.0" layoutY="165.0" onKeyReleased="#searchByNom" prefWidth="246.0" promptText=" Par nom Client">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="21.0" fitWidth="48.0" layoutX="874.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@searchIcon.png" />
+         </image>
+      </ImageView>
    </children>
 
 </AnchorPane>

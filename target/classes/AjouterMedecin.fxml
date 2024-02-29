@@ -39,7 +39,7 @@
             <VBox>
                <children>
                   <Label layoutX="115.0" layoutY="313.0" text="Numéro de téléphone" />
-                  <TextField fx:id="numeroTel" layoutX="115.0" layoutY="355.0">
+                  <TextField fx:id="numeroTel" layoutX="115.0" layoutY="355.0" onKeyTyped="#numTelTyped">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -67,6 +67,7 @@
          </image>
       </ImageView>
       <Button layoutX="79.0" layoutY="147.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToDisplay" prefHeight="39.0" prefWidth="213.0" styleClass="returnToDisplayPage" text="&lt;==Afficher Les Medecins" />
+      <Label fx:id="msgErreur" layoutX="447.0" layoutY="430.0" prefHeight="21.0" prefWidth="213.0" />
 
    </children>
 </AnchorPane>

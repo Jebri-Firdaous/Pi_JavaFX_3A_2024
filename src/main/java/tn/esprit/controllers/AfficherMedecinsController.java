@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
@@ -25,10 +26,12 @@ public class AfficherMedecinsController {
 
     @FXML
     public Label selectedDoctor;
+    public TextField textFieldSearchByNom;
     @FXML
     private ListView<Medecin> listViewMedecins;
     private final ServiceMedecin serviceMedecin = new ServiceMedecin();
     Medecin currentDoctorSelected;
+    ObservableList<Medecin> medecinList;
 
 
     //    To can populate our list view with data
@@ -57,7 +60,7 @@ public class AfficherMedecinsController {
 
     }*/
     public void initialize() {
-        ObservableList<Medecin> medecinList = FXCollections.observableArrayList();
+        medecinList = FXCollections.observableArrayList();
         listViewMedecins.setItems(medecinList);
         try {
             List<Medecin> medecinsFromService = serviceMedecin.afficher();
@@ -190,5 +193,13 @@ public class AfficherMedecinsController {
 
     public void SwitchToAdd(ActionEvent actionEvent) {
         switchToAddPage();
+    }
+
+    public void searchByNom(KeyEvent keyEvent) throws SQLException {
+        if(textFieldSearchByNom.getText()!=null){
+            medecinList.clear();
+            medecinList.addAll(serviceMedecin.searchByNom(textFieldSearchByNom.getText()));
+        }
+        else initialize();
     }
 }

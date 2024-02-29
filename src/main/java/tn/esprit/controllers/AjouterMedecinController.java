@@ -2,7 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import tn.esprit.entities.Medecin;
 import tn.esprit.services.ServiceMedecin;
 
@@ -33,7 +35,7 @@ public class AjouterMedecinController implements Initializable {
     public TextField addresse;
 
     public ComboBox<String> specialiteR;
-
+    public Label msgErreur;
 
 
     public void switchToDisplayAllDoctorsPage() {
@@ -69,7 +71,7 @@ public class AjouterMedecinController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Veuillez remplir tous les champs : Nom, Prénom, Numéro de téléphone et Adresse.");
             alert.showAndWait();
-        } else if (numeroTelText.length() !=   8 || !numeroTelText.matches("\\d+") || !numeroTelText.startsWith("5") && !numeroTelText.startsWith("2") && !numeroTelText.startsWith("9")) {
+        } else if (numeroTelText.length() != 8 || !numeroTelText.matches("\\d+") || !numeroTelText.startsWith("5") && !numeroTelText.startsWith("2") && !numeroTelText.startsWith("9")) {
             // Show an alert if the phone number is not valid
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Numéro de téléphone invalide");
@@ -94,8 +96,6 @@ public class AjouterMedecinController implements Initializable {
     }
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<String> listSpecialite = Arrays.asList(
@@ -115,12 +115,42 @@ public class AjouterMedecinController implements Initializable {
         );
         ObservableList<String> specialiteList = FXCollections.observableArrayList();
         specialiteR.setItems(specialiteList);
+        specialiteList.addAll(listSpecialite);
 
-            specialiteList.addAll(listSpecialite);
 
     }
 
     public void returnToDisplay(ActionEvent actionEvent) {
         switchToDisplayAllDoctorsPage();
     }
-}
+
+
+    public void numTelTyped(KeyEvent keyEvent) {
+        TextFormatter<Integer> formatter = new TextFormatter<>(new IntegerStringConverter(), 0, change ->
+        {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+            return null;
+        });
+
+        numeroTel.setTextFormatter(formatter);
+        if (!numeroTel.getText().isEmpty()) {
+            if (numeroTel.getText().matches("\\d+") && numeroTel.getText().length() == 8) {
+                msgErreur.setText("");
+                numeroTel.setStyle("-fx-border-color: blue; -fx-border-width: 1px; -fx-border-style: solid");
+            } else {
+                msgErreur.setText("N°Tel invalide");
+                msgErreur.setStyle("-fx-text-fill: red");
+                numeroTel.setStyle("-fx-border-width: 1px;-fx-border-color: red;");
+                numeroTel.setStyle("-fx-border-color: red; -fx-border-width: 1px; -fx-border-style: solid");
+
+            }
+        }
+        else {
+            msgErreur.setText("");
+            }
+        }
+    }
+

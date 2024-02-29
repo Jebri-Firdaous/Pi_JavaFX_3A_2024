@@ -41,5 +41,6 @@
             <Image url="@icons/delete.png" />
          </image>
       </ImageView>
+      <TextField fx:id="textFieldSearchByNom" layoutX="904.0" layoutY="136.0" onKeyReleased="#searchByNom" promptText="Recherche avec nom" />
    </children>
 </AnchorPane>

@@ -25,11 +25,12 @@
          </children>
       </VBox>
       <Button layoutX="91.0" layoutY="622.0" mnemonicParsing="false" onAction="#ModifierMedecin" prefHeight="31.0" prefWidth="187.0" text="Modifier" />
-      <ImageView fitHeight="393.0" fitWidth="614.0" layoutX="500.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="393.0" fitWidth="614.0" layoutX="549.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@modifiermedecinImage.png" />
          </image>
       </ImageView>
-      <Button layoutX="54.0" layoutY="146.0" mnemonicParsing="false" onAction="#returnToDisplayM" styleClass="returnToDisplayPage" prefWidth="218.0" text="&lt;==Afficher Les medecins" />
+      <Button layoutX="54.0" layoutY="146.0" mnemonicParsing="false" onAction="#returnToDisplayM" prefWidth="218.0" styleClass="returnToDisplayPage" text="&lt;==Afficher Les medecins" />
+      <Label fx:id="msgErreur" layoutX="395.0" layoutY="403.0" onKeyReleased="#numTelTyped" prefHeight="33.0" prefWidth="112.0" />
    </children>
 </AnchorPane>

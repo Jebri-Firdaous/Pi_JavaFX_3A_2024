@@ -67,6 +67,22 @@ public class ServiceRendezVous implements IService<RendezVous>{
         }
         return desrendezVous;
     }
+    public List<RendezVous> afficherByNomClient(String nomClient) throws SQLException {
+        List<RendezVous> desrendezVous = new ArrayList<>();
+        String sql = "SELECT * FROM `rendez-vous` WHERE id_personne IN (SELECT id_personne FROM personne WHERE UPPER(nom_personne) LIKE ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,nomClient.toUpperCase()+"%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            RendezVous rendezVous = new RendezVous();
+            rendezVous.setRef_rendez_vous(rs.getInt("ref_rendez_vous"));
+            rendezVous.setDate_rendez_vous(rs.getTimestamp("date_rendez_vous"));
+            rendezVous.setId_medecin(rs.getInt("id_medecin"));
+            rendezVous.setId_personne(rs.getInt("id_personne"));
+            desrendezVous.add(rendezVous);
+        }
+        return desrendezVous;
+    }
     public List<LocalDateTime> getAllDateRendezVousByidMedeicn(int id) throws SQLException {
         List<LocalDateTime> dateRendezVous = new ArrayList<>();
         String sql = "SELECT `date_rendez_vous` FROM `rendez-vous` WHERE `id_medecin` = ? ";
