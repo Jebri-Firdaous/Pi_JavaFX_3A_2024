@@ -130,6 +130,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
             rendezVous.setId_personne(rs.getInt("id_personne"));
             desrendezVous.add(rendezVous);
         }
+        System.out.println(desrendezVous);
         return desrendezVous;
     }
     public List<RendezVous> afficherByAdresse(String adresse) throws SQLException {

@@ -73,10 +73,16 @@ public class AfficherListRendezVousController {
                                 String address = medecin.getAddress_medecin();
 
                                 Timestamp timestamp = rendezVous.getDate_rendez_vous();
-
 // Format the timestamp to include the full month name
                                 DateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
+
                                 String timestampAsString = format.format(timestamp);
+//                                just i need the first three letters of the month ( fev => not ferv, Mar not Mars)
+                                String[] parts = timestampAsString.split("-");
+                                String month = parts[1];
+                                // Extract the first three letters of the month
+                                String firstThreeLettersOfMonth = month.substring(0, 3);
+                                String dateRvDisplayedInInterface = parts[0]+"-"+firstThreeLettersOfMonth+"-"+parts[2];
 
 // Create an HBox to hold the details
                                 HBox hbox = new HBox();
@@ -92,7 +98,7 @@ public class AfficherListRendezVousController {
                                 /*Label prenomLabel = new Label(doctorSurname);
                                 prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");*/
 
-                                Label dateLabel = new Label(timestampAsString);
+                                Label dateLabel = new Label(dateRvDisplayedInInterface);
                                 dateLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
 
                                 Label specialiteLabel = new Label(specialty);
