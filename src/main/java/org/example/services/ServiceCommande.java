@@ -50,10 +50,30 @@ public class ServiceCommande implements IServiceCommande<Commande> {
     }
 
 
-    @Override
+    // Méthode pour mettre à jour l'ID de la commande dans les articles associés
+    private void mettreAJourIdCommandeArticles(int idCommande, List<Integer> articleIds) throws SQLException {
+        String updateQuery = "UPDATE article SET id_commande = ? WHERE id_article IN (";
+        for (int i = 0; i < articleIds.size(); i++) {
+            updateQuery += "?";
+            if (i < articleIds.size() - 1) {
+                updateQuery += ",";
+            }
+        }
+        updateQuery += ")";
 
+        try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
+            statement.setInt(1, idCommande);
+            int parameterIndex = 2;
+            for (int articleId : articleIds) {
+                statement.setInt(parameterIndex++, articleId);
+            }
+            statement.executeUpdate();
+        }
+    }
+
+
+    @Override
     public void modifierCommande(Commande commande) throws SQLException {
-        // Assurez-vous de mettre à jour votre requête SQL pour inclure la colonne Etat_Commande
         String sql = "UPDATE commande SET nombre_article = ?, prix_totale = ?, delais_commande = ? WHERE id_commande = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, commande.getNombre_Article());
@@ -63,6 +83,27 @@ public class ServiceCommande implements IServiceCommande<Commande> {
             preparedStatement.executeUpdate();
         }
     }
+
+    public void supprimerArticlesDeCommande(Commande commande) throws SQLException {
+        String sql = "DELETE FROM commande_article WHERE id_commande = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, commande.getId_Commande());
+            preparedStatement.executeUpdate();
+        }
+    }
+
+    // Insérer les nouveaux articles associés à la commande dans la table de jointure
+    public void insererArticlesDeCommande(Commande commande) throws SQLException {
+        String sql = "INSERT INTO commande_article (id_commande, id_article) VALUES (?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            for (Article article : commande.getArticles()) {
+                preparedStatement.setInt(1, commande.getId_Commande());
+                preparedStatement.setInt(2, article.getId_Article());
+                preparedStatement.executeUpdate();
+            }
+        }
+    }
+
 
     @Override
     public void supprimerCommande(int id_Commande) throws SQLException {
@@ -101,6 +142,46 @@ public class ServiceCommande implements IServiceCommande<Commande> {
         return articles;
     }
 
+    public List<Article> getAllArticles() throws SQLException {
+        List<Article> articles = new ArrayList<>();
+        String sql = "SELECT * FROM article";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                Article article = new Article();
+                article.setId_Article(resultSet.getInt("id_article"));
+                article.setNom_Article(resultSet.getString("nom_article"));
+                article.setPrix_Article(resultSet.getDouble("prix_article"));
+                // Ajoutez d'autres attributs si nécessaire
+                articles.add(article);
+            }
+        }
+        return articles;
+    }
+
+    public List<Article> getArticlesByCommande(Commande commande) throws SQLException {
+        List<Article> articles = new ArrayList<>();
+        String sql = "SELECT a.* " +
+                "FROM article a " +
+                "INNER JOIN commande_article ca ON a.id_article = ca.id_article " +
+                "WHERE ca.id_commande = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, commande.getId_Commande());
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Article article = new Article();
+                    article.setId_Article(resultSet.getInt("id_article"));
+                    article.setNom_Article(resultSet.getString("nom_article"));
+                    article.setPrix_Article(resultSet.getDouble("prix_article"));
+                    // Ajoutez d'autres attributs si nécessaire
+                    articles.add(article);
+                }
+            }
+        }
+        return articles;
+    }
+
+
 
     @Override
     public List<Commande> afficherCommande() throws SQLException {
@@ -133,5 +214,8 @@ public class ServiceCommande implements IServiceCommande<Commande> {
         }
         return commandes;
     }
+
+
+
 
 }

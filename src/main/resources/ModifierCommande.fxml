@@ -15,58 +15,63 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="629.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierCommandeController">
+<AnchorPane prefHeight="629.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierCommandeControllers">
 
     <children>
         <VBox alignment="CENTER" layoutX="111.0" layoutY="104.0" prefHeight="390.0" prefWidth="588.0" spacing="10">
-            <children>
-                <HBox spacing="10">
-                    <children>
-                        <Label styleClass="input-label" text="État de la commande:">
-                            <font>
-                                <Font name="Bell MT" size="25.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="idCommandeTextField" editable="false" promptText="En Attente" styleClass="text-field">
-                            <HBox.margin>
-                                <Insets bottom="50.0" />
-                            </HBox.margin>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox spacing="10">
-                    <children>
-                        <Label styleClass="input-label" text="Délai de la commande:">
-                            <font>
-                                <Font name="Bell MT" size="25.0" />
-                            </font>
-                        </Label>
-                        <DatePicker fx:id="delaisCommandeDatePicker" promptText="Délai de la commande" styleClass="date-picker" />
-                    </children>
-                </HBox>
-                <HBox spacing="10">
-                    <children>
-                        <Label styleClass="input-label" text="Articles déjà insérés:">
-                            <font>
-                                <Font name="Bell MT" size="25.0" />
-                            </font>
-                        </Label>
-                        <ComboBox fx:id="articlesDejaInseresComboBox" prefHeight="31.0" prefWidth="238.0" promptText="Articles déjà insérés" styleClass="combo-box" />
-                    </children>
-                </HBox>
-            </children>
+           <children>
+               <HBox spacing="10">
+                  <children>
+                      <Label styleClass="input-label" text="ID Commande:">
+                     <font>
+                        <Font name="Bell MT" size="25.0" />
+                     </font>
+                  </Label>
+                      <TextField fx:id="idCommandeTextField" editable="false" promptText="ID Commande" styleClass="text-field">
+                     <HBox.margin>
+                        <Insets bottom="50.0" />
+                     </HBox.margin>
+                  </TextField>
+                  </children>
+               </HBox>
+               <HBox spacing="10">
+                  <children>
+                      <Label styleClass="input-label" text="Délai de la commande:">
+                     <font>
+                        <Font name="Bell MT" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="50.0" />
+                     </HBox.margin>
+                  </Label>
+                      <DatePicker fx:id="delaisCommandeDatePicker" promptText="Délai de la commande" styleClass="date-picker" />
+                  </children>
+               </HBox>
+               <HBox spacing="10">
+                  <children>
+                      <Label styleClass="input-label" text="Articles déjà insérés:">
+                     <font>
+                        <Font name="Bell MT" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="50.0" />
+                     </HBox.margin>
+                  </Label>
+                      <ComboBox fx:id="articlesDejaInseresComboBox" prefHeight="31.0" prefWidth="238.0" promptText="Articles déjà insérés" styleClass="combo-box" />
+                  </children>
+               </HBox>
+           </children>
         </VBox>
-        <Label layoutX="227.0" layoutY="61.0" styleClass="title-label" text="Modifier Commande" textFill="#54e0fc">
-            <font>
-                <Font name="Bell MT" size="36.0" />
-            </font>
-        </Label>
-
-        <Button fx:id="modifierCommandeButton" layoutX="513.0" layoutY="514.0" onAction="#modifierCommande" prefHeight="31.0" prefWidth="156.0" styleClass="action-button" text="Modifier" />
-        <ImageView fitHeight="179.0" fitWidth="200.0" layoutY="440.0">
-            <image>
-                <Image url="@Modifier.png" />
-            </image>
-        </ImageView>
+         <Label layoutX="227.0" layoutY="61.0" styleClass="title-label" text="Modifier Commande" textFill="#54e0fc">
+         <font>
+            <Font name="Bell MT" size="36.0" />
+         </font>
+      </Label>
+         <Button fx:id="modifierCommandeButton" layoutX="513.0" layoutY="514.0" onAction="#modifierCommande" prefHeight="31.0" prefWidth="156.0" styleClass="action-button" text="Modifier" />
+      <ImageView fitHeight="179.0" fitWidth="200.0" layoutY="440.0">
+         <image>
+            <Image url="@mod.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

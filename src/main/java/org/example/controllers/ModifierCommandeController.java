@@ -32,6 +32,12 @@ public class ModifierCommandeController {
     private Commande commande;
     private Stage stage;
 
+
+    @FXML
+    private Button accepterButton;
+
+
+
     public void initialize() {
         modifierCommandeButton.setOnAction(event -> modifierCommande());
     }
