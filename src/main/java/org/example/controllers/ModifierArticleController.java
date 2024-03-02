@@ -4,15 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import org.example.entites.Article;
 import org.example.services.ServiceArticle;
 
 import java.io.File;
 import java.sql.SQLException;
+import java.util.function.UnaryOperator;
 
-public class ModifierArticleControllers {
+public class ModifierArticleController {
 
     @FXML
     private TextField nomArticleTextField;
@@ -35,6 +38,17 @@ public class ModifierArticleControllers {
     @FXML
     void initialize() {
         typeArticleCB.getItems().addAll(Article.TypeArticle.values());
+        quantiteArticleTextField.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), null, new UnaryOperator<TextFormatter.Change>() {
+            @Override
+            public TextFormatter.Change apply(TextFormatter.Change change) {
+                if (change.isContentChange()) {
+                    if (!change.getControlNewText().matches("\\d*")) {
+                        change.setText("");
+                    }
+                }
+                return change;
+            }
+        }));
     }
 
 
@@ -116,7 +130,7 @@ public class ModifierArticleControllers {
     }
 
     @FXML
-    void modifierPhoto() {
+    void modifierPhotoArticle() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Modifier la photo");
         fileChooser.getExtensionFilters().addAll(

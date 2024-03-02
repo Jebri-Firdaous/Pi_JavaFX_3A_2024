@@ -32,6 +32,29 @@ public class ServiceArticle implements IServiceArticle<Article> {
         preparedStatement.setString(6, article.getPhoto_article());
         preparedStatement.executeUpdate();
     }
+    @Override
+    public List<Article> rechercherArticles(String recherche) throws SQLException {
+        List<Article> articles = new ArrayList<>();
+        String sql = "SELECT a.id_article, a.nom_article, a.prix_article, a.quantite_article, a.type_article, a.description_article, a.photo_article " +
+                "FROM article a " +
+                "WHERE a.nom_article LIKE ? OR a.description_article LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + recherche + "%");
+        preparedStatement.setString(2, "%" + recherche + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Article article = new Article();
+            article.setId_Article(rs.getInt("id_article"));
+            article.setNom_Article(rs.getString("nom_article"));
+            article.setPrix_Article(rs.getDouble("prix_article"));
+            article.setQuantite_Article(rs.getInt("quantite_article"));
+            article.setType_article(Article.TypeArticle.valueOf(rs.getString("type_article"))); // Convertir la chaîne en enum
+            article.setDescription_article(rs.getString("description_article"));
+            article.setPhoto_article(rs.getString("photo_article"));
+            articles.add(article);
+        }
+        return articles;
+    }
 
 
     @Override
@@ -84,4 +107,7 @@ public class ServiceArticle implements IServiceArticle<Article> {
         }
         return articles;
     }
-}
+
+    }
+
+

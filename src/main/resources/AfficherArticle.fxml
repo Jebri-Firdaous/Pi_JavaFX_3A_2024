@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.stage.FileChooser?>
+<?import java.io.File?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<AnchorPane prefHeight="774.0" prefWidth="1312.0" stylesheets="@StyleShopping.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AfficherArticleController">
+    <children>
+        <fx:include source="AdminInterface.fxml" />
+
+        <!-- Container pour afficher les articles -->
+        <VBox layoutX="43.0" layoutY="393.0" prefHeight="338.0" prefWidth="1249.0" style="-fx-padding: 20;">
+            <children>
+                <ScrollPane hbarPolicy="ALWAYS" prefHeight="327.0" prefWidth="1106.0" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox>
+                            <children>
+                                <HBox fx:id="articlesContainer" />
+                            </children>
+                        </VBox>
+                    </content>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                    </VBox.margin>
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                </ScrollPane>
+            </children>
+        </VBox>
+
+        <!-- Image d'arrière-plan -->
+        <ImageView fx:id="backgroundImageView" fitHeight="193.0" fitWidth="1312.0" layoutY="149.0" />
+        <!-- ComboBox pour trier par prix -->
+        <ComboBox fx:id="triComboBox" layoutX="712.0" layoutY="356.0" prefHeight="31.0" prefWidth="156.0" promptText="Trier par prix" />
+      <HBox alignment="CENTER" layoutX="97.0" layoutY="357.0" prefHeight="31.0" prefWidth="615.0" style="-fx-border-color: grey; -fx-border-radius: 10;">
+         <children>
+
+                <TextField fx:id="rechercheArticleTF" layoutX="94.0" layoutY="253.0" prefHeight="31.0" prefWidth="584.0" promptText="Chercher un article" style="-fx-background-color: transparent;" />
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>

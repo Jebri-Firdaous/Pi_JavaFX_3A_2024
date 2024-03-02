@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-public class ModifierCommandeControllers {
+public class ModifierCommandeController {
 
     @FXML
     private TextField idCommandeTextField;
@@ -46,10 +46,10 @@ public class ModifierCommandeControllers {
     void modifierCommande() {
         try {
             if (commande != null) {
-                int nouveauId = Integer.parseInt(idCommandeTextField.getText());
+
                 java.util.Date nouveauDelai = java.sql.Date.valueOf(delaisCommandeDatePicker.getValue());
 
-                commande.setId_Commande(nouveauId);
+
                 commande.setDelais_Commande(nouveauDelai);
 
                 serviceCommande.modifierCommande(commande); // Mettre à jour la commande

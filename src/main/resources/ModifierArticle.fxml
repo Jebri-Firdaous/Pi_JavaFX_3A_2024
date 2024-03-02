@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="540.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierArticleControllers">
+<AnchorPane prefHeight="540.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.ModifierArticleController">
    <children>
    
        <Label layoutX="294.0" layoutY="30.0" text="Modifier Article" textFill="#0d2f17">
@@ -58,13 +58,13 @@
        <TextField fx:id="photoArticleTextField" layoutX="349.0" layoutY="326.0" prefHeight="31.0" prefWidth="252.0" />
    
        <!-- Bouton pour modifier la photo de l'article -->
-       <Button fx:id="modifierPhotoButton" layoutX="349.0" layoutY="380.0" onAction="#modifierPhoto" prefHeight="31.0" prefWidth="252.0" text="Modifier Photo" />
+       <Button fx:id="modifierPhotoButton" layoutX="349.0" layoutY="380.0" onAction="#modifierPhotoArticle" prefHeight="31.0" prefWidth="252.0" text="Modifier Photo" />
    
        <!-- Bouton pour modifier l'article -->
        <Button fx:id="modifierButton" layoutX="616.0" layoutY="457.0" onAction="#modifierArticle" prefHeight="31.0" prefWidth="122.0" text="Modifier" />
       <ImageView fitHeight="179.0" fitWidth="200.0" layoutX="28.0" layoutY="342.0">
          <image>
-            <Image url="@mod.png" />
+            <Image url="@Modifier.png" />
          </image>
       </ImageView>
    </children>

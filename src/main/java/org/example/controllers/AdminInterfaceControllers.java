@@ -34,10 +34,10 @@ public class AdminInterfaceControllers {
     void afficherArticle() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Article1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherArticle.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/StyleShopping.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -56,7 +56,7 @@ public class AdminInterfaceControllers {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterArticle.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/StyleShopping.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -75,7 +75,7 @@ public class AdminInterfaceControllers {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommande.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/StyleShopping.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -90,10 +90,10 @@ public class AdminInterfaceControllers {
     void afficherCommande() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Commande1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommande.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/StyleShopping.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -122,7 +122,7 @@ public class AdminInterfaceControllers {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Acceuil.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/StyleShopping.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();

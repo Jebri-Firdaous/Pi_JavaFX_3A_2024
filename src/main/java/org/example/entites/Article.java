@@ -12,19 +12,26 @@ public class Article {
     private String description_article;
     private String photo_article; // Lien vers la photo de l'article
     private List<Commande> commandes; // Liste des commandes associées à cet article
+    private boolean bestArticle;
+
 
 
 
 
     // Enum pour les types d'articles
     public enum TypeArticle {
-        ELECTRONICS,
-        CLOTHING,
-        BOOKS,
-        // Ajoutez d'autres types selon vos besoins
-    }
 
-    // Constructeurs, getters et setters
+        electronique,
+        vetements,
+        livres,
+        appareils_menagers,
+        equipements_sportifs,
+        produits_de_beaute,
+        meubles,
+        jouets,
+        alimentation_et_boissons,
+        bijoux
+    }
 
     public Article() {
     }
@@ -58,8 +65,6 @@ public class Article {
         this.photo_article = photo_article;
         this.commandes = commandes;
     }
-    // Les autres constructeurs, getters et setters
-
     public int getId_Article() {
         return id_Article;
     }
@@ -120,9 +125,6 @@ public class Article {
         return commandes;
     }
 
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
-    }
 
     @Override
     public String toString() {
