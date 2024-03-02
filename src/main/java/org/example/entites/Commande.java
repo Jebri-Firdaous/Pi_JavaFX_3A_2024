@@ -1,5 +1,6 @@
 package org.example.entites;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,6 @@ public class Commande {
     private double prix_Totale;
     private Date delais_Commande;
     private List<Article> articles;
-
 
     // Autres attributs et méthodes
 
@@ -58,4 +58,7 @@ public class Commande {
     public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
+
+
+
 }

@@ -1,59 +1,168 @@
 package org.example.controllers;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.example.entites.Article;
 import org.example.entites.Commande;
 import org.example.services.ServiceCommande;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
-import javafx.scene.control.ButtonType;
 
 public class Commande1Controllers implements ModificationListener {
 
     @FXML
     private VBox itemsContainer; // Container pour afficher les éléments (articles et commandes)
 
+    @FXML
+    private ComboBox<String> comboBoxTri; // ComboBox pour trier les commandes
+
     private final ServiceCommande serviceCommande = new ServiceCommande();
 
     @FXML
     void initialize() {
+        // Initialisation de la ComboBox de tri
+        comboBoxTri.getItems().addAll("Date de livraison (récent)", "Date de livraison (ancien)");
+
         afficherCommandes();
     }
 
-    private void afficherCommandes() {
+    private ImageView generateQRCode(String text, int width, int height) {
+        try {
+            // Créer un objet MultiFormatWriter
+            MultiFormatWriter writer = new MultiFormatWriter();
+
+            // Paramètres pour la génération du code QR
+            final int WHITE = 0xFFFFFFFF;
+            final int BLACK = 0xFF000000;
+            com.google.zxing.common.BitMatrix bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, width, height);
+
+            // Créer une image WritableImage pour afficher le code QR
+            WritableImage image = new WritableImage(width, height);
+            PixelWriter pixelWriter = image.getPixelWriter();
+
+            // Écrire les pixels en fonction de la matrice de bits
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    pixelWriter.setArgb(x, y, bitMatrix.get(x, y) ? BLACK : WHITE);
+                }
+            }
+
+            // Créer un ImageView pour afficher l'image WritableImage
+            ImageView imageView = new ImageView(image);
+            return imageView;
+        } catch (WriterException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @FXML
+    void trierCommandes() {
+        String triSelectionne = comboBoxTri.getValue();
+        if (triSelectionne.equals("Date de livraison (récent)")) {
+            // Tri des commandes par date de livraison la plus récente
+            afficherCommandesTriees(Comparator.comparing(Commande::getDelais_Commande).reversed());
+        } else if (triSelectionne.equals("Date de livraison (ancien)")) {
+            // Tri des commandes par date de livraison la moins récente
+            afficherCommandesTriees(Comparator.comparing(Commande::getDelais_Commande));
+        }
+    }
+
+    private void afficherCommandesTriees(Comparator<Commande> comparator) {
         try {
             itemsContainer.getChildren().clear(); // Efface les anciennes commandes pour éviter les duplications
             List<Commande> commandes = serviceCommande.afficherCommande();
-            for (Commande commande : commandes) {
-                VBox commandeBox = createCommandeBox(commande);
-                itemsContainer.getChildren().add(commandeBox);
-            }
+            commandes.stream()
+                    .sorted(comparator)
+                    .forEach(commande -> {
+                        VBox commandeBox = createCommandeBox(commande);
+                        itemsContainer.getChildren().add(commandeBox);
+                    });
         } catch (SQLException e) {
             afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Erreur lors de la récupération des commandes : " + e.getMessage());
         }
     }
 
+    private void afficherCommandes() {
+        afficherCommandesTriees(Comparator.comparing(Commande::getDelais_Commande).reversed());
+    }
+
+    private void genererBonDeCommandePDF(Commande commande) {
+        try {
+            String fileName = "BonDeCommande_" + commande.getId_Commande() + ".pdf"; // Nom du fichier avec l'ID de commande
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage();
+            document.addPage(page);
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            // Ajoutez votre contenu PDF ici
+            contentStream.beginText();
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+            contentStream.setNonStrokingColor(0, 0, 0); // Couleur du texte : Noir
+            contentStream.newLineAtOffset(100, 700);
+
+            contentStream.showText("Référence Commande : " + commande.getId_Commande());
+            contentStream.newLineAtOffset(0, -15); // Retour à la ligne
+
+            contentStream.showText("Nombre des articles commandés : " + commande.getNombre_Article());
+            contentStream.newLineAtOffset(0, -15); // Retour à la ligne
+
+            contentStream.showText("Prix total de la commande : " + commande.getPrix_Totale() + "DT");
+            contentStream.newLineAtOffset(0, -15); // Retour à la ligne
+
+            contentStream.showText("Delais de livraison : " + commande.getDelais_Commande());
+            contentStream.newLineAtOffset(0, -15); // Retour à la ligne
+
+            contentStream.showText("Articles :");
+            contentStream.newLineAtOffset(0, -15); // Retour à la ligne
+
+            for (Article article : commande.getArticles()) {
+                contentStream.showText(" - " + article.getNom_Article() + " : " + article.getPrix_Article());
+                contentStream.newLineAtOffset(0, -15); // Retour à la ligne pour chaque article
+            }
+
+            contentStream.endText();
+
+            contentStream.close();
+            document.save("C:\\Users\\lenovo\\Desktop\\" + fileName); // Chemin du fichier avec le nom spécifique
+            document.close();
+
+            afficherAlerte(Alert.AlertType.INFORMATION, "Succès", "Le bon de commande a été téléchargé avec succès.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Une erreur est survenue lors de la génération du bon de commande PDF.");
+        }
+    }
+
     private VBox createCommandeBox(Commande commande) {
         VBox commandeBox = new VBox();
-        commandeBox.setSpacing(10);
-        commandeBox.setStyle("-fx-background-color: #f9f9f9; " +
-                "-fx-border-color: #cccccc; " +
-                "-fx-border-width: 1px; " +
-                "-fx-border-radius: 5px; " +
-                "-fx-padding: 12px;");
+        commandeBox.setStyle("-fx-border-color: #cccccc; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-padding: 12px;");
+
+        // Création du code QR pour la commande
+        ImageView qrCodeImageView = generateQRCode("ID de la commande : " + commande.getId_Commande()+"Prix totale : " +commande.getPrix_Totale()+"Delais commande : "+commande.getDelais_Commande()+"Nombre des articles : "+commande.getNombre_Article(), 200, 200);
+        qrCodeImageView.setFitWidth(100);
+        qrCodeImageView.setFitHeight(100);
 
         Label idLabel = new Label("Référence Commande : " + commande.getId_Commande());
         idLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
@@ -111,10 +220,17 @@ public class Commande1Controllers implements ModificationListener {
             });
         });
 
-        HBox buttonBox = new HBox(modifierButton, deleteButton);
+        Button genererPDFButton = new Button("Télécharger PDF");
+        genererPDFButton.setStyle("-fx-background-color: #0059ff; -fx-text-fill: white; -fx-font-size: 14px;");
+        genererPDFButton.setOnAction(event -> {
+            genererBonDeCommandePDF(commande);
+        });
+        VBox.setMargin(genererPDFButton, new Insets(10, 0, 0, 0)); // Ajout de marge en haut pour le bouton PDF
+
+        HBox buttonBox = new HBox(modifierButton, deleteButton, genererPDFButton);
         buttonBox.setSpacing(10);
 
-        commandeBox.getChildren().addAll(idLabel, nombreArticleLabel, prixLabel, delaisLabel, separator, articlesLabel, articlesBox, buttonBox);
+        commandeBox.getChildren().addAll(qrCodeImageView, idLabel, nombreArticleLabel, prixLabel, delaisLabel, separator, articlesLabel, articlesBox, buttonBox);
         return commandeBox;
     }
 
@@ -155,7 +271,6 @@ public class Commande1Controllers implements ModificationListener {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void onModification() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -18,25 +19,35 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<AnchorPane prefHeight="740.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Commande1Controllers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.Commande1Controllers">
     <children>
         <fx:include source="AdminInterface.fxml" />
 
-        <ScrollPane layoutX="13.0" layoutY="239.0" prefHeight="455.0" prefWidth="1192.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="239.0">
+        <ScrollPane layoutX="33.0" layoutY="237.0" prefHeight="447.0" prefWidth="837.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="442.0" AnchorPane.topAnchor="237.0">
             <content>
-                <VBox prefHeight="486.0" prefWidth="1179.0" spacing="10" style="-fx-padding: 20;">
-                   <children>
-                       <!-- Conteneur pour afficher les commandes -->
-                       <VBox fx:id="itemsContainer" spacing="10" />
-                   </children>
+                <VBox prefHeight="447.0" prefWidth="797.0" spacing="10" style="-fx-padding: 20;">
+                    <children>
+
+                        <!-- Conteneur pour afficher les commandes -->
+                        <VBox fx:id="itemsContainer" spacing="10" />
+                    </children>
                 </VBox>
             </content>
         </ScrollPane>
-      <Label layoutX="33.0" layoutY="191.0" text="Listes des commandes : " textFill="#277dff">
-         <font>
-            <Font name="Bell MT Bold" size="32.0" />
-         </font>
-      </Label>
+        <Label layoutX="33.0" layoutY="181.0" text="Listes des commandes : " textFill="#277dff">
+            <font>
+                <Font name="Bell MT Bold" size="32.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="410.0" fitWidth="416.0" layoutX="881.0" layoutY="255.0">
+            <image>
+                <Image url="@commande1.jpg" />
+            </image>
+        </ImageView>
+            <!-- ComboBox pour trier les commandes -->
+            <ComboBox fx:id="comboBoxTri" layoutX="513.0" layoutY="187.0" onAction="#trierCommandes" prefHeight="31.0" prefWidth="271.0" promptText="Trier par date de livraison">
+
+                        </ComboBox>
 
     </children>
 </AnchorPane>

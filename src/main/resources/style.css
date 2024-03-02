@@ -129,6 +129,31 @@
 .action-button:hover {
     -fx-background-color: #45a049; /* Darker Green */
 }
+/* Style pour les meilleurs articles */
+.best-article {
+    -fx-background-color: #f0f0f0; /* Couleur de fond différente pour les meilleurs articles */
+    -fx-border-color: #ffa500; /* Couleur de bordure différente pour les meilleurs articles */
+}
+/* styles.css */
+.card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: rgb(37,33,33);
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    -fx-padding: 12px;
+}
+
+.card.favorite {
+    -fx-background-color: #ffff2e;
+}
+.combo-box {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
+
+
 
 
 

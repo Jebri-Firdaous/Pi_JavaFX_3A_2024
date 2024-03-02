@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import java.net.*?>
@@ -9,55 +10,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="740.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AjouterArticleControllers">
-
+<AnchorPane prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AjouterArticleControllers">
     <children>
         <fx:include source="AdminInterface.fxml" />
-        <VBox alignment="CENTER" layoutX="271.0" layoutY="252.0" prefHeight="338.0" prefWidth="301.0" spacing="20.0">
+        <Button layoutX="241.0" layoutY="638.0" onAction="#ajouterArticle" prefHeight="31.0" prefWidth="150.0" styleClass="action-button" text="Ajouter" />
+        <VBox alignment="CENTER" layoutX="124.0" layoutY="244.0" prefHeight="365.0" prefWidth="380.0" spacing="20.0">
             <children>
                 <TextField fx:id="nomArticleTF" promptText="Nom de l'article" styleClass="input-field" />
                 <TextField fx:id="prixArticleTF" promptText="Prix de l'article" styleClass="input-field" />
                 <TextField fx:id="quantiteArticleTF" promptText="Quantité de l'article" styleClass="input-field" />
-                <ComboBox fx:id="typeArticleCB" prefHeight="31.0" prefWidth="323.0" promptText="Type de l'article" styleClass="combo-box">
+                <ComboBox fx:id="typeArticleCB" prefHeight="32.0" prefWidth="375.0" promptText="Type de l'article" styleClass="combo-box">
                     <!-- Options de votre ComboBox -->
                 </ComboBox>
                 <TextField fx:id="descriptionArticleTF" prefHeight="100.0" prefWidth="490.0" promptText="Description de l'article" styleClass="text-area" />
-                <Button onAction="#insererPhoto" prefHeight="31.0" prefWidth="331.0" styleClass="insert-photo-button" text="Insérer Photo" />
+                <Button onAction="#insererPhoto" prefHeight="36.0" prefWidth="380.0" styleClass="insert-photo-button" text="Insérer Photo" />
 
             </children>
         </VBox>
-        <Label layoutX="85.0" layoutY="165.0" prefHeight="85.0" prefWidth="373.0" styleClass="title-label" text="Ajouter un article :" textFill="#2196F3">
+        <Label layoutX="124.0" layoutY="188.0" prefHeight="50.0" prefWidth="163.0" styleClass="title-label" text="Ajouter un article :" textFill="#04a7ff">
             <font>
-                <Font name="Bell MT Bold" size="33.0" />
+                <Font name="Bell MT Bold" size="63.0" />
             </font>
         </Label>
-        <Label layoutX="104.0" layoutY="258.0" styleClass="label" text="Nom article :">
-         <font>
-            <Font name="Arial Bold" size="15.0" />
-         </font></Label>
-        <Label layoutX="104.0" layoutY="308.0" styleClass="label" text="Prix article :">
-         <font>
-            <Font name="Arial Bold" size="15.0" />
-         </font></Label>
-        <Label layoutX="104.0" layoutY="359.0" styleClass="label" text="Quantité article :">
-         <font>
-            <Font name="Arial Bold" size="15.0" />
-         </font></Label>
-        <Label layoutX="106.0" layoutY="404.0" styleClass="label" text="Type article :">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Label>
-        <Label layoutX="106.0" layoutY="484.0" styleClass="label" text="Description article :">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Label>
-        <Button layoutX="421.0" layoutY="628.0" onAction="#ajouterArticle" prefHeight="31.0" prefWidth="150.0" styleClass="action-button" text="Ajouter" />
-      <ImageView fitHeight="381.0" fitWidth="583.0" layoutX="648.0" layoutY="209.0">
-         <image>
-            <Image url="@ajouterArticle.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="474.0" fitWidth="667.0" layoutX="631.0" layoutY="219.0">
+            <image>
+                <Image url="@ajouterArticle.png" />
+            </image>
+        </ImageView>
+        <!-- Ligne verticale -->
+        <Rectangle fill="#979494" height="474.0" layoutX="106.0" width="2.0" x="520.0" y="219.0" />
     </children>
     <stylesheets>
         <URL value="@style.css" />

@@ -32,6 +32,29 @@ public class ServiceArticle implements IServiceArticle<Article> {
         preparedStatement.setString(6, article.getPhoto_article());
         preparedStatement.executeUpdate();
     }
+    @Override
+    public List<Article> rechercherArticles(String recherche) throws SQLException {
+        List<Article> articles = new ArrayList<>();
+        String sql = "SELECT a.id_article, a.nom_article, a.prix_article, a.quantite_article, a.type_article, a.description_article, a.photo_article " +
+                "FROM article a " +
+                "WHERE a.nom_article LIKE ? OR a.description_article LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + recherche + "%");
+        preparedStatement.setString(2, "%" + recherche + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Article article = new Article();
+            article.setId_Article(rs.getInt("id_article"));
+            article.setNom_Article(rs.getString("nom_article"));
+            article.setPrix_Article(rs.getDouble("prix_article"));
+            article.setQuantite_Article(rs.getInt("quantite_article"));
+            article.setType_article(Article.TypeArticle.valueOf(rs.getString("type_article"))); // Convertir la chaîne en enum
+            article.setDescription_article(rs.getString("description_article"));
+            article.setPhoto_article(rs.getString("photo_article"));
+            articles.add(article);
+        }
+        return articles;
+    }
 
 
     @Override
@@ -84,4 +107,72 @@ public class ServiceArticle implements IServiceArticle<Article> {
         }
         return articles;
     }
+
+
+
+    @Override
+
+    public void toggleBestArticle(int articleId, boolean isBestArticle) throws SQLException {
+        // Vérifier si l'article existe avant de mettre à jour
+        if (!articleExists(articleId)) {
+            throw new IllegalArgumentException("L'article avec l'identifiant " + articleId + " n'existe pas.");
+        }
+
+        try {
+            // Désactiver l'autocommit pour gérer manuellement la transaction
+            connection.setAutoCommit(false);
+
+            // Préparer et exécuter la requête de mise à jour
+            String sql = "UPDATE article SET bestArticle = ? WHERE id_article = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setBoolean(1, isBestArticle);
+                preparedStatement.setInt(2, articleId);
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                // Vérifier si la mise à jour a réussi
+                if (rowsAffected == 0) {
+                    throw new SQLException("La mise à jour de l'article avec l'identifiant " + articleId + " a échoué.");
+                }
+
+                // Valider la transaction
+                connection.commit();
+            } catch (SQLException e) {
+                // En cas d'erreur, annuler la transaction
+                connection.rollback();
+                throw e;
+            } finally {
+                // Réactiver l'autocommit une fois la transaction terminée
+                connection.setAutoCommit(true);
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+
+
+
+
+
+
+    // Méthode utilitaire pour vérifier si un article existe dans la base de données
+    private boolean articleExists(int articleId) throws SQLException {
+        String sql = "SELECT COUNT(*) AS count FROM article WHERE id_article = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, articleId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt("count");
+                    return count > 0;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
 }

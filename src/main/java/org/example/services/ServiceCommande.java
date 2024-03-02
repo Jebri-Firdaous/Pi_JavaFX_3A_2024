@@ -73,7 +73,9 @@ public class ServiceCommande implements IServiceCommande<Commande> {
 
 
     @Override
+
     public void modifierCommande(Commande commande) throws SQLException {
+        // Assurez-vous de mettre à jour votre requête SQL pour inclure la colonne Etat_Commande
         String sql = "UPDATE commande SET nombre_article = ?, prix_totale = ?, delais_commande = ? WHERE id_commande = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, commande.getNombre_Article());
@@ -83,6 +85,7 @@ public class ServiceCommande implements IServiceCommande<Commande> {
             preparedStatement.executeUpdate();
         }
     }
+
 
     public void supprimerArticlesDeCommande(Commande commande) throws SQLException {
         String sql = "DELETE FROM commande_article WHERE id_commande = ?";

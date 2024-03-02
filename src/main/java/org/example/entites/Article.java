@@ -12,6 +12,8 @@ public class Article {
     private String description_article;
     private String photo_article; // Lien vers la photo de l'article
     private List<Commande> commandes; // Liste des commandes associées à cet article
+    private boolean bestArticle;
+
 
 
 
@@ -123,6 +125,14 @@ public class Article {
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }
+    public boolean isBestArticle() {
+        return bestArticle;
+    }
+
+    public void setBestArticle(boolean bestArticle) {
+        this.bestArticle = bestArticle;
+    }
+
 
     @Override
     public String toString() {

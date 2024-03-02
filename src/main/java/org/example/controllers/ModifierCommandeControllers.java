@@ -32,6 +32,12 @@ public class ModifierCommandeControllers {
     private Commande commande;
     private Stage stage;
 
+
+    @FXML
+    private Button accepterButton;
+
+
+
     public void initialize() {
         modifierCommandeButton.setOnAction(event -> modifierCommande());
     }
@@ -46,10 +52,10 @@ public class ModifierCommandeControllers {
     void modifierCommande() {
         try {
             if (commande != null) {
-                int nouveauId = Integer.parseInt(idCommandeTextField.getText());
+
                 java.util.Date nouveauDelai = java.sql.Date.valueOf(delaisCommandeDatePicker.getValue());
 
-                commande.setId_Commande(nouveauId);
+
                 commande.setDelais_Commande(nouveauDelai);
 
                 serviceCommande.modifierCommande(commande); // Mettre à jour la commande
