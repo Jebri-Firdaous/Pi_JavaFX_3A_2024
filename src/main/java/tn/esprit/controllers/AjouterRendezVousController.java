@@ -1,5 +1,9 @@
 package tn.esprit.controllers;
 
+import com.twilio.rest.api.v2010.account.Message;
+import java.time.LocalDateTime; // Import the LocalDateTime class
+import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
+import com.twilio.type.PhoneNumber;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import tn.esprit.CalendarActivity;
+import tn.esprit.TwilioSendSms;
 import tn.esprit.entities.Client;
 import tn.esprit.entities.Medecin;
 import tn.esprit.entities.RendezVous;
@@ -213,6 +218,13 @@ public class AjouterRendezVousController implements Initializable {
         }
         try {
             serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin, comboboxClient.getValue().getId_personne()));
+            ServiceMedecin serviceMedecin = new ServiceMedecin();
+            Medecin medecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
+            TwilioSendSms twilioSendSms = new TwilioSendSms();
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
+            String msg = "Bonjour Dr. "+medecin.getNom_medecin()+" vous avez un rendez-vous le " + dateTime.format(myFormatObj);
+            Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
+
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Boîte de dialogue d'information");
             successAlert.setContentText("Rendez-vous réservé avec succès!");

@@ -1,5 +1,7 @@
 package tn.esprit.controllers;
-
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import tn.esprit.TwilioSendSms;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -42,9 +44,13 @@ public class MofidierRvController implements Initializable {
     public ComboBox<Integer> hourComboBox;
     public ComboBox<Integer> minuteComboBox;
     int ref_rendez_vous;
+    int id_oldMedecin ;
+    Timestamp oldDateRv ;
     ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
 
     public void initializeValues(int ref_rendez_vous, Timestamp date_rendez_vous, int id_medecin) {
+        id_oldMedecin = id_medecin;
+        oldDateRv = date_rendez_vous;
         this.ref_rendez_vous = ref_rendez_vous;
         dateR.setValue(date_rendez_vous.toLocalDateTime().toLocalDate());
         hourComboBox.setValue(date_rendez_vous.getHours());
@@ -96,6 +102,27 @@ public class MofidierRvController implements Initializable {
                 try {
                     Timestamp timestamp = Timestamp.valueOf(dateTime);
                     serviceRendezVous.modifier(ref_rendez_vous, timestamp, medecinR.getValue().id_medecin);
+                    if (id_oldMedecin!=medecinR.getValue().id_medecin){
+                        ServiceMedecin serviceMedecin = new ServiceMedecin();
+                        Medecin newMedecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
+                        Medecin oldMedecin = serviceMedecin.getMedecinById(id_oldMedecin);
+                        TwilioSendSms twilioSendSms = new TwilioSendSms();
+                        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
+                        // for old doctor
+                        String msgForOldDoctor = "Bonjour Dr. "+oldMedecin.getNom_medecin()+" Votre rendez-vous le " + oldDateRv.toLocalDateTime().format(myFormatObj) + " sera annulé";
+                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForOldDoctor).create();
+                        // for new doctor
+                        String msgForNewDoctor = "Bonjour Dr. "+newMedecin.getNom_medecin()+" vous avez un rendez-vous le " + dateTime.format(myFormatObj);
+                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForNewDoctor).create();
+                    } else if (id_oldMedecin == medecinR.getValue().getId_medecin() && !oldDateRv.toLocalDateTime().equals(dateTime)) {
+                        ServiceMedecin serviceMedecin = new ServiceMedecin();
+                        Medecin medecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
+                        TwilioSendSms twilioSendSms = new TwilioSendSms();
+                        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
+                        // for old doctor
+                        String msgForUpdatedDateToDoctor = "Bonjour Dr. "+medecin.getNom_medecin()+" Votre rendez-vous le " + oldDateRv.toLocalDateTime().format(myFormatObj) + " sera changé au " + dateTime.format(myFormatObj);
+                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForUpdatedDateToDoctor).create();
+                    }
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Boîte de dialogue d'information");

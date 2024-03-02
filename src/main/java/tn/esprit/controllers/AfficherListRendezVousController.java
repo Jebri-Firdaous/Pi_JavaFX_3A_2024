@@ -1,5 +1,8 @@
 package tn.esprit.controllers;
 
+import com.twilio.rest.api.v2010.account.Message;
+import tn.esprit.TwilioSendSms;
+import com.twilio.type.PhoneNumber;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,6 +29,9 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -142,9 +148,31 @@ public class AfficherListRendezVousController {
     }
 
     public void suprrimerRDBT(ActionEvent actionEvent) {
+        if(currentRendezVousSelected == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Choose one Rv ");
+            alert.showAndWait();
+            return;
+        }
         try {
+            // before delete the RV get its informations like date, idMedecin...
+            if(currentRendezVousSelected.getDate_rendez_vous().after(Timestamp.valueOf(LocalDateTime.now()))){
+                // Send msg to deleted doctor
+                ServiceMedecin serviceMedecin = new ServiceMedecin();
+                Medecin medecin = serviceMedecin.getMedecinById(currentRendezVousSelected.getId_medecin());
+                TwilioSendSms twilioSendSms = new TwilioSendSms();
+                DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
+                LocalDateTime dateTime = currentRendezVousSelected.getDate_rendez_vous().toLocalDateTime();
+                String msg = "Bonjour Dr. "+medecin.getNom_medecin()+" Votre rendez-vous le " + dateTime.format(myFormatObj) +" sera annulé ";
+                Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
+            }
             serviceRendezVous.supprimer(currentRendezVousSelected.getRef_rendez_vous());
             initialize();
+            // if RV date in future , Send msg to deleted doctor
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
