@@ -1,152 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="tn.pidev.controllers.AdminLoginController">
+    <children>
+        <ImageView fitHeight="774.0" fitWidth="1312.0">
+            <image>
+                <Image url="@smartcity.png"/>
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE"
+                   width="1312.0"/>
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="380.0" layoutX="420.0" layoutY="177.0" opacity="0.5"
+                   stroke="TRANSPARENT" strokeType="INSIDE" width="450.0"/>
+        <Label fx:id="label" layoutX="489.0" layoutY="206.0" text="Se connecter à E-city" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="32.0"/>
+            </font>
+            <effect>
+                <Lighting diffuseConstant="1.46" specularConstant="1.47" specularExponent="0.49" surfaceScale="6.62">
+                    <bumpInput>
+                        <Shadow/>
+                    </bumpInput>
+                    <light>
+                        <Light.Distant azimuth="311.7" color="#5ce1e6" elevation="149.27"/>
+                    </light>
+                </Lighting>
+            </effect>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </Label>
+        <Label layoutX="449.0" layoutY="569.0" text="Vous n’avez pas de compte?" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="17.0"/>
+            </font>
+        </Label>
+        <Hyperlink layoutX="680.0" layoutY="566.0" onAction="#ToaddPage" text="Créer un Compte" textFill="#b0e847"
+                   wrapText="true">
+            <font>
+                <Font name="System Bold" size="17.0"/>
+            </font>
+            <effect>
+                <Bloom/>
+            </effect>
+        </Hyperlink>
+        <ImageView fitHeight="172.0" fitWidth="196.0" layoutX="547.0" layoutY="28.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@logoblanc.png"/>
+            </image>
+        </ImageView>
+        <VBox layoutX="452.0" layoutY="259.0" prefHeight="284.0" prefWidth="397.0">
+            <children>
+                <VBox prefHeight="44.0" prefWidth="397.0">
+                    <children>
+                        <Label prefHeight="46.0" prefWidth="406.0" text="Adresse e-mail" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox prefHeight="40.0" prefWidth="397.0">
+                    <children>
+                        <TextField fx:id="email" prefHeight="45.0" prefWidth="397.0"
+                                   promptText="Entrer votre adresse e-mail">
+                            <font>
+                                <Font name="Arial" size="20.0"/>
+                            </font>
+                        </TextField>
+                    </children>
+                </VBox>
+                <VBox prefHeight="21.0" prefWidth="397.0">
+                    <children>
+                        <AnchorPane prefHeight="27.0" prefWidth="397.0">
+                            <children>
+                                <Label fx:id="mailInvalide" layoutX="2.0" layoutY="-3.0" prefHeight="26.0"
+                                       prefWidth="196.0" text="Adresse e-mail invalide" textFill="RED" visible="false">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <VBox prefHeight="38.0" prefWidth="397.0">
+                    <children>
+                        <AnchorPane prefHeight="32.0" prefWidth="397.0">
+                            <children>
+                                <Label prefHeight="40.0" prefWidth="221.0" text="Mot de passe" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="20.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <VBox prefHeight="42.0" prefWidth="397.0">
+                    <children>
+                        <PasswordField fx:id="mdp" prefHeight="44.0" prefWidth="397.0"
+                                       promptText="Entrer votre mot de passe"/>
+                    </children>
+                </VBox>
+                <VBox prefHeight="20.0" prefWidth="397.0">
+                    <children>
+                        <AnchorPane prefHeight="12.0" prefWidth="397.0">
+                            <children>
+                                <Label fx:id="mdpInvalide" layoutY="-1.0" prefHeight="1.0" prefWidth="196.0"
+                                       text="Mot de passe invalide" textFill="RED" visible="false">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <VBox prefHeight="32.0" prefWidth="397.0">
+                    <children>
+                        <AnchorPane prefHeight="28.0" prefWidth="397.0">
+                            <children>
+                                <Hyperlink layoutX="-7.0" layoutY="-7.0" onAction="#confirmermail"
+                                           text="Mot de passe oublié?" textFill="#002fff">
+                                    <font>
+                                        <Font size="17.0"/>
+                                    </font>
+                                    <effect>
+                                        <Bloom/>
+                                    </effect>
+                                </Hyperlink>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <VBox prefHeight="43.0" prefWidth="397.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="397.0"
+                                style="-fx-background-color: #B0E847;" text="Se Connecter">
+                            <font>
+                                <Font name="System Bold" size="17.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <Button layoutX="14.0" layoutY="723.0" mnemonicParsing="false" onAction="#ToAcceuil" text="Acceuil"/>
+        <Button layoutX="1041.0" layoutY="464.0" mnemonicParsing="false" onAction="#OpenCamera"
+                text="Reconnaissance Faciale"/>
+        <Button text="Capture Photo" onAction="#capturePhoto"/>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdminLoginController">
-   <children>
-      <ImageView fitHeight="774.0" fitWidth="1312.0">
-         <image>
-            <Image url="@smartcity.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
-      <Rectangle arcHeight="70.0" arcWidth="70.0" height="380.0" layoutX="420.0" layoutY="177.0" opacity="0.5" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
-      <Label fx:id="label" layoutX="489.0" layoutY="206.0" text="Se connecter à E-city" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-         <effect>
-            <Lighting diffuseConstant="1.46" specularConstant="1.47" specularExponent="0.49" surfaceScale="6.62">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant azimuth="311.7" color="#5ce1e6" elevation="149.27" />
-               </light>
-            </Lighting>
-         </effect>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label layoutX="449.0" layoutY="569.0" text="Vous n’avez pas de compte?" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <Hyperlink layoutX="680.0" layoutY="566.0" onAction="#ToaddPage" text="Créer un Compte" textFill="#b0e847" wrapText="true">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-         <effect>
-            <Bloom />
-         </effect>
-      </Hyperlink>
-      <ImageView fitHeight="172.0" fitWidth="196.0" layoutX="547.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@logoblanc.png" />
-         </image>
-      </ImageView>
-      <VBox layoutX="452.0" layoutY="259.0" prefHeight="284.0" prefWidth="397.0">
-         <children>
-            <VBox prefHeight="44.0" prefWidth="397.0">
-               <children>
-                  <Label prefHeight="46.0" prefWidth="406.0" text="Adresse e-mail" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox prefHeight="40.0" prefWidth="397.0">
-               <children>
-                  <TextField fx:id="email" prefHeight="45.0" prefWidth="397.0" promptText="Entrer votre adresse e-mail">
-                     <font>
-                        <Font name="Arial" size="20.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox prefHeight="21.0" prefWidth="397.0">
-               <children>
-                  <AnchorPane prefHeight="27.0" prefWidth="397.0">
-                     <children>
-                        <Label fx:id="mailInvalide" layoutX="2.0" layoutY="-3.0" prefHeight="26.0" prefWidth="196.0" text="Adresse e-mail invalide" textFill="RED" visible="false">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="38.0" prefWidth="397.0">
-               <children>
-                  <AnchorPane prefHeight="32.0" prefWidth="397.0">
-                     <children>
-                        <Label prefHeight="40.0" prefWidth="221.0" text="Mot de passe" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="42.0" prefWidth="397.0">
-               <children>
-                  <PasswordField fx:id="mdp" prefHeight="44.0" prefWidth="397.0" promptText="Entrer votre mot de passe" />
-               </children>
-            </VBox>
-            <VBox prefHeight="20.0" prefWidth="397.0">
-               <children>
-                  <AnchorPane prefHeight="12.0" prefWidth="397.0">
-                     <children>
-                        <Label fx:id="mdpInvalide" layoutY="-1.0" prefHeight="1.0" prefWidth="196.0" text="Mot de passe invalide" textFill="RED" visible="false">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="32.0" prefWidth="397.0">
-               <children>
-                  <AnchorPane prefHeight="28.0" prefWidth="397.0">
-                     <children>
-                        <Hyperlink layoutX="-7.0" layoutY="-7.0" onAction="#confirmermail" text="Mot de passe oublié?" textFill="#002fff">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <effect>
-                              <Bloom />
-                           </effect>
-                        </Hyperlink>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="43.0" prefWidth="397.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="397.0" style="-fx-background-color: #B0E847;" text="Se Connecter">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-      <Button layoutX="14.0" layoutY="723.0" mnemonicParsing="false" onAction="#ToAcceuil" text="Acceuil" />
-   </children>
+    </children>
 </AnchorPane>

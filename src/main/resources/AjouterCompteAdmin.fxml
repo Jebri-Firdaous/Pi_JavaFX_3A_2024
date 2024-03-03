@@ -87,7 +87,10 @@
             <VBox prefHeight="82.0" prefWidth="397.0">
                <children>
                   <Label fx:id="mailInvalid" prefHeight="21.0" prefWidth="210.0" text="Mail Invalide" textFill="RED" visible="false" />
-                  <PasswordField fx:id="mdp" prefHeight="46.0" prefWidth="387.0" promptText="Choisissez le mot de passe" />
+                  <PasswordField fx:id="mdp" prefHeight="46.0" prefWidth="387.0" promptText="Choisissez le mot de passe">
+                     <font>
+                        <Font size="20.0" />
+                     </font></PasswordField>
                   <Label fx:id="mdpInvalid" prefHeight="15.0" prefWidth="397.0" text="Le mot de passe doit contenir 8 caractere et des caractere speciaux et au moin une lettre majiscule" textFill="RED" visible="false">
                      <font>
                         <Font size="9.0" />

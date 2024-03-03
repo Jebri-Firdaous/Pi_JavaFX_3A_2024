@@ -32,13 +32,13 @@ public class Main {
 
         /*----------------------------------------------------MODIFIER ADMIN-----------------------------------------------------*/
 
-try
+/*try
         {
             sA.modifier(new Administrateur(22, "Firdaousffff", "jj",21027918,"saida.jebri@gmail.com", "abc" , "Gestion Transport"));
            System.out.println("Modification completé");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
         /*----------------------------------------------------AFFICHER Admin -----------------------------------------------------*/
       /*  try {
             System.out.println(sA.afficher());

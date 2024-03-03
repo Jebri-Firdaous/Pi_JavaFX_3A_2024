@@ -1,7 +1,6 @@
 package tn.pidev.services;
 
 import tn.pidev.entities.Client;
-import tn.pidev.entities.Client;
 import tn.pidev.utils.MyDataBase;
 
 import java.sql.*;
@@ -9,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceClient implements IService<Client> {
-    private Connection connection;
-/*--------------------------------------------------AJOUT------------------------------------------------------*/
+    private final Connection connection;
+    /*--------------------------------------------------AJOUT------------------------------------------------------*/
 
     public ServiceClient() {
         connection = MyDataBase.getInstance().getConnection();
@@ -86,8 +85,9 @@ public class ServiceClient implements IService<Client> {
             int tel = rs.getInt("numero_telephone");
             String mail = rs.getString("mail_personne");
             String mdp = rs.getString("mdp_personne");
+            String image_personne = rs.getString("image_personne");
 
-            Client client = new Client(id_personne,nom, prenom, tel, mail, mdp, genre,age);
+            Client client = new Client(id_personne, nom, prenom, tel, mail, mdp, image_personne, genre, age);
             clientList.add(client);
         }
         return clientList;

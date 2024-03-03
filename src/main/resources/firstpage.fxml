@@ -15,7 +15,7 @@
             </image>
         </ImageView>
         <Rectangle height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
-        <Button layoutX="557.0" layoutY="422.0" mnemonicParsing="false" onAction="#ToLogin" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: B0E847;" styleClass="bouton-transparent" text="Get Started">
+        <Button layoutX="557.0" layoutY="422.0" mnemonicParsing="false" onAction="#ToLogin" prefHeight="43.0" prefWidth="186.0" style="-fx-background-color: B0E847;" styleClass="bouton-transparent" text="Démarrer">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>

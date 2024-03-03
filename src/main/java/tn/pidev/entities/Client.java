@@ -15,8 +15,8 @@ public class Client extends Personne{
 
 
 
-    public Client(int id_personne,String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne, String genre, int age) {
-        super(id_personne,nom_personne, prenom_personne, numero_telephone, mail_personne, mdp_personne);
+    public Client(int id_personne,String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne,String image, String genre, int age) {
+        super(id_personne,nom_personne, prenom_personne, numero_telephone, mail_personne, mdp_personne,image);
         this.genre = genre;
         this.age = age;
     }

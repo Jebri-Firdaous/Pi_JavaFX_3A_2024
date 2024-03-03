@@ -5,7 +5,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,8 +14,9 @@ import javafx.stage.Stage;
 import tn.pidev.entities.Administrateur;
 import tn.pidev.services.ServiceAdmin;
 
-import java.sql.*;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 public class AjoutAdministrateurController {
@@ -78,16 +78,7 @@ public class AjoutAdministrateurController {
                 }
             }
         });
-        tel.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d{0,8}")) { // Vérifie si la nouvelle valeur ne contient que des chiffres et a une longueur maximale de 8 chiffres
-                    tel.setStyle("-fx-border-color: red;");
-                } else {
-                    tel.setStyle("");
-                }
-            }
-        });
+
         mail.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -111,7 +102,7 @@ public class AjoutAdministrateurController {
         role.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if ( newValue.isEmpty()) {
+                if (newValue.isEmpty()) {
                     role.setStyle("-fx-border-color: red;");
                     roleInvalid.setVisible(true);
                 } else {
@@ -121,18 +112,21 @@ public class AjoutAdministrateurController {
             }
         });
     }
+
     private boolean isValidPassword(String password) {
         // Au moins un caractère spécial, une majuscule, un chiffre, et au moins 8 caractères au total
         return password.matches("^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$");
     }
+
     private boolean isValidName(String name) {
         return name.matches("[a-zA-Z]+");
     }
+
     private boolean isValidRole(String role) {
         return role != null && !role.isEmpty();
     }
 
-        private boolean isValidEmail(String email) {
+    private boolean isValidEmail(String email) {
         // Diviser l'e-mail en parties distinctes
         String[] parts = email.split("@");
         if (parts.length != 2) {
@@ -154,13 +148,14 @@ public class AjoutAdministrateurController {
         // Vérifier le domaine et l'extension
         String domain = domainParts[0];
         String extension = domainParts[1];
-        return (domain.equals("gmail") || domain.equals("hotmail") || domain.equals("yahoo")|| domain.equals("esprit")) &&
+        return (domain.equals("gmail") || domain.equals("hotmail") || domain.equals("yahoo") || domain.equals("esprit")) &&
                 (extension.equals("com") || extension.equals("tn"));
     }
+
     @FXML
     void ToConnexion(ActionEvent event) {
-        try
-        {FXMLLoader loader = new FXMLLoader(getClass().getResource("/pageConnexion.fxml"));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pageConnexion.fxml"));
             Parent root = loader.load();
             Scene pageScene = new Scene(root);
 
@@ -174,14 +169,16 @@ public class AjoutAdministrateurController {
             e.printStackTrace();
         }
     }
-   public void ToAfficherListeAdmine() {
+    
+
+    public void ToAfficherListeAdmine() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherAdmin.fxml"));
             Parent root = loader.load();
             Scene pageScene = new Scene(root);
 
             // Get the current stage and set the new scene
-            Stage stage = (Stage) nom.getScene().getWindow();
+            Stage stage = (Stage) mail.getScene().getWindow();
             stage.setScene(pageScene);
             stage.show();
         } catch (IOException e) {
@@ -195,31 +192,29 @@ public class AjoutAdministrateurController {
     void AjouterAdmin(ActionEvent event) {
 
 
-            String roleSelected = role.getValue();
-            String nomSaisi = nom.getText();
-            String prenomSaisi = prenom.getText();
-            String mailSaisi = mail.getText();
-            String mdpSaisi = mdp.getText();
-            String telSaisi = tel.getText();
+        String roleSelected = role.getValue();
+        String nomSaisi = nom.getText();
+        String prenomSaisi = prenom.getText();
+        String mailSaisi = mail.getText();
+        String mdpSaisi = mdp.getText();
 
 
-        if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !mdpSaisi.isEmpty() && !telSaisi.isEmpty() && !roleSelected.isEmpty()) {
+        if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !mdpSaisi.isEmpty() && !roleSelected.isEmpty()) {
             if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isValidRole(roleSelected)) {
                 try {
-                    sa.ajouter(new Administrateur(nom.getText(), prenom.getText(), Integer.parseInt(tel.getText()),
-                            mail.getText(),mdp.getText(), roleSelected));
-
+                    sa.ajouter(new Administrateur(nom.getText(), prenom.getText(), 0,
+                            mail.getText(), mdp.getText(), "", roleSelected));
+                    int adminId = sa.getAdminId(nom.getText(), prenom.getText(), mail.getText(), mdp.getText());
+                    ToValidate(adminId);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
-                    alert.setContentText("Admin insérée avec succès!");
+                    alert.setContentText("Compte ajoutée avec succes!");
                     alert.showAndWait();
                     nom.setText("");
                     prenom.setText("");
-                    tel.setText("");
                     mail.setText("");
                     mdp.setText("");
                     role.setValue("");
-                    ToAfficherListeAdmine();
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -236,7 +231,25 @@ public class AjoutAdministrateurController {
     }
 
 
+    public void ToValidate(int adminId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ValidateProfile.fxml"));
+            Parent root = loader.load();
 
+            // Accéder au contrôleur de la page de validation du compte
+            VlidateController validateController = loader.getController();
+            validateController.setAdminId(adminId);
 
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) nom.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
+    }
 
 }

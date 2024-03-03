@@ -1,68 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdminLoginController">
     <children>
-      <ImageView fitHeight="774.0" fitWidth="1312.0">
-         <image>
-            <Image url="@smartcity.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
-      <Rectangle arcHeight="50.0" arcWidth="50.0" height="228.0" layoutX="282.0" layoutY="269.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="704.0" />
-      <Label layoutX="517.0" layoutY="326.0" prefHeight="72.0" prefWidth="745.0" text="Veuillez saisir votre adresse mail " textFill="WHITE" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="label" layoutX="492.0" layoutY="279.0" text="Mot de passe oublié" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-         <effect>
-            <Lighting diffuseConstant="1.46" specularConstant="1.47" specularExponent="0.49" surfaceScale="6.62">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant azimuth="311.7" color="#5ce1e6" elevation="149.27" />
-               </light>
-            </Lighting>
-         </effect>
-      </Label>
-      <VBox layoutX="303.0" layoutY="380.0" prefHeight="112.0" prefWidth="663.0">
-         <children>
-            <VBox prefHeight="55.0" prefWidth="663.0">
-               <children>
-                  <TextField prefHeight="44.0" prefWidth="663.0" />
-                  <VBox prefHeight="15.0" prefWidth="663.0" />
-               </children>
-            </VBox>
-            <VBox prefHeight="43.0" prefWidth="663.0">
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Button alignment="CENTER" layoutX="206.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="228.0" style="-fx-background-color: #B0E847;" text="Envoyer un Mail">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-      <Button layoutX="14.0" layoutY="729.0" mnemonicParsing="false" onAction="#confirmermail" text="back" />
+        <ImageView fitHeight="774.0" fitWidth="1312.0">
+            <image>
+                <Image url="@smartcity.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
+        <Rectangle arcHeight="50.0" arcWidth="50.0" height="201.0" layoutX="398.0" layoutY="269.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+        <Label layoutX="517.0" layoutY="326.0" prefHeight="72.0" prefWidth="745.0" textFill="WHITE" wrapText="true">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="label" layoutX="492.0" layoutY="279.0" text="Mot de passe oublié" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+            <effect>
+                <Lighting diffuseConstant="1.46" specularConstant="1.47" specularExponent="0.49" surfaceScale="6.62">
+                    <bumpInput>
+                        <Shadow />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant azimuth="311.7" color="#5ce1e6" elevation="149.27" />
+                    </light>
+                </Lighting>
+            </effect>
+        </Label>
+        <VBox layoutX="313.0" layoutY="349.0" prefHeight="112.0" prefWidth="663.0">
+            <children>
+                <VBox prefHeight="55.0" prefWidth="653.0">
+                    <children>
+                        <VBox prefHeight="15.0" prefWidth="663.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <TextField fx:id="mail" alignment="CENTER" layoutX="134.0" layoutY="7.0" prefHeight="44.0" prefWidth="415.0" promptText="Veuillez saisir votre adresse mail ">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </TextField>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <VBox prefHeight="43.0" prefWidth="663.0">
+                    <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Button alignment="CENTER" layoutX="345.0" layoutY="5.0" mnemonicParsing="false" onAction="#reinitialiserMDP" prefHeight="38.0" prefWidth="203.0" style="-fx-background-color: #B0E847;" text="Envoyer">
+                                    <font>
+                                        <Font name="System Bold" size="17.0" />
+                                    </font>
+                                </Button>
+                                <Button alignment="CENTER" layoutX="136.0" layoutY="4.0" mnemonicParsing="false" onAction="#back" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #B0E847;" text="Annuler">
+                                    <font>
+                                        <Font name="System Bold" size="17.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+        <Label layoutX="449.0" layoutY="326.0" text="Saisissez votre addresse mail pour réinitialiser votre mot de passe" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
     </children>
 
 </AnchorPane>

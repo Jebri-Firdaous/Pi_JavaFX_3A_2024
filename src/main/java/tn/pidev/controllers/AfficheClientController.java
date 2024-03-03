@@ -19,13 +19,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AfficheClientController {
+    private final ServiceAdmin sa = new ServiceAdmin();
     ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
-
-    private final  ServiceAdmin sa=new ServiceAdmin();
+    Administrateur currentAdminSelected;
     @FXML
     private ListView<Administrateur> listViewAdmin;
-    Administrateur currentAdminSelected;
-
     @FXML
     private Label label;
 
@@ -50,7 +48,8 @@ public class AfficheClientController {
 
     @FXML
     private TableColumn<Administrateur, String> role;
-/*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
+
+    /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
         try {
             List<Administrateur> AdminsFromService = sa.afficher();
@@ -74,7 +73,7 @@ public class AfficheClientController {
 
     public void ToAjouterAdmin() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCompte.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCompteAdmin.fxml"));
             Parent root = loader.load();
             AjoutAdministrateurController AjoutAdministrateurController = loader.getController();
             Scene pageScene = new Scene(root);
@@ -119,11 +118,12 @@ public class AfficheClientController {
             // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
         }
     }
+
     public void supprimerAdmin(ActionEvent actionEvent) {
         Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
         if (adminSelectionne != null) {
             try {
-               sa.supprimer(adminSelectionne.getId_personne());
+                sa.supprimer(adminSelectionne.getId_personne());
                 // Afficher un message de confirmation
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");

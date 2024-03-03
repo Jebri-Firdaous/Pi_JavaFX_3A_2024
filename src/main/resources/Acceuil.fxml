@@ -31,12 +31,7 @@
             <Bloom threshold="0.0" />
          </effect>
       </Label>
-      <!--image de profile-->
-      <ImageView fx:id="ProfileImage" fitHeight="88.0" fitWidth="88.0" layoutX="1210.0" layoutY="25.0">
-         <image>
-            <Image url="@login.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="profilImage" fitHeight="81.0" fitWidth="84.0" layoutX="1214.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
 
    </children>
 </AnchorPane>

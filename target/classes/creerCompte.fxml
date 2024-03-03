@@ -36,9 +36,9 @@
             </Lighting>
          </effect>
         </Label>
-      <VBox layoutX="452.0" layoutY="259.0" prefHeight="406.0" prefWidth="397.0">
+      <VBox layoutX="452.0" layoutY="259.0" prefHeight="358.0" prefWidth="397.0">
          <children>
-              <TextField fx:id="nom" prefHeight="45.0" prefWidth="397.0" promptText="Entrer votre nom">
+              <TextField fx:id="nom" prefHeight="47.0" prefWidth="397.0" promptText="Entrer votre nom">
                   <font>
                       <Font name="Arial" size="20.0" />
                   </font>
@@ -56,21 +56,7 @@
                <children>
                   <Label prefWidth="50.0" />
                </children></VBox>
-              <TextField fx:id="tel" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre numero de telephone">
-                  <font>
-                      <Font name="Arial" size="20.0" />
-                  </font>
-              </TextField>
-            <VBox prefHeight="15.0" prefWidth="397.0">
-               <children>
-                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-              <ComboBox fx:id="role" prefHeight="38.0" prefWidth="397.0" promptText="Role">
+              <ComboBox fx:id="role" prefHeight="41.0" prefWidth="397.0" promptText="Role">
                   <style>
                 -fx-font-family: Arial;
                 -fx-font-size: 20px;
@@ -112,7 +98,10 @@
             </VBox>
             <VBox prefHeight="43.0" prefWidth="397.0">
                <children>
-                  <PasswordField fx:id="mdp" prefHeight="47.0" prefWidth="397.0" promptText="Choisissez le mot de passe" />
+                  <PasswordField fx:id="mdp" prefHeight="47.0" prefWidth="397.0" promptText="Choisissez le mot de passe">
+                     <font>
+                        <Font size="20.0" />
+                     </font></PasswordField>
                </children>
             </VBox>
             <VBox prefHeight="20.0" prefWidth="397.0" />
@@ -130,7 +119,7 @@
             <Image url="@logoblanc.png" />
          </image>
       </ImageView>
-      <Hyperlink layoutX="534.0" layoutY="673.0" onAction="#ToConnexion" text="Vous avez deja un compte?" textFill="#b0e847">
+      <Hyperlink layoutX="533.0" layoutY="635.0" onAction="#ToConnexion" text="Vous avez deja un compte?" textFill="#b0e847">
          <effect>
             <Bloom />
          </effect>

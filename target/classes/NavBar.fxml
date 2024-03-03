@@ -51,10 +51,10 @@
                      </Menu>
                      <Menu mnemonicParsing="false" text="Clients">
                         <items>
-                           <MenuItem mnemonicParsing="false" onAction="#afficherAdmin" text="Afficher" />
+                           <MenuItem mnemonicParsing="false" />
                         </items>
                         <items>
-                           <MenuItem mnemonicParsing="false" onAction="#AjouterAdmin" text="Ajouter" />
+                           <MenuItem mnemonicParsing="false"  />
                         </items>
                      </Menu>
 
