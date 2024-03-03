@@ -1,4 +1,4 @@
-package tn.pidev.services;
+package tn.pidev.services.TourismeService;
 
 import java.sql.SQLException;
 import java.util.List;

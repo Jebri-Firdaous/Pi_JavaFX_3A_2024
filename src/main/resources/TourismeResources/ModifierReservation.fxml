@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ModifierReservationController">
+<AnchorPane prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.TourismeController.ModifierReservationController">
    <children>
       <fx:include source="AdminInterface.fxml" />
       <ImageView fitHeight="706.0" fitWidth="1312.0" layoutY="141.0">

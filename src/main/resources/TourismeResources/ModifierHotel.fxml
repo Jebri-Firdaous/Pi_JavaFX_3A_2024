@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="837.0" prefWidth="1352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ModifierHotel">
+<AnchorPane prefHeight="837.0" prefWidth="1352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.TourismeController.ModifierHotel">
    <children>
       <fx:include source="AdminInterface.fxml" />
 

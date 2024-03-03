@@ -8,7 +8,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import tn.pidev.entities.Reservation;
+import tn.pidev.entities.TourismeEntities.Reservation;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

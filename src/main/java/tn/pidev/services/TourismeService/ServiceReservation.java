@@ -1,6 +1,6 @@
-package tn.pidev.services;
+package tn.pidev.services.TourismeService;
 
-import tn.pidev.entities.Reservation;
+import tn.pidev.entities.TourismeEntities.Reservation;
 import tn.pidev.utiles.MyDataBase;
 
 import java.sql.*;

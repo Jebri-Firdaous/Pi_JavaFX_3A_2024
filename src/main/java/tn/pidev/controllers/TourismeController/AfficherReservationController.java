@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
 
 
 import javafx.collections.FXCollections;
@@ -14,10 +14,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tn.pidev.entities.Hotel;
-import tn.pidev.entities.Reservation;
-import tn.pidev.services.ServiceHotel;
-import tn.pidev.services.ServiceReservation;
+import tn.pidev.entities.TourismeEntities.Hotel;
+import tn.pidev.entities.TourismeEntities.Reservation;
+import tn.pidev.services.TourismeService.ServiceHotel;
+import tn.pidev.services.TourismeService.ServiceReservation;
 import tn.pidev.utiles.ReservationPDF;
 
 import java.awt.*;
@@ -135,7 +135,7 @@ public class AfficherReservationController {
 
     private void switchToUpdatePage(Reservation reservation) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/ModifierReservation.fxml"));
             Parent root = loader.load();
 
             ModifierReservationController modifierReservationController = loader.getController();

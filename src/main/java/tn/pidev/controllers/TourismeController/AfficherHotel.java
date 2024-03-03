@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -13,8 +13,8 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tn.pidev.entities.Hotel;
-import tn.pidev.services.ServiceHotel;
+import tn.pidev.entities.TourismeEntities.Hotel;
+import tn.pidev.services.TourismeService.ServiceHotel;
 import tn.pidev.utiles.QrCodeHotel;
 
 import java.awt.image.BufferedImage;
@@ -162,7 +162,7 @@ public class AfficherHotel {
 
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierHotel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/ModifierHotel.fxml"));
             Parent root = loader.load();
 
             ModifierHotel modifierArticleController = loader.getController();

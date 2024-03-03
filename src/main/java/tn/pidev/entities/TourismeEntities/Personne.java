@@ -1,4 +1,4 @@
-package tn.pidev.entities;
+package tn.pidev.entities.TourismeEntities;
 
 public class Personne {
 
@@ -79,7 +79,7 @@ public class Personne {
 
     @Override
     public String toString() {
-        return "tn.pidev.entities.Personne{" +
+        return "tn.pidev.entities.TourismeEntities.Personne{" +
                 "nom_personne='" + nom_personne + '\'' +
                 ", prenom_personne='" + prenom_personne + '\'' +
                 ", numero_telephone=" + numero_telephone +

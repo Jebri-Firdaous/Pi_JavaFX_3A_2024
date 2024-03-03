@@ -1,8 +1,6 @@
-package tn.pidev.services;
+package tn.pidev.services.TourismeService;
 
-import tn.pidev.entities.Administrateur;
-import tn.pidev.entities.Personne;
-import tn.pidev.utiles.MyDataBase;
+import tn.pidev.entities.TourismeEntities.Administrateur;
 import tn.pidev.utiles.MyDataBase;
 
 import java.sql.*;

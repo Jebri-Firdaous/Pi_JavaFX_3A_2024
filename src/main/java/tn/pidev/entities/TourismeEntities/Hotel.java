@@ -1,4 +1,4 @@
-package tn.pidev.entities;
+package tn.pidev.entities.TourismeEntities;
 
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import tn.pidev.entities.Hotel;
-import tn.pidev.services.ServiceHotel;
+import tn.pidev.entities.TourismeEntities.Hotel;
+import tn.pidev.services.TourismeService.ServiceHotel;
 
 import java.awt.*;
 import java.io.IOException;
@@ -160,7 +160,7 @@ public class AjouterHotel implements Initializable {
     @FXML
     void naviguezVersAffichage(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherHotel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
             Parent root = loader.load();
             AfficherHotel AfficheController = loader.getController();
             Scene pageScene = new Scene(root);

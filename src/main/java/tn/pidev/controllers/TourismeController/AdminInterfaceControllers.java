@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
@@ -22,10 +22,10 @@ public class AdminInterfaceControllers {
     void afficherHotel() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherHotel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -41,10 +41,10 @@ public class AdminInterfaceControllers {
 
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterHotel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AjouterHotel.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -59,10 +59,10 @@ public class AdminInterfaceControllers {
     void modifierHotel() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierHotel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/ModifierHotel.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -78,10 +78,10 @@ public class AdminInterfaceControllers {
     void AjouterReservation() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterReservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AjouterReservation.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -95,10 +95,10 @@ public class AdminInterfaceControllers {
     void ModifierReservation() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/ModifierReservation.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -113,10 +113,10 @@ public class AdminInterfaceControllers {
     void AfficherReservation() {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherReservation.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
-            newPageScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) contentPane.getScene().getWindow();
@@ -135,7 +135,7 @@ public class AdminInterfaceControllers {
     public void navigateToAcceuil(ActionEvent actionEvent) {
         try {
 //           for load an FXML file and create a scene graph from it
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Acceuil.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/Acceuil.fxml"));
             Parent addPageRoot = loader.load();
             Scene newPageScene = new Scene(addPageRoot);
 

@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css"
-            xmlns="http://javafx.com/javafx/8" fx:controller="tn.pidev.controllers.AdminInterfaceControllers">
+            xmlns="http://javafx.com/javafx/8" fx:controller="tn.pidev.controllers.TourismeController.AdminInterfaceControllers">
     <top>
         <Pane fx:id="contentPane" BorderPane.alignment="CENTER">
             <children>

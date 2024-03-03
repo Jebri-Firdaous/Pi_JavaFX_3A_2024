@@ -1,177 +1,158 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import tn.pidev.entities.Reservation;
-import tn.pidev.services.ServiceHotel;
-import tn.pidev.services.ServiceReservation;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+import tn.pidev.entities.TourismeEntities.Reservation;
+import tn.pidev.services.TourismeService.ServiceHotel;
+import tn.pidev.services.TourismeService.ServiceReservation;
+import tn.pidev.utiles.HotelMail;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class ModifierReservationController implements Initializable {
 
+public class AjouterReservationController implements Initializable {
 
-    private final ServiceReservation serviceReservation = new ServiceReservation();
-    private final ServiceHotel servicehotel = new ServiceHotel();
-    int ref_reservation;
+    private final ServiceReservation sh = new ServiceReservation();
+    private final ServiceHotel serviceHotel = new ServiceHotel();
     @FXML
-    private ComboBox<Reservation.TypeChambre> typeModif;
+    private ComboBox<Reservation.TypeChambre> type;
     @FXML
-    private TextField dureeModif;
+    private Label prix;
     @FXML
-    private Label prixModif;
+    private DatePicker date;
     @FXML
-    private ComboBox<String> nomhotelModif;
+    private TextField duree;
     @FXML
-    private DatePicker dateModif;
-    private Reservation reservation;
+    private ComboBox<String> nomhotel;
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
-
-    /*--------------------------------------------------Afficher-Daitails------------------------------------------------------*/
-
-    public void afficherDetailsHotel(Reservation reservation) throws SQLException {
-        this.reservation = reservation;
-        dureeModif.setText(String.valueOf(reservation.getDuree_reservation()));
-        prixModif.setText(String.valueOf(reservation.getPrix_reservation()));
-        dateModif.setValue(reservation.getDate_reservation());
-        String hotelIdAsString = String.valueOf(servicehotel.getNomHotelById(reservation.getId_hotel()));
-        nomhotelModif.setValue(hotelIdAsString);
-        typeModif.setValue(reservation.getType_chambre());
-
-    }
-
-    public void setRef_reservation(int ref_reservation) {
-        this.ref_reservation = ref_reservation;
-    }
-
-
-    public void someMethod() {
-        // Assurez-vous que l'objet hotel est initialisé avant son utilisation
-        if (reservation != null) {
-            // Utilisez l'objet hotel ici
-        } else {
-            System.out.println("L'objet reservation n'est pas initialisé. Assurez-vous d'appeler initData pour l'initialiser.");
-        }
-    }
-
-    /*--------------------------------------------------Controle-Saisie------------------------------------------------------*/
+    /*--------------------------------------------------Choisir-Hotel------------------------------------------------------*/
 
 
     @FXML
-    void initialize() {
-        // Ajout d'un événement pour vérifier la saisie dans le champ prix1Modif
-        dureeModif.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                dureeModif.setText(newValue.replaceAll("[^\\d]", ""));
+    void choisirHotel(ActionEvent event) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-city", "root", "")) {
+            String query = "SELECT `nom_hotel` FROM `hotel`";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    nomhotel.getItems().add(resultSet.getString("nom_hotel"));
+                }
             }
-        });
-    }
-
-
-    /*--------------------------------------------------Cffichage------------------------------------------------------*/
-
-    public void Affichage() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReservation.fxml"));
-            Parent newPageRoot = loader.load();
-            AfficherHotel afficherHotelsController = loader.getController();
-
-            // Create a new scene with the newPageRoot
-            Scene pageScene = new Scene(newPageRoot);
-
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) dureeModif.getScene().getWindow();
-            stage.setScene(pageScene);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            afficherMessage("Erreur", "Une erreur s'est produite lors du chargement des hôtels : " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-
-    /*--------------------------------------------------Naviguer-Affichage------------------------------------------------------*/
-
-    @FXML
-    void naviguezVersAffichage(ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReservation.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Récupérer le stage actuel
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    /*--------------------------------------------------Ajouter-Hotel------------------------------------------------------*/
 
     @FXML
-    void modifierReservation(ActionEvent event) {
+    void ajouterReservation(ActionEvent event) {
         try {
+            String dureeText = duree.getText();
+            String prixText = prix.getText();
+            LocalDate dateValue = date.getValue();
 
-
-            float dureeReservation = Float.parseFloat(dureeModif.getText());
-            float prixReservation = Float.parseFloat(prixModif.getText());
-            LocalDate dateReservation = dateModif.getValue(); // Récupère la valeur du DatePicker
-            String nomHotel = nomhotelModif.getValue(); // Récupère la valeur sélectionnée dans le ComboBox
-            Reservation.TypeChambre selectedType = typeModif.getValue(); // Récupère la valeur sélectionnée dans le ComboBox
-
-            // Appeler la méthode getHotelIdByNom à partir du serviceHotel pour obtenir l'ID de l'hôtel
-            int hotelId = servicehotel.getHotelIdByNom(nomHotel);
+            Float dureeValue = Float.parseFloat(dureeText);
+            Float prixValue = Float.parseFloat(prixText);
+            String nomHotelSelectionne = nomhotel.getValue();
+            Reservation.TypeChambre typeChambre = type.getValue();
+            int idHotel = serviceHotel.getHotelIdByNom(nomHotelSelectionne);
 
             // Vérifier si la date est valide (aujourd'hui ou après un mois)
             LocalDate dateActuelle = LocalDate.now();
             LocalDate dateMax = dateActuelle.plusMonths(1); // Un mois à partir de maintenant
 
-            if (dateReservation == null || dateReservation.isBefore(dateActuelle) || dateReservation.isAfter(dateMax)) {
+            if (dateValue == null || dateValue.isBefore(dateActuelle) || dateValue.isAfter(dateMax)) {
                 // Afficher un message d'erreur si la date n'est pas valide
-                afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir une date valide (aujourd'hui ou après un mois).");
+                afficherMessage("Erreur", "Veuillez saisir une date valide (aujourd'hui ou après un mois).", Alert.AlertType.ERROR);
                 return;
             }
+            ServiceReservation sr = new ServiceReservation(); // Créez une instance de ServiceReservation
 
-            Reservation nouvelReservation = new Reservation(reservation.getRef_reservation(), dureeReservation, prixReservation, dateReservation, hotelId, selectedType);
-            serviceReservation.modifier(nouvelReservation);
 
-            afficherAlerte(Alert.AlertType.INFORMATION, "Succès", "L'article a été modifié avec succès.");
+            // Ajouter la réservation
+            sh.ajouter(new Reservation(dureeValue, prixValue, dateValue, idHotel, typeChambre));
+
+            // Effacer les champs de saisie après l'ajout
+            duree.setText("");
+            prix.setText(""); // Efface le texte du champ prix après l'ajout
+            date.setValue(null);
+            type.setValue(null);
+            nomhotel.setValue(null);
+
+            // Afficher une notification en bas à gauche de l'écran pendant 5 secondes pour indiquer que la commande a été ajoutée avec succès
+            Notifications.create()
+                    .title("E-City")
+                    .text("Une reservation a été ajoutée !")
+                    .position(Pos.BOTTOM_RIGHT)
+                    .hideAfter(Duration.seconds(3))
+                    .show();
+
+            // Afficher un message de confirmation
+            afficherMessage("Succès", "La réservation a été ajoutée avec succès.", Alert.AlertType.INFORMATION);
+
+            String message = "Reservation de " + nomHotelSelectionne + " avec succès !";
+            HotelMail.send("ecity.tunis2000@gmail.com", message);
+
+
+            //  HotelMail.send("ali.ammari@esprit.tn","Reservation hotel avec succée !" );
         } catch (NumberFormatException e) {
-            afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir des valeurs valides pour le prix et la quantité.");
+            // Gérer les erreurs de conversion des prix en nombres décimaux
+            afficherMessage("Erreur", "Veuillez saisir des nombres valides pour les prix et la durée.", Alert.AlertType.ERROR);
         } catch (SQLException e) {
-            afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Une erreur est survenue lors de la modification de l'article : " + e.getMessage());
+            // Afficher un message d'erreur en cas d'échec de l'ajout de la réservation
+            afficherMessage("Erreur", "Erreur lors de l'ajout de la réservation : " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
-    /*--------------------------------------------------Afficher-Alerte-----------------------------------------------------*/
+    /*--------------------------------------------------Afficher-Message------------------------------------------------------*/
 
-    private void afficherAlerte(Alert.AlertType type, String titre, String contenu) {
+    private void afficherMessage(String titre, String contenu, Alert.AlertType type) {
         Alert alert = new Alert(type);
         alert.setTitle(titre);
         alert.setHeaderText(null);
         alert.setContentText(contenu);
         alert.showAndWait();
     }
+    /*--------------------------------------------------Controle-De-Saisie------------------------------------------------------*/
 
-    /*--------------------------------------------------Choisir-Type-Reservatio---------------------------------------------------*/
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Ajoutez le code pour limiter la saisie à des valeurs numériques uniquement
+        duree.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                duree.setText(oldValue);
+            }
+        });
+
+        choisirHotel(null);
+        type.getItems().addAll(Reservation.TypeChambre.values());
+        // nomhotel.getItems().addAll(choisirHotel);
+
+
+    }
+
 
     @FXML
     void choisirType(ActionEvent event) {
-
-        Reservation.TypeChambre selectedType = typeModif.getSelectionModel().getSelectedItem();
+        Reservation.TypeChambre selectedType = type.getSelectionModel().getSelectedItem();
 
 
         try {
@@ -179,19 +160,19 @@ public class ModifierReservationController implements Initializable {
 
             if (selectedType != null) { // Vérification de nullité
                 // Récupérer l'ID de l'hôtel sélectionné
-                int idHotel = servicehotel.getHotelIdByNom(nomhotelModif.getValue());
+                int idHotel = serviceHotel.getHotelIdByNom(nomhotel.getValue());
 
                 // Mettre à jour le nombre de chambres disponibles
                 switch (selectedType) {
                     case NORMAL:
-                        LocalDate periodeMinimale = serviceReservation.calculerDateFinMinimale(idHotel, Reservation.TypeChambre.NORMAL);
-                        int nombreChambresDisponibles = servicehotel.updateNombreChambres(idHotel, "numero1");
+                        LocalDate periodeMinimale = sh.calculerDateFinMinimale(idHotel, Reservation.TypeChambre.NORMAL);
+                        int nombreChambresDisponibles = serviceHotel.updateNombreChambres(idHotel, "numero1");
 
                         if (nombreChambresDisponibles == 0) {
                             // Afficher une alerte si toutes les chambres de ce type sont réservées
                             afficherMessage("Réservation impossible", "Toutes les chambres de ce type sont réservées. Veuillez sélectionner un autre type de chambre ou une autre date.", Alert.AlertType.WARNING);
 
-                            dateModif.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+                            date.setDayCellFactory(new Callback<DatePicker, DateCell>() {
                                 @Override
                                 public DateCell call(DatePicker param) {
                                     return new DateCell() {
@@ -214,7 +195,7 @@ public class ModifierReservationController implements Initializable {
                                 }
                             });
                         } else if (nombreChambresDisponibles > 0) {
-                            dateModif.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+                            date.setDayCellFactory(new Callback<DatePicker, DateCell>() {
                                 @Override
                                 public DateCell call(DatePicker param) {
                                     return new DateCell() {
@@ -235,14 +216,14 @@ public class ModifierReservationController implements Initializable {
                         break;
 
                     case STANDARD:
-                        LocalDate periodeMinimale2 = serviceReservation.calculerDateFinMinimale(idHotel, Reservation.TypeChambre.STANDARD);
-                        int nombreChambresDisponibles2 = servicehotel.updateNombreChambres(idHotel, "numero2");
+                        LocalDate periodeMinimale2 = sh.calculerDateFinMinimale(idHotel, Reservation.TypeChambre.STANDARD);
+                        int nombreChambresDisponibles2 = serviceHotel.updateNombreChambres(idHotel, "numero2");
 
                         if (nombreChambresDisponibles2 == 0) {
                             // Afficher une alerte si toutes les chambres de ce type sont réservées
                             afficherMessage("Réservation impossible", "Toutes les chambres de ce type sont réservées. Veuillez sélectionner un autre type de chambre ou une autre date.", Alert.AlertType.WARNING);
 
-                            dateModif.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+                            date.setDayCellFactory(new Callback<DatePicker, DateCell>() {
                                 @Override
                                 public DateCell call(DatePicker param) {
                                     return new DateCell() {
@@ -265,7 +246,7 @@ public class ModifierReservationController implements Initializable {
                                 }
                             });
                         } else if (nombreChambresDisponibles2 > 0) {
-                            dateModif.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+                            date.setDayCellFactory(new Callback<DatePicker, DateCell>() {
                                 @Override
                                 public DateCell call(DatePicker param) {
                                     return new DateCell() {
@@ -285,14 +266,14 @@ public class ModifierReservationController implements Initializable {
                         }
                         break;
                     case LUXE:
-                        LocalDate periodeMinimale3 = serviceReservation.calculerDateFinMinimale(idHotel, Reservation.TypeChambre.LUXE);
-                        int nombreChambresDisponibles3 = servicehotel.updateNombreChambres(idHotel, "numero3");
+                        LocalDate periodeMinimale3 = sh.calculerDateFinMinimale(idHotel, Reservation.TypeChambre.LUXE);
+                        int nombreChambresDisponibles3 = serviceHotel.updateNombreChambres(idHotel, "numero3");
 
                         if (nombreChambresDisponibles3 == 0) {
                             // Afficher une alerte si toutes les chambres de ce type sont réservées
                             afficherMessage("Réservation impossible", "Toutes les chambres de ce type sont réservées. Veuillez sélectionner un autre type de chambre ou une autre date.", Alert.AlertType.WARNING);
 
-                            dateModif.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+                            date.setDayCellFactory(new Callback<DatePicker, DateCell>() {
                                 @Override
                                 public DateCell call(DatePicker param) {
                                     return new DateCell() {
@@ -315,7 +296,7 @@ public class ModifierReservationController implements Initializable {
                                 }
                             });
                         } else if (nombreChambresDisponibles3 > 0) {
-                            dateModif.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+                            date.setDayCellFactory(new Callback<DatePicker, DateCell>() {
                                 @Override
                                 public DateCell call(DatePicker param) {
                                     return new DateCell() {
@@ -342,20 +323,20 @@ public class ModifierReservationController implements Initializable {
                 double prixhotel = 0.0;
                 switch (selectedType) {
                     case NORMAL:
-                        prixhotel = servicehotel.getPrix1ById(idHotel);
+                        prixhotel = serviceHotel.getPrix1ById(idHotel);
                         break;
                     case STANDARD:
-                        prixhotel = servicehotel.getPrix2ById(idHotel);
+                        prixhotel = serviceHotel.getPrix2ById(idHotel);
                         break;
                     case LUXE:
-                        prixhotel = servicehotel.getPrix3ById(idHotel);
+                        prixhotel = serviceHotel.getPrix3ById(idHotel);
                         break;
                     default:
                         break;
                 }
 
                 // Afficher le prix dans le champ prix
-                prixModif.setText(String.valueOf(prixhotel));
+                prix.setText(String.valueOf(prixhotel));
 
                 // Autres actions à effectuer en fonction du prix ou du type de chambre sélectionné
                 System.out.println("Type de chambre : " + selectedType);
@@ -368,48 +349,43 @@ public class ModifierReservationController implements Initializable {
             e.printStackTrace();
             // Gérer l'exception
         }
-
     }
 
-    /*--------------------------------------------------Afficher-Message-----------------------------------------------------*/
-
-    private void afficherMessage(String titre, String contenu, Alert.AlertType type) {
-        Alert alert = new Alert(type);
-        alert.setTitle(titre);
-        alert.setHeaderText(null);
-        alert.setContentText(contenu);
-        alert.showAndWait();
-    }
-
-    /*--------------------------------------------------Choisir-Hotel----------------------------------------------------*/
 
     @FXML
-    void choisirHotel(ActionEvent event) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-city", "root", "")) {
-            String query = "SELECT `nom_hotel` FROM `hotel`";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-                 ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    nomhotelModif.getItems().add(resultSet.getString("nom_hotel"));
-                }
-            }
-        } catch (SQLException e) {
-            afficherMessage("Erreur", "Une erreur s'est produite lors du chargement des hôtels : " + e.getMessage(), Alert.AlertType.ERROR);
+    void naviguezVersAffichage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherReservation.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Récupérer le stage actuel
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
     }
 
 
-    /*--------------------------------------------------Initialisation-----------------------------------------------------*/
+    @FXML
+    void naviguerToChat(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/Chat.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Récupérer le stage actuel
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        choisirHotel(null);
-        typeModif.getItems().addAll(Reservation.TypeChambre.values());
-        // nomhotel.getItems().addAll(choisirHotel);
-
-
+    private List<LocalDate> getDatesIndisponibles(int idHotel, Reservation.TypeChambre typeChambre, LocalDate debutPeriode, float duree) {
+        // Implémentez votre logique pour récupérer les dates indisponibles pour ce type de chambre et cette période spécifique
+        // Cette méthode doit renvoyer une liste de LocalDate représentant les dates indisponibles
+        // Vous pouvez interroger votre base de données pour obtenir ces informations
+        return null; // Placeholder, remplacez-le par votre implémentation réelle
     }
 
 

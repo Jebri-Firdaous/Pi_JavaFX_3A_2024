@@ -1,4 +1,4 @@
-package tn.pidev.entities;
+package tn.pidev.entities.TourismeEntities;
 
 public class Administrateur extends Personne {
     private int id_admin;

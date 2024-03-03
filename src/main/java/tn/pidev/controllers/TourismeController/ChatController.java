@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

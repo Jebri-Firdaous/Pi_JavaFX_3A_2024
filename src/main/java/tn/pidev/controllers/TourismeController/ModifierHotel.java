@@ -1,24 +1,19 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.TourismeController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.converter.NumberStringConverter;
-import tn.pidev.services.ServiceHotel;
+import tn.pidev.services.TourismeService.ServiceHotel;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.*;
-import java.util.List;
-import java.util.ResourceBundle;
 
-import tn.pidev.entities.Hotel;
+import tn.pidev.entities.TourismeEntities.Hotel;
 
 public class ModifierHotel  {
 
@@ -211,7 +206,7 @@ public class ModifierHotel  {
     @FXML
     void naviguezVersAffichage(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherHotel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Récupérer le stage actuel
             Scene scene = new Scene(root);

@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="an" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ChatController">
+<AnchorPane id="AnchorPane" fx:id="an" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.TourismeController.ChatController">
     <children>
         <TextField fx:id="ASK" layoutX="328.0" layoutY="174.0" onAction="#UserA" prefHeight="61.0" prefWidth="661.0" />
         <TextArea fx:id="textchat" layoutX="328.0" layoutY="291.0" prefHeight="371.0" prefWidth="661.0" promptText="coversation BOT / utilisateur">

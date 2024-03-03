@@ -1,9 +1,9 @@
 package tn.pidev.test;
 
-import tn.pidev.entities.Hotel;
-import tn.pidev.entities.Reservation;
-import tn.pidev.services.ServiceHotel;
-import tn.pidev.services.ServiceReservation;
+import tn.pidev.entities.TourismeEntities.Hotel;
+import tn.pidev.entities.TourismeEntities.Reservation;
+import tn.pidev.services.TourismeService.ServiceHotel;
+import tn.pidev.services.TourismeService.ServiceReservation;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

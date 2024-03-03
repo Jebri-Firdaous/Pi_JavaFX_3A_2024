@@ -15,13 +15,13 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Acceuil.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/Acceuil.fxml"));
         //  HotelMail.send("ali.ammari@esprit.tn","liltek zine");
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("E-City");
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icone_fenetre.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/TourismeResources/icone_fenetre.png")));
         primaryStage.show();
     }
 
