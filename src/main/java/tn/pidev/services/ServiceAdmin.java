@@ -187,6 +187,33 @@ public class ServiceAdmin implements IService<Administrateur> {
         return administrateurs;
     }
 
+    public String getnombyEmail(String email) {
+        String NomPrenom = "";
+        try {
+            String sql = "SELECT * FROM administrateur JOIN personne ON administrateur.id_personne = personne.id_personne WHERE personne.mail_personne =  ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                int id_personne = rs.getInt("id_personne");
+                String role = rs.getString("role");
+                String nom = rs.getString("nom_personne");
+                String prenom = rs.getString("prenom_personne");
+                int tel = rs.getInt("numero_telephone");
+                String mail = rs.getString("mail_personne");
+                String mdp = rs.getString("mdp_personne");
+                String image_personne = rs.getString("image_personne");
+
+                NomPrenom = nom + " " + prenom;
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération de l'administrateur : " + e.getMessage());
+        }
+        return NomPrenom;
+    }
+
     public Administrateur getAdminByEmail(String email) {
         Administrateur administrateur = null;
         try {

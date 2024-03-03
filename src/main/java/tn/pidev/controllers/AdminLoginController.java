@@ -75,6 +75,28 @@
                 Administrateur administrateur = serviceAdmin.getAdminByEmail(emailRecupered);
                 administrateur.setMdp_personne(password1);
                 serviceAdmin.modifier(administrateur);
+                boolean emailSent = compte_récuperer(emailRecupered);
+                navigateTo("pageConnexion.fxml");
+            }
+        }
+
+        private boolean compte_récuperer(String email) {
+            try {
+                String NomPrenom = sa.getnombyEmail(email);
+
+
+                String subject = "Récupération de Compte Réussie";
+                String body = "Cher/chère " + NomPrenom + "\n\n"
+                        + "Nous sommes heureux de vous informer que la récupération de votre compte a été effectuée avec succès. Votre accès à E-city est désormais rétabli.\n\n"
+                        + "Si vous avez des questions ou avez besoin d'une assistance supplémentaire, n'hésitez pas à nous contacter à tout moment. Nous sommes là pour vous aider.\n\n"
+                        + "Cordialement,\n"
+                        + "L'équipe E-city";
+                EmailSender.sendEmail(email, subject, body); // Utilisez votre méthode d'envoi d'e-mail
+                return true;
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                return false;
+
             }
         }
 
@@ -316,6 +338,9 @@
 
         private boolean sendResetPasswordEmail(String email, String code) {
             try {
+                String NomPrenom = sa.getnombyEmail(email);
+                System.out.println(NomPrenom);
+
                 // Ici, vous devez implémenter le code pour envoyer l'e-mail de réinitialisation
                 // Utilisez l'adresse ecity.tunis2000@gmail.com comme expéditeur
                 // Le corps de l'e-mail doit contenir le code de réinitialisation
@@ -323,7 +348,13 @@
                 resetCode = code;
                 // Exemple avec JavaMail
                 String subject = "Réinitialisation du mot de passe";
-                String body = "Bonjour,\n\nVotre code de réinitialisation du mot de passe est : " + code;
+                String body = "Cher/chère " + NomPrenom + ",\n\n"
+                        + "Nous vous informons que votre demande de réinitialisation de mot de passe a été traitée avec succès.\n\n"
+                        + "Veuillez trouver ci-dessous votre code de réinitialisation :\n\n"
+                        + code + "\n\n"
+                        + "Veuillez utiliser ce code pour réinitialiser votre mot de passe. Si vous n'avez pas demandé cette réinitialisation, veuillez contacter notre équipe de support dès que possible.\n\n"
+                        + "Cordialement,\n"
+                        + "L'équipe de E-city";
                 EmailSender.sendEmail(email, subject, body); // Utilisez votre méthode d'envoi d'e-mail
                 return true;
             } catch (MessagingException e) {

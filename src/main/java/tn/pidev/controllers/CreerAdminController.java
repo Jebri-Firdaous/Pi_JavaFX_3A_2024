@@ -5,12 +5,16 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tn.pidev.entities.Administrateur;
 import tn.pidev.services.ServiceAdmin;
 
@@ -230,10 +234,6 @@ public class CreerAdminController {
                             mail.getText(), mdp.getText(), "", roleSelected));
                     int adminId = sa.getAdminId(nom.getText(), prenom.getText(), mail.getText(), mdp.getText());
                     ToValidate(adminId);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setContentText("Compte ajoutée avec succes!");
-                    alert.showAndWait();
                     nom.setText("");
                     prenom.setText("");
                     mail.setText("");
@@ -252,7 +252,20 @@ public class CreerAdminController {
             alert.setContentText("Veuillez remplir tous les champs.");
             alert.showAndWait();
         }
+        // Afficher la notification après le clic sur le bouton
+        Image icon = new Image(getClass().getResourceAsStream("/ticke_icon.png"));
+        ImageView imageView = new ImageView(icon);
+        imageView.setFitWidth(50); // Définir la largeur souhaitée de l'icône
+        imageView.setFitHeight(50); // Définir la hauteur souhaitée de l'icône
 
+        Notifications.create()
+                .graphic(imageView) // Définir l'icône de la notification
+                .title("Notification")
+                .text("Création de compte avec succès !")
+                .hideAfter(Duration.seconds(5)) // Cacher la notification après 5 secondes
+                .position(Pos.BOTTOM_RIGHT) // Positionner la notification en haut à droite de l'écran
+                .owner(rootPane) // Spécifier le conteneur parent de la notification
+                .show();
 
     }
 

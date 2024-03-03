@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -12,9 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tn.pidev.entities.Administrateur;
 import tn.pidev.services.ServiceAdmin;
 
@@ -30,6 +34,8 @@ public class VlidateController {
 
     @FXML
     private Label telInvalid;
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private ImageView profileImageView;
@@ -93,7 +99,19 @@ public class VlidateController {
                 System.out.println(adminId);
 
                 sa.modifier(administrateur);
+                Image icon = new Image(getClass().getResourceAsStream("/ticke_icon.png"));
+                ImageView imageView = new ImageView(icon);
+                imageView.setFitWidth(50); // Définir la largeur souhaitée de l'icône
+                imageView.setFitHeight(50); // Définir la hauteur souhaitée de l'icône
 
+                Notifications.create()
+                        .graphic(imageView) // Définir l'icône de la notification
+                        .title("Notification")
+                        .text("Validation de compte avec succès !")
+                        .hideAfter(Duration.seconds(5)) // Cacher la notification après 5 secondes
+                        .position(Pos.BOTTOM_RIGHT) // Positionner la notification en haut à droite de l'écran
+                        .owner(rootPane) // Spécifier le conteneur parent de la notification
+                        .show();
                 System.out.println(sa.getAdministrateur(adminId));
                 System.out.println("Administrateur modifié avec succès !");
                 navigateToPage("Acceuil.fxml");
