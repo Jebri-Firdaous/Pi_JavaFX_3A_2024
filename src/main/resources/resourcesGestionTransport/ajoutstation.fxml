@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AjoutstationController">
+   <children>
+       <fx:include source="../navBar.fxml" />
+         <Label layoutX="473.0" layoutY="283.0" text="Nom_Station">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Label>
+         <Label layoutX="473.0" layoutY="398.0" text="Adress_Station">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Label>
+         <Label layoutX="474.0" layoutY="515.0" text="Type_Station">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Label>
+         <TextField fx:id="tnom" layoutX="473.0" layoutY="319.0" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: white; -fx-border-color: black;" />
+         <TextField fx:id="tadress" layoutX="473.0" layoutY="442.0" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: white; -fx-border-color: black;" />
+         <Button layoutX="815.0" layoutY="629.0" mnemonicParsing="false" onAction="#addservice" prefHeight="64.0" prefWidth="245.0" style="-fx-background-color: #6093ac; -fx-border-color: white;" text="Ajouter" textFill="#f5f5f5">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font></Button>
+
+      <Text fill="#131414" layoutX="437.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Station" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="Cambria" size="46.0" />
+         </font>
+      </Text>
+       <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="1.0" layoutY="-53.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1253.0">
+           <fill>
+               <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+                   <stops>
+                       <Stop color="#5ee1e5a6" />
+                       <Stop color="#5ee1e500" offset="1.0" />
+                   </stops>
+               </LinearGradient>
+           </fill>
+       </Rectangle>
+
+       <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutY="675.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1239.0">
+           <fill>
+               <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
+                   <stops>
+                       <Stop color="#5ee1e5a6" />
+                       <Stop color="#5ee1e500" offset="1.0" />
+                   </stops>
+               </LinearGradient>
+           </fill>
+       </Rectangle>
+
+      <ComboBox fx:id="ttype1" layoutX="473.0" layoutY="560.0" prefHeight="54.0" prefWidth="174.0">
+           <items>
+               <FXCollections fx:factory="observableArrayList">
+                   <String fx:value="bus" />
+                   <String fx:value="louage" />
+                   <String fx:value="métro" />
+                   <String fx:value="train" />
+               </FXCollections>
+           </items>
+      </ComboBox>
+      <ImageView fitHeight="397.0" fitWidth="274.0" layoutX="849.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@arret-de-bus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="397.0" fitWidth="274.0" layoutX="71.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@arret-de-bus.png" />
+         </image>
+      </ImageView>
+
+
+   </children>
+</AnchorPane>
