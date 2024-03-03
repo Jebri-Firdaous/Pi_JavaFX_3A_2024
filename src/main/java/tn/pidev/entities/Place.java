@@ -1,4 +1,4 @@
-package org.example.entities;
+package tn.pidev.entities;
 
 import javafx.fxml.Initializable;
 
@@ -11,6 +11,7 @@ public class Place{
     private String type_place;
     private String etat;
     private int id_Parking;
+    private int idCli;
 
     public Place() {
     }
@@ -73,6 +74,14 @@ public class Place{
 
     public void setId_Parking(int id_Parking) {
         this.id_Parking = id_Parking;
+    }
+
+    public int getIdCli() {
+        return idCli;
+    }
+
+    public void setIdCli(int idCli) {
+        this.idCli = idCli;
     }
 
     @Override

@@ -1,39 +1,57 @@
-package org.example.controllers;
+package tn.pidev.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import org.example.entities.Parking;
-import org.example.entities.Place;
-import org.example.services.ParkingService;
-import org.example.services.PlaceService;
+import tn.pidev.entities.Parking;
+import tn.pidev.entities.Place;
+import tn.pidev.services.ParkingService;
+import tn.pidev.services.PlaceService;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
+import net.glxn.qrgen.javase.QRCode;
+import net.glxn.qrgen.core.image.ImageType;
+
 public class AfficherPlaceController {
     public Button addB;
     public Button res;
     public Button cancelRes;
+    public ImageView qr;
+    public Label numL;
+    public Label etatL;
+    public Label addresseL;
+    public ComboBox<Integer> idCli;
+    public Group grp2;
     PlaceService ps=new PlaceService();
+    private final ParkingService parkS = new ParkingService();
     public ListView<Place> listid;
     public int ref;
     private Place currentPlaceSelected;
     public void init(int ref){
         this.ref=ref;
         System.out.println(ref);
+        listid.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                details(newValue);
+            }
+        });
         try{
         List<Place>list=ps.recupererFiltrer(ref);
         listid.getItems().addAll(list);
@@ -73,7 +91,7 @@ public class AfficherPlaceController {
                                     hbox.setSpacing(40); // Adjust spacing as needed
 
 // Add details to the HBox with styled Labels
-                                    Label numLabel = new Label(Integer.toString(numPlace));
+                                    Label numLabel = new Label("Place Numero " + Integer.toString(numPlace));
                                     numLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
 
                                 /*Label prenomLabel = new Label(doctorSurname);
@@ -94,7 +112,7 @@ public class AfficherPlaceController {
 
 // Add the Labels to the HBox
 //                                    hbox2.getChildren().addAll(modifB, suppB);
-                                    hbox.getChildren().addAll(numLabel, typeLabel, etatLabel);
+                                    hbox.getChildren().addAll(numLabel);
 
 // Assuming this is inside a ListCell or similar where you can set the graphic
                                     setGraphic(hbox);
@@ -130,7 +148,7 @@ public class AfficherPlaceController {
             alert.showAndWait();
         }
     }
-//    @FXML
+    //    @FXML
 //    void initialize(){
 //        try{
 //            List<Place> list = ps.recuperer();
@@ -164,12 +182,13 @@ public class AfficherPlaceController {
     }
 
     public void supprimerPlace(ActionEvent actionEvent) {
+        Stage stage = (Stage) addB.getScene().getWindow();
+        Parking parking = (Parking) stage.getUserData();
         try {
             ps.supprimer(listid.getSelectionModel().getSelectedItem().getRef_place());
+            parkS.updateNbOcc(parking, 1);
             try {
-                Stage stage = (Stage) addB.getScene().getWindow();
-                Parking parking = (Parking) stage.getUserData();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlace.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
                 Parent root=loader.load();
                 AfficherPlaceController ctr= loader.getController();
                 ctr.init(parking.getRef());
@@ -194,7 +213,7 @@ public class AfficherPlaceController {
 
     public void naviguerVersParkings(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AfficherParking.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AfficherParkingsss.fxml")));
             addB.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
@@ -202,40 +221,85 @@ public class AfficherPlaceController {
     }
 
     public void reserverPlace(ActionEvent actionEvent) {
-        try {
-            ps.updateEtat(listid.getSelectionModel().getSelectedItem().getRef_place(), 0);
+        Stage stage = (Stage) addB.getScene().getWindow();
+        Parking parking = (Parking) stage.getUserData();
+        if(listid.getSelectionModel().getSelectedItem().getEtat().equals("Libre")) {
+//            // GENERATE QR CODE
+//            ByteArrayOutputStream out = QRCode.from("1234test").to(ImageType.PNG).withSize(100, 100).stream();
+//            ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
+//
+//            // SHOW QR CODE
+//            Image image = new Image(in);
+//            qr.setImage(image);
             try {
-                Stage stage = (Stage) addB.getScene().getWindow();
-                Parking parking = (Parking) stage.getUserData();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlace.fxml"));
-                Parent root=loader.load();
-                AfficherPlaceController ctr= loader.getController();
-                ctr.init(parking.getRef());
-                addB.getScene().setRoot(root);
-            } catch (IOException e) {
+                listid.getSelectionModel().getSelectedItem().setIdCli(idCli.getValue());
+                ps.updateEtat(listid.getSelectionModel().getSelectedItem(), 0);
+                parkS.updateNbOcc(parkS.recupererById(parking.getRef()), 0);
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
+                    Parent root = loader.load();
+                    AfficherPlaceController ctr = loader.getController();
+                    ctr.init(parking.getRef());
+                    addB.getScene().setRoot(root);
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
+            } catch (SQLException e) {
                 System.err.println(e.getMessage());
             }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
         }
     }
 
     public void annulerReservation(ActionEvent actionEvent) {
-        try {
-            ps.updateEtat(listid.getSelectionModel().getSelectedItem().getRef_place(), 1);
+        Stage stage = (Stage) addB.getScene().getWindow();
+        Parking parking = (Parking) stage.getUserData();
+        if(listid.getSelectionModel().getSelectedItem().getEtat().equals("Reservee")) {
             try {
-                Stage stage = (Stage) addB.getScene().getWindow();
-                Parking parking = (Parking) stage.getUserData();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlace.fxml"));
-                Parent root=loader.load();
-                AfficherPlaceController ctr= loader.getController();
-                ctr.init(parking.getRef());
-                addB.getScene().setRoot(root);
-            } catch (IOException e) {
+                ps.updateEtat(listid.getSelectionModel().getSelectedItem(), 1);
+                parkS.updateNbOcc(parkS.recupererById(parking.getRef()), 1);
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
+                    Parent root = loader.load();
+                    AfficherPlaceController ctr = loader.getController();
+                    ctr.init(parking.getRef());
+                    addB.getScene().setRoot(root);
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
+            } catch (SQLException e) {
                 System.err.println(e.getMessage());
             }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
         }
+    }
+
+    private void details(Place newValue) {
+        numL.setText(Integer.toString(newValue.getNum_place()));
+        addresseL.setText(newValue.getEtat());
+        idCli.getItems().clear();
+        try {
+            idCli.getItems().addAll(ps.refUser());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (newValue.getEtat().equals("Libre")) {
+            cancelRes.setVisible(false);
+            res.setVisible(true);
+            qr.setVisible(false);
+        }else {
+            cancelRes.setVisible(true);
+            res.setVisible(false);
+            qr.setVisible(true);
+            // GENERATE QR CODE
+            ByteArrayOutputStream out = QRCode.from(Integer.toString(newValue.getRef_place())+" , "+Integer.toString(newValue.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
+            ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
+
+            // SHOW QR CODE
+            Image image = new Image(in);
+            qr.setImage(image);
+        }
+        System.out.println(newValue.getIdCli());
+        idCli.setValue(newValue.getIdCli());
+        grp2.setStyle("-fx-border-width: 2px;");
+        grp2.setVisible(true);
     }
 }

@@ -1,23 +1,18 @@
-package org.example.test;
+package tn.pidev.test;
 
+import com.esri.arcgisruntime.mapping.view.MapView;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class MainFX extends Application {
+    private MapView mapView;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParking.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParkingsss.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Gérer parkings");
@@ -66,7 +61,8 @@ public class MainFX extends Application {
 
         stage.show();
     }*/
-}/*
+}
+/*
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,3 +124,40 @@ public class MainFX extends Application {
         launch(args);
     }
 }*/
+//        package tn.pidev.test;
+//
+//import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
+//import com.esri.arcgisruntime.mapping.ArcGISMap;
+//import com.esri.arcgisruntime.mapping.BasemapStyle;
+//import com.esri.arcgisruntime.mapping.Viewpoint;
+//import com.esri.arcgisruntime.mapping.view.MapView;
+//import javafx.application.Application;
+//import javafx.scene.Scene;
+//import javafx.stage.Stage;
+//
+//public class MainFX extends Application {
+//    private MapView mapView;
+//
+//    @Override
+//    public void start(Stage primaryStage) {
+//        ArcGISRuntimeEnvironment.setApiKey("AAPK35cf4b021e7a4c019b63243490179ac2jBL4IBgUxMIrLCpGR5HmtaB-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy");
+//
+//        mapView = new MapView();
+//
+//        ArcGISMap map = new ArcGISMap(BasemapStyle.ARCGIS_NAVIGATION);
+//        mapView.setMap(map);
+//
+//        mapView.setViewpointAsync(new Viewpoint(34.027, -118.805, 72223.819286));
+//
+//        Scene scene = new Scene(mapView);
+//        primaryStage.setScene(scene);
+//        primaryStage.setTitle("Map View");
+//        primaryStage.setWidth(800);
+//        primaryStage.setHeight(700);
+//        primaryStage.show();
+//    }
+//
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+//}

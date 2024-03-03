@@ -13,7 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AjouterParkingController">
+<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AjouterParkingController">
     <children>
         <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -92,43 +92,64 @@
          <center>
             <Group BorderPane.alignment="CENTER">
                <children>
-                    <Button fx:id="AddB" layoutX="461.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterParking" text="Ajouter" />
-                    <Label fx:id="errNom" layoutX="167.0" layoutY="150.0" lineSpacing="1.0" prefHeight="21.0" prefWidth="289.0" textAlignment="CENTER" textFill="RED">
+                    <Button fx:id="AddB" layoutX="546.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterParking" text="Ajouter" />
+                    <Label fx:id="errNom" layoutX="167.0" layoutY="74.0" lineSpacing="1.0" prefHeight="21.0" prefWidth="289.0" textAlignment="CENTER" textFill="RED">
                         <font>
                             <Font size="12.0" />
                         </font>
                   </Label>
-                    <TextField fx:id="nomTF" layoutX="167.0" layoutY="118.0" onKeyReleased="#testNom" />
-                    <Label fx:id="nbMaxL" layoutX="-32.0" layoutY="269.0" text="Nb Places Max">
+                    <TextField fx:id="nomTF" layoutX="167.0" layoutY="42.0" onKeyReleased="#testNom" />
+                    <Label fx:id="nbMaxL" layoutX="-32.0" layoutY="258.0" text="Nb Places Max">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="24.0" />
                      </font></Label>
-                    <Label fx:id="errAddr" layoutX="167.0" layoutY="222.0" prefHeight="21.0" prefWidth="282.0" textAlignment="CENTER" textFill="RED">
+                    <Label fx:id="errAddr" layoutX="167.0" layoutY="146.0" prefHeight="21.0" prefWidth="282.0" textAlignment="CENTER" textFill="RED">
                         <font>
                             <Font size="12.0" />
                         </font>
                   </Label>
-                    <TextField fx:id="addresseTF" layoutX="167.0" layoutY="191.0" onKeyReleased="#testAddresse" />
-                    <Button fx:id="Cancel1" layoutX="369.0" layoutY="338.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" text="Annuler" />
-                    <TextField fx:id="nbMaxTF" layoutX="167.0" layoutY="267.0" onKeyReleased="#testNb" />
-                    <Label fx:id="nomL" layoutX="-32.0" layoutY="118.0" text="Nom">
+                    <TextField fx:id="addresseTF" layoutX="167.0" layoutY="115.0" onKeyReleased="#testAddresse" />
+                    <Button fx:id="Cancel1" layoutX="433.0" layoutY="338.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" text="Annuler" />
+                    <TextField fx:id="nbMaxTF" layoutX="167.0" layoutY="256.0" onKeyReleased="#testNb" />
+                    <Label fx:id="nomL" layoutX="-32.0" layoutY="42.0" text="Nom">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="24.0" />
                      </font></Label>
-                    <Label fx:id="addresseL" layoutX="-32.0" layoutY="193.0" text="Addresse">
+                    <Label fx:id="addresseL" layoutX="-32.0" layoutY="117.0" text="Addresse">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="24.0" />
                      </font></Label>
-                    <Label fx:id="errNb" layoutX="167.0" layoutY="298.0" prefHeight="21.0" prefWidth="279.0" textAlignment="CENTER" textFill="RED">
+                    <Label fx:id="errNb" layoutX="167.0" layoutY="287.0" prefHeight="21.0" prefWidth="279.0" textAlignment="CENTER" textFill="RED">
                         <font>
                             <Font size="12.0" />
                         </font>
                   </Label>
-                  <Label layoutX="109.0" layoutY="13.0" text="Ajouter Parking">
+                  <Label layoutX="207.0" layoutY="-58.0" text="Ajouter Parking">
                      <font>
                         <Font name="Cooper Black" size="36.0" />
                      </font>
                   </Label>
+                  <Label layoutX="-32.0" layoutY="183.0" text="Latitude">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font>
+                  </Label><TextField fx:id="coordTF" layoutX="163.0" layoutY="186.0" onKeyReleased="#testAddresse" />
+                   <Label fx:id="errCoord" layoutX="163.0" layoutY="217.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+                       <font>
+                           <Font size="12.0" />
+                       </font>
+                   </Label>
+                   <Label fx:id="errLongi" layoutX="545.0" layoutY="217.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+                       <font>
+                           <Font size="12.0" />
+                       </font>
+                   </Label>
+                   <TextField fx:id="longiTF" layoutX="545.0" layoutY="186.0" onKeyReleased="#testAddresse" />
+                   <Label layoutX="405.0" layoutY="188.0" text="Longitude">
+                       <font>
+                           <Font name="Arial Rounded MT Bold" size="24.0" />
+                       </font>
+                   </Label>
                </children>
                <BorderPane.margin>
                   <Insets />

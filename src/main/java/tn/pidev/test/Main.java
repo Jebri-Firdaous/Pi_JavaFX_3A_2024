@@ -1,6 +1,6 @@
-package org.example.test;
+package tn.pidev.test;
 
-import org.example.utils.MyDataBase;
+import tn.pidev.utils.MyDataBase;
 
 public class Main {
     public static void main(String[] args) {

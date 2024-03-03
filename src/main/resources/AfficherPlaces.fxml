@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controllers.AfficherPlaceController">
+<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AfficherPlaceController">
     <children>
         <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -90,16 +91,28 @@
          <center>
             <Group BorderPane.alignment="CENTER">
                <children>
-                    <Button fx:id="listParkingB" layoutX="-221.0" layoutY="-183.0" mnemonicParsing="false" onAction="#naviguerVersParkings" text="Afficher Liste Parking" />
-                    <Button fx:id="modifB" layoutX="110.0" layoutY="339.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
-                    <Button fx:id="cancelRes" layoutX="462.0" layoutY="358.0" mnemonicParsing="false" onAction="#annulerReservation" text="Annuler Reservation" />
-                    <Button fx:id="delB" layoutX="242.0" layoutY="339.0" mnemonicParsing="false" onAction="#supprimerPlace" text="Supprimer" />
-                    <Button fx:id="addB" layoutX="-8.0" layoutY="339.0" mnemonicParsing="false" onAction="#naviguerVersAjouter" text="Ajouter" />
-                    <Button fx:id="res" layoutX="500.0" layoutY="321.0" mnemonicParsing="false" onAction="#reserverPlace" text="Reserver" />
-                    <ListView fx:id="listid" layoutX="-176.0" layoutY="-103.0" prefHeight="410.0" prefWidth="810.0" />
-                  <Label layoutX="-157.0" layoutY="-132.0" text="Num" />
-                  <Label layoutX="104.0" layoutY="-132.0" text="Type" />
-                  <Label layoutX="379.0" layoutY="-132.0" text="Etat" />
+                    <Button fx:id="addB" layoutX="47.0" layoutY="299.0" mnemonicParsing="false" onAction="#naviguerVersAjouter" text="Ajouter" />
+                    <ListView fx:id="listid" layoutX="-157.0" layoutY="-132.0" prefHeight="410.0" prefWidth="506.0" />
+                  <Label layoutX="-157.0" layoutY="-132.0" text="Num" visible="false" />
+                  <Label layoutX="104.0" layoutY="-132.0" text="Type" visible="false" />
+                  <Label layoutX="379.0" layoutY="-132.0" text="Etat" visible="false" />
+                   <Group fx:id="grp2" layoutX="310.0" layoutY="-425.0">
+                   <children>
+                       <Label layoutX="86.0" layoutY="350.0" text="Type :" />
+                       <Label layoutX="87.0" layoutY="397.0" text="Etat : " />
+                       <Label fx:id="numL" layoutX="266.0" layoutY="274.0" text="num" />
+                       <Label fx:id="etatL" layoutX="201.0" layoutY="397.0" text="Label" />
+                       <Label fx:id="addresseL" layoutX="201.0" layoutY="350.0" text="Label" />
+                          <Button fx:id="modifB" layoutX="165.0" layoutY="469.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
+                          <Button fx:id="delB" layoutX="302.0" layoutY="469.0" mnemonicParsing="false" onAction="#supprimerPlace" text="Supprimer" />
+                        <ImageView fx:id="qr" fitHeight="150.0" fitWidth="200.0" layoutX="174.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                          <Button fx:id="res" layoutX="347.0" layoutY="558.0" mnemonicParsing="false" onAction="#reserverPlace" text="Reserver" />
+                          <Button fx:id="cancelRes" layoutX="348.0" layoutY="558.0" mnemonicParsing="false" onAction="#annulerReservation" text="Annuler Reservation" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5e3ff" height="5.0" layoutX="93.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="375.0" />
+                        <ComboBox fx:id="idCli" layoutX="177.0" layoutY="560.0" prefWidth="150.0" />
+                        <Label layoutX="111.0" layoutY="565.0" text="ID Client" />
+                   </children>
+               </Group>
                </children>
             </Group>
          </center>

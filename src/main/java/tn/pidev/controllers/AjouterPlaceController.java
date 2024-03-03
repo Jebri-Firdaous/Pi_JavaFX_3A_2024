@@ -1,4 +1,4 @@
-package org.example.controllers;
+package tn.pidev.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -9,16 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
-import org.example.entities.Parking;
-import org.example.entities.Place;
-import org.example.services.ParkingService;
-import org.example.services.PlaceService;
+import tn.pidev.entities.Parking;
+import tn.pidev.entities.Place;
+import tn.pidev.services.ParkingService;
+import tn.pidev.services.PlaceService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AjouterPlaceController implements Initializable {
@@ -47,7 +45,7 @@ public class AjouterPlaceController implements Initializable {
                 System.out.println(parking.getRef());
                 if (parking.getNbPlaceMax()>parkS.calculNbPlace(parking.getRef())) {
                     ps.ajouter(new Place(Integer.parseInt(numTF.getText()), typeCB.getValue(), parking.getRef()));
-                    parkS.updateNbOcc(parking);
+//                    parkS.updateNbOcc(parking, 0);
                 }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
@@ -55,7 +53,7 @@ public class AjouterPlaceController implements Initializable {
                     alert.showAndWait();
                 }
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlace.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
                     Parent root = loader.load();
                     AfficherPlaceController ctr = loader.getController();
                     ctr.init(parking.getRef());
@@ -76,7 +74,7 @@ public class AjouterPlaceController implements Initializable {
         try {
             Stage stage = (Stage) typeCB.getScene().getWindow();
             Parking parking = (Parking) stage.getUserData();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlace.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
             Parent root=loader.load();
             AfficherPlaceController ctr= loader.getController();
             ctr.init(parking.getRef());
@@ -132,7 +130,7 @@ public class AjouterPlaceController implements Initializable {
 
     public void naviguezVersParking(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParking.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParkingsss.fxml"));
             Parent root = loader.load();
             typeCB.getScene().setRoot(root);
         } catch (IOException e) {

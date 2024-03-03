@@ -1,4 +1,4 @@
-package org.example.utils;
+package tn.pidev.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

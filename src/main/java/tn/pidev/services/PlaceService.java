@@ -1,8 +1,7 @@
-package org.example.services;
+package tn.pidev.services;
 
-import org.example.entities.Parking;
-import org.example.entities.Place;
-import org.example.utils.MyDataBase;
+import tn.pidev.entities.Place;
+import tn.pidev.utils.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -55,6 +54,7 @@ public class PlaceService implements IService<Place>{
             p.setType_place(rs.getString("type_place"));
             p.setEtat(rs.getString("etat"));
             p.setId_Parking(rs.getInt("id_parking"));
+            p.setId_Parking(rs.getInt("id_user"));
 
             places.add(p);
         }
@@ -73,6 +73,7 @@ public class PlaceService implements IService<Place>{
             p.setType_place(rs.getString("type_place"));
             p.setEtat(rs.getString("etat"));
             p.setId_Parking(rs.getInt("id_parking"));
+            p.setId_Parking(rs.getInt("id_user"));
 
             places.add(p);
         }
@@ -87,18 +88,29 @@ public class PlaceService implements IService<Place>{
         rs.next();
         return rs.getInt(1) != 0;
     }
-    public void updateEtat(int ref, int choice) throws SQLException {
+    public void updateEtat(Place place, int choice) throws SQLException {
         if (choice==0) {
-            String sql = "update `place` set `etat` = 'Reservee' where `ref_place` = ?";
+            String sql = "update `place` set `etat` = 'Reservee', `id_user` = ? where `ref_place` = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, ref);
+            preparedStatement.setInt(1, place.getIdCli());
+            preparedStatement.setInt(2, place.getRef_place());
             preparedStatement.executeUpdate();
         }
         if (choice==1){
-            String sql = "update `place` set `etat` = 'Libre' where `ref_place` = ?";
+            String sql = "update `place` set `etat` = 'Libre', `id_user` = null where `ref_place` = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, ref);
+            preparedStatement.setInt(1, place.getRef_place());
             preparedStatement.executeUpdate();
         }
+    }
+    public List<Integer> refUser() throws SQLException {
+        String sql = "select * from Personne";
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        List<Integer> refs = new ArrayList<>();
+        while (rs.next()) {
+            refs.add(rs.getInt("id_personne"));
+        }
+        return refs;
     }
 }
