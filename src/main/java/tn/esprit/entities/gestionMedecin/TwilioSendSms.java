@@ -7,7 +7,7 @@ import org.apache.log4j.BasicConfigurator;
 
 public class TwilioSendSms {
     String accountSID = "ACb7699b0b6314abd7941be7a60f5822b5";
-    String authToken = "f9182479a13d8b8f4cc25407ffb5f187";
+    String authToken = "5f36f460ac12bbdbd929ba908f2f6252";
     String fromNumberMyTwillioNumber = "+19784867818";
 
     public TwilioSendSms() {
