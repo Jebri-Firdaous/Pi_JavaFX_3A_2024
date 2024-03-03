@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainFX extends Application {
 
@@ -18,7 +17,7 @@ public class MainFX extends Application {
     @Override
 //    override the start method, which is the entry point for all JavaFX applications
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterRendezVous.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionShopping/AfficherArticle.fxml"));
         Parent root = null;
         try {
             root = loader.load();
@@ -26,7 +25,7 @@ public class MainFX extends Application {
             throw new RuntimeException(e);
         }
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Gerer medecin");
+        primaryStage.setTitle("E-City");
         primaryStage.setScene(scene);
         primaryStage.show();
 

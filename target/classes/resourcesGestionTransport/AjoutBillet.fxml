@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AjoutBilletController">
+    <children>
+        <fx:include source="../navBar.fxml" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="1.0" layoutY="-53.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1245.0">
+            <fill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+                    <stops>
+                        <Stop color="#5ee1e5a6" />
+                        <Stop color="#5ee1e500" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="71.0" layoutX="-7.0" layoutY="668.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1245.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
+                    <stops>
+                        <Stop color="#5ee1e5a6" />
+                        <Stop color="#5ee1e500" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+
+      <Label layoutX="39.0" layoutY="207.0" prefHeight="25.0" prefWidth="119.0" text="Destination">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="937.0" layoutY="207.0" text="Date_Départ">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="951.0" layoutY="416.0" prefHeight="54.0" prefWidth="201.0" text="Prix">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="951.0" layoutY="324.0" text="Durée">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="310.0" text="Point de Départ">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="destination" layoutX="29.0" layoutY="238.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <TextField fx:id="duree" layoutX="951.0" layoutY="352.0" prefHeight="54.0" prefWidth="201.0" promptText="Heure:Minutes H" style="-fx-border-color: black;" />
+      <TextField fx:id="prix" layoutX="951.0" layoutY="464.0" onKeyPressed="#test" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <DatePicker fx:id="dateR" layoutX="940.0" layoutY="238.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <Button layoutX="470.0" layoutY="612.0" mnemonicParsing="false" onAction="#addbillet" prefHeight="54.0" prefWidth="245.0" style="-fx-background-color: #0693ac; -fx-border-color: white;" text="Ajouter" textFill="#f8f0f0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <ComboBox fx:id="depart" layoutX="29.0" layoutY="337.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <ComboBox fx:id="hourCombobox" layoutX="34.0" layoutY="464.0" prefHeight="54.0" prefWidth="82.0" style="-fx-border-color: black;" />
+      <ComboBox fx:id="minuteCombobox" layoutX="139.0" layoutY="464.0" prefHeight="54.0" prefWidth="82.0" style="-fx-border-color: black;" />
+      <ImageView fitHeight="349.0" fitWidth="371.0" layoutX="449.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@billet-de-train.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="35.0" layoutY="429.0" text="Heure">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="429.0" text="Minutes">
+         <font>
+            <Font name="Cambria Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="statistiquesLabel" layoutX="43.0" layoutY="622.0" prefHeight="71.0" prefWidth="203.0" text="." />
+      <PieChart fx:id="statistiquesPieChart" layoutX="203.0" layoutY="157.0" prefHeight="189.0" prefWidth="203.0" />
+      <Text layoutX="430.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AJOUTER BILLET" wrappingWidth="386.40673828125">
+         <font>
+            <Font name="Cambria Bold" size="46.0" />
+         </font>
+      </Text>
+
+
+
+    </children>
+</AnchorPane>

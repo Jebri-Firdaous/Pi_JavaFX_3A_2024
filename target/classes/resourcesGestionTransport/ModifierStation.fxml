@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifieStationController">
+   <children>
+      <fx:include source="../navBar.fxml" />
+      <Label fx:id="labelnom" layoutX="407.0" layoutY="245.0" prefHeight="34.0" prefWidth="175.0" text="Nom Station">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label layoutX="407.0" layoutY="368.0" prefHeight="32.0" prefWidth="175.0" text="adress Station">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label layoutX="407.0" layoutY="480.0" text="type Station">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <TextField fx:id="mdnom" layoutX="407.0" layoutY="292.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <TextField fx:id="mdadress" layoutX="407.0" layoutY="410.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <Button layoutX="687.0" layoutY="612.0" mnemonicParsing="false" onAction="#modifierfinale" prefHeight="64.0" prefWidth="245.0" style="-fx-background-color: #6093ac; -fx-border-color: white;" text="Modifier" textFill="#eeeaea">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Text fill="#1a1b1b" layoutX="366.0" layoutY="195.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Votre Station" underline="true">
+         <font>
+            <Font name="Cambria Bold" size="46.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="-3.0" layoutY="-61.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1243.0">
+         <fill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop color="#5ee1e5a6" />
+                  <Stop color="#5ee1e500" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutY="683.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1269.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="#5ee1e5a6" />
+                  <Stop color="#5ee1e500" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ComboBox fx:id="mdtype1" layoutX="407.0" layoutY="519.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+      <ImageView fitHeight="299.0" fitWidth="340.0" layoutX="863.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@station.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

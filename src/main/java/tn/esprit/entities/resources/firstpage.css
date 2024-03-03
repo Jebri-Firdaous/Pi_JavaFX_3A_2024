@@ -1,6 +1,0 @@
-.container {
-    height: 101.0px; /* Hauteur du rectangle */
-    width: 100%; /* Largeur du rectangle égale à la largeur du conteneur parent */
-    background-image: linear-gradient(to bottom left, #5ee1e5a6, #5ee1e500); /* Dégradé linéaire */
-    border: none; /* Pas de bord */
-}

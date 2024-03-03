@@ -1,6 +1,5 @@
 package tn.esprit.test;
-import tn.esprit.services.ServiceMedecin;
-import tn.esprit.services.ServiceRendezVous;
+import tn.esprit.services.gestionMedecin.ServiceRendezVous;
 
 import java.sql.SQLException;
 

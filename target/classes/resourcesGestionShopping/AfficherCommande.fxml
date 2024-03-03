@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.stage.FileChooser?>
+<?import java.io.File?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionShopping.AfficherCommandeController">
+    <children>
+        <fx:include source="../navBar.fxml" />
+
+        <ScrollPane layoutX="33.0" layoutY="237.0" prefHeight="412.0" prefWidth="787.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="408.0" AnchorPane.topAnchor="237.0">
+            <content>
+                <VBox prefHeight="412.0" prefWidth="772.0" spacing="10" style="-fx-padding: 20;">
+                    <children>
+
+                        <!-- Conteneur pour afficher les commandes -->
+                        <VBox fx:id="itemsContainer" spacing="10" />
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+        <Label layoutX="33.0" layoutY="169.0" prefHeight="59.0" prefWidth="370.0" text="Listes des commandes : " textFill="#277dff">
+            <font>
+                <Font name="Cambria Bold" size="32.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="368.0" fitWidth="406.0" layoutX="820.0" layoutY="238.0">
+            <image>
+                <Image url="@AfficherCommande.jpg" />
+            </image>
+        </ImageView>
+            <!-- ComboBox pour trier les commandes -->
+            <ComboBox fx:id="comboBoxTri" layoutX="549.0" layoutY="183.0" onAction="#trierCommandes" prefHeight="31.0" prefWidth="271.0" promptText="Trier par date de livraison">
+
+                        </ComboBox>
+
+    </children>
+</AnchorPane>
