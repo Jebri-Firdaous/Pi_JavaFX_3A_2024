@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.TourismeController.AdminInterfaceControllers">
+    <children>
+        <fx:include source="AdminInterface.fxml" />
+
+
+
+        <Label fx:id="label" layoutX="1180.0" layoutY="14.0" />
+        <ImageView fitHeight="655.0" fitWidth="1312.0" layoutY="122.0">
+            <image>
+                <Image url="@smartcity.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="335.0" layoutY="344.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="71.0" layoutY="414.0" opacity="0.47" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
+        <Label fx:id="bienvenue" layoutX="8.0" layoutY="427.0" text="Accédez au contrôle total de la ville intelligente. Bienvenue dans l'espace administrateur." textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+            <effect>
+                <Bloom threshold="0.0" />
+            </effect>
+        </Label>
+
+
+    </children>
+</AnchorPane>

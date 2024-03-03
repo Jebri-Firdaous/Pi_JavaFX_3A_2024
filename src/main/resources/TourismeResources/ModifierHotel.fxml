@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="837.0" prefWidth="1352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.TourismeController.ModifierHotel">
+   <children>
+      <fx:include source="AdminInterface.fxml" />
+
+      <ImageView fitHeight="694.0" fitWidth="1332.0" layoutX="7.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="70.0" arcWidth="70.0" height="586.0" layoutX="751.0" layoutY="238.0" opacity="0.23" stroke="BLACK" strokeType="INSIDE" width="574.0" />
+      <Button layoutX="906.0" layoutY="707.0" mnemonicParsing="false" onAction="#modifierHotel" style="-fx-background-color: B0E847;" text="Modifier" textFill="#fffafa">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="idModif1" layoutX="1038.0" layoutY="321.0" />
+      <Button layoutX="1044.0" layoutY="707.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: #B0E847;" text="Afficher" textFill="#fcfafa">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="921.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier hôtel" wrappingWidth="296.115234375">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="prix3Modif" layoutX="1044.0" layoutY="362.0" promptText="Entrez prix de luxe" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="prix2Modif" layoutX="760.0" layoutY="560.0" promptText="Entrez  prix moyen" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="prix1Modif" layoutX="760.0" layoutY="492.0" promptText="Entrez bas prix" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="adressModif" layoutX="760.0" layoutY="428.0" promptText="Modifiez addresse" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nomModif" layoutX="760.0" layoutY="362.0" promptText="Modifier  nom" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <Rectangle arcHeight="200.0" arcWidth="200.0" height="219.0" layoutX="-92.0" layoutY="567.0" opacity="0.24" stroke="BLACK" strokeType="INSIDE" width="846.0" />
+      <Label layoutX="34.0" layoutY="689.0" text="votre séjour parfait !" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="56.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="615.0" text="Réservez dès maintenant " textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="56.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nombre1Modif" layoutX="1044.0" layoutY="428.0" promptText="nombre normal" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nombre2Modif" layoutX="1044.0" layoutY="492.0" promptText="nombre standard" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nombre3Modif" layoutX="1044.0" layoutY="560.0" promptText="nombre  luxe" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
