@@ -1,94 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AfficheAdministrateurController">
-   <children>
-      <fx:include source="NavBar.fxml" />
-      <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
-      <SplitPane layoutY="124.0" orientation="VERTICAL" prefHeight="591.0" prefWidth="1300.0">
-         <items>
-            <VBox prefHeight="587.0" prefWidth="1298.0">
-               <children>
-                  <VBox prefHeight="54.0" prefWidth="1298.0">
-                     <children>
-                        <AnchorPane prefHeight="35.0" prefWidth="1298.0">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="471.0" layoutY="3.0" prefHeight="21.0" prefWidth="356.0" text="Liste des Administrateurs" textFill="#1e3163">
-                                 <font>
-                                    <Font name="Arial Black" size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="534.0" prefWidth="1298.0">
-                     <children>
-                        <TableView fx:id="tableViewAdmin" prefHeight="513.0" prefWidth="1298.0">
-                          <columns>
-                            <TableColumn fx:id="nomAdmin" prefWidth="264.0" text="NOM" />
-                              <TableColumn fx:id="prenomAdmin" prefWidth="243.0" text="PRENOM" />
-                              <TableColumn fx:id="telAdmin" prefWidth="160.0" text="NUMERO DE TELEPHONE" />
-                              <TableColumn fx:id="mailAdmin" prefWidth="234.0" text="MAIL" />
-                              <TableColumn fx:id="mdpAdmin" prefWidth="209.0" text="MOT DE PASSE" />
-                              <TableColumn fx:id="role" prefWidth="209.0" text="ROLE" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="73.0" prefWidth="1298.0">
-                     <children>
-                        <VBox prefHeight="4.0" prefWidth="1298.0">
+    <children>
+        <fx:include source="NavBar.fxml" />
+        <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
+        <SplitPane layoutY="116.0" orientation="VERTICAL" prefHeight="599.0" prefWidth="1300.0">
+            <items>
+                <VBox prefHeight="587.0" prefWidth="1298.0">
+                    <children>
+                        <VBox prefHeight="62.0" prefWidth="1298.0">
+                            <children>
+                                <AnchorPane prefHeight="24.0" prefWidth="1298.0">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="471.0" layoutY="6.0" prefHeight="21.0" prefWidth="356.0" text="Liste des Administrateurs" textFill="#1e3163">
+                                            <font>
+                                                <Font name="Arial Black" size="22.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="search" layoutX="1032.0" layoutY="6.0" onAction="#recherche" prefHeight="33.0" prefWidth="253.0" promptText="Recherche" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 30; -fx-background-radius: 30;" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
                         </VBox>
-                        <VBox prefHeight="15.0" prefWidth="1298.0">
-                           <children>
-                              <HBox prefHeight="75.0" prefWidth="1298.0">
-                                 <children>
-                                    <HBox prefHeight="31.0" prefWidth="371.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#toAddpage" prefHeight="10.0" prefWidth="370.0" style="-fx-background-color: B0E847;" text="Ajouter">
-                                             <font>
-                                                <Font name="System Bold" size="17.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="35.0" prefWidth="77.0" />
-                                    <HBox prefHeight="31.0" prefWidth="379.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#modifier" prefHeight="10.0" prefWidth="392.0" style="-fx-background-color: B0E847;" text="Modifier">
-                                             <font>
-                                                <Font name="System Bold" size="17.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="44.0" prefWidth="63.0" />
-                                    <HBox prefHeight="31.0" prefWidth="411.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="10.0" prefWidth="449.0" style="-fx-background-color: B0E847;" text="Supprimer">
-                                             <font>
-                                                <Font name="System Bold" size="17.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </HBox>
-                           </children>
+                        <VBox prefHeight="513.0" prefWidth="1298.0">
+                            <children>
+                                <TableView fx:id="tableViewAdmin" prefHeight="513.0" prefWidth="1298.0">
+                                    <columns>
+                                        <TableColumn fx:id="nomAdmin" prefWidth="230.0" text="NOM" />
+                                        <TableColumn fx:id="prenomAdmin" prefWidth="209.0" text="PRENOM" />
+                                        <TableColumn fx:id="telAdmin" prefWidth="253.0" text="NUMERO DE TELEPHONE" />
+                                        <TableColumn fx:id="mailAdmin" prefWidth="377.0" text="MAIL" />
+                                        <TableColumn fx:id="role" prefWidth="228.0" text="ROLE" />
+                                    </columns>
+                                </TableView>
+                            </children>
                         </VBox>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </items>
-      </SplitPane>
-   </children>
+                        <VBox prefHeight="73.0" prefWidth="1298.0">
+                            <children>
+                                <VBox prefHeight="11.0" prefWidth="1298.0">
+                                </VBox>
+                                <VBox prefHeight="37.0" prefWidth="1298.0">
+                                    <children>
+                                        <HBox prefHeight="75.0" prefWidth="1298.0">
+                                            <children>
+                                                <HBox prefHeight="31.0" prefWidth="371.0">
+                                                    <children>
+                                                        <Button mnemonicParsing="false" onAction="#toAddpage" prefHeight="10.0" prefWidth="370.0" style="-fx-background-color: B0E847;" text="Ajouter">
+                                                            <font>
+                                                                <Font name="System Bold" size="17.0" />
+                                                            </font>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <HBox prefHeight="35.0" prefWidth="77.0" />
+                                                <HBox prefHeight="31.0" prefWidth="379.0">
+                                                    <children>
+                                                        <Button mnemonicParsing="false" onAction="#modifier" prefHeight="10.0" prefWidth="392.0" style="-fx-background-color: B0E847;" text="Modifier">
+                                                            <font>
+                                                                <Font name="System Bold" size="17.0" />
+                                                            </font>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <HBox prefHeight="44.0" prefWidth="63.0" />
+                                                <HBox prefHeight="31.0" prefWidth="411.0">
+                                                    <children>
+                                                        <Button mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="10.0" prefWidth="449.0" style="-fx-background-color: B0E847;" text="Supprimer">
+                                                            <font>
+                                                                <Font name="System Bold" size="17.0" />
+                                                            </font>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

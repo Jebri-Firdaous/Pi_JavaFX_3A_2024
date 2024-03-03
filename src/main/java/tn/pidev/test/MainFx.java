@@ -17,7 +17,7 @@ public class MainFx extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/firstpage.fxml"));
         primaryStage.setTitle("E-city");
 
-        primaryStage.setScene(new Scene(root, 1300, 770));
+        primaryStage.setScene(new Scene(root, 1312, 774));
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icone_fenetre.png")));
 
         primaryStage.show();

@@ -43,11 +43,11 @@ public class AfficheAdministrateurController {
     @FXML
     private TableColumn<Administrateur, String> mailAdmin;
 
-    @FXML
-    private TableColumn<Administrateur, String> mdpAdmin;
 
     @FXML
     private TableColumn<Administrateur, String> role;
+    @FXML
+    private TextField search;
 
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
@@ -57,9 +57,9 @@ public class AfficheAdministrateurController {
             prenomAdmin.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
             telAdmin.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
             mailAdmin.setCellValueFactory(new PropertyValueFactory<>("mail_personne"));
-            mdpAdmin.setCellValueFactory(new PropertyValueFactory<>("mdp_personne"));
             role.setCellValueFactory(new PropertyValueFactory<>("role"));
-            tableViewAdmin.setItems(FXCollections.observableArrayList(AdminsFromService)); // Utilisez AdminsFromService
+            tableViewAdmin.setItems(FXCollections.observableArrayList(AdminsFromService));
+            // Utilisez AdminsFromService
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,6 +70,28 @@ public class AfficheAdministrateurController {
         }
     }
 
+    private void rechercherAdminDansLaBase(String recherche) {
+        tableViewAdmin.getItems().clear(); // Effacer les anciens résultats du TableView
+        try {
+            List<Administrateur> administrateursTrouves = sa.rechercher(recherche);
+            if (!administrateursTrouves.isEmpty()) {
+                // Si des administrateurs ont été trouvés, les ajouter au TableView
+                tableViewAdmin.getItems().addAll(administrateursTrouves);
+            } else {
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Résultat de la recherche");
+                alert.setContentText("Aucun administrateur correspondant trouvé.");
+                alert.showAndWait();
+            }
+        } catch (SQLException e) {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setContentText("Erreur lors de la recherche des administrateurs" + e.getMessage());
+            alert.showAndWait();
+        }
+    }
 
     public void ToAjouterAdmin() {
         try {
@@ -139,5 +161,11 @@ public class AfficheAdministrateurController {
         }
     }
 
+    public void recherche(ActionEvent event) throws SQLException {
+        rechercherAdminDansLaBase("");
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            rechercherAdminDansLaBase(newValue);
+        });
 
+    }
 }

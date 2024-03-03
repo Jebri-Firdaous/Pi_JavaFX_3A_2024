@@ -1,81 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.AdminInterfaceControllers">
-   <top>
-            <Pane fx:id="contentPane" prefHeight="111.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Rectangle height="101.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1312.0">
-                     <fill>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="774.0" prefWidth="1312.0" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/8" fx:controller="tn.pidev.controllers.AdminInterfaceControllers">
+    <top>
+        <Pane fx:id="contentPane" prefHeight="111.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle height="101.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1312.0">
+                    <fill>
                         <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="#5ee1e5a6" />
-                              <Stop color="#5ee1e500" offset="1.0" />
-                           </stops>
+                            <stops>
+                                <Stop color="#5ee1e5a6"/>
+                                <Stop color="#5ee1e500" offset="1.0"/>
+                            </stops>
                         </LinearGradient>
-                     </fill>
-                  </Rectangle>
+                    </fill>
+                </Rectangle>
 
-            <MenuBar layoutX="197.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="900.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Accueil">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#Acceuil" text="Acceuil" />
-                     </items>
-               </Menu>
-                  <Menu mnemonicParsing="false" text="Gestion Medecin">
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Gestion shopping">
+                <MenuBar layoutX="197.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                         minWidth="-Infinity" prefHeight="40.0" prefWidth="900.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Accueil">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#Acceuil" text="Acceuil"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion Medecin">
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion shopping">
                         </Menu>
 
-                  <Menu mnemonicParsing="false" text="Gestion transport">
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Gestion parking">
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Gestion tourisme">
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Gestion utilisateur">
-                     <Menu mnemonicParsing="false" text="Administrateurs">
-                        <items>
-                           <MenuItem mnemonicParsing="false" onAction="#afficherAdmin" text="Afficher" />
-                        </items>
-                        <items>
-                           <MenuItem mnemonicParsing="false" onAction="#AjouterAdmin" text="Ajouter" />
-                        </items>
-                     </Menu>
-                     <Menu mnemonicParsing="false" text="Clients">
-                        <items>
-                           <MenuItem mnemonicParsing="false" />
-                        </items>
-                        <items>
-                           <MenuItem mnemonicParsing="false"  />
-                        </items>
-                     </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion transport">
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion parking">
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion tourisme">
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion utilisateur">
+                            <Menu mnemonicParsing="false" onAction="#afficherAdmin" text="Administrateurs"/>
 
-                  </Menu>
-               </menus>
-            </MenuBar>
-            <ImageView fitHeight="97.0" fitWidth="115.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@logo.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="label" layoutX="917.0" layoutY="49.0" />
+                            <Menu mnemonicParsing="false" onAction="#afficherClient" text="Clients"/>
 
-         </children>
-      </Pane>
-   </top>
-   <center>
-      <AnchorPane prefHeight="672.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="665.0" fitWidth="1312.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </AnchorPane>
-   </center>
+
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <ImageView fitHeight="97.0" fitWidth="115.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@logo.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="label" layoutX="917.0" layoutY="49.0"/>
+
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="672.0" prefWidth="1312.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="665.0" fitWidth="1312.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true"/>
+            </children>
+        </AnchorPane>
+    </center>
 </BorderPane>

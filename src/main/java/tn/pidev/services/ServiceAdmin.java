@@ -163,6 +163,30 @@ public class ServiceAdmin implements IService<Administrateur> {
         }
     }
 
+    @Override
+    public List<Administrateur> rechercher(String recherche) throws SQLException {
+        List<Administrateur> administrateurs = new ArrayList<>();
+        String sql = "SELECT a.id_personne, a.nom_personne, a.prenom_personne, a.numero_telephone, a.mail_personne , a.role" +
+                "FROM administrateur a " +
+                "WHERE c.nom_personne LIKE ? OR a.role LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + recherche + "%");
+        preparedStatement.setString(2, "%" + recherche + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Administrateur admin = new Administrateur();
+            admin.setId_personne(rs.getInt("id_personne"));
+            admin.setNom_personne(rs.getString("nom_personne"));
+            admin.setPrenom_personne(rs.getString("prenom_personne"));
+            admin.setNumero_telephone(rs.getInt("numero_personne"));
+            admin.setMail_personne(rs.getString("mail_personne"));
+            admin.setMdp_personne(rs.getString("mdp_personne"));
+            admin.setRole(rs.getString("role"));
+            administrateurs.add(admin);
+        }
+        return administrateurs;
+    }
+
     public Administrateur getAdminByEmail(String email) {
         Administrateur administrateur = null;
         try {

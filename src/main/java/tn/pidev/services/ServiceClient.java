@@ -18,7 +18,7 @@ public class ServiceClient implements IService<Client> {
     @Override
     public void ajouter(Client client) throws SQLException {
         // Insertion dans la table "personne"
-        String sqlInsertPersonne = "INSERT INTO `personne`(`nom_personne`, `prenom_personne`, `numero_telephone`, `mail_personne`, `mdp_personne`) VALUES (?, ?, ?, ?, ?)";
+        String sqlInsertPersonne = "INSERT INTO `personne`(`nom_personne`, `prenom_personne`, `numero_telephone`, `mail_personne`, `mdp_personne`,`image_personne`) VALUES (?, ?, ?, ?, ?,?)";
 
         PreparedStatement preparedStatementPersonne = connection.prepareStatement(sqlInsertPersonne);
         preparedStatementPersonne.setInt(1, 1);
@@ -27,6 +27,7 @@ public class ServiceClient implements IService<Client> {
         preparedStatementPersonne.setInt(3, client.getNumero_telephone());
         preparedStatementPersonne.setString(4, client.getMail_personne());
         preparedStatementPersonne.setString(5, client.getMdp_personne());
+        preparedStatementPersonne.setString(6, client.getImage_personne());
         preparedStatementPersonne.executeUpdate();
 
         // Récupération de l'ID de la personne insérée
@@ -38,14 +39,14 @@ public class ServiceClient implements IService<Client> {
             idPersonne = resultSetId.getInt(1);
         }
 
-        // Insertion dans la table "client" en utilisant les données de la table "personne"
-        String sqlInsertClient = "INSERT INTO client (id_personne,genre,age) " +
-                "SELECT id_personne,?,?,  FROM personne WHERE id_personne = ?";
-        PreparedStatement preparedStatementClient = connection.prepareStatement(sqlInsertClient);
-        preparedStatementClient.setString(1, client.getGenre());
-        preparedStatementClient.setInt(2, client.getAge());
-        preparedStatementClient.setInt(3, idPersonne); // Utilisation de l'ID de la personne récupérée précédemment
-        preparedStatementClient.executeUpdate();
+        // Insertion dans la table "administrateur" en utilisant les données de la table "personne"
+        String sqlInsertAdmin = "INSERT INTO client (genre,age, id_personne) " +
+                "SELECT ?,?, id_personne FROM personne WHERE id_personne = ?";
+        PreparedStatement preparedStatementAdmin = connection.prepareStatement(sqlInsertAdmin);
+        preparedStatementAdmin.setString(1, client.getGenre());
+        preparedStatementAdmin.setInt(2, client.getAge());
+        preparedStatementAdmin.setInt(3, idPersonne); // Utilisation de l'ID de la personne récupérée précédemment
+        preparedStatementAdmin.executeUpdate();
     }
 
     @Override
@@ -67,10 +68,26 @@ public class ServiceClient implements IService<Client> {
         preparedStatement.executeUpdate();
     }
 
+    public int getClientId(String nom, String prenom, String mail, String mdp) throws SQLException {
+        String query = "SELECT id_personne FROM client WHERE  nom_personne = ? AND prenom_personne = ? AND mail_personne = ? AND mdp_personne=?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, prenom);
+            preparedStatement.setString(3, mail);
+            preparedStatement.setString(4, mdp);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("id_personne");
+                } else {
+                    throw new SQLException("Client introuvable");
+                }
+            }
+        }
+    }
+
     @Override
     public List<Client> afficher() throws SQLException {
-        List<Client>
-                clientList = new ArrayList<>();
+        List<Client> clientList = new ArrayList<>();
         String sql = "SELECT * " +
                 "FROM client c JOIN personne p ON p.id_personne = c.id_personne";
 
@@ -107,6 +124,35 @@ public class ServiceClient implements IService<Client> {
         }
 
     }
+
+    @Override
+    public List<Client> rechercher(String recherche) throws SQLException {
+        List<Client> clients = new ArrayList<>();
+        String sql = "SELECT c.id_personne, c.nom_personne, c.prenom_personne, c.numero_telephone, c.mail_personne, c.mdp_personne , c.image_personne, c.age, c.genre" +
+                "FROM client c " +
+                "WHERE c.nom_personne LIKE ? OR a.numero_personne LIKE ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + recherche + "%");
+        preparedStatement.setString(2, "%" + recherche + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Client client = new Client();
+            client.setId_personne(rs.getInt("id_personne"));
+            client.setNom_personne(rs.getString("nom_personne"));
+            client.setPrenom_personne(rs.getString("prenom_personne"));
+            client.setNumero_telephone(rs.getInt("numero_personne"));
+            client.setMail_personne(rs.getString("mail_personne"));
+            client.setMdp_personne(rs.getString("mdp_personne"));
+            client.setImage_personne(rs.getString("image_personne"));
+            client.setImage_personne(rs.getString("image_personne"));
+            client.setAge(rs.getInt("age"));
+            client.setGenre(rs.getString("genre"));
+            clients.add(client);
+        }
+        return clients;
+    }
+
+
 }
 
 

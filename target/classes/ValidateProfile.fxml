@@ -66,9 +66,9 @@
                   <HBox alignment="CENTER" style="-fx-background-color: WHITE; -fx-background-radius: 20;" />
                </children>
                 </VBox>
-                <VBox prefHeight="20.0" prefWidth="397.0">
+                <VBox prefHeight="10.0" prefWidth="397.0">
                <children>
-                  <Label fx:id="instructionLabel" prefHeight="21.0" prefWidth="397.0" text="Veuillez saisir uniquement des numéros" textFill="RED" visible="false" />
+                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="397.0" text="numéro invalide" textFill="RED" visible="false" />
                </children></VBox>
                 <Button fx:id="inscrire" mnemonicParsing="false" onAction="#ToValidate" prefHeight="39.0" prefWidth="397.0" style="-fx-background-color: #B0E847;" text="Valider">
                     <font>

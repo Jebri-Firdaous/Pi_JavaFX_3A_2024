@@ -101,7 +101,20 @@
         @FXML
         void afficherAdmin() {
 
-            navigateToPage("afficherAdmin.fxml");
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherAdmin.fxml"));
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) label.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (
+                    IOException e) {
+                System.err.println("Erreur lors du chargement de la page ");
+                e.printStackTrace();
+            }
         }
 
         public void goBack(ActionEvent actionEvent) {
@@ -133,5 +146,11 @@
         public void ToConnexion(ActionEvent actionEvent) {
             navigateToPage("pageConnexion.fxml");
 
+        }
+
+        @FXML
+        void afficherClient() {
+
+            navigateToPage("afficherClient.fxml");
         }
     }

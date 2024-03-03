@@ -18,10 +18,19 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-
-public class AjoutAdministrateurController {
+public class CreerAdminController {
     public ServiceAdmin sa = new ServiceAdmin();
 
+
+    @FXML
+    private Label prenomInvalid;
+
+    @FXML
+    private Label mdpInvalid;
+    @FXML
+    private Label nomInvalid;
+    @FXML
+    private Label roleInvalid;
 
     @FXML
     private ComboBox<String> role;
@@ -35,10 +44,10 @@ public class AjoutAdministrateurController {
     @FXML
     private TextField tel;
 
+
     @FXML
     private Button creercpt;
-    @FXML
-    private Label roleInvalid;
+
 
     @FXML
     private TextField nom;
@@ -56,17 +65,10 @@ public class AjoutAdministrateurController {
 
     @FXML
     private ImageView backgroundImage;
-    @FXML
-    private Label nomInvalid;
+
     @FXML
     private Label mailInvalid;
 
-    @FXML
-    private Label prenomInvalid;
-    @FXML
-    private Label mdpInvalid;
-    @FXML
-    private Label telInvalid;
 
     public void initialize() {
         nom.textProperty().addListener(new ChangeListener<String>() {
@@ -95,18 +97,7 @@ public class AjoutAdministrateurController {
                 }
             }
         });
-        tel.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d{0,8}")) {
-                    tel.setStyle("-fx-border-color: red; -fx-border-width: 2px");
-                    telInvalid.setVisible(true);
-                } else {
-                    tel.setStyle("");
-                    telInvalid.setVisible(false);
-                }
-            }
-        });
+
         mail.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

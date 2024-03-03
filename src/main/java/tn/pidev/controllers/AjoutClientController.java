@@ -8,65 +8,67 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import tn.pidev.entities.Administrateur;
-import tn.pidev.services.ServiceAdmin;
+import tn.pidev.entities.Client;
+import tn.pidev.services.ServiceClient;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public class AjoutAdministrateurController {
-    public ServiceAdmin sa = new ServiceAdmin();
-
+public class AjoutClientController {
+    public ServiceClient sc = new ServiceClient();
 
     @FXML
-    private ComboBox<String> role;
+    private Label prenomInvalid;
 
     @FXML
     private TextField mail;
 
     @FXML
-    private TextField mdp;
+    private Label nomInvalid;
 
     @FXML
-    private TextField tel;
+    private Label label;
 
-    @FXML
-    private Button creercpt;
     @FXML
     private Label roleInvalid;
+
+    @FXML
+    private Label mailInvalid;
 
     @FXML
     private TextField nom;
 
     @FXML
-    private TextField prenom;
-    @FXML
-    private AnchorPane background;
-    @FXML
-    private Button button;
-    @FXML
-    private Connection connection;
-    @FXML
-    private AnchorPane rootPane;
+    private Label telInvalid;
 
-    @FXML
-    private ImageView backgroundImage;
-    @FXML
-    private Label nomInvalid;
-    @FXML
-    private Label mailInvalid;
-
-    @FXML
-    private Label prenomInvalid;
     @FXML
     private Label mdpInvalid;
+
     @FXML
-    private Label telInvalid;
+    private ComboBox<String> genre;
+
+    @FXML
+    private PasswordField mdp;
+
+    @FXML
+    private Label roleInvalid1;
+
+    @FXML
+    private TextField tel;
+
+    @FXML
+    private TextField prenom;
+
+    @FXML
+    private TextField age;
+
+    @FXML
+    private Label remplirChamps;
+
+    @FXML
+    private Label ageInvalid;
 
     public void initialize() {
         nom.textProperty().addListener(new ChangeListener<String>() {
@@ -107,6 +109,18 @@ public class AjoutAdministrateurController {
                 }
             }
         });
+        age.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d{0,3}")) {
+                    age.setStyle("-fx-border-color: red; -fx-border-width: 2px");
+                    ageInvalid.setVisible(true);
+                } else {
+                    age.setStyle("");
+                    ageInvalid.setVisible(false);
+                }
+            }
+        });
         mail.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -132,18 +146,7 @@ public class AjoutAdministrateurController {
                 }
             }
         });
-        role.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (newValue.isEmpty()) {
-                    role.setStyle("-fx-border-color: red; -fx-border-width: 2px");
-                    roleInvalid.setVisible(true);
-                } else {
-                    role.setStyle("");
-                    roleInvalid.setVisible(false);
-                }
-            }
-        });
+
     }
 
     private boolean isValidPassword(String password) {
@@ -155,8 +158,12 @@ public class AjoutAdministrateurController {
         return name.matches("[a-zA-Z]+");
     }
 
-    private boolean isValidRole(String role) {
-        return role != null && !role.isEmpty();
+    private boolean isvalideAge(String age) {
+        return age.matches("\\d{0,3}");
+    }
+
+    private boolean isValidNum(String age) {
+        return age.matches("\\d{0,8}");
     }
 
     private boolean isValidEmail(String email) {
@@ -185,28 +192,10 @@ public class AjoutAdministrateurController {
                 (extension.equals("com") || extension.equals("tn"));
     }
 
-    @FXML
-    void ToConnexion(ActionEvent event) {
+
+    public void ToAfficherListeClient() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pageConnexion.fxml"));
-            Parent root = loader.load();
-            Scene pageScene = new Scene(root);
-
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) mail.getScene().getWindow();
-            stage.setScene(pageScene);
-            stage.show();
-        } catch (
-                IOException e) {
-            System.err.println("Erreur lors du chargement de la page ");
-            e.printStackTrace();
-        }
-    }
-
-
-    public void ToAfficherListeAdmine() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherAdmin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherClient.fxml"));
             Parent root = loader.load();
             Scene pageScene = new Scene(root);
 
@@ -222,23 +211,23 @@ public class AjoutAdministrateurController {
 
 
     @FXML
-    void AjouterAdmin(ActionEvent event) {
+    void AjouterClient(ActionEvent event) {
 
 
-        String roleSelected = role.getValue();
+        String genreSelected = genre.getValue();
         String nomSaisi = nom.getText();
         String prenomSaisi = prenom.getText();
         String mailSaisi = mail.getText();
         String mdpSaisi = mdp.getText();
+        String ageSaise = age.getText();
+        String numsaisie = tel.getText();
 
 
-        if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !mdpSaisi.isEmpty() && !roleSelected.isEmpty()) {
-            if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isValidRole(roleSelected)) {
+        if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !numsaisie.isEmpty() && !ageSaise.isEmpty() && !mdpSaisi.isEmpty() && !genreSelected.isEmpty()) {
+            if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isvalideAge(ageSaise) && isValidNum(numsaisie) && isvalideAge(ageSaise)) {
                 try {
-                    sa.ajouter(new Administrateur(nom.getText(), prenom.getText(), 0,
-                            mail.getText(), mdp.getText(), "", roleSelected));
-                    int adminId = sa.getAdminId(nom.getText(), prenom.getText(), mail.getText(), mdp.getText());
-                    ToValidate(adminId);
+                    sc.ajouter(new Client(nom.getText(), prenom.getText(), Integer.parseInt(tel.getText()),
+                            mail.getText(), mdp.getText(), "", genreSelected, Integer.parseInt(age.getText())));
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Compte ajoutée avec succes!");
@@ -247,7 +236,9 @@ public class AjoutAdministrateurController {
                     prenom.setText("");
                     mail.setText("");
                     mdp.setText("");
-                    role.setValue("");
+
+                    age.setText("");
+
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -256,24 +247,21 @@ public class AjoutAdministrateurController {
                 alert.show();
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez remplir tous les champs.");
-            alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Veuillez remplir tous les champs.");
+            alert.show();
         }
 
 
     }
 
-
-    public void ToValidate(int adminId) {
+    private void ToValidate(int clientId) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ValidateProfile.fxml"));
             Parent root = loader.load();
 
             // Accéder au contrôleur de la page de validation du compte
             VlidateController validateController = loader.getController();
-            validateController.setAdminId(adminId);
+            validateController.setAdminId(clientId);
 
             Scene pageScene = new Scene(root);
 
@@ -286,5 +274,7 @@ public class AjoutAdministrateurController {
             e.printStackTrace();
         }
     }
-
 }
+
+
+

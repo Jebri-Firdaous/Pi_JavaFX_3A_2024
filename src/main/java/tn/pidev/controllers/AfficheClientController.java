@@ -7,59 +7,57 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import tn.pidev.entities.Administrateur;
-import tn.pidev.entities.Personne;
-import tn.pidev.services.ServiceAdmin;
+import tn.pidev.entities.Client;
+import tn.pidev.services.ServiceClient;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class AfficheClientController {
-    private final ServiceAdmin sa = new ServiceAdmin();
-    ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
-    Administrateur currentAdminSelected;
+    private final ServiceClient sc = new ServiceClient();
     @FXML
-    private ListView<Administrateur> listViewAdmin;
+    public TableView<Client> tableViewClient;
+    ObservableList<Client> listeClients = FXCollections.observableArrayList();
+    Client currentClientSelected;
+    @FXML
+    private TableColumn<Client, Integer> ageClient;
     @FXML
     private Label label;
+    @FXML
+    private TableColumn<Client, String> mailClient;
+
+    @FXML
+    private TableColumn<Client, String> prenomClient;
+
+    @FXML
+    private TableColumn<Client, String> genreClient;
+
+    @FXML
+    private TableColumn<Client, Integer> telClient;
 
 
     @FXML
-    private TableColumn<Personne, String> nomAdmin;
+    private TableColumn<Client, String> nomClient;
 
-    @FXML
-    private TableColumn<Personne, String> prenomAdmin;
-    @FXML
-    private TableView<Administrateur> tableViewAdmin;
-
-
-    @FXML
-    private TableColumn<Administrateur, Integer> telAdmin;
-
-    @FXML
-    private TableColumn<Administrateur, String> mailAdmin;
-
-    @FXML
-    private TableColumn<Administrateur, String> mdpAdmin;
-
-    @FXML
-    private TableColumn<Administrateur, String> role;
 
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
         try {
-            List<Administrateur> AdminsFromService = sa.afficher();
-            nomAdmin.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
-            prenomAdmin.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
-            telAdmin.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
-            mailAdmin.setCellValueFactory(new PropertyValueFactory<>("mail_personne"));
-            mdpAdmin.setCellValueFactory(new PropertyValueFactory<>("mdp_personne"));
-            role.setCellValueFactory(new PropertyValueFactory<>("role"));
-            tableViewAdmin.setItems(FXCollections.observableArrayList(AdminsFromService)); // Utilisez AdminsFromService
+            List<Client> ClientFromService = sc.afficher();
+            nomClient.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
+            prenomClient.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
+            telClient.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
+            mailClient.setCellValueFactory(new PropertyValueFactory<>("mail_personne"));
+            genreClient.setCellValueFactory(new PropertyValueFactory<>("genre"));
+            ageClient.setCellValueFactory(new PropertyValueFactory<>("age"));
+            tableViewClient.setItems(FXCollections.observableArrayList(ClientFromService)); // Utilisez ClientFromService
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,12 +68,37 @@ public class AfficheClientController {
         }
     }
 
-
-    public void ToAjouterAdmin() {
+    @FXML
+    void Rechercher(String recherche) {
+        tableViewClient.getItems().clear(); // Effacer les anciens résultats de la ListView
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCompteAdmin.fxml"));
+            List<Client> clientTrouve = sc.rechercher(recherche);
+            if (!clientTrouve.isEmpty()) {
+                // Si des hôtels ont été trouvés, les ajouter à la ListView
+                tableViewClient.getItems().addAll(clientTrouve);
+            } else {
+                // Si aucun hôtel n'a été trouvé, afficher un message d'erreur
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Résultat de la recherche");
+                alert.setHeaderText(null);
+                alert.setContentText("Aucun Client correspondant trouvé.");
+                alert.showAndWait();
+            }
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Erreur lors de la recherche des clients.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void AjouterClient(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCompteClient.fxml"));
             Parent root = loader.load();
-            AjoutAdministrateurController AjoutAdministrateurController = loader.getController();
+            AjoutClientController AjoutClientController = loader.getController();
             Scene pageScene = new Scene(root);
 
             // Get the current stage and set the new scene
@@ -85,59 +108,11 @@ public class AfficheClientController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    @FXML
-    void toAddpage(ActionEvent event) {
-        ToAjouterAdmin();
+    public void rechercher(ActionEvent event) {
     }
-
-    public void supprimer(ActionEvent actionEvent) {
-
-    }
-
-    public void modifier(ActionEvent actionEvent) {
-        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
-        if (adminSelectionne != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifier.fxml"));
-                Parent root = loader.load();
-                Scene pageScene = new Scene(root);
-
-                ModifierAdminController modifierController = loader.getController();
-                modifierController.initData(adminSelectionne); // Passez l'administrateur sélectionné au contrôleur de la vue de modification
-
-                Stage stage = (Stage) label.getScene().getWindow();
-                stage.setScene(pageScene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
-        }
-    }
-
-    public void supprimerAdmin(ActionEvent actionEvent) {
-        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
-        if (adminSelectionne != null) {
-            try {
-                sa.supprimer(adminSelectionne.getId_personne());
-                // Afficher un message de confirmation
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Succès");
-                alert.setHeaderText(null);
-                alert.setContentText("L'administrateur a été supprimé avec succès !");
-                alert.showAndWait();
-                initialize();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
-        }
-    }
-
-
 }
+
+
+

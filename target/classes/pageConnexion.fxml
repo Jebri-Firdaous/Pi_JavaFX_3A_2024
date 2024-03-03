@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8"
             fx:controller="tn.pidev.controllers.AdminLoginController">
     <children>
@@ -157,7 +158,9 @@
             </children>
         </VBox>
         <Button layoutX="14.0" layoutY="723.0" mnemonicParsing="false" onAction="#ToAcceuil" text="Acceuil"/>
-
+        <Button layoutX="1041.0" layoutY="464.0" mnemonicParsing="false" onAction="#OpenCamera"
+                text="Reconnaissance Faciale"/>
+        <Button text="Capture Photo" onAction="#capturePhoto"/>
 
     </children>
 </AnchorPane>

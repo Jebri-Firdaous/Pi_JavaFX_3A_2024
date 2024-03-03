@@ -1,6 +1,8 @@
     /*---------------------------------------------------- Import -----------------------------------------------------------*/
     package tn.pidev.controllers;
 
+    import javafx.animation.KeyFrame;
+    import javafx.animation.Timeline;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@
     import javafx.scene.control.PasswordField;
     import javafx.scene.control.TextField;
     import javafx.stage.Stage;
+    import javafx.util.Duration;
     import tn.pidev.entities.Administrateur;
     import tn.pidev.services.ServiceAdmin;
 
@@ -44,7 +47,8 @@
         @FXML
         private PasswordField pwd2;
         private int adminId;
-
+        private int loginAttempts = 0;
+        private boolean loginBlocked = false;
 
         private void highlightPasswordFields(boolean highlight) {
             if (highlight) {
@@ -86,7 +90,6 @@
 
         }
 
-
         /*------------------------------------------ Navigate to Creer un Compte page -------------------------------------------*/
         public void ToaddPage(ActionEvent actionEvent) {
             try {
@@ -104,6 +107,9 @@
                 e.printStackTrace();
             }
         }
+
+        /*----------------------------------------------------------------------------------------------------------------------------*/
+        /*------------------------- Navigate to Interface dans le meme stage methode general a appelé --------------------------------*/
 
         /*-----------------------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------Méthode de controle de saisie-----------------------------------------------*/
@@ -159,34 +165,56 @@
             }
         }
 
-        /*----------------------------------------------------------------------------------------------------------------------------*/
-        /*------------------------- Navigate to Interface dans le meme stage methode general a appelé --------------------------------*/
-
         /*-------------------------------------- Action Bouton Connecter qui controle le saisie----------------------------------------*/
         public void login(ActionEvent actionEvent) {
-            String emailText = email.getText();
-            String passwordText = mdp.getText();
-            boolean connexionReussie = verifierConnexion(emailText, passwordText);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            if (!loginBlocked) { // Vérifier si le login n'est pas bloqué
+                String emailText = email.getText();
+                String passwordText = mdp.getText();
+                boolean connexionReussie = verifierConnexion(emailText, passwordText);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
 
+                // Incrémenter le compteur de tentatives
+                loginAttempts++;
 
-            //1- Champs vide:
-            if (!emailText.isEmpty() && !passwordText.isEmpty()) {
-                if (connexionReussie) {
+                // Vérifier le nombre de tentatives
+                if (loginAttempts >= 5) {
+                    // Bloquer le login et désactiver les champs temporairement
+                    loginBlocked = true;
+                    disableFieldsTemporarily();
+                    alert.setHeaderText(null);
+                    alert.setContentText("Trop de tentatives de connexion. Veuillez réessayer dans 20 secondes.");
+                    alert.showAndWait();
+                    return;
+                } else if (loginAttempts == 3) {
+                    // Afficher une alerte après trois tentatives infructueuses
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tentative de connexion échouée. Vous avez encore deux tentatives.");
+                    alert.showAndWait();
+                }
 
-                    navigateTo("Acceuil.fxml");
+                // Vérifier les informations de connexion
+                if (!emailText.isEmpty() && !passwordText.isEmpty()) {
+                    if (connexionReussie) {
+                        navigateTo("Acceuil.fxml");
+                    } else {
+                        alert.setHeaderText(null);
+                        alert.setContentText("E-mail ou mot de passe incorrect.");
+                        alert.showAndWait();
+                    }
                 } else {
                     alert.setHeaderText(null);
-                    alert.setContentText("E-mail ou mot de passe incorrect.");
+                    alert.setContentText("Veuillez remplir tous les champs.");
                     alert.showAndWait();
                 }
             } else {
+                // Afficher un message si le login est bloqué
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
-                alert.setContentText("Veuillez remplir tous les champs.");
+                alert.setContentText("Trop de tentatives de connexion. Veuillez réessayer dans 20 secondes.");
                 alert.showAndWait();
-
             }
         }
+
 
         /*--------------------- Navigate to Acceuil page optionnel just pour voir l'acceuil --------------------------------------*/
         public void ToAcceuil(ActionEvent actionEvent) {
@@ -377,7 +405,30 @@
 
         }
 
-
         public void back(ActionEvent event) {
+        }
+
+        public void capturePhoto(ActionEvent event) {
+        }
+
+        public void OpenCamera(ActionEvent event) {
+        }
+
+        private void disableFieldsTemporarily() {
+            // Désactiver les champs
+            email.setDisable(true);
+            mdp.setDisable(true);
+
+            // Définir un délai de 20 secondes
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(20), event -> {
+                // Réactiver les champs après le délai
+                email.setDisable(false);
+                mdp.setDisable(false);
+
+                // Réinitialiser le compteur de tentatives et le statut de blocage
+                loginAttempts = 0;
+                loginBlocked = false;
+            }));
+            timeline.play();
         }
     }

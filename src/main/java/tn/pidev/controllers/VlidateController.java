@@ -27,8 +27,10 @@ public class VlidateController {
     Administrateur admin = new Administrateur();
     @FXML
     private TextField tel;
+
     @FXML
-    private Label instructionLabel;
+    private Label telInvalid;
+
     @FXML
     private ImageView profileImageView;
     private File selectedImageFile;
@@ -40,14 +42,15 @@ public class VlidateController {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!newValue.matches("\\d{0,8}")) {
-                    tel.setStyle("-fx-border-color: red;");
-                    instructionLabel.setVisible(true);
+                    tel.setStyle("-fx-border-color: red; -fx-border-width: 2px");
+                    telInvalid.setVisible(true);
                 } else {
                     tel.setStyle("");
-                    instructionLabel.setVisible(false);
+                    telInvalid.setVisible(false);
                 }
             }
         });
+
     }
 
     @FXML
@@ -62,12 +65,20 @@ public class VlidateController {
             Image image = new Image(selectedFile.toURI().toString());
             profileImageView.setImage(image);
             Circle clip = new Circle();
-            clip.setCenterX(profileImageView.getFitWidth() / 2);
-            clip.setCenterY(profileImageView.getFitHeight() / 2);
-            clip.setRadius(profileImageView.getFitWidth() / 2);
+            double radius = 150;
+            clip.setCenterX(radius); // Centre X du cercle, adapté à votre mise en page
+            clip.setCenterY(radius); // Centre Y du cercle, adapté à votre mise en page
+            clip.setRadius(radius);
             profileImageView.setClip(clip);
             profileImageView.setPreserveRatio(true);
-            selectedImageFile = selectedFile; // Initialisation de selectedImageFile avec le fichier sélectionné
+
+            // Position de l'image dans votre mise en page
+            double layoutX = 100;
+            double layoutY = 25;
+            profileImageView.setLayoutX(layoutX);
+            profileImageView.setLayoutY(layoutY);
+
+            selectedImageFile = selectedFile;
             cheminPhotoProfile = selectedFile.getAbsolutePath();
         }
     }
