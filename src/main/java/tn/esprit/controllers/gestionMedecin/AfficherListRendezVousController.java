@@ -15,23 +15,41 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import tn.esprit.entities.gestionMedecin.*;
+import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.lang.ref.Cleaner;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -77,11 +95,9 @@ public class AfficherListRendezVousController {
                                 String specialty = medecin.getSpecialite_medecin();
                                 int phoneNumber = medecin.getNumero_telephone_medecin();
                                 String address = medecin.getAddress_medecin();
-
                                 Timestamp timestamp = rendezVous.getDate_rendez_vous();
 // Format the timestamp to include the full month name
                                 DateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
-
                                 String timestampAsString = format.format(timestamp);
 //                                just i need the first three letters of the month ( fev => not ferv, Mar not Mars)
                                 String[] parts = timestampAsString.split("-");
@@ -308,4 +324,124 @@ public class AfficherListRendezVousController {
             return "No value found.";
         }
     }
+/*------------------------- pdf ----------------------------------*/
+    public void downloadPdfListRv(MouseEvent mouseEvent) {
+        try {
+            // Create a new PDF document
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage(PDRectangle.A4);
+            document.addPage(page);
+
+            // Initialize the content stream
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            // Define the title and date
+            String title = "List Rendez-vous";
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String currentDate = dateFormat.format(new Date());
+
+            // Calculate the centered position for the title
+            float titleWidth = PDType1Font.HELVETICA_BOLD.getStringWidth(title) / 1000f * 14;
+            float titleXPosition = (page.getMediaBox().getWidth() - titleWidth) / 2;
+            float titleYPosition = page.getMediaBox().getHeight() - 50; // Adjust as needed
+
+            // Draw the title
+            contentStream.beginText();
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 19);
+            contentStream.newLineAtOffset(titleXPosition, titleYPosition);
+            contentStream.showText(title);
+            contentStream.endText();
+
+            // Place the date under the title on the left side
+            float dateYPosition = titleYPosition - 40; // Adjust as needed
+            contentStream.beginText();
+            contentStream.setFont(PDType1Font.HELVETICA, 10);
+            contentStream.newLineAtOffset(50, dateYPosition); // 50 is the left margin
+            contentStream.showText("Date : " + currentDate);
+            contentStream.endText();
+
+            // Add an empty line under the date by drawing a line
+            float emptyLineHeight = 10; // Adjust as needed
+            float nextContentYPosition = dateYPosition - (emptyLineHeight );
+            contentStream.moveTo(50, nextContentYPosition); // Start of the line
+            contentStream.lineTo(page.getMediaBox().getWidth() - 50, nextContentYPosition); // End of the line
+            contentStream.stroke(); // Draw the line
+//-----------------------------
+            // Define the table layout
+            float margin = 50;
+            float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
+//            float yStart = page.getMediaBox().getHeight() - margin;
+            float yStart = dateYPosition - 30;
+            float rowHeight = 20;
+            float tableMargin = 10;
+
+            // Assuming listRndezVous is your ObservableList<RendezVous>
+            // For demonstration, let's assume you have a method to get all items
+            List<RendezVous> rendezvousList = listViewRendezVous.getItems();
+
+            // Draw table headers
+            float yPosition = yStart - rowHeight - tableMargin;
+            float xPosition = margin;
+            String[] headers = {"Client", "Dr.Nom", "Specialite", "DateRV", "Adresse"};
+            for (String header : headers) {
+                float textWidth = PDType1Font.HELVETICA_BOLD.getStringWidth(header) / 1000f * 12;
+                float centeredPosition = xPosition + (tableWidth / headers.length - textWidth) / 2;
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+                contentStream.newLineAtOffset(centeredPosition, yPosition);
+                contentStream.showText(header);
+                contentStream.endText();
+                xPosition += tableWidth / headers.length;
+            }
+
+            // Draw table data
+            yPosition -= rowHeight + tableMargin;
+            for (RendezVous rendezVous : rendezvousList) {
+                xPosition = margin;
+                // Assuming you have methods to get details from RendezVous
+                String clientName = new ServiceClient().getClientById(rendezVous.getId_personne()).getNom_personne(); // Example method
+                String doctorName = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getNom_medecin(); // Example method
+                String specialty = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getSpecialite_medecin(); // Example method
+
+                String address = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getAddress_medecin();; // Example method
+
+                // Format date
+                Timestamp timestamp = rendezVous.getDate_rendez_vous();
+// Format the timestamp to include the full month name
+                DateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
+                String timestampAsString = format.format(timestamp);
+
+                // Draw each detail
+                for (String detail : new String[]{clientName, doctorName, specialty, timestampAsString, address}) {
+                    float textWidth = PDType1Font.HELVETICA.getStringWidth(detail) / 1000f * 10;
+                    float centeredPosition = xPosition + (tableWidth / headers.length - textWidth) / 2;
+                    contentStream.beginText();
+                    contentStream.setFont(PDType1Font.HELVETICA, 10);
+                    contentStream.newLineAtOffset(centeredPosition, yPosition);
+                    contentStream.showText(detail);
+                    contentStream.endText();
+                    xPosition += tableWidth / headers.length;
+                }
+                yPosition -= rowHeight + tableMargin;
+            }
+
+            // Close the content stream and save the document
+            contentStream.close();
+            document.save("ListViewContent.pdf");
+            document.close();
+            // Ouvrir automatiquement le fichier PDF après sa création
+            File pdfFile = new File("ListViewContent.pdf");
+            if (pdfFile.exists()) {
+                Desktop.getDesktop().open(pdfFile);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
 }

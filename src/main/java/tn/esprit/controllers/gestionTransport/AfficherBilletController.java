@@ -11,9 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import tn.esprit.entities.gestionMedecin.Client;
+import tn.esprit.entities.gestionMedecin.RendezVous;
+import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.entities.gestionTransport.billet;
 import tn.esprit.services.gestionTransport.BilletService;
@@ -41,6 +45,8 @@ BilletService bs=new BilletService();
     private ListView<billet> listbillets;
     @FXML
     private Label billetlabel;
+    @FXML
+    private Label client;
     @FXML
     private TextField searchfield;
     private Map<String, Integer> destinationStats = new HashMap<>();
@@ -71,7 +77,7 @@ BilletService bs=new BilletService();
             // Le reste du code pour configurer les cellules de la liste, les écouteurs d'événements, etc.
 
 
-        listbillets.setCellFactory(new Callback<ListView<billet>, ListCell<billet>>() {
+            listbillets.setCellFactory(new Callback<ListView<billet>, ListCell<billet>>() {
                 @Override
                 public ListCell<billet> call(ListView<billet> param) {
                     return new ListCell<billet>() {
@@ -86,30 +92,32 @@ BilletService bs=new BilletService();
                                 // Assuming this code is inside a method where you have access to the rendezVous object
                                 StationService sm = new StationService();
                                 try {
-                                   station = sm.getStationById(bi.getId_station());
+                                    station = sm.getStationById(bi.getId_station());
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
-
+                                ServiceClient serviceClient = new ServiceClient();
                                 String destination = bi.getDestination_voyage();
                                 String prix = bi.getPrix() + "DT";
                                 String duree = bi.getDuree();
-                                String show=station.getNom_station() + "/" +station.getAdress_station()+"/"+station.getType();
+                                String show = station.getNom_station() + "/" + station.getAdress_station() + "/" + station.getType();
                                 Timestamp timestamp = bi.getDate_depart();
-
+                                Client client = serviceClient.getClientById(bi.getId_personne());
 // Format the timestamp to include the full month name
                                 DateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
                                 String timestampAsString = format.format(timestamp);
 
 // Create an HBox to hold the details
                                 HBox hbox = new HBox();
-                                hbox.setSpacing(25); // Adjust spacing as needed
-
+                                hbox.setSpacing(40); // Adjust spacing as needed
 
 
 // Add details to the HBox with styled Labels
+                                Label clientlabel = new Label(client.getNom_personne());
+                                clientlabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 150; -fx-pref-height:   21");
+
                                 Label nomPrenomDoctorLabel = new Label(destination);
-                                nomPrenomDoctorLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 50; -fx-pref-height:   21");
+                                nomPrenomDoctorLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 90; -fx-pref-height:   21");
 
                                 Label prenomLabel = new Label(prix);
                                 prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   30; -fx-pref-height:   21");
@@ -127,7 +135,7 @@ BilletService bs=new BilletService();
 // Add the date Label with the full month name
 
 // Add the Labels to the HBox
-                                hbox.getChildren().addAll(nomPrenomDoctorLabel,dateLabel, specialiteLabel,dureelabel,prenomLabel);
+                                hbox.getChildren().addAll(clientlabel, nomPrenomDoctorLabel, dateLabel, specialiteLabel, dureelabel, prenomLabel);
 
 // Assuming this is inside a ListCell or similar where you can set the graphic
                                 setGraphic(hbox);
@@ -147,10 +155,10 @@ BilletService bs=new BilletService();
             // Associer des actions aux éléments de menu
             ajouterItem.setOnAction(event -> ajouterAction());
 //            crudTransport.getItems().addAll( ajouterItem);
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
+/*        searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null || newValue.isEmpty()) {
                 // Afficher tous les éléments si le champ de recherche est vide
                 listbillets.setItems(observableList);
@@ -196,102 +204,53 @@ BilletService bs=new BilletService();
             }
         });
 
-     /*   searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
+    }*/
+        searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null || newValue.isEmpty()) {
                 // Afficher tous les éléments si le champ de recherche est vide
                 listbillets.setItems(observableList);
             } else {
-                // Filtrer les éléments en fonction de la recherche avancée
+                // Filtrer les éléments en fonction de la première lettre de la recherche
                 ObservableList<billet> filteredList = FXCollections.observableArrayList();
                 String[] searchTerms = newValue.toLowerCase().split("\\s+"); // Séparer les termes de recherche par des espaces
 
                 for (billet billet : observableList) {
-                    boolean matchesAllCriteria = true;
-
-                    // Vérifier chaque terme de recherche
-                    for (String term : searchTerms) {
-                        // Vérifier si le terme correspond à la destination du billet
-                        if (!billet.getDestination_voyage().toLowerCase().contains(term) ||
-                                billet.getDate_depart().toString().toLowerCase().contains(term))) {
-                            matchesAllCriteria = false;
-                            break; // Si un critère ne correspond pas, arrêter de vérifier les autres critères
-                        }
-                    }
-
-                    if (matchesAllCriteria) {
-                        filteredList.add(billet);
-                    }
-                }
-                listbillets.setItems(filteredList);
-            }
-        });*/
-       /* searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null || newValue.isEmpty()) {
-                // Afficher tous les éléments si le champ de recherche est vide
-                listbillets.setItems(observableList);
-            } else {
-                // Filtrer les éléments en fonction de la recherche avancée
-                ObservableList<billet> filteredList = FXCollections.observableArrayList();
-                String[] searchTerms = newValue.toLowerCase().split("\\s+"); // Séparer les termes de recherche par des espaces
-
-                for (billet billet : observableList) {
-                    boolean matchesAllCriteria = true;
+                    boolean matchesAnyCriteria = false;
 
                     // Convertir le timestamp en une date
-                    LocalDateTime billetDateTime = Instant.ofEpochMilli(billet.getDate_depart().getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+                    LocalDateTime billetDateTime = Instant.ofEpochMilli(billet.getDate_depart().getTime())
+                            .atZone(ZoneId.systemDefault()).toLocalDateTime();
 
                     // Vérifier chaque terme de recherche
                     for (String term : searchTerms) {
-                        // Vérifier si le terme correspond à la destination du billet
-                        if (billet.getDestination_voyage().toLowerCase().contains(term)) {
-                            continue; // Passer au terme suivant s'il correspond à la destination
+                        // Vérifier si le terme correspond au début de la destination du billet
+                        if (billet.getDestination_voyage().toLowerCase().startsWith(term)) {
+                            matchesAnyCriteria = true; // Si un terme correspond, marquer comme correspondant
+                            break; // Pas besoin de vérifier les autres termes
                         }
 
-                        // Vérifier si le terme correspond à une date (jour, mois ou année)
+                        // Vérifier si le terme correspond à une date
                         try {
-                            LocalDateTime searchTermDateTime = LocalDateTime.parse(term);
-                            if (billetDateTime.equals(searchTermDateTime)) {
-                                continue; // Passer au terme suivant s'il correspond à la date exacte
+                            LocalDate searchTermDate = LocalDate.parse(term, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                            if (billetDateTime.toLocalDate().isEqual(searchTermDate)) {
+                                matchesAnyCriteria = true; // Si un terme correspond, marquer comme correspondant
+                                break; // Pas besoin de vérifier les autres termes
                             }
-                            // Ajouter ici la logique pour vérifier si le terme correspond à une partie de la date
                         } catch (DateTimeParseException e) {
                             // Ignorer les termes qui ne sont pas des dates valides
                         }
-
-                        // Aucun des critères ne correspond, définir matchesAllCriteria sur false
-                        matchesAllCriteria = false;
-                        break;
                     }
 
-                    if (matchesAllCriteria) {
+                    if (matchesAnyCriteria) {
                         filteredList.add(billet);
                     }
                 }
                 listbillets.setItems(filteredList);
             }
         });
-*/
 
-
-/*
-        searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null || newValue.isEmpty()) {
-                // Afficher tous les éléments si le champ de recherche est vide
-                listbillets.setItems(observableList);
-            } else {
-                // Filtrer les éléments en fonction de la recherche en temps réel par nom de dest
-                ObservableList<billet> filteredList = FXCollections.observableArrayList();
-                for (billet billet : observableList) {
-                    if (billet.getDestination_voyage().toLowerCase().contains(newValue.toLowerCase())) {
-                        filteredList.add(billet);
-                    }
-                }
-                listbillets.setItems(filteredList);
-            }
-        });*/
     }
-
-    private void ajouterAction() {
+        private void ajouterAction() {
         try {
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/resourcesGestionTransport/AjoutBillet.fxml")));
@@ -302,34 +261,6 @@ BilletService bs=new BilletService();
         }
     }
 
-/*    public void deletebillet(ActionEvent actionEvent) {
-
-        Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmationDialog.setTitle("Confirmation");
-        confirmationDialog.setHeaderText(null);
-        confirmationDialog.setContentText("Êtes-vous sûr de supprimer cette Billet ?");
-
-        // Option pour confirmer ou annuler la suppression
-        ButtonType confirmButton = new ButtonType("Confirmer");
-        ButtonType cancelButton = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
-        confirmationDialog.getButtonTypes().setAll(confirmButton, cancelButton);
-
-        // Récupération de la réponse de l'utilisateur
-        Optional<ButtonType> result = confirmationDialog.showAndWait();
-
-        // Si l'utilisateur confirme la suppression
-        if (result.isPresent() && result.get() == confirmButton) {
-            try {
-                billet bi=new billet();
-                // Suppression de la station
-                bs.supprimer(currentBilletSelected.getRef_voyage());
-               // updateDestinationStats(bi.getDestination_voyage());
-                initialize();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }*/
    private void refreshPieChart() {
     ObservableList<PieChart.Data> newData = FXCollections.observableArrayList();
 
@@ -475,6 +406,11 @@ BilletService bs=new BilletService();
         }
 
     }
+
+    public void sortButton(MouseEvent mouseEvent) {
+        ObservableList<billet> billets = listbillets.getItems();
+        billets.sort(Comparator.comparing(billet::getDate_depart));
     }
+}
 
 

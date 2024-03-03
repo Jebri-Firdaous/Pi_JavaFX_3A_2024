@@ -2,14 +2,18 @@ package tn.esprit.controllers.gestionTransport;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tn.esprit.entities.gestionTransport.Station;
 import java.io.IOException;
 import tn.esprit.services.gestionTransport.StationService;
-
+import org.controlsfx.control.Notifications;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -86,20 +90,21 @@ public class AjoutstationController {
 
             // Appel de la méthode d'ajout avec les valeurs des champs de saisie
             ss.ajouter(new Station(nom, adresse, ttype1.getValue()));
-
-            // Affichage d'un message de succès
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("SUCCES");
-            alert.setHeaderText(null);
-            alert.setContentText("Station ajoutée avec succès!");
-            switchToDisplayAllstationsPage();
-            alert.showAndWait();
-
-
+            Image image = new Image("/resourcesGestionTransport/img.png");
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(50);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            Notifications.create()
+                    .title("E-City")
+                    .text("Station Ajouté")
+                    .darkStyle()
+                    .graphic(imageView)
+                    .position(Pos.BOTTOM_RIGHT)
+                    .hideAfter(Duration.seconds(5))
+                    .show();
             tnom.clear();
             tadress.clear();
-
-
         }
         catch (SQLException e) {
 

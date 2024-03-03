@@ -129,64 +129,37 @@ public class AfficherStationController {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
-// Modifier la logique de filtrage pour prendre en compte la recherche avancée
-     /*   searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null || newValue.isEmpty()) {
-                // Afficher tous les éléments si le champ de recherche est vide
-                listview.setItems(observableList);
-            } else {
-                // Filtrer les éléments en fonction de la recherche avancée
-                ObservableList<Station> filteredList = FXCollections.observableArrayList();
-                String[] searchTerms = newValue.toLowerCase().split(","); // Séparer les termes de recherche par une virgule
-
-                for (Station station : observableList) {
-                    boolean matchesAllCriteria = true;
-
-                    // Vérifier chaque terme de recherche
-                    for (String term : searchTerms) {
-                        // Vérifier si le terme correspond au nom, à l'adresse ou au type de la station
-                        if (!(station.getNom_station().toLowerCase().contains(term.trim()) ||
-                                station.getAdress_station().toLowerCase().contains(term.trim()) ||
-                                station.getType().toLowerCase().contains(term.trim()))) {
-                            matchesAllCriteria = false;
-                            break; // Si un critère ne correspond pas, arrêter de vérifier les autres critères
-                        }
-                    }
-
-                    if (matchesAllCriteria) {
-                        filteredList.add(station);
-                    }
-                }*/
         searchfield.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null || newValue.isEmpty()) {
                 // Afficher tous les éléments si le champ de recherche est vide
                 listview.setItems(observableList);
             } else {
-                // Filtrer les éléments en fonction de la recherche avancée
+                // Filtrer les éléments en fonction de la première lettre de la recherche
                 ObservableList<Station> filteredList = FXCollections.observableArrayList();
                 String[] searchTerms = newValue.toLowerCase().split("\\s+"); // Séparer les termes de recherche par des espaces
 
                 for (Station station : observableList) {
-                    boolean matchesAllCriteria = true;
+                    boolean matchesAnyCriteria = false;
 
                     // Vérifier chaque terme de recherche
                     for (String term : searchTerms) {
-                        // Vérifier si le terme correspond au nom, à l'adresse ou au type de la station
-                        if (!(station.getNom_station().toLowerCase().contains(term) ||
-                                station.getAdress_station().toLowerCase().contains(term) ||
-                                station.getType().toLowerCase().contains(term))) {
-                            matchesAllCriteria = false;
-                            break; // Si un critère ne correspond pas, arrêter de vérifier les autres critères
+                        // Vérifier si le terme correspond au début du nom, de l'adresse ou du type de la station
+                        if (station.getNom_station().toLowerCase().startsWith(term) ||
+                                station.getAdress_station().toLowerCase().startsWith(term) ||
+                                station.getType().toLowerCase().startsWith(term)) {
+                            matchesAnyCriteria = true; // Si un terme correspond, marquer comme correspondant
+                            break; // Pas besoin de vérifier les autres termes
                         }
                     }
 
-                    if (matchesAllCriteria) {
+                    if (matchesAnyCriteria) {
                         filteredList.add(station);
                     }
                 }
                 listview.setItems(filteredList);
             }
         });
+
 
 
 /*        searchfield.textProperty().addListener((observable, oldValue, newValue) -> {

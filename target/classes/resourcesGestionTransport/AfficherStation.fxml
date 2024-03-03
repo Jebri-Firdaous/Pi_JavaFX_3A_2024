@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -8,20 +7,18 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-
-
-<AnchorPane  stylesheets="@../gestionMedecin/stylesForGM.css " prefHeight="739.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AfficherStationController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css " xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AfficherStationController">
     <children>
         <fx:include source="../navBar.fxml" />
         <ListView fx:id="listview" editable="true" layoutX="183.0" layoutY="312.0" prefHeight="242.0" prefWidth="795.0" />
-        <Label fx:id="stationLabel" stylesheets="@../gestionMedecin/stylesForGM.css " layoutX="478.0" layoutY="165.0" prefHeight="78.0" prefWidth="321.0"  text="STATIONS" textAlignment="CENTER">
+        <Label fx:id="stationLabel" layoutX="478.0" layoutY="165.0" prefHeight="78.0" prefWidth="321.0" stylesheets="@../gestionMedecin/stylesForGM.css " text="STATIONS" textAlignment="CENTER">
          </Label>
-        <Button layoutX="794.0" layoutY="592.0" mnemonicParsing="false" onAction="#deletestation" prefHeight="48.0" prefWidth="173.0" text="Supprimer" textFill="#f2eded">
+        <Button layoutX="672.0" layoutY="592.0" mnemonicParsing="false" onAction="#deletestation" prefHeight="48.0" prefWidth="173.0" text="Supprimer" textFill="#f2eded">
             <font>
                 <Font size="22.0" />
             </font>
         </Button>
-        <Button layoutX="506.0" layoutY="592.0" mnemonicParsing="false" onAction="#modify" prefHeight="48.0" prefWidth="180.0" text="Modifier" textFill="#f5f0f0">
+        <Button layoutX="431.0" layoutY="592.0" mnemonicParsing="false" onAction="#modify" prefHeight="48.0" prefWidth="180.0" text="Modifier" textFill="#f5f0f0">
             <font>
                 <Font size="22.0" />
             </font>
@@ -76,9 +73,9 @@
             </font>
         </Label>
        <!-- <Button layoutX="1001.0" layoutY="456.0" mnemonicParsing="false" onAction="#genererPdf" prefHeight="75.0" prefWidth="105.0" style="-fx-background-color: white;" text="." />-->
-        <ImageView fitHeight="48.0" fitWidth="52.0" layoutX="1017.0" layoutY="323.0" onMouseClicked="#genererPdf" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="48.0" fitWidth="52.0" layoutX="919.0" layoutY="584.0" onMouseClicked="#genererPdf" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@pdf.png" />
+                <Image url="@../gestionMedecin/icons/pdfIcon.png" />
             </image>
         </ImageView>
       <Button layoutX="183.0" layoutY="592.0" mnemonicParsing="false" onAction="#addstation" text="Ajouter">

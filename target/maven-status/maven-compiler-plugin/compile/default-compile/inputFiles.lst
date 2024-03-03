@@ -41,6 +41,7 @@ C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\
 C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionMedecin\AfficherListRendezVousController.java
 C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities\gestionMedecin\RendezVous.java
 C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionShopping\ModifierArticleController.java
+C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionMedecin\PDFGenerator.java
 C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities\gestionMedecin\Medecin.java
 C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionMedecin\AfficherMedecinsController.java
 C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\gestionMedecin\ServiceMedecin.java

@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.collections.FXCollections?>
 
-<AnchorPane prefHeight="739.0" prefWidth="1228.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AjoutstationController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" style="-fx-background-color: white;" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AjoutstationController">
    <children>
        <fx:include source="../navBar.fxml" />
          <Label layoutX="473.0" layoutY="283.0" text="Nom_Station">
@@ -30,7 +26,7 @@
          </font></Label>
          <TextField fx:id="tnom" layoutX="473.0" layoutY="319.0" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: white; -fx-border-color: black;" />
          <TextField fx:id="tadress" layoutX="473.0" layoutY="442.0" prefHeight="54.0" prefWidth="201.0" style="-fx-background-color: white; -fx-border-color: black;" />
-         <Button layoutX="815.0" layoutY="629.0" mnemonicParsing="false" onAction="#addservice" prefHeight="64.0" prefWidth="245.0" style="-fx-background-color: #6093ac; -fx-border-color: white;" text="Ajouter" textFill="#f5f5f5">
+         <Button layoutX="815.0" layoutY="629.0" mnemonicParsing="false" onAction="#addservice" prefHeight="64.0" prefWidth="245.0" style="-fx-border-color: white;" text="Ajouter" textFill="#f5f5f5">
          <font>
             <Font name="System Bold" size="21.0" />
          </font></Button>

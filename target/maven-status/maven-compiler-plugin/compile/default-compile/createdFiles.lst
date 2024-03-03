@@ -26,6 +26,7 @@ tn\esprit\services\gestionShopping\IServiceCommande.class
 tn\esprit\controllers\gestionTransport\HomeController.class
 tn\esprit\services\gestionShopping\ServiceArticle.class
 tn\esprit\services\gestionMedecin\ServiceClient.class
+tn\esprit\controllers\gestionMedecin\PDFGenerator.class
 tn\esprit\controllers\gestionTransport\AfficherBilletController$1$1.class
 tn\esprit\services\gestionTransport\StationService.class
 tn\esprit\test\Main.class

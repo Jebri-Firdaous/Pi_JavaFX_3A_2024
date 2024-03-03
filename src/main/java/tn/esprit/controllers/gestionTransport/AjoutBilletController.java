@@ -12,11 +12,13 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+import tn.esprit.entities.gestionMedecin.Client;
 import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.entities.gestionTransport.billet;
+import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionTransport.BilletService;
 import tn.esprit.services.gestionTransport.StationService;
-
+import tn.esprit.services.gestionMedecin.ServiceClient;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -27,6 +29,7 @@ import java.util.*;
 
 public class AjoutBilletController implements Initializable {
     public ComboBox<Integer> hourCombobox;
+    public ComboBox<Client> comboboxclient;
     public ComboBox<Integer> minuteCombobox;
     BilletService bs = new BilletService();
     @FXML
@@ -45,7 +48,8 @@ public class AjoutBilletController implements Initializable {
     private TextField duree;
     @FXML
     private Label statistiquesLabel;
-
+@FXML
+private Label client;
     @FXML
     private ComboBox<Station> depart;
     public Connection connection;
@@ -58,7 +62,14 @@ public class AjoutBilletController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        ServiceClient serviceClient = new ServiceClient();
+        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        comboboxclient.setItems(clientsList);
+        try {
+            clientsList.addAll(serviceClient.afficher());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         ObservableList<Station> stationList = FXCollections.observableArrayList();
         depart.setItems(stationList);
         try {
@@ -234,7 +245,7 @@ public class AjoutBilletController implements Initializable {
         Station selectedObject = depart.getValue();
         System.out.println(selectedObject.getId_station());
         StationService stationService = new StationService();
-        bs.ajouter(new billet(des, dateTime, selectedObject.getId_station(), prixx, duration));
+        bs.ajouter(new billet(des, Timestamp.valueOf(dateTime), selectedObject.getId_station(), prixx, duration,comboboxclient.getValue().getId_personne()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherBillet.fxml"));
         Parent newRoot = loader.load();
         AfficherBilletController afficherBilletController = loader.getController();

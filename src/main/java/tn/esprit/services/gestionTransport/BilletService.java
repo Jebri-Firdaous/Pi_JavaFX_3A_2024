@@ -22,14 +22,15 @@ public class BilletService implements IServiceBillet<billet>
     public void ajouter (billet billet ) throws SQLException
     {
 
-        String sql = "INSERT INTO billet (destination_voyage, date_depart, station, prix, duree) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO billet (destination_voyage, date_depart, station, prix, duree,id_personne) " +
+                "VALUES (?, ?, ?, ?, ?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,billet.getDestination_voyage());
        preparedStatement.setTimestamp(2,billet.getDate_depart());
         preparedStatement.setInt(3,billet.getId_station());
         preparedStatement.setString(4,billet.getPrix());
         preparedStatement.setString(5, billet.getDuree());
+        preparedStatement.setInt(6,billet.getId_personne());
         preparedStatement.executeUpdate();
 
     }
@@ -72,6 +73,7 @@ public class BilletService implements IServiceBillet<billet>
             billet.setId_station(rs.getInt("station"));
             billet.setDuree(rs.getString("duree"));
             billet.setPrix(rs.getString("prix"));
+            billet.setId_personne(rs.getInt("id_personne"));
             billets.add(billet);
             System.out.println("goooooooood");
         }

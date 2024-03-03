@@ -116,7 +116,7 @@ public class ModifierMedecinController implements Initializable {
                 "Endocrinology",
                 "Gastroenterology",
                 "Neurology",
-                "Obstetrics and Gynecology",
+                "Obstetrics ",
                 "Ophthalmology",
                 "Orthopedics",
                 "Pediatrics",

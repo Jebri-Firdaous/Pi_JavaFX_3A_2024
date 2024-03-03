@@ -104,7 +104,7 @@ public class AjouterMedecinController implements Initializable {
                 "Endocrinology",
                 "Gastroenterology",
                 "Neurology",
-                "Obstetrics and Gynecology",
+                "Obstetrics ",
                 "Ophthalmology",
                 "Orthopedics",
                 "Pediatrics",

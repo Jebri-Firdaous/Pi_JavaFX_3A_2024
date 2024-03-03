@@ -5,7 +5,7 @@ import com.twilio.type.PhoneNumber;
 
 public class SmsController {
     public static final String ACCOUNT_SID = "AC9b81b4f943aab8c49b38b51f886332a2";
-    public static final String AUTH_TOKEN = "1fa2c290e192cecd617c3af035e7889c";
+    public static final String AUTH_TOKEN = "fa78ca13f2be95eca59e80e2e933766f";
 
    /*public static void sendSms(String recipientPhoneNumber, String messageBody){
 

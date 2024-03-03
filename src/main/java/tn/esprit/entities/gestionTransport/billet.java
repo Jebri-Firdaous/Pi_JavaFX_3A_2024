@@ -9,6 +9,15 @@ import java.time.ZoneId;
 
 
 public class billet {
+    public billet(String destination_voyage, Timestamp date_depart, int id_station, String prix, String duree, int id_personne) {
+        this.destination_voyage = destination_voyage;
+        this.date_depart = date_depart;
+        this.id_station = id_station;
+        this.prix = prix;
+        this.duree = duree;
+        this.id_personne = id_personne;
+    }
+
     private int ref_voyage;
 
     private String destination_voyage;
