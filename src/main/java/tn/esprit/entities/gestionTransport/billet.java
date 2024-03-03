@@ -16,6 +16,7 @@ public class billet {
     private int id_station;
     private String prix;
     private String duree;
+    private int id_personne;
 
     public billet() {
     }
@@ -23,7 +24,6 @@ public class billet {
 
     public billet(int ref_voyage, String destination_voyage, Timestamp date_depart, int id_station,String prix,String duree) {
         this.ref_voyage = ref_voyage;
-
         this.destination_voyage = destination_voyage;
         this.date_depart = date_depart;
         this.id_station= id_station;
@@ -31,7 +31,23 @@ public class billet {
         this.duree=duree;
     }
 
+    public int getId_personne() {
+        return id_personne;
+    }
 
+    public void setId_personne(int id_personne) {
+        this.id_personne = id_personne;
+    }
+
+    public billet(int ref_voyage, String destination_voyage, Timestamp date_depart, int id_station, String prix, String duree, int id_personne) {
+        this.ref_voyage = ref_voyage;
+        this.destination_voyage = destination_voyage;
+        this.date_depart = date_depart;
+        this.id_station = id_station;
+        this.prix = prix;
+        this.duree = duree;
+        this.id_personne = id_personne;
+    }
 
     public billet(String destination_voyage, LocalDateTime date_depart, int id_station, String prix, String duree) {
 

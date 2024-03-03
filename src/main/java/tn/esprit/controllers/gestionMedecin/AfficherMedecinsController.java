@@ -2,6 +2,7 @@ package tn.esprit.controllers.gestionMedecin;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
 import javafx.beans.value.ChangeListener;
@@ -29,6 +30,7 @@ public class AfficherMedecinsController {
     @FXML
     public Label selectedDoctor;
     public TextField textFieldSearch;
+    public Label msgErreurLabel;
     @FXML
     private ListView<Medecin> listViewMedecins;
     private final ServiceMedecin serviceMedecin = new ServiceMedecin();
@@ -198,12 +200,21 @@ public class AfficherMedecinsController {
     }
 
     public void searchByAttribut(KeyEvent keyEvent) throws SQLException {
+        msgErreurLabel.setText("");
+        msgErreurLabel.setTextFill(Color.RED);
         String valChamp = textFieldSearch.getText();
         String val = extractValue(valChamp);
         String attribut = extractAttribute(valChamp);
         if (textFieldSearch.getText().equals("")){
             initialize();
         }
+        if (!attribut.toLowerCase().equals("nom") && !attribut.toLowerCase().equals("prenom") && !attribut.toLowerCase().equals("specialite")
+        && !attribut.toLowerCase().equals("n°tel") && !attribut.toLowerCase().equals("adresse")){
+            msgErreurLabel.setText("_attribut val");
+            return;
+        }
+        msgErreurLabel.setText("");
+
 //        if(valChamp!=null){
 //           TextField erreur = new TextField();
 //           erreur.setText("tu dois repecter le régle");

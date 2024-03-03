@@ -63,6 +63,7 @@
             <Image url="@searchIcon.png" />
          </image>
       </ImageView>
+      <Label fx:id="msgErreur" layoutX="917.0" layoutY="207.0" prefHeight="21.0" prefWidth="171.0" />
    </children>
 
 </AnchorPane>

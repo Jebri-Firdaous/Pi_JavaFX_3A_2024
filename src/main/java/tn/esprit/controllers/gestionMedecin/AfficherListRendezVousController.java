@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.gestionMedecin.*;
@@ -42,6 +43,7 @@ public class AfficherListRendezVousController {
 
 
     public TextField textFieldSearch;
+    public Label msgErreur;
     RendezVous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
     ObservableList<RendezVous> listRndezVous;
@@ -243,9 +245,17 @@ public class AfficherListRendezVousController {
         String valChamp = textFieldSearch.getText();
         String val = extractValue(valChamp);
         String attribut = extractAttribute(valChamp);
+        msgErreur.setText("");
+        msgErreur.setTextFill(Color.RED);
         if (textFieldSearch.getText().equals("")){
             initialize();
         }
+        if (!attribut.toLowerCase().equals("client") && !attribut.toLowerCase().equals("dr.nom") && !attribut.toLowerCase().equals("specialite")
+                && !attribut.toLowerCase().equals("n°tel") && !attribut.toLowerCase().equals("adresse")){
+            msgErreur.setText("_attribut val");
+            return;
+        }
+        msgErreur.setText("");
 //        if(valChamp!=null){
 //           TextField erreur = new TextField();
 //           erreur.setText("tu dois repecter le régle");

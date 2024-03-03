@@ -228,8 +228,6 @@ public class AjouterRendezVousController implements Initializable {
             String subject = "Ajouter Rendez-Vous";
             String body = "Bonjour Mr."+client.getNom_personne()+" votre rendezVous avec Dr."+medecin.getNom_medecin()+" sera le "+dateTime.format(myFormatObj);
             new SendEmail(receiverAdresse, subject, body);
-
-
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Boîte de dialogue d'information");
             successAlert.setContentText("Rendez-vous réservé avec succès!");
