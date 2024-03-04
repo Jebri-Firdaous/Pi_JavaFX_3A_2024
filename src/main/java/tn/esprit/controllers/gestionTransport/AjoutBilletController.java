@@ -12,13 +12,13 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
-import tn.esprit.entities.gestionMedecin.Client;
 import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.entities.gestionTransport.billet;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionTransport.BilletService;
 import tn.esprit.services.gestionTransport.StationService;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;

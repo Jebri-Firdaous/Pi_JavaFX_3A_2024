@@ -15,8 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import tn.esprit.entities.gestionMedecin.Client;
-import tn.esprit.entities.gestionMedecin.RendezVous;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.entities.gestionTransport.billet;
@@ -123,7 +122,7 @@ BilletService bs=new BilletService();
 
 // Create an HBox to hold the details
                                 HBox hbox = new HBox();
-                                hbox.setSpacing(40); // Adjust spacing as needed
+                                hbox.setSpacing(35); // Adjust spacing as needed
 
 
 // Add details to the HBox with styled Labels
@@ -393,13 +392,15 @@ BilletService bs=new BilletService();
     }
 
     private void updateStatisticsLabel() {
+        int totalDestinations = destinationStats.values().stream().mapToInt(Integer::intValue).sum();
         // Construisez une chaîne représentant les statistiques de destination
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
         for (Map.Entry<String, Integer> entry : destinationStats.entrySet()) {
-            pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+            double percentage = (double) entry.getValue() / totalDestinations * 100;
+            pieChartData.add(new PieChart.Data(entry.getKey() + " (" + String.format("%.2f", percentage) + "%)", entry.getValue()));
         }
         statistiquesPieChart.setData(pieChartData);
-        System.out.println("Statistics label updated");
+        System.out.println("Statistics label updated with percentages");
     }
 
     public void addbillet(ActionEvent actionEvent) {

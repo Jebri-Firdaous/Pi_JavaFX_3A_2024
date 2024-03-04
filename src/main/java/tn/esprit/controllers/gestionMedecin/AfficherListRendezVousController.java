@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -32,6 +33,8 @@ import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import tn.esprit.entities.gestionMedecin.*;
 import tn.esprit.entities.gestionTransport.Station;
+import tn.esprit.entities.gestionTransport.billet;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
@@ -49,6 +52,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -62,11 +66,20 @@ public class AfficherListRendezVousController {
 
     public TextField textFieldSearch;
     public Label msgErreur;
+
+    public ImageView downloadPdf;
+    public ImageView tri;
     RendezVous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
     ObservableList<RendezVous> listRndezVous;
 
     public void initialize() {
+        downloadPdf.setOnMouseClicked(event -> {
+            downloadPdfListRv();
+        });
+        tri.setOnMouseClicked(event -> {
+            sortByDate();
+        });
         listRndezVous = FXCollections.observableArrayList();
         listViewRendezVous.setItems(listRndezVous);
         try {
@@ -324,8 +337,13 @@ public class AfficherListRendezVousController {
             return "No value found.";
         }
     }
+
+    public void sortByDate() {
+        ObservableList<RendezVous> rendezVous = listViewRendezVous.getItems();
+        rendezVous.sort((rv1, rv2) -> rv1.getDate_rendez_vous().compareTo(rv2.getDate_rendez_vous()));
+    }
 /*------------------------- pdf ----------------------------------*/
-    public void downloadPdfListRv(MouseEvent mouseEvent) {
+    public void downloadPdfListRv() {
         try {
             // Create a new PDF document
             PDDocument document = new PDDocument();
@@ -439,9 +457,6 @@ public class AfficherListRendezVousController {
             e.printStackTrace();
         }
 
-
     }
-
-
 
 }

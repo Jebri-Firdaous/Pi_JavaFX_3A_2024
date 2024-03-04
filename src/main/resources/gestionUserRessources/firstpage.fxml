@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="774.0" prefWidth="1312.0" styleClass="root"
+            xmlns="http://javafx.com/javafx/8"
+            fx:controller="tn.esprit.controllers.gestionUser.AdminInterfaceControllers">
+    <children>
+        <ImageView fitHeight="774.0" fitWidth="1312.0" layoutX="-1.0" layoutY="-1.0">
+            <image>
+                <Image url="@smartcity.png"/>
+            </image>
+        </ImageView>
+        <Rectangle height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0"/>
+        <Button layoutX="557.0" layoutY="422.0" mnemonicParsing="false" onAction="#ToLogin" prefHeight="43.0"
+                prefWidth="186.0" style="-fx-background-color: B0E847;" styleClass="bouton-transparent" text="Démarrer">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Button>
+        <ImageView fx:id="ToAcceuil" fitHeight="281.0" fitWidth="344.0" layoutX="478.0" layoutY="163.0">
+            <image>
+                <Image url="@logoblanc.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="label" layoutX="210.0" layoutY="93.0"/>
+        <Label layoutX="348.0" layoutY="387.0"
+               text="Propulsez la gestion de votre ville vers l'avenir avec notre application E-City" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="17.0"/>
+            </font>
+        </Label>
+
+    </children>
+</AnchorPane>

@@ -81,9 +81,9 @@
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion utilisateur">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Action 1" />
-                            </items>
+                            <Menu mnemonicParsing="false" onAction="#afficherAdmin" text="Administrateurs"/>
+
+                            <Menu mnemonicParsing="false" onAction="#afficherClient" text="Clients"/>
                         </Menu>
                     </menus>
                 </MenuBar>

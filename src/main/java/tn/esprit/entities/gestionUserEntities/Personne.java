@@ -1,4 +1,4 @@
-package tn.esprit.entities.gestionMedecin;
+package tn.esprit.entities.gestionUserEntities;
 
 public class Personne {
     private int id_personne;
@@ -7,25 +7,36 @@ public class Personne {
     private int numero_telephone;
     private String mail_personne;
     private String mdp_personne;
+    private String image_personne;
 
     public Personne() {
     }
 
-    public Personne(int id_personne, String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne) {
+    public Personne(int id_personne, String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne, String image_personne) {
         this.id_personne = id_personne;
         this.nom_personne = nom_personne;
         this.prenom_personne = prenom_personne;
         this.numero_telephone = numero_telephone;
         this.mail_personne = mail_personne;
         this.mdp_personne = mdp_personne;
+        this.image_personne = image_personne;
     }
 
-    public Personne(String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne) {
+    public Personne(String nom_personne, String prenom_personne, int numero_telephone, String mail_personne, String mdp_personne, String image_personne) {
         this.nom_personne = nom_personne;
         this.prenom_personne = prenom_personne;
         this.numero_telephone = numero_telephone;
         this.mail_personne = mail_personne;
         this.mdp_personne = mdp_personne;
+        this.image_personne = image_personne;
+    }
+
+    public String getImage_personne() {
+        return image_personne;
+    }
+
+    public void setImage_personne(String image_personne) {
+        this.image_personne = image_personne;
     }
 
     public int getId_personne() {
@@ -78,11 +89,12 @@ public class Personne {
 
     @Override
     public String toString() {
-        return "tn.pidev.entities.Personne{" +
+        return "tn.esprit.entities.gestionUserEntities.Personne{" +
                 "nom_personne='" + nom_personne + '\'' +
                 ", prenom_personne='" + prenom_personne + '\'' +
                 ", numero_telephone=" + numero_telephone +
                 ", mail_personne='" + mail_personne + '\'' +
+                ", image_personne='" + image_personne + '\'' +
                 '}';
     }
 }

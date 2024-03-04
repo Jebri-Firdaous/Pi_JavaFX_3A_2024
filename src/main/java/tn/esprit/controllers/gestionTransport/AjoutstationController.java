@@ -1,4 +1,6 @@
 package tn.esprit.controllers.gestionTransport;
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,8 @@ public class AjoutstationController {
     private TextField tadress;
     @FXML
     private TextField tnom;
+    @FXML
+    private ImageView bus;
     @FXML
     private MenuButton crudTransport;
     @FXML
@@ -90,6 +94,9 @@ public class AjoutstationController {
 
             // Appel de la méthode d'ajout avec les valeurs des champs de saisie
             ss.ajouter(new Station(nom, adresse, ttype1.getValue()));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherStation.fxml"));
+            Parent newRoot = loader.load();
+            AfficherStationController afficherStationController = loader.getController();
             Image image = new Image("/resourcesGestionTransport/img.png");
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(50);
@@ -113,6 +120,8 @@ public class AjoutstationController {
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -162,6 +171,12 @@ public class AjoutstationController {
     public void initialize (URL location, ResourceBundle resources) {
         // Create menu items and add them to the MenuButton
         // Créer des éléments de menu
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(2), bus);
+        transition.setFromX(30); // Position de départ en X (hors de l'écran à droite)
+        transition.setToX(200);
+        transition.setCycleCount(Animation.INDEFINITE); // Répéter indéfiniment
+        // Position finale en X (0)
+        transition.play();
         System.out.println("methode");
         MenuItem modifierItem = new MenuItem("Modifier");
         MenuItem afficherItem = new MenuItem("Afficher");

@@ -17,7 +17,7 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import tn.esprit.entities.TourismeEntities.Reservation;
-import tn.esprit.entities.gestionMedecin.Client;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
 import tn.esprit.services.gestionMedecin.ServiceClient;

@@ -302,6 +302,42 @@ public class NavBarController {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    void afficherAdmin() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherAdmin.fxml"));
+            Parent root = loader.load();
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (
+                IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
+    }
+
+    public void afficherClient(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherClient.fxml"));
+           Parent root = loader.load();
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (
+                IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
+    }
 }
 
 

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="tn.esprit.controllers.gestionUser.AjoutAdministrateurController">
+
+
+    <children>
+        <fx:include source="../navBar.fxml" />
+        <ImageView fitHeight="612.0" fitWidth="806.0" layoutX="2.0" layoutY="111.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@image1.png"/>
+            </image>
+        </ImageView>
+
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="514.0" layoutX="817.0" layoutY="177.0" opacity="0.07"
+                   stroke="TRANSPARENT" strokeType="INSIDE" width="450.0"/>
+        <Label layoutX="921.0" layoutY="193.0" text="Ajouter Administrateur">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+        <VBox layoutX="844.0" layoutY="238.0" prefHeight="440.0" prefWidth="397.0">
+            <children>
+                <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="18.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="nomInvalid" prefHeight="21.0" prefWidth="388.0" text="Nom Invalide" textFill="RED"
+                               visible="false"/>
+                    </children>
+                </VBox>
+                <TextField fx:id="prenom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre prenom">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="15.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="prenomInvalid" prefHeight="21.0" prefWidth="339.0" text="Prenom Invalide"
+                               textFill="RED" visible="false"/>
+                    </children>
+                </VBox>
+                <TextField fx:id="tel" prefHeight="46.0" prefWidth="397.0"
+                           promptText="Entrer votre numero de telephone">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="15.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="347.0" text="Numero Invalide"
+                               textFill="RED" visible="false"/>
+                    </children>
+                </VBox>
+                <ComboBox fx:id="role" prefHeight="42.0" prefWidth="401.0" promptText="Role">
+                    <style>
+                        -fx-font-family: Arial;
+                        -fx-font-size: 20px;
+                        -fx-font-weight: normal; /* ou bold pour gras */
+                        -fx-font-style: normal; /* ou italic pour italique */
+                    </style>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Gestion Utilisateur"/>
+                            <String fx:value="Gestion Transport"/>
+                            <String fx:value="Gestion Santé"/>
+                            <String fx:value="Gestion Parking"/>
+                            <String fx:value="Gestion Tourisme"/>
+                            <String fx:value="Gestion Shopping"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <VBox prefHeight="15.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="roleInvalid" prefHeight="21.0" prefWidth="343.0" text="Veuillez choisir un Role"
+                               textFill="RED" visible="false"/>
+                    </children>
+                </VBox>
+                <TextField fx:id="mail" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre adresse mail">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="82.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="mailInvalid" prefHeight="21.0" prefWidth="210.0" text="Mail Invalide"
+                               textFill="RED" visible="false"/>
+                        <PasswordField fx:id="mdp" prefHeight="46.0" prefWidth="387.0"
+                                       promptText="Choisissez le mot de passe">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </PasswordField>
+                        <Label fx:id="mdpInvalid" prefHeight="19.0" prefWidth="397.0"
+                               text="Le mot de passe doit contenir au moin (8 caractere , un caractere special et une lettre majiscule)"
+                               textFill="RED" visible="false">
+                            <font>
+                                <Font size="9.0"/>
+                            </font>
+                        </Label>
+                        <VBox prefHeight="15.0" prefWidth="397.0"/>
+
+                    </children>
+                </VBox>
+                <Button fx:id="inscrire" mnemonicParsing="false" onAction="#AjouterAdmin" prefHeight="38.0"
+                        prefWidth="402.0" style="-fx-background-color: #B0E847;" text="Ajouter">
+                    <font>
+                        <Font name="System Bold" size="17.0"/>
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+        <VBox layoutX="400.0" layoutY="699.0" prefHeight="32.0" prefWidth="467.0">
+            <children>
+                <Label fx:id="remplirChamps" prefHeight="31.0" prefWidth="469.0" textFill="#dd0f0f">
+                    <font>
+                        <Font size="11.0"/>
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+        <Label fx:id="label" layoutX="1095.0" layoutY="37.0"/>
+        <HBox layoutX="497.0" layoutY="641.0" prefHeight="46.0" prefWidth="431.0"/>
+    </children>
+</AnchorPane>

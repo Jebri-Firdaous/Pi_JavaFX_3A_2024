@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane onMouseClicked="#downloadPdfListRv" prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionMedecin.AfficherListRendezVousController">
+<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionMedecin.AfficherListRendezVousController">
    <children>
    
       <fx:include source="../navBar.fxml" />
@@ -65,9 +65,14 @@
          </image>
       </ImageView>
       <Label fx:id="msgErreur" layoutX="917.0" layoutY="207.0" prefHeight="21.0" prefWidth="171.0" />
-      <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="1094.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="downloadPdf" fitHeight="40.0" fitWidth="41.0" layoutX="1094.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons/pdfIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tri" fitHeight="32.0" fitWidth="35.0" layoutX="787.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/sort.png" />
          </image>
       </ImageView>
    </children>

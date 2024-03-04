@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="770.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="tn.esprit.controllers.gestionUser.AfficheClientController">
+    <children>
+        <fx:include source="../navBar.fxml" />
+        <Label fx:id="label" layoutX="120.0" layoutY="472.0"/>
+        <SplitPane layoutY="127.0" orientation="VERTICAL" prefHeight="599.0" prefWidth="1300.0">
+            <items>
+                <VBox prefHeight="587.0" prefWidth="1298.0">
+                    <children>
+                        <VBox prefHeight="52.0" prefWidth="1298.0">
+                            <children>
+                                <AnchorPane prefHeight="21.0" prefWidth="1298.0">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="471.0" layoutY="8.0"
+                                               prefHeight="21.0" prefWidth="356.0" text="Liste des Clients"
+                                               textFill="#1e3163">
+                                            <font>
+                                                <Font name="Arial Black" size="22.0"/>
+                                            </font>
+                                        </Label>
+                                        <TextField layoutX="1032.0" layoutY="6.0" onAction="#rechercher"
+                                                   prefHeight="33.0" prefWidth="253.0" promptText="Recherche"
+                                                   style="-fx-background-color: white; -fx-border-color: grey; -fx-background-radius: 30; -fx-background-color: white; -fx-border-radius: 30;"/>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="513.0" prefWidth="1298.0">
+                            <children>
+                                <TableView fx:id="tableViewClient" prefHeight="513.0" prefWidth="1298.0">
+                                    <columns>
+                                        <TableColumn fx:id="nomClient" prefWidth="255.0" text="NOM"/>
+                                        <TableColumn fx:id="prenomClient" prefWidth="235.0" text="PRENOM"/>
+                                        <TableColumn fx:id="telClient" prefWidth="284.0" text="NUMERO DE TELEPHONE"/>
+                                        <TableColumn fx:id="mailClient" prefWidth="292.0" text="MAIL"/>
+                                        <TableColumn fx:id="ageClient" prefWidth="98.0" text="Age"/>
+                                        <TableColumn fx:id="genreClient" prefWidth="133.0" text="Genre"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="51.0" prefWidth="1298.0">
+                            <children>
+                                <VBox prefHeight="11.0" prefWidth="1298.0">
+                                </VBox>
+                                <VBox prefHeight="38.0" prefWidth="1298.0">
+                                    <children>
+                                        <HBox prefHeight="75.0" prefWidth="1064.0">
+                                            <children>
+                                                <HBox prefHeight="38.0" prefWidth="256.0"/>
+                                                <HBox prefHeight="38.0" prefWidth="50.0"/>
+                                                <HBox prefHeight="38.0" prefWidth="146.0"/>
+                                                <Button mnemonicParsing="false" onAction="#AjouterClient"
+                                                        prefHeight="38.0" prefWidth="351.0"
+                                                        style="-fx-background-color: B0E847;" text="Ajouter">
+                                                    <font>
+                                                        <Font name="System Bold" size="17.0"/>
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

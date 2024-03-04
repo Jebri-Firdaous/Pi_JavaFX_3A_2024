@@ -1,7 +1,7 @@
 package tn.esprit.services.gestionMedecin;
 
 
-import tn.esprit.entities.gestionMedecin.Client;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.utils.MyDataBase;
 import java.sql.*;
 import java.util.ArrayList;

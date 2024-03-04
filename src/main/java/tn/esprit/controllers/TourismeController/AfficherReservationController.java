@@ -17,8 +17,7 @@ import javafx.stage.Stage;
 import tn.esprit.entities.TourismeEntities.Hotel;
 
 import tn.esprit.entities.TourismeEntities.Reservation;
-import tn.esprit.entities.gestionMedecin.Client;
-import tn.esprit.entities.gestionMedecin.Medecin;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
 import tn.esprit.services.gestionMedecin.ServiceClient;

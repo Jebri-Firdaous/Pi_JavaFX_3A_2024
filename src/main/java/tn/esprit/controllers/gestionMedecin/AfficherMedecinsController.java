@@ -133,6 +133,14 @@ public class AfficherMedecinsController {
     }
 
     public void BT_supprimer(ActionEvent actionEvent) {
+        if(currentDoctorSelected == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Choose one doctor ");
+            alert.showAndWait();
+            return;
+        }
         try {
             serviceMedecin.supprimer(currentDoctorSelected.getId_medecin());
             initialize();

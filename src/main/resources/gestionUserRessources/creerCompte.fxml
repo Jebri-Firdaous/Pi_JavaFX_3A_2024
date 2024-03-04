@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="tn.esprit.controllers.gestionUser.CreerAdminController">
+
+
+    <children>
+        <ImageView fitHeight="774.0" fitWidth="1312.0" layoutX="1.0" layoutY="1.0">
+            <image>
+                <Image url="/gestionUserRessources/smartcity.png"/>
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE"
+                   width="1312.0"/>
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="458.0" layoutX="420.0" layoutY="177.0" opacity="0.5"
+                   stroke="TRANSPARENT" strokeType="INSIDE" width="461.0"/>
+        <Label layoutX="474.0" layoutY="191.0" text="Créer un Compte E-city" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="32.0"/>
+            </font>
+            <effect>
+                <Lighting diffuseConstant="1.46" specularConstant="1.47" specularExponent="0.49" surfaceScale="6.62">
+                    <bumpInput>
+                        <Shadow/>
+                    </bumpInput>
+                    <light>
+                        <Light.Distant azimuth="311.7" color="#5ce1e6" elevation="149.27"/>
+                    </light>
+                </Lighting>
+            </effect>
+        </Label>
+        <VBox layoutX="452.0" layoutY="259.0" prefHeight="358.0" prefWidth="397.0">
+            <children>
+                <TextField fx:id="nom" prefHeight="47.0" prefWidth="397.0" promptText="Entrer votre nom">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="21.0" prefWidth="370.0">
+                    <children>
+                        <Label fx:id="nomInvalid" prefHeight="21.0" prefWidth="364.0" text="Nom Invalid" textFill="RED"
+                               visible="false"/>
+                    </children>
+                </VBox>
+                <TextField fx:id="prenom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre prenom">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="15.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="prenomInvalid" prefHeight="21.0" prefWidth="303.0" text="Prenom IInvalis"
+                               textFill="RED" visible="false"/>
+                    </children>
+                </VBox>
+                <ComboBox fx:id="role" prefHeight="41.0" prefWidth="397.0" promptText="Role">
+                    <style>
+                        -fx-font-family: Arial;
+                        -fx-font-size: 20px;
+                        -fx-font-weight: normal; /* ou bold pour gras */
+                        -fx-font-style: normal; /* ou italic pour italique */
+                    </style>
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Gestion Utilisateur"/>
+                            <String fx:value="Gestion Transport"/>
+                            <String fx:value="Gestion Santé"/>
+                            <String fx:value="Gestion Parking"/>
+                            <String fx:value="Gestion Tourisme"/>
+                            <String fx:value="Gestion Shopping"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <VBox prefHeight="15.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="roleInvalid" prefHeight="21.0" prefWidth="426.0" text="Role Invalid"
+                               textFill="#dd0f0f" visible="false">
+                            <font>
+                                <Font size="11.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <TextField fx:id="mail" prefHeight="44.0" prefWidth="397.0" promptText="Entrer votre adresse mail">
+                    <font>
+                        <Font name="Arial" size="20.0"/>
+                    </font>
+                </TextField>
+                <VBox prefHeight="15.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="mailInvalid" prefHeight="21.0" prefWidth="309.0" text="mail Invalid"
+                               textFill="RED" visible="false">
+                            <font>
+                                <Font size="11.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox prefHeight="43.0" prefWidth="397.0">
+                    <children>
+                        <PasswordField fx:id="mdp" prefHeight="47.0" prefWidth="397.0"
+                                       promptText="Choisissez le mot de passe">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </PasswordField>
+                    </children>
+                </VBox>
+                <VBox prefHeight="20.0" prefWidth="397.0">
+                    <children>
+                        <Label fx:id="mdpInvalid" prefHeight="21.0" prefWidth="439.0"
+                               text="Le mot de passe doit contenir au moin (8 caractere , un caractere special et une lettre majiscule)"
+                               textFill="RED" visible="false">
+                            <font>
+                                <Font size="9.0"/>
+                            </font>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </Label>
+                    </children>
+                </VBox>
+                <Button fx:id="inscrire" mnemonicParsing="false" onAction="#AjouterAdmin" prefHeight="39.0"
+                        prefWidth="397.0" style="-fx-background-color: #B0E847;" text="S'inscrire">
+                    <font>
+                        <Font name="System Bold" size="17.0"/>
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+        <VBox layoutX="400.0" layoutY="699.0" prefHeight="32.0" prefWidth="467.0"/>
+        <Label fx:id="label" layoutX="1095.0" layoutY="37.0"/>
+        <ImageView fitHeight="175.0" fitWidth="200.0" layoutX="547.0" layoutY="28.0">
+            <image>
+                <Image url="@logoblanc.png"/>
+            </image>
+        </ImageView>
+        <Hyperlink layoutX="533.0" layoutY="635.0" onAction="#ToConnexion" text="Vous avez deja un compte?"
+                   textFill="#b0e847">
+            <effect>
+                <Bloom/>
+            </effect>
+            <font>
+                <Font name="System Bold" size="17.0"/>
+            </font>
+        </Hyperlink>
+    </children>
+</AnchorPane>

@@ -27,6 +27,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import tn.esprit.entities.gestionMedecin.*;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
