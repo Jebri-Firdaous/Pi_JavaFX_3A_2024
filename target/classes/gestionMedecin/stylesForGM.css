@@ -104,3 +104,13 @@ Label{
     -fx-font-size: 50;
 
 }
+#promoo,#promoo50,#promoo70,#nopromoo
+{
+    /* Creates a square shape */
+    -fx-background-radius: 50%; /* Makes the square shape circular */
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-max-width: 50px;
+    -fx-max-height: 50px;
+    -fx-background-color: black;
+}

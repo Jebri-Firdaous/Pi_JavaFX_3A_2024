@@ -1,5 +1,7 @@
 package tn.esprit.controllers.gestionMedecin;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -12,8 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.converter.IntegerStringConverter;
 import tn.esprit.entities.gestionMedecin.Medecin;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
@@ -35,6 +39,7 @@ public class AjouterMedecinController implements Initializable {
 
     public ComboBox<String> specialiteR;
     public Label msgErreur;
+    public ImageView imageDoctorTrans;
 
 
     public void switchToDisplayAllDoctorsPage() {
@@ -97,6 +102,14 @@ public class AjouterMedecinController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(2), imageDoctorTrans);
+        transition.setFromY(50); // Position de départ en X (hors de l'écran à droite)
+        transition.setToY(40);
+        transition.setCycleCount(Animation.INDEFINITE); // Répéter indéfiniment
+        // Position finale en X (0)
+        transition.play();
+
+
         List<String> listSpecialite = Arrays.asList(
                 "Anesthesiology",
                 "Cardiology",
@@ -146,10 +159,9 @@ public class AjouterMedecinController implements Initializable {
                 numeroTel.setStyle("-fx-border-color: red; -fx-border-width: 1px; -fx-border-style: solid");
 
             }
-        }
-        else {
+        } else {
             msgErreur.setText("");
-            }
         }
     }
+}
 

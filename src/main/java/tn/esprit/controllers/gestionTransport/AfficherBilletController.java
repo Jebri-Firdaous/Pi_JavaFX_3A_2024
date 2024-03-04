@@ -40,11 +40,21 @@ public class AfficherBilletController {
 BilletService bs=new BilletService();
     billet currentBilletSelected;
     @FXML
+    private Button promoo;
+    @FXML
+    private Button promoo50;
+    @FXML
+    private Button promoo70;
+    @FXML
+    private Button nopromoo;
+    @FXML
     private MenuButton crudTransport;
     @FXML
     private ListView<billet> listbillets;
     @FXML
     private Label billetlabel;
+    Double initalPrix;
+    double nouveauPrix;
     @FXML
     private Label client;
     @FXML
@@ -55,6 +65,10 @@ BilletService bs=new BilletService();
 
     @FXML
     void initialize() {
+        promoo.setOnAction(this::promo);
+        promoo50.setOnAction(this::promo50);
+        promoo70.setOnAction(this::promo70);
+        nopromoo.setOnAction(this::nopromo);
         updateStatisticsLabel();
         statistiquesPieChart.setData(FXCollections.observableArrayList());
         ObservableList<billet> observableList = FXCollections.observableArrayList();
@@ -411,6 +425,124 @@ BilletService bs=new BilletService();
         ObservableList<billet> billets = listbillets.getItems();
         billets.sort(Comparator.comparing(billet::getDate_depart));
     }
-}
+
+    public void promo(ActionEvent event) {
+        {
+            billet billetSelectionne = listbillets.getSelectionModel().getSelectedItem();
+            if (billetSelectionne != null) {
+                // Obtenez le prix du billet sélectionné
+                initalPrix = Double.parseDouble(billetSelectionne.getPrix());
+
+
+                // Appliquer la réduction de 70%
+                nouveauPrix = initalPrix * 0.8; // Par exemple, appliquez une réduction de 20%
+
+                // Mettez à jour le prix du billet dans l'objet billet
+                billetSelectionne.setPrix(Double.toString(nouveauPrix));
+
+                // Rafraîchissez la vue de la liste pour refléter le changement de prix
+                listbillets.refresh();
+            }
+        }}
+
+    public void promo50(ActionEvent event) {
+        // Obtenez le billet sélectionné dans la liste
+        billet billetSelectionne = listbillets.getSelectionModel().getSelectedItem();
+        if (billetSelectionne != null) {
+            // Obtenez le prix du billet sélectionné
+            initalPrix = Double.parseDouble(billetSelectionne.getPrix());
+
+
+            // Appliquer la réduction de 70%
+            nouveauPrix = initalPrix * 0.5; // Réduction de 70%
+            BilletService billetService = new BilletService();
+            try {
+                billetService.changePrixBilletByRef(billetSelectionne.getRef_voyage(),String.valueOf(nouveauPrix));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            // Mettre à jour le prix du billet dans l'objet billet
+            billetSelectionne.setPrix(Double.toString(nouveauPrix));
+
+            // Rafraîchir la vue de la liste pour refléter le changement de prix
+            listbillets.refresh();
+        }
+    }
+
+    public void promo70(ActionEvent event) {
+        // Obtenez le billet sélectionné dans la liste
+        billet billetSelectionne = listbillets.getSelectionModel().getSelectedItem();
+        if (billetSelectionne != null) {
+            // Obtenez le prix du billet sélectionné
+            initalPrix = Double.parseDouble(billetSelectionne.getPrix());
+
+
+            // Appliquer la réduction de 70%
+            nouveauPrix = initalPrix * 0.3; // Réduction de 70%
+
+            // Mettre à jour le prix du billet dans l'objet billet
+            billetSelectionne.setPrix(Double.toString(nouveauPrix));
+
+            // Rafraîchir la vue de la liste pour refléter le changement de prix
+            listbillets.refresh();
+        }
+    }
+billet bi =new billet();
+
+    public void nopromo(ActionEvent event) {
+        billet billetSelectionne = listbillets.getSelectionModel().getSelectedItem();
+
+        if (billetSelectionne != null) {
+            // Check if the current price is not null or meets a specific condition to reset
+            if (billetSelectionne.getPrix() != null) {
+                // Hypothetically, reset the price to a default value
+//                 initalPrix = billetSelectionne.getPrix(); // Example default price
+               // Formats to 2 decimal places
+                billetSelectionne.setPrix(String.valueOf(initalPrix));
+                // Optionally, provide feedback to the user
+                System.out.println("Ticket price reset to default price.");
+            } else {
+                // Handle case where the current price is not available
+                System.out.println("No current price available to reset.");
+            }
+
+            // Refresh the list view to reflect the change
+            listbillets.refresh();
+        } else {
+            // Optionally, provide feedback if no ticket is selected
+            System.out.println("Please select a ticket.");
+        }
+    }
+    }
+   /*     billet billetSelectionne = listbillets.getSelectionModel().getSelectedItem();
+        if (billetSelectionne != null) {
+            // Hypothetically, assume there's an originalPrice property to reset to
+            if (billetSelectionne.getPrix() != null) {
+                billetSelectionne.setPrix(billetSelectionne.getPrix());
+                // Optionally, provide feedback to the user
+                System.out.println("Ticket price reset to original price.");
+            } else {
+                // Handle case where original price is not available
+                System.out.println("No original price available to reset.");
+            }
+
+            // Refresh the list view to reflect the change
+            listbillets.refresh();
+        } else {
+            // Optionally, provide feedback if no ticket is selected
+            System.out.println("Please select a ticket.");
+        }
+    }*/
+    /*    billet billetSelectionne = listbillets.getSelectionModel().getSelectedItem();
+        if (billetSelectionne != null) {
+            // Rétablissez le prix initial du billet
+            billetSelectionne.setPrix(billetSelectionne.getPrix());
+
+            // Rafraîchissez la vue de la liste pour refléter le changement de prix
+            listbillets.refresh();
+        }
+    }*/
+
 
 

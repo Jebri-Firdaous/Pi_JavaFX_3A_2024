@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 
 public class MainFX extends Application {
@@ -28,6 +29,5 @@ public class MainFX extends Application {
         primaryStage.setTitle("E-City");
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 }

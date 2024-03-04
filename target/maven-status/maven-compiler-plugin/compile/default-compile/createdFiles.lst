@@ -44,6 +44,7 @@ tn\esprit\entities\gestionMedecin\Client.class
 tn\esprit\controllers\gestionShopping\AjouterArticleController.class
 tn\esprit\controllers\gestionTransport\AjoutstationController.class
 tn\esprit\controllers\gestionTransport\SmsController.class
+tn\esprit\entities\gestionMedecin\StethoscopeModel.class
 tn\esprit\entities\gestionMedecin\Administrateur.class
 tn\esprit\controllers\gestionMedecin\AfficherMedecinsController$1$1.class
 tn\esprit\controllers\gestionTransport\AfficherBilletController$2.class
@@ -57,11 +58,13 @@ tn\esprit\controllers\gestionMedecin\AfficherListRendezVousController$1$1.class
 tn\esprit\services\gestionMedecin\ServiceAdmin.class
 tn\esprit\entities\gestionTransport\billet.class
 tn\esprit\controllers\gestionMedecin\MofidierRvController.class
+tn\esprit\entities\gestionMedecin\SendEmail$1.class
 tn\esprit\controllers\gestionMedecin\AfficherListRendezVousController$1.class
 tn\esprit\controllers\gestionShopping\AdminInterfaceControllers.class
 tn\esprit\controllers\gestionTransport\AfficherStationController.class
 tn\esprit\services\gestionTransport\IService.class
 tn\esprit\controllers\gestionShopping\AfficherArticleController.class
+tn\esprit\entities\gestionMedecin\SendEmail.class
 tn\esprit\controllers\gestionTransport\AcceuilController.class
 tn\esprit\controllers\gestionMedecin\MofidierRvController$1.class
 tn\esprit\controllers\gestionShopping\ModifierArticleController$1.class

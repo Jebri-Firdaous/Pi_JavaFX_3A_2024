@@ -37,6 +37,7 @@ public class BilletService implements IServiceBillet<billet>
 
 
 
+
     @Override
     public void modifierBillet(int ref,String destination ,Timestamp date,int id_station ,String prix,String duree) throws SQLException {
         String sql = "Update billet set destination_voyage = ?, date_depart = ?  , station = ? , prix=? , duree=?  where ref_voyage = ?";
@@ -47,6 +48,14 @@ public class BilletService implements IServiceBillet<billet>
         preparedStatement.setString(4, prix);
         preparedStatement.setString(5, duree);
         preparedStatement.setInt(6, ref);
+        preparedStatement.executeUpdate();
+    }
+
+    public void changePrixBilletByRef(int ref,String prix) throws SQLException {
+        String sql = "Update billet set prix= ?  where ref_voyage = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, prix);
+        preparedStatement.setInt(2, ref);
         preparedStatement.executeUpdate();
     }
 

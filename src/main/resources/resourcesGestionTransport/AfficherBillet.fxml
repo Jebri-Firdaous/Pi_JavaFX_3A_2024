@@ -33,8 +33,6 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-   
-   
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="141.0" layoutX="-10.0" layoutY="724.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1271.0">
          <fill>
             <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
@@ -50,11 +48,6 @@
             <Font name="Cambria Bold" size="46.0" />
          </font>
       </Text>
-      <ImageView fitHeight="81.0" fitWidth="79.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@logo.png" />
-         </image>
-      </ImageView>
       <TextField fx:id="searchfield" layoutX="170.0" layoutY="246.0" prefHeight="200.0" prefWidth="293.0" promptText="Destination" />
       <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="117.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -97,10 +90,12 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Text>
-      <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="788.0" layoutY="481.0" onMouseClicked="#sortButton" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@sort.png" />
-         </image>
+      <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="606.0" layoutY="293.0" onMouseClicked="#sortButton" pickOnBounds="true" preserveRatio="true">
       </ImageView>
+
+      <Button fx:id="promoo" layoutX="782.0" layoutY="405.0" mnemonicParsing="false" onAction="#promo" prefWidth="55.0" text="20%" />
+      <Button fx:id="promoo50" layoutX="782.0" layoutY="468.0" mnemonicParsing="false" onAction="#promo50" text="50%" />
+      <Button fx:id="promoo70" layoutX="782.0" layoutY="528.0" mnemonicParsing="false" text="70%" />
+      <Button fx:id="nopromoo" layoutX="782.0" layoutY="350.0" mnemonicParsing="false" onAction="#nopromo" text="nopromo" />
    </children>
 </AnchorPane>

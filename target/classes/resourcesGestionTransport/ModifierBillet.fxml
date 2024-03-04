@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="739.0" stylesheets="@../gestionMedecin/stylesForGM.css"  prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifierBilletController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifierBilletController">
 
     <children>
         <fx:include source="../navBar.fxml" />
@@ -73,7 +66,7 @@
         <ComboBox fx:id="mdepart" layoutX="39.0" layoutY="423.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
         <ComboBox fx:id="mhourCombobox" layoutX="35.0" layoutY="552.0" prefHeight="54.0" prefWidth="82.0" style="-fx-border-color: black;" />
         <ComboBox fx:id="mminuteCombobox" layoutX="158.0" layoutY="552.0" prefHeight="54.0" prefWidth="82.0" style="-fx-border-color: black;" />
-      <Button layoutX="470.0" layoutY="632.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="54.0" prefWidth="245.0" style="-fx-background-color: #0693ac; -fx-border-color: white;" text="Modifier" textFill="#ebe4e4">
+      <Button layoutX="470.0" layoutY="632.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="54.0" prefWidth="245.0" style="-fx-border-color: white;" text="Modifier" textFill="#ebe4e4">
          <font>
             <Font size="22.0" />
          </font></Button>
