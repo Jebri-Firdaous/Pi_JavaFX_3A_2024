@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import java.net.URL?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.RecycleBinController">
+    <children>
+        <BorderPane layoutX="144.0" layoutY="178.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css, @Button.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@logo.png" />
+                            </image>
+                        </ImageView>
+                        <!--                   <ImageView fitHeight="850" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">-->
+                        <!--                       <image>-->
+                        <!--                           <Image url="@bk5.png" />-->
+                        <!--                       </image>-->
+                        <!--                   </ImageView>-->
+                        <MenuBar prefHeight="39.0" prefWidth="1160.0">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="Accueil">
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion Sante">
+                                    <items>
+                                        <MenuItem text="Gerer medecin" />
+                                        <MenuItem text="Gerer RV" />
+                                        <!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
+                                        <!--                                <Menu mnemonicParsing="false" >-->
+                                        <!--                                    <items>-->
+                                        <!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
+                                        <!--                                    </items>-->
+                                        <!--                                </Menu>-->
+                                        <!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
+                                        <!--                                </Menu>-->
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion shopping">
+                                    <items>
+                                        <Menu mnemonicParsing="false" text="Article">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Liste d'article" />
+                                            </items>
+                                        </Menu>
+                                        <Menu mnemonicParsing="false" text="Commande">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                            </items>
+                                        </Menu>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion transport">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="About" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" onAction="#naviguerVersParking" text="Gestion parking">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#naviguerVersParking" text="Liste Parkings" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion tourisme">
+                                    <items>
+                                        <MenuItem mnemonicParsing="fa lse" text="Action 1" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion utilisateur">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <Group BorderPane.alignment="CENTER">
+                    <children>
+                        <Button fx:id="addB" layoutX="237.0" layoutY="561.0" mnemonicParsing="false" onAction="#returnP" prefWidth="141.0" text="Recuperer" />
+                        <ListView fx:id="listBin" layoutX="33.0" layoutY="113.0" prefHeight="410.0" prefWidth="506.0" />
+                    </children>
+                </Group>
+            </center>
+        </BorderPane>
+    </children>
+    <stylesheets>
+        <URL value="@style.css" />
+        <URL value="@BG.css" />
+    </stylesheets>
+
+</AnchorPane>

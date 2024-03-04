@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.AjouterParkingController">
+    <children>
+        <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@logo.png" />
+                            </image>
+                        </ImageView>
+                        <!--                   <ImageView fitHeight="850" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">-->
+                        <!--                       <image>-->
+                        <!--                           <Image url="@bk5.png" />-->
+                        <!--                       </image>-->
+                        <!--                   </ImageView>-->
+                        <MenuBar prefHeight="39.0" prefWidth="1160.0">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="Accueil">
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion Sante">
+                                    <items>
+                                        <MenuItem text="Gerer medecin" />
+                                        <MenuItem text="Gerer RV" />
+                                        <!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
+                                        <!--                                <Menu mnemonicParsing="false" >-->
+                                        <!--                                    <items>-->
+                                        <!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
+                                        <!--                                    </items>-->
+                                        <!--                                </Menu>-->
+                                        <!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
+                                        <!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
+                                        <!--                                </Menu>-->
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion shopping">
+                                    <items>
+                                        <Menu mnemonicParsing="false" text="Article">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Liste d'article" />
+                                            </items>
+                                        </Menu>
+                                        <Menu mnemonicParsing="false" text="Commande">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                            </items>
+                                        </Menu>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion transport">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="About" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" onAction="#naviguezVersAffichage" text="Gestion parking">
+                                    <!--                                     <items>-->
+                                    <!--                                         <MenuItem mnemonicParsing="false" text="L" />-->
+                                    <!--                                     </items>-->
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion tourisme">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Gestion utilisateur">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                    </children>
+                </HBox>
+            </top>
+         <center>
+            <Group BorderPane.alignment="CENTER">
+               <children>
+                    <Button fx:id="AddB" layoutX="546.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterParking" text="Ajouter" />
+                    <Label fx:id="errNom" layoutX="167.0" layoutY="74.0" lineSpacing="1.0" prefHeight="21.0" prefWidth="289.0" textAlignment="CENTER" textFill="RED">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                  </Label>
+                    <TextField fx:id="nomTF" layoutX="167.0" layoutY="42.0" onKeyReleased="#testNom" />
+                    <Label fx:id="nbMaxL" layoutX="-32.0" layoutY="258.0" text="Nb Places Max">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font></Label>
+                    <Label fx:id="errAddr" layoutX="167.0" layoutY="146.0" prefHeight="21.0" prefWidth="282.0" textAlignment="CENTER" textFill="RED">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                  </Label>
+                    <TextField fx:id="addresseTF" layoutX="167.0" layoutY="115.0" onKeyReleased="#testAddresse" />
+                    <Button fx:id="Cancel1" layoutX="433.0" layoutY="338.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" text="Annuler" />
+                    <TextField fx:id="nbMaxTF" layoutX="167.0" layoutY="256.0" onKeyReleased="#testNb" />
+                    <Label fx:id="nomL" layoutX="-32.0" layoutY="42.0" text="Nom">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font></Label>
+                    <Label fx:id="addresseL" layoutX="-32.0" layoutY="117.0" text="Addresse">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font></Label>
+                    <Label fx:id="errNb" layoutX="167.0" layoutY="287.0" prefHeight="21.0" prefWidth="279.0" textAlignment="CENTER" textFill="RED">
+                        <font>
+                            <Font size="12.0" />
+                        </font>
+                  </Label>
+                  <Label layoutX="207.0" layoutY="-58.0" text="Ajouter Parking">
+                     <font>
+                        <Font name="Cooper Black" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="-32.0" layoutY="183.0" text="Latitude">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="24.0" />
+                     </font>
+                  </Label><TextField fx:id="coordTF" layoutX="163.0" layoutY="186.0" onKeyReleased="#testAddresse" />
+                   <Label fx:id="errCoord" layoutX="163.0" layoutY="217.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+                       <font>
+                           <Font size="12.0" />
+                       </font>
+                   </Label>
+                   <Label fx:id="errLongi" layoutX="545.0" layoutY="217.0" prefHeight="21.0" prefWidth="203.0" textAlignment="CENTER" textFill="RED">
+                       <font>
+                           <Font size="12.0" />
+                       </font>
+                   </Label>
+                   <TextField fx:id="longiTF" layoutX="545.0" layoutY="186.0" onKeyReleased="#testAddresse" />
+                   <Label layoutX="405.0" layoutY="188.0" text="Longitude">
+                       <font>
+                           <Font name="Arial Rounded MT Bold" size="24.0" />
+                       </font>
+                   </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Group>
+         </center>
+        </BorderPane>
+    </children>
+    <stylesheets>
+        <URL value="@style.css" />
+        <URL value="@BG.css" />
+    </stylesheets>
+<!--    <children>-->
+<!--        <Button fx:id="AddB2" layoutX="461.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterParking" text="Ajouter" />-->
+<!--        <Button fx:id="Cancel12" layoutX="369.0" layoutY="338.0" mnemonicParsing="false" text="Annuler" />-->
+<!--        <TextField fx:id="nomTF2" layoutX="132.0" layoutY="133.0" />-->
+<!--        <Label fx:id="nomL2" layoutX="50.0" layoutY="138.0" text="Nom" />-->
+<!--        <Label fx:id="addresseL2" layoutX="50.0" layoutY="221.0" text="Addresse" />-->
+<!--        <TextField fx:id="addresseTF2" layoutX="132.0" layoutY="216.0" />-->
+<!--        <Label layoutX="226.0" layoutY="51.0" text="Ajouter Parking" />-->
+<!--    </children>-->
+</AnchorPane>
