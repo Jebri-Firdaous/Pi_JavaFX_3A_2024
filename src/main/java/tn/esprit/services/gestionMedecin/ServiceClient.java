@@ -3,6 +3,7 @@ package tn.esprit.services.gestionMedecin;
 
 import tn.esprit.entities.gestionMedecin.Client;
 import tn.esprit.utils.MyDataBase;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,5 +109,79 @@ public class ServiceClient implements IService<Client> {
         }
         return client;
     }
+
+    public int getHotelIdByNom(String nomHotel) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        int hotelId = -1;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-city", "root", "");
+            String query = "SELECT id_hotel FROM hotel WHERE nom_hotel = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, nomHotel);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                hotelId = resultSet.getInt("id_hotel");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return hotelId;
+    }
+
+
+    public int getClientIdByNom(String nomClient) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        int clientId = -1;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-city", "root", "");
+            String query = "SELECT c.id_personne FROM client c JOIN personne p ON c.id_personne = p.id_personne WHERE p.nom_personne = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, nomClient);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                clientId = resultSet.getInt("id_personne");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return clientId;
+    }
+
+
+    public String getNomPersonneById(int idPersonne) throws SQLException {
+        String nomPersonne = null;
+        String sql = "SELECT nom_personne FROM personne WHERE id_personne IN (SELECT id_personne FROM client WHERE id_personne = ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, idPersonne);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    nomPersonne = rs.getString("nom_personne");
+                }
+            }
+        }
+        return nomPersonne;
+    }
+
+
 
 }

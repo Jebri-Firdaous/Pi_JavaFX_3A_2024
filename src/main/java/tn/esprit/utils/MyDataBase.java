@@ -5,15 +5,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyDataBase {
-    private final String URL= "jdbc:mysql://localhost:3307/e_city_modifuser";
+
+
+
+    private final String URL= "jdbc:mysql://localhost:3306/e-city";
     private final String USER= "root";
-    private final String PWD= "0000";
+    private final String PSW= "";
 
     private Connection connection;
+
     public static MyDataBase instance;
+
     private MyDataBase(){
         try {
-            connection = DriverManager.getConnection(URL,USER,PWD);
+            connection = DriverManager.getConnection(URL,USER,PSW);
             System.out.println("Connected");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -29,5 +34,4 @@ public class MyDataBase {
     public Connection getConnection() {
         return connection;
     }
-
 }

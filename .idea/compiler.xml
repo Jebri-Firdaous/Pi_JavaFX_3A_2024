@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="e_city" target="17" />
+      <module name="projet_gestion_tourisme" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
