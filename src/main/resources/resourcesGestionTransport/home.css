@@ -1,0 +1,13 @@
+
+/* home.css */
+
+/* home.css */
+
+
+#acceuil, #acceuilbillet {
+    -fx-background-color: white; /* Couleur de fond normale */
+}
+
+#acceuil:hover, #acceuilbillet:hover {
+    -fx-background-color: #0693ac; /* Couleur de fond hover */
+}

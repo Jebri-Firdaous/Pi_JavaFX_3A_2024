@@ -1,0 +1,25 @@
+.rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    line-height: 100px; /* Pour centrer verticalement */
+    position: relative; /* Nécessaire pour positionner les pseudo-éléments */
+}
+
+.rectangle:hover::before {
+    content: "Station";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rectangle:hover::after {
+    content: "Billet";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

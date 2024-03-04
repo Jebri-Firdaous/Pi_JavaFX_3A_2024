@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AfficherBilletController">
+   <children>
+      <fx:include source="../navBar.fxml" />
+      <ListView fx:id="listbillets" layoutX="21.0" layoutY="405.0" prefHeight="232.0" prefWidth="761.0" />
+      <Button layoutX="282.0" layoutY="676.0" mnemonicParsing="false" onAction="#deletebillet" prefHeight="38.0" prefWidth="194.0" text="Supprimer" textFill="#dddada">
+
+      </Button>
+      <Button layoutX="48.0" layoutY="676.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="38.0" prefWidth="200.0" text="Modifier" textFill="#eeeaea">
+
+      </Button>
+      <Button layoutX="506.0" layoutY="676.0" mnemonicParsing="false" onAction="#addbillet" prefHeight="38.0" prefWidth="200.0" text="Ajouter" textFill="#eeeaea">
+
+      </Button>
+   
+      <Label fx:id="billetlabel" layoutX="510.0" layoutY="258.0" text="." />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="-10.0" layoutY="-61.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1251.0">
+         <fill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop color="#5ee1e5a6" />
+                  <Stop color="#5ee1e500" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="141.0" layoutX="-10.0" layoutY="724.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1271.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop color="#5ee1e5a6" />
+                  <Stop color="#5ee1e500" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Text layoutX="490.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LES BILLETS" textAlignment="CENTER">
+         <font>
+            <Font name="Cambria Bold" size="46.0" />
+         </font>
+      </Text>
+      <TextField fx:id="searchfield" layoutX="170.0" layoutY="246.0" prefHeight="200.0" prefWidth="293.0" promptText="Destination" />
+      <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="117.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@chercher.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="client" layoutX="25.0" layoutY="370.0" text="Client">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="142.0" layoutY="370.0" text="DESTINATION">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="334.0" layoutY="370.0" text="DATE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="417.0" layoutY="370.0" text="STATION">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="552.0" layoutY="370.0" text="DUREE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="679.0" layoutY="370.0" text="PRIX">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <PieChart fx:id="statistiquesPieChart" layoutX="876.0" layoutY="153.0" prefHeight="355.0" prefWidth="352.0" />
+      <Text layoutX="788.0" layoutY="631.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LES STATISTIQUES DES DESTINATONS ">
+         <font>
+            <Font name="Cambria Bold" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="606.0" layoutY="293.0" onMouseClicked="#sortButton" pickOnBounds="true" preserveRatio="true">
+      </ImageView>
+
+      <Button fx:id="promoo" layoutX="782.0" layoutY="405.0" mnemonicParsing="false" onAction="#promo" prefWidth="55.0" text="20%" />
+      <Button fx:id="promoo50" layoutX="782.0" layoutY="468.0" mnemonicParsing="false" onAction="#promo50" text="50%" />
+      <Button fx:id="promoo70" layoutX="782.0" layoutY="528.0" mnemonicParsing="false" text="70%" />
+      <Button fx:id="nopromoo" layoutX="782.0" layoutY="350.0" mnemonicParsing="false" onAction="#nopromo" text="nopromo" />
+   </children>
+</AnchorPane>
