@@ -39,7 +39,7 @@
             <Label prefHeight="21.0" prefWidth="85.0" text="Adresse" />
          </children>
       </HBox>
-      <ImageView fitHeight="21.0" fitWidth="48.0" layoutX="143.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="plusIcon" fitHeight="21.0" fitWidth="48.0" layoutX="143.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons/add.png" />
          </image>
@@ -59,9 +59,10 @@
             <Font size="8.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="21.0" fitWidth="48.0" layoutX="874.0" layoutY="175.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@searchIcon.png"/>
+      <ImageView fitHeight="21.0" fitWidth="48.0" layoutX="874.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@searchIcon.png" />
+         </image>
       </ImageView>
       <Label fx:id="msgErreur" layoutX="917.0" layoutY="207.0" prefHeight="21.0" prefWidth="171.0" />
       <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="1094.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">

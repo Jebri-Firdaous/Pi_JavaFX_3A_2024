@@ -14,7 +14,6 @@
          <children>
             <VBox>
                <children>
-            
                   <Label layoutX="111.0" layoutY="160.0" prefHeight="43.0" prefWidth="99.0" text="Nom :">
                      <font>
                         <Font name="Calibri Bold Italic" size="56.0" />

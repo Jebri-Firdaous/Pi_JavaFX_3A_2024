@@ -385,7 +385,7 @@ public class ModifierReservationController implements Initializable {
 
     @FXML
     void choisirHotel(ActionEvent event) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/e_city_last_version", "root", "0000")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/e_city_final", "root", "0000")) {
             String query = "SELECT `nom_hotel` FROM `hotel`";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                  ResultSet resultSet = preparedStatement.executeQuery()) {

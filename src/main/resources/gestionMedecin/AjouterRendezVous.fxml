@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 <AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionMedecin.AjouterRendezVousController">
    <children>
@@ -35,8 +38,8 @@
             </VBox>
             <HBox prefHeight="21.0" prefWidth="309.0" spacing="94.0">
                <children>
-                  <Label fx:id="adresse_TextField"  text="Adresse" />
-                  <Label fx:id="n_TelTextField"  text="N°Tel" />
+                  <Label fx:id="adresse_TextField" text="Adresse" />
+                  <Label fx:id="n_TelTextField" text="N°Tel" />
                </children>
             </HBox>
             <VBox>
@@ -103,6 +106,11 @@
             <Insets right="9.0" />
          </padding>
       </HBox>
+      <ImageView fx:id="plusIcon" fitHeight="21.0" fitWidth="48.0" layoutX="347.0" layoutY="311.0" onMouseClicked="#plusIconInfos" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/add.png" />
+         </image>
+      </ImageView>
       <Button layoutX="14.0" layoutY="135.0" mnemonicParsing="false" onAction="#returnToDisplayRV" styleClass="returnToDisplayPage" text="&lt;==Afficher Les RVs" />
    </children>
 </AnchorPane>

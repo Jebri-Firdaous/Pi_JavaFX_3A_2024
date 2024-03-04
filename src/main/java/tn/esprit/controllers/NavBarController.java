@@ -285,6 +285,23 @@ public class NavBarController {
             throw new RuntimeException(e);
         }
     }
+
+    public void recupererParking(ActionEvent event) {
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/RecycleBin.fxml"));
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 

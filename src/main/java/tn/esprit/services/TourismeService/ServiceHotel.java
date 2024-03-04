@@ -109,7 +109,7 @@ public class ServiceHotel implements IService<Hotel> {
         ResultSet resultSet = null;
         int hotelId = -1;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/e_city_last_version", "root", "0000");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/e_city_final", "root", "0000");
             String query = "SELECT id_hotel FROM hotel WHERE nom_hotel = ?";
             statement = connection.prepareStatement(query);
             statement.setString(1, nomHotel);

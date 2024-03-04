@@ -1,6 +1,5 @@
 package tn.esprit.utils;
 
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -12,11 +11,10 @@ public class HotelMail {
         // Sender's email ID needs to be mentioned
         String from = "dhifallahdarine@gmail.com";
         final String username = "dhifallahdarine@gmail.com";//change accordingly
-        final String password = System.getenv("JAVA_MAIL_PASSWORD");//change accordingly
-
+       // final String password = System.getenv("JAVA_MAIL_PASSWORD");//change accordingly
+        final String password = "ybfs uniz mubb amlz" ;
         // Assuming you are sending email through relay.jangosmtp.net
         String host = "smtp.gmail.com";
-
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

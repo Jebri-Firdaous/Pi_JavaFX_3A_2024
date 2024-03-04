@@ -166,7 +166,7 @@ public class AfficherParkingController {
         try {
             Parking parking = listid.getSelectionModel().getSelectedItem();
             ps.supprimer(listid.getSelectionModel().getSelectedItem().getRef());
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Java\\PIDEV\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\data.txt", true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/ParkingResources/data.txt", true))) {
                     StringJoiner joiner = new StringJoiner(",");
                     joiner.add(Integer.toString(parking.getRef()));
                     joiner.add(parking.getNom());

@@ -1,8 +1,10 @@
 package tn.esprit.controllers.gestionMedecin;
 
 import com.twilio.rest.api.v2010.account.Message;
+
 import java.time.LocalDateTime; // Import the LocalDateTime class
 import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
+
 import com.twilio.type.PhoneNumber;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -167,6 +170,7 @@ public class AjouterRendezVousController implements Initializable {
 
         return unavailableTimes;
     }
+
     public void returnToDisplayRV(ActionEvent actionEvent) {
         switchToDisplayAllRVPage();
     }
@@ -217,7 +221,7 @@ public class AjouterRendezVousController implements Initializable {
             Medecin medecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
             TwilioSendSms twilioSendSms = new TwilioSendSms();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
-            String msg = "Bonjour Dr. "+medecin.getNom_medecin()+" vous avez un rendez-vous le " + dateTime.format(myFormatObj);
+            String msg = "Bonjour Dr. " + medecin.getNom_medecin() + " vous avez un rendez-vous le " + dateTime.format(myFormatObj);
             Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
 
             // For email to client
@@ -226,7 +230,7 @@ public class AjouterRendezVousController implements Initializable {
             // 7ot email l client
             String receiverAdresse = "tavef44143@aersm.com";
             String subject = "Ajouter Rendez-Vous";
-            String body = "Bonjour Mr."+client.getNom_personne()+" votre rendezVous avec Dr."+medecin.getNom_medecin()+" sera le "+dateTime.format(myFormatObj);
+            String body = "Bonjour Mr." + client.getNom_personne() + " votre rendezVous avec Dr." + medecin.getNom_medecin() + " sera le " + dateTime.format(myFormatObj);
             new SendEmail(receiverAdresse, subject, body);
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Boîte de dialogue d'information");
@@ -295,10 +299,10 @@ public class AjouterRendezVousController implements Initializable {
 
         int monthMaxDate = dateFocus.getMonth().maxLength();
         //Check for leap year
-        if(dateFocus.getYear() % 4 != 0 && monthMaxDate == 29){
+        if (dateFocus.getYear() % 4 != 0 && monthMaxDate == 29) {
             monthMaxDate = 28;
         }
-        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1,0,0,0,0,dateFocus.getZone()).getDayOfWeek().getValue();
+        int dateOffset = ZonedDateTime.of(dateFocus.getYear(), dateFocus.getMonthValue(), 1, 0, 0, 0, 0, dateFocus.getZone()).getDayOfWeek().getValue();
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -307,27 +311,27 @@ public class AjouterRendezVousController implements Initializable {
                 rectangle.setFill(Color.TRANSPARENT);
                 rectangle.setStroke(Color.BLACK);
                 rectangle.setStrokeWidth(strokeWidth);
-                double rectangleWidth =(calendarWidth/7) - strokeWidth - spacingH;
+                double rectangleWidth = (calendarWidth / 7) - strokeWidth - spacingH;
                 rectangle.setWidth(rectangleWidth);
-                double rectangleHeight = (calendarHeight/6) - strokeWidth - spacingV;
+                double rectangleHeight = (calendarHeight / 6) - strokeWidth - spacingV;
                 rectangle.setHeight(rectangleHeight);
                 stackPane.getChildren().add(rectangle);
 
-                int calculatedDate = (j+1)+(7*i);
-                if(calculatedDate > dateOffset){
+                int calculatedDate = (j + 1) + (7 * i);
+                if (calculatedDate > dateOffset) {
                     int currentDate = calculatedDate - dateOffset;
-                    if(currentDate <= monthMaxDate){
+                    if (currentDate <= monthMaxDate) {
                         Text date = new Text(String.valueOf(currentDate));
-                        double textTranslationY = - (rectangleHeight / 2) * 0.75;
+                        double textTranslationY = -(rectangleHeight / 2) * 0.75;
                         date.setTranslateY(textTranslationY);
                         stackPane.getChildren().add(date);
 
                         List<CalendarActivity> calendarActivities = calendarActivityMap.get(currentDate);
-                        if(calendarActivities != null){
+                        if (calendarActivities != null) {
                             createCalendarActivity(calendarActivities, rectangleHeight, rectangleWidth, stackPane);
                         }
                     }
-                    if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
+                    if (today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate) {
                         rectangle.setStroke(Color.BLUE);
                     }
                 }
@@ -339,7 +343,7 @@ public class AjouterRendezVousController implements Initializable {
     private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
         VBox calendarActivityBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
-            if(k >= 2) {
+            if (k >= 2) {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
@@ -382,9 +386,6 @@ public class AjouterRendezVousController implements Initializable {
             text.setStyle("-fx-font-size:  9px; -fx-border-width: 1px ; -fx-border-color: blue; -fx-border-style: dashed"); // Set the font size
 
 
-
-
-
 //            calendarActivityBox.getChildren().add(text);
             calendarActivityBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
@@ -402,9 +403,9 @@ public class AjouterRendezVousController implements Initializable {
     private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {
         Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
 
-        for (CalendarActivity activity: calendarActivities) {
+        for (CalendarActivity activity : calendarActivities) {
             int activityDate = activity.getDate().getDayOfMonth();
-            if(!calendarActivityMap.containsKey(activityDate)){
+            if (!calendarActivityMap.containsKey(activityDate)) {
                 calendarActivityMap.put(activityDate, List.of(activity));
             } else {
                 List<CalendarActivity> OldListByDate = calendarActivityMap.get(activityDate);
@@ -414,7 +415,7 @@ public class AjouterRendezVousController implements Initializable {
                 calendarActivityMap.put(activityDate, newList);
             }
         }
-        return  calendarActivityMap;
+        return calendarActivityMap;
     }
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) throws SQLException {
@@ -424,24 +425,44 @@ public class AjouterRendezVousController implements Initializable {
         List<RendezVous> listRendezvous = serviceRendezVous.afficher();
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-        for(RendezVous rendezVous: listRendezvous){
+        for (RendezVous rendezVous : listRendezvous) {
             int yearRendezVous = rendezVous.getDate_rendez_vous().toLocalDateTime().getYear();
             int monthNumberRendezvous = rendezVous.getDate_rendez_vous().toLocalDateTime().getMonth().getValue();
-            if(( yearRendezVous== year)&&( monthNumberRendezvous==month)){
+            if ((yearRendezVous == year) && (monthNumberRendezvous == month)) {
                 int dayOftheMonth = rendezVous.getDate_rendez_vous().toLocalDateTime().getDayOfMonth();
                 int heureRv = rendezVous.getDate_rendez_vous().toLocalDateTime().getHour();
                 int minuteRv = rendezVous.getDate_rendez_vous().toLocalDateTime().getMinute();
                 Medecin medecin = serviceMedecin.getMedecinById(rendezVous.getId_medecin());
-                String nomMedecin = "Dr."+medecin.getNom_medecin();
+                String nomMedecin = "Dr." + medecin.getNom_medecin();
 
-                    ZonedDateTime time = ZonedDateTime.of(year, month, dayOftheMonth, heureRv,minuteRv,0,0,dateFocus.getZone());
-                    calendarActivities.add(new CalendarActivity(time, nomMedecin, 111111));
-                }
+                ZonedDateTime time = ZonedDateTime.of(year, month, dayOftheMonth, heureRv, minuteRv, 0, 0, dateFocus.getZone());
+                calendarActivities.add(new CalendarActivity(time, nomMedecin, 111111));
             }
+        }
         return createCalendarMap(calendarActivities);
+    }
+
+    private boolean isPopupVisible = false;
+
+    public void plusIconInfos(MouseEvent mouseEvent) {
+        // Create a Popup to show when the image is clicked
+        Popup popup = new Popup();
+        Label label = new Label("This is some information.");
+        popup.getContent().add(label);
+        // Set up the click event for the image
+
+        // Check if the popup is already visible
+        if (isPopupVisible) {
+            // If it is, hide it
+            popup.hide();
+            label.setText("");
+            isPopupVisible = false;
+        } else {
+            // If it's not, show it
+            popup.show(adresse_TextField.getScene().getWindow());
+            isPopupVisible = true;
         }
 
-
-
+    }
 }
 

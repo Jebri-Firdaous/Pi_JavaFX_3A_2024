@@ -27,7 +27,7 @@ public class RecycleBinController implements Initializable {
 //        });
             data = FXCollections.observableArrayList();
             listBin.setItems(data);
-        try (BufferedReader reader = new BufferedReader(new FileReader("D:\\Java\\PIDEV\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\data.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\main\\resources\\ParkingResources\\data.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
