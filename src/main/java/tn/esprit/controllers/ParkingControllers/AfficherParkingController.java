@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -34,10 +35,12 @@ public class AfficherParkingController {
     public Label nomL;
     public Label etatL;
     public Label addresseL;
-    public Label nbL;
+    
     public Group grp2;
     public VBox listVB;
     public Pane grp1;
+    public Button addB1;
+    public Label nbL;
     ParkingService ps=new ParkingService();
     public Button addB;
     public ListView<Parking> listid;
@@ -204,8 +207,11 @@ public class AfficherParkingController {
     public void naviguezVersAjouter(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AjouterParkings.fxml"));
-            Parent root=loader.load();
-            addB.getScene().setRoot(root);
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) nbL.getScene().getWindow();
+            stage.setScene(newPageScene);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -214,8 +220,15 @@ public class AfficherParkingController {
     public void refresh(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherParkingg.fxml"));
-            Parent root=loader.load();
-            addB.getScene().setRoot(root);
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            // Get the current stage and set the new scene
+            nbL.setVisible(true);
+            nbL.setText("Lable");
+            Stage stage = (Stage) nbL.getScene().getWindow();
+            stage.setScene(newPageScene);
+//            Parent root=loader.load();
+//            nbL.getScene().setRoot(root);
 //            WebEngine webEngine = mapp.getEngine();
 //            webEngine.load(Objects.requireNonNull(getClass().getResource("map.html")).toExternalForm());
         } catch (IOException e) {

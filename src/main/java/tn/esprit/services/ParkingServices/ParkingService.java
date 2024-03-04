@@ -1,7 +1,7 @@
 package tn.esprit.services.ParkingServices;
 
 import tn.esprit.entities.ParkingEntities.Parking;
-import tn.esprit.utils.Parking.MyDataBase;
+import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;

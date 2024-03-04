@@ -1,4 +1,4 @@
-package tn.esprit.utils.Parking;
+package tn.esprit.utils;
 
 public class LoginMail {
     final String password = System.getenv("nssy dwge swzu odhg");

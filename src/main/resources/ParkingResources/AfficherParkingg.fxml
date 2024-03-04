@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.shape.*?>
-<?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.*?>
@@ -15,133 +14,9 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css, @Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AfficherParkingController">
     <children>
-        <!--      <fx:include source="navBar.fxml" />-->
-        <!--      <BorderPane layoutX="19.0" layoutY="31.0" prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
-        <!--         <top>-->
-        <!--            <Rectangle arcHeight="5.0" arcWidth="5.0" height="102.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="2000.0" BorderPane.alignment="CENTER">-->
-        <!--               <fill>-->
-        <!--                  <LinearGradient endX="1.0" endY="0.8349514563106796" startX="1.0">-->
-        <!--                     <stops>-->
-        <!--                        <Stop color="#4fd6ff66" />-->
-        <!--                        <Stop color="WHITE" offset="1.0" />-->
-        <!--                     </stops>-->
-        <!--                  </LinearGradient>-->
-        <!--               </fill>-->
-        <!--            </Rectangle>-->
-        <!--         </top>-->
-        <!--         <bottom>-->
-        <!--            <Rectangle arcHeight="5.0" arcWidth="5.0" height="102.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="2000.0" BorderPane.alignment="CENTER">-->
-        <!--               <fill>-->
-        <!--                  <LinearGradient endX="1.0" endY="0.2184466019417476" startX="1.0" startY="1.0">-->
-        <!--                     <stops>-->
-        <!--                        <Stop color="#4fd6ff66" />-->
-        <!--                        <Stop color="WHITE" offset="1.0" />-->
-        <!--                     </stops>-->
-        <!--                  </LinearGradient>-->
-        <!--               </fill>-->
-        <!--            </Rectangle>-->
-        <!--         </bottom>-->
-        <!--         <left>-->
-        <!--            <Label maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="0.0" text="Label" BorderPane.alignment="CENTER" />-->
-        <!--         </left>-->
-        <!--         <right>-->
-        <!--            <Label maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="0.0" style="-fx-background-color: black;" text="Label" BorderPane.alignment="CENTER" />-->
-        <!--         </right>-->
-        <!--         <center>-->
-        <!--            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">-->
-        <!--               <children>-->
-        <!--                  <ListView fx:id="listid" prefHeight="252.0" prefWidth="497.0" />-->
-        <!--                  <HBox prefHeight="100.0" prefWidth="200.0">-->
-        <!--                     <children>-->
-        <!--                        <StackPane prefHeight="31.0" prefWidth="51.0" />-->
-        <!--                        <Button fx:id="addB" mnemonicParsing="false" onAction="#naviguezVersAjouter" text="Ajouter" />-->
-        <!--                        <StackPane prefHeight="31.0" prefWidth="58.0" />-->
-        <!--                        <Button fx:id="modifB" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />-->
-        <!--                        <StackPane prefHeight="31.0" prefWidth="60.0" />-->
-        <!--                        <Button fx:id="delB" mnemonicParsing="false" onAction="#supprimerParking" text="Supprimer" />-->
-        <!--                        <StackPane prefHeight="31.0" prefWidth="47.0" />-->
-        <!--                        <Button fx:id="listePlaceB" mnemonicParsing="false" onAction="#afficherPlace" text="Liste Places" />-->
-        <!--                     </children>-->
-        <!--                  </HBox>-->
-        <!--               </children>-->
-        <!--            </VBox>-->
-        <!--         </center>-->
-        <!--      </BorderPane>-->
-        <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <top>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@logo.png" />
-                            </image>
-                        </ImageView>
-                        <!--                   <ImageView fitHeight="850" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">-->
-                        <!--                       <image>-->
-                        <!--                           <Image url="@bk5.png" />-->
-                        <!--                       </image>-->
-                        <!--                   </ImageView>-->
-                        <MenuBar prefHeight="39.0" prefWidth="1160.0">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="Accueil">
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion Sante">
-                                    <items>
-                                        <MenuItem text="Gerer medecin" />
-                                        <MenuItem text="Gerer RV" />
-                                        <!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
-                                        <!--                                <Menu mnemonicParsing="false" >-->
-                                        <!--                                    <items>-->
-                                        <!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
-                                        <!--                                    </items>-->
-                                        <!--                                </Menu>-->
-                                        <!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
-                                        <!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
-                                        <!--                                </Menu>-->
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion shopping">
-                                    <items>
-                                        <Menu mnemonicParsing="false" text="Article">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Liste d'article" />
-                                            </items>
-                                        </Menu>
-                                        <Menu mnemonicParsing="false" text="Commande">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Action 1" />
-                                            </items>
-                                        </Menu>
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion transport">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="About" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" onAction="#refresh" text="Gestion parking">
-                                                                         <items>
-                                                                             <MenuItem mnemonicParsing="false" onAction="#refresh" text="Liste Parkings" />
-                                                                             <MenuItem mnemonicParsing="false" onAction="#naviguerVersBin" text="Recycle Bin" />
-                                                                         </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion tourisme">
-                                    <items>
-                                        <MenuItem mnemonicParsing="fa lse" text="Action 1" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion utilisateur">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
-                    </children>
-                </HBox>
-            </top>
+        <fx:include source="../navBar.fxml" />
+
+        <BorderPane layoutX="144.0" layoutY="95.0" prefHeight="685.0" prefWidth="1319.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-19.0" AnchorPane.topAnchor="95.0">
             <center>
                 <Group BorderPane.alignment="CENTER">
                     <children>

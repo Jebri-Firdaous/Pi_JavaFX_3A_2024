@@ -18,7 +18,7 @@ public class MainFX extends Application {
     @Override
 //    override the start method, which is the entry point for all JavaFX applications
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionShopping/AfficherArticle.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherParkingg.fxml"));
         Parent root = null;
         try {
             root = loader.load();
