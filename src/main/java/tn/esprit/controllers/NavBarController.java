@@ -196,6 +196,78 @@ public class NavBarController {
             throw new RuntimeException(e);
         }
     }
+
+    public void ajouterHotel(ActionEvent actionEvent) {
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AjouterHotel.fxml"));
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void afficherHotel(ActionEvent actionEvent) {
+
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void AjouterReservation(ActionEvent actionEvent) {
+
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AjouterReservation.fxml"));
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void AfficherReservation(ActionEvent actionEvent) {
+
+
+        try {
+//           for load an FXML file and create a scene graph from it
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherReservation.fxml"));
+            Parent addPageRoot = loader.load();
+            Scene newPageScene = new Scene(addPageRoot);
+            newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) contentPane.getScene().getWindow();
+            stage.setScene(newPageScene);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
 
 

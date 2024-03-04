@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.AfficherReservationController">
+    <children>
+        <fx:include source="../navBar.fxml" />
+
+        <ListView fx:id="listeView" layoutX="200.0" layoutY="228.0" prefHeight="492.0" prefWidth="912.0" style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6; -fx-border-color: #18405A; -fx-border-radius: 5px; -fx-border-width: 3px;" />
+        <ImageView fitHeight="572.0" fitWidth="1028.0" layoutX="380.0" layoutY="188.0" opacity="0.24">
+            <image>
+                <Image url="@reservation.png" />
+            </image>
+        </ImageView>
+        <Pane layoutX="111.0" layoutY="199.0" prefHeight="5.0" prefWidth="1045.0" style="-fx-background-color: #154360;" />
+        <Button layoutX="1137.0" layoutY="619.0" mnemonicParsing="false" onAction="#reservationModifier" prefHeight="21.0" prefWidth="152.0" style="-fx-background-color: B0E847;" text="Modifier" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="17.0" />
+            </font>
+        </Button>
+        <Button layoutX="1137.0" layoutY="667.0" mnemonicParsing="false" onAction="#reservationSupprimer" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: B0E847;" text="Supprimer" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="17.0" />
+            </font>
+        </Button>
+        <Text fx:id="myText" layoutX="254.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sélectionner une Réservation" wrappingWidth="758.16943359375">
+            <font>
+                <Font name="Comic Sans MS" size="55.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="triComboBox" layoutX="1127.0" layoutY="234.0" onAction="#trierReservation" prefHeight="31.0" prefWidth="168.0" promptText="Trier par prix" style="-fx-background-color: transparent; -fx-border-color: #000000;" />
+        <Button fx:id="reservationPDF" layoutX="1137.0" layoutY="570.0" mnemonicParsing="false" onAction="#clickPDF" prefHeight="16.0" prefWidth="152.0" style="-fx-background-color: #0059FF;" text="PDF" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Button>
+    </children>
+</AnchorPane>
