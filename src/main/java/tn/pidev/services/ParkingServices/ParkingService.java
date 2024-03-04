@@ -1,7 +1,7 @@
-package tn.pidev.services;
+package tn.pidev.services.ParkingServices;
 
-import tn.pidev.entities.Parking;
-import tn.pidev.utils.MyDataBase;
+import tn.pidev.entities.ParkingEntities.Parking;
+import tn.pidev.utils.Parking.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,6 +25,18 @@ public class ParkingService implements IService<Parking> {
         preparedStatement.setInt(3, parking.getNbPlaceMax());
         preparedStatement.setFloat(4, parking.getLati());
         preparedStatement.setFloat(5, parking.getLongi());
+        preparedStatement.executeUpdate();
+    }
+    public void ajouterFull(Parking parking) throws SQLException {
+        System.out.println(parking.getLati());
+        String sql = "insert into parking(id_parking, nom_parking, address_parking, nombre_place_max, nombre_place_occ, latitude, longitude, etat_parking) values (?, ?, ?, ?, '0', ?, ?, 'Disponible')";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, parking.getRef());
+        preparedStatement.setString(2, parking.getNom());
+        preparedStatement.setString(3, parking.getAddresse());
+        preparedStatement.setInt(4, parking.getNbPlaceMax());
+        preparedStatement.setFloat(5, parking.getLati());
+        preparedStatement.setFloat(6, parking.getLongi());
         preparedStatement.executeUpdate();
     }
 

@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.ParkingControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -90,7 +90,7 @@ public class NavBarController {
 
     public void afficherParking(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AfficherParkingsss.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ParkingResources/AfficherParkingg.fxml")));
             contentPane.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());

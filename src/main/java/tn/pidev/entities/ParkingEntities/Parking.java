@@ -1,4 +1,4 @@
-package tn.pidev.entities;
+package tn.pidev.entities.ParkingEntities;
 
 public class Parking {
     private int ref;

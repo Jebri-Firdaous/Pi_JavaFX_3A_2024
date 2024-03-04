@@ -1,4 +1,4 @@
-package tn.pidev.entities;
+package tn.pidev.entities.ParkingEntities;
 
 import javafx.fxml.Initializable;
 

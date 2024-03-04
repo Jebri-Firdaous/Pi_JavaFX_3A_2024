@@ -1,7 +1,7 @@
-package tn.pidev.services;
+package tn.pidev.services.ParkingServices;
 
-import tn.pidev.entities.Place;
-import tn.pidev.utils.MyDataBase;
+import tn.pidev.entities.ParkingEntities.Place;
+import tn.pidev.utils.Parking.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;

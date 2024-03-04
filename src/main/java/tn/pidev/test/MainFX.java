@@ -1,3 +1,109 @@
+
+//package tn.pidev.test;
+//import javafx.application.Application;
+//import javafx.collections.FXCollections;
+//import javafx.collections.ObservableList;
+//import javafx.scene.Node;
+//import javafx.scene.Scene;
+//import javafx.scene.control.Label;
+//import javafx.scene.control.ListCell;
+//import javafx.scene.control.ListView;
+//import javafx.scene.control.Pagination;
+//import javafx.scene.layout.HBox;
+//import javafx.scene.layout.VBox;
+//import javafx.stage.Stage;
+//import javafx.util.Callback;
+//import tn.pidev.entities.ParkingEntities.Parking;
+//import tn.pidev.services.ParkingServices.ParkingService;
+//
+//import java.sql.SQLException;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Arrays;
+//
+//public class MainFX extends Application {
+//
+//    private static final int ITEMS_PER_PAGE = 5;
+//
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+//
+//    @Override
+//    public void start(Stage primaryStage) {
+//        ParkingService ps = new ParkingService();
+//        List<Parking> parkings = new ArrayList<>();
+//        try {
+//            parkings= ps.recuperer();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        ObservableList<Parking> data1 = FXCollections.observableArrayList(parkings);
+//
+//        ListView<Parking> listid = new ListView<>(data1);
+//
+//        Pagination pagination = new Pagination((int) Math.ceil((double) data1.size() / ITEMS_PER_PAGE), 0);
+//        pagination.setPageFactory(new Callback<Integer, Node>() {
+//            @Override
+//            public Node call(Integer pageIndex) {
+//                int fromIndex = pageIndex * ITEMS_PER_PAGE;
+//                int toIndex = Math.min(fromIndex + ITEMS_PER_PAGE, data1.size());
+//                listid.setItems(FXCollections.observableArrayList(data1.subList(fromIndex, toIndex)));
+//                listid.setCellFactory(new Callback<ListView<Parking>, ListCell<Parking>>() {
+//                    @Override
+//                    public ListCell<Parking> call(ListView<Parking> param) {
+//                        return new ListCell<Parking>() {
+//                            @Override
+//                            protected void updateItem(Parking parking, boolean empty) {
+//                                super.updateItem(parking, empty);
+//                                if (empty || parking == null) {
+//                                    setText(null);
+//                                    setGraphic(null);
+//                                } else {
+//                                    // Assuming this code is inside a method where you have access to the rendezVous object
+//                                    String parkingName = parking.getNom();
+//                                    String addresse = parking.getAddresse();
+//                                    int nbPlacesLibres = parking.getNbPlaceMax() - parking.getNbPlaceOcc();
+//                                    String etat = parking.getEtat();
+//                                    // Create an HBox to hold the details
+//                                    HBox hbox = new HBox();
+//                                    hbox.setSpacing(20); // Adjust spacing as needed
+//
+//                                    // Add details to the HBox with styled Labels
+//                                    Label nomPrenomDoctorLabel = new Label("Parking  " + parkingName);
+//                                    nomPrenomDoctorLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
+//
+//                                    Label dateLabel = new Label(addresse);
+//                                    dateLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
+//
+//                                    Label specialiteLabel = new Label(Integer.toString(nbPlacesLibres));
+//                                    specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
+//
+//                                    Label adresseLabel = new Label(etat);
+//                                    adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+//
+//                                    // Add the Labels to the HBox
+//                                    hbox.getChildren().addAll(nomPrenomDoctorLabel);
+//
+//                                    // Assuming this is inside a ListCell or similar where you can set the graphic
+//                                    setGraphic(hbox);
+//                                }
+//                            }
+//                        };
+//                    }
+//                });
+//                return new VBox(listid);
+//            }
+//        });
+//
+//        VBox root = new VBox(pagination);
+//        Scene scene = new Scene(root, 300, 200);
+//        primaryStage.setScene(scene);
+//        primaryStage.setTitle("String Pagination Example");
+//        primaryStage.show();
+//    }
+//}
 package tn.pidev.test;
 
 import com.esri.arcgisruntime.mapping.view.MapView;
@@ -12,7 +118,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParkingsss.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherParkingg.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Gérer parkings");
@@ -23,6 +129,7 @@ public class MainFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+}
     /*ListView<Label> list = new ListView<Label>();
     ObservableList<Label> data = FXCollections.observableArrayList(
             new Label("123"), new Label("45678999"));
@@ -61,7 +168,7 @@ public class MainFX extends Application {
 
         stage.show();
     }*/
-}
+//}
 /*
 import javafx.application.Application;
 import javafx.collections.FXCollections;

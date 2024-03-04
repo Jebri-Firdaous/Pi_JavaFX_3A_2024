@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.ParkingControllers;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -12,9 +12,9 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
-import tn.pidev.entities.Parking;
-import tn.pidev.entities.Place;
-import tn.pidev.services.PlaceService;
+import tn.pidev.entities.ParkingEntities.Parking;
+import tn.pidev.entities.ParkingEntities.Place;
+import tn.pidev.services.ParkingServices.PlaceService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -54,7 +54,7 @@ public class ModifierPlaceController  implements Initializable {
                 try {
                     Stage stage = (Stage) typeCB.getScene().getWindow();
                     Parking parking = (Parking) stage.getUserData();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
                     Parent root = loader.load();
                     AfficherPlaceController ctr = loader.getController();
                     ctr.init(parking.getRef());
@@ -72,7 +72,7 @@ public class ModifierPlaceController  implements Initializable {
         try {
             Stage stage = (Stage) typeCB.getScene().getWindow();
             Parking parking = (Parking) stage.getUserData();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPlaces.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
             Parent root=loader.load();
             AfficherPlaceController ctr= loader.getController();
             ctr.init(parking.getRef());
@@ -128,7 +128,7 @@ public class ModifierPlaceController  implements Initializable {
 
     public void naviguezVersParking(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherParkingsss.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherParkingg.fxml"));
             Parent root = loader.load();
             typeCB.getScene().setRoot(root);
         } catch (IOException e) {

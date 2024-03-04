@@ -1,4 +1,4 @@
-package tn.pidev.controllers;
+package tn.pidev.controllers.ParkingControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
 import javafx.util.converter.IntegerStringConverter;
-import tn.pidev.entities.Parking;
-import tn.pidev.services.ParkingService;
+import tn.pidev.entities.ParkingEntities.Parking;
+import tn.pidev.services.ParkingServices.ParkingService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,7 +53,7 @@ public class ModifierParkingController {
 
     public void naviguerVersAffichage(ActionEvent actionEvent) {
         try{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AfficherParkingsss.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ParkingResources/AfficherParkingg.fxml")));
         nomTF.getScene().setRoot(root);
     } catch (
     IOException e) {
@@ -109,7 +109,7 @@ public class ModifierParkingController {
                 System.err.println(e.getMessage());
             }
             try {
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/AfficherParkingsss.fxml")));
+                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ParkingResources/AfficherParkingg.fxml")));
                 nomTF.getScene().setRoot(root);
             } catch (IOException e) {
                 System.err.println(e.getMessage());

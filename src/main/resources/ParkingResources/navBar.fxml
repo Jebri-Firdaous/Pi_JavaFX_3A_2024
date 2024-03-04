@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="784.0" prefWidth="1373.0" styleClass="bgimage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.NavBarController">
+<AnchorPane prefHeight="784.0" prefWidth="1373.0" styleClass="bgimage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.NavBarController">
    <children>
       <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
