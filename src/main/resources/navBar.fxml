@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@gestionMedecin/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.NavBarController">
+    <children>
+
+        <!-- Contenu de l'interface qui changera en fonction des actions -->
+        <Pane fx:id="contentPane" opacity="0.95" prefHeight="740.0" prefWidth="1233.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="740.0" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">
+                    <image>
+                        <Image url="@gestionMedecin/bk5.png" />
+                    </image>
+                </ImageView>
+                <MenuBar layoutX="177.0" layoutY="60.0" prefHeight="32.0" prefWidth="1002.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Accueil">
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion Sante">
+                            <items>
+                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin" />
+                                <MenuItem onAction="#afficherRV" text="Gerer RV" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion shopping">
+                            <items>
+                                <Menu mnemonicParsing="false" text="Article">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#ajouterArticle" text="Ajouter Article" />
+                                    </items>
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#afficherArticle" text="Liste d'article" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Commande">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#ajouterCommande" text="Ajouter Commande" />
+                                    </items>
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#afficherCommande" text="Liste des commandes" />
+                                    </items>
+                                </Menu>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion transport">
+                            <items>
+                                <MenuItem onAction="#afficherBillet" text="Gerer Billet" />
+                                <MenuItem onAction="#afficherStation" text="Gerer Station" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion parking">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion tourisme">
+                            <items>
+                                <Menu mnemonicParsing="false" text="Hotel">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#ajouterHotel"
+                                                  text="Ajouter Hotel"/>
+                                        <MenuItem mnemonicParsing="false" onAction="#afficherHotel"
+                                                  text="Afficher Hotel"/>
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Reservation">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#AjouterReservation"
+                                                  text="Ajouter Reservation"/>
+                                        <MenuItem mnemonicParsing="false" onAction="#AfficherReservation"
+                                                  text="Afficher Reservation"/>
+                                    </items>
+                                </Menu>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Gestion utilisateur">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </Pane>
+    </children>
+
+
+</AnchorPane>

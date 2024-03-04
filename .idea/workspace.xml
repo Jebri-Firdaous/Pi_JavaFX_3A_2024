@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d58e71d-8a70-4a65-a4f7-5915bd74f869" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="FxmlFile" />
+        <option value="JavaFXApplication" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="crudmedecin" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2cTYiJmHLFcakOA6DgDgqho4xnv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "C:/Users/Ezzedine/Desktop/ProjetPDEV3A8-Smart-City-Codemasters/src/main/java",
+    "last_opened_file_path": "C:/ProjetPDEV3A8-Smart-City-Codemasters",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\gestionMedecin\icons" />
+      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\resourcesGestionTransport" />
+      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\icons" />
+      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services" />
+      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources" />
+      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\utils" />
+      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services" />
+      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities" />
+      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tn.esprit.controllers.gestionMedecin" />
+      <recent name="tn.esprit.controllers" />
+      <recent name="tn.esprit" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainFX">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.test.Main" />
+      <module name="ProjetPDEV3A8-Smart-City-Codemasters" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tn.esprit.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.test.MainFX" />
+      <module name="ProjetPDEV3A8-Smart-City-Codemasters" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tn.esprit.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SendEmail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.entities.gestionMedecin.SendEmail" />
+      <module name="ProjetPDEV3A8-Smart-City-Codemasters" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tn.esprit.entities.gestionMedecin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TwilioSendSms" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.entities.gestionMedecin.TwilioSendSms" />
+      <module name="ProjetPDEV3A8-Smart-City-Codemasters" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tn.esprit.entities.gestionMedecin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sendEmail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.entities.gestionMedecin.sendEmail" />
+      <module name="ProjetPDEV3A8-Smart-City-Codemasters" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tn.esprit.entities.gestionMedecin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainFX" />
+        <item itemvalue="Application.SendEmail" />
+        <item itemvalue="Application.sendEmail" />
+        <item itemvalue="Application.TwilioSendSms" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d58e71d-8a70-4a65-a4f7-5915bd74f869" name="Changes" comment="" />
+      <created>1708137160927</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708137160927</updated>
+      <workItem from="1708137162094" duration="2070000" />
+      <workItem from="1708209736797" duration="1833000" />
+      <workItem from="1708211582084" duration="12157000" />
+      <workItem from="1708223763723" duration="304000" />
+      <workItem from="1708224194279" duration="181000" />
+      <workItem from="1708224466303" duration="764000" />
+      <workItem from="1708225360620" duration="1099000" />
+      <workItem from="1708226815038" duration="157000" />
+      <workItem from="1708227191817" duration="41000" />
+      <workItem from="1708227271272" duration="137000" />
+      <workItem from="1708227515191" duration="41000" />
+      <workItem from="1708227631835" duration="54000" />
+      <workItem from="1708227713635" duration="43000" />
+      <workItem from="1708227888196" duration="7015000" />
+      <workItem from="1708267170979" duration="2649000" />
+      <workItem from="1708359527168" duration="17306000" />
+      <workItem from="1708425868679" duration="2955000" />
+      <workItem from="1708442483269" duration="5423000" />
+      <workItem from="1708447921447" duration="15372000" />
+      <workItem from="1708509601316" duration="7623000" />
+      <workItem from="1708517387169" duration="2173000" />
+      <workItem from="1708519613984" duration="733000" />
+      <workItem from="1708523321627" duration="1437000" />
+      <workItem from="1708524778736" duration="2355000" />
+      <workItem from="1708527148622" duration="17000" />
+      <workItem from="1708527663831" duration="128000" />
+      <workItem from="1708527875002" duration="35000" />
+      <workItem from="1708528009327" duration="22000" />
+      <workItem from="1708528057215" duration="65000" />
+      <workItem from="1708528165728" duration="6000" />
+      <workItem from="1708528303109" duration="20000" />
+      <workItem from="1708528408834" duration="200000" />
+      <workItem from="1708528652411" duration="555000" />
+      <workItem from="1708529281091" duration="787000" />
+      <workItem from="1708531752775" duration="28000" />
+      <workItem from="1708532078632" duration="308000" />
+      <workItem from="1708532494888" duration="350000" />
+      <workItem from="1708533089985" duration="670000" />
+      <workItem from="1708533810221" duration="71000" />
+      <workItem from="1708533925568" duration="38000" />
+      <workItem from="1708534030495" duration="101000" />
+      <workItem from="1708534158078" duration="7000" />
+      <workItem from="1708534196904" duration="99000" />
+      <workItem from="1708534408820" duration="324000" />
+      <workItem from="1708535163651" duration="2700000" />
+      <workItem from="1708540114542" duration="1214000" />
+      <workItem from="1708541337263" duration="1897000" />
+      <workItem from="1708543245159" duration="7917000" />
+      <workItem from="1708551389469" duration="101000" />
+      <workItem from="1708606837933" duration="4421000" />
+      <workItem from="1708618015272" duration="647000" />
+      <workItem from="1708623059715" duration="2673000" />
+      <workItem from="1708625745773" duration="2387000" />
+      <workItem from="1708629250429" duration="18877000" />
+      <workItem from="1708686422060" duration="233000" />
+      <workItem from="1708798990274" duration="13579000" />
+      <workItem from="1708865350870" duration="10950000" />
+      <workItem from="1708879244095" duration="4227000" />
+      <workItem from="1708889427036" duration="616000" />
+      <workItem from="1708893358331" duration="1947000" />
+      <workItem from="1708896499842" duration="5451000" />
+      <workItem from="1708902164995" duration="608000" />
+      <workItem from="1708903727278" duration="25000" />
+      <workItem from="1708949393255" duration="384000" />
+      <workItem from="1708949992622" duration="5289000" />
+      <workItem from="1708983559290" duration="19000" />
+      <workItem from="1708983627686" duration="4380000" />
+      <workItem from="1708989558161" duration="2019000" />
+      <workItem from="1708992155683" duration="42000" />
+      <workItem from="1708992381083" duration="711000" />
+      <workItem from="1709037492145" duration="8024000" />
+      <workItem from="1709064368152" duration="72000" />
+      <workItem from="1709148504654" duration="646000" />
+      <workItem from="1709226653366" duration="14109000" />
+      <workItem from="1709324762269" duration="4342000" />
+      <workItem from="1709332510725" duration="7268000" />
+      <workItem from="1709391130790" duration="543000" />
+      <workItem from="1709391876575" duration="15000" />
+      <workItem from="1709392134214" duration="3955000" />
+      <workItem from="1709396931127" duration="4992000" />
+      <workItem from="1709401955464" duration="27000" />
+      <workItem from="1709402095151" duration="5842000" />
+      <workItem from="1709407964215" duration="532000" />
+      <workItem from="1709408507945" duration="4795000" />
+      <workItem from="1709417047286" duration="3486000" />
+      <workItem from="1709425219307" duration="3706000" />
+      <workItem from="1709429301499" duration="4057000" />
+      <workItem from="1709436651535" duration="584000" />
+      <workItem from="1709456859016" duration="4371000" />
+      <workItem from="1709462504025" duration="52000" />
+      <workItem from="1709462582504" duration="15000" />
+      <workItem from="1709462665445" duration="419000" />
+      <workItem from="1709463117095" duration="7777000" />
+      <workItem from="1709472833749" duration="546000" />
+      <workItem from="1709473418830" duration="24000" />
+      <workItem from="1709473457764" duration="9094000" />
+      <workItem from="1709484762491" duration="491000" />
+      <workItem from="1709485264927" duration="1147000" />
+      <workItem from="1709486422741" duration="468000" />
+      <workItem from="1709486912707" duration="1045000" />
+      <workItem from="1709487970669" duration="2497000" />
+      <workItem from="1709490500611" duration="438000" />
+      <workItem from="1709490941110" duration="4822000" />
+      <workItem from="1709495929612" duration="1218000" />
+      <workItem from="1709504368511" duration="24000" />
+      <workItem from="1709504475970" duration="5954000" />
+      <workItem from="1709510726146" duration="7000" />
+      <workItem from="1709510765926" duration="1939000" />
+      <workItem from="1709513518879" duration="6508000" />
+      <workItem from="1709520776195" duration="416000" />
+      <workItem from="1709521219956" duration="121000" />
+      <workItem from="1709521377392" duration="34000" />
+      <workItem from="1709521419705" duration="153000" />
+      <workItem from="1709521749527" duration="98000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AfficherBilletController.java</url>
+          <line>536</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
