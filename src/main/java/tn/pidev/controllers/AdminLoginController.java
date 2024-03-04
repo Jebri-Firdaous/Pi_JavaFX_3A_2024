@@ -12,6 +12,7 @@
     import javafx.scene.control.Label;
     import javafx.scene.control.PasswordField;
     import javafx.scene.control.TextField;
+    import javafx.stage.Modality;
     import javafx.stage.Stage;
     import javafx.util.Duration;
     import tn.pidev.entities.Administrateur;
@@ -22,6 +23,7 @@
     import java.sql.*;
     import java.util.Random;
 
+
     /*------------------------------------------------- Controller  --------------------------------------------------------*/
     public class AdminLoginController {
         private final String url = "jdbc:mysql://localhost:3306/e-city";
@@ -29,6 +31,7 @@
         private final String password = "";
         public TextField mail;
         ServiceAdmin sa = new ServiceAdmin();
+        Administrateur adminConnected = new Administrateur();
         String emailRecupered;
         /*--------------------------------------------------- Attribute ----------------------------------------------------------*/
         @FXML
@@ -49,6 +52,8 @@
         private int adminId;
         private int loginAttempts = 0;
         private boolean loginBlocked = false;
+        private String connectedAdminEmail;
+        private String connectedAdminPassword;
 
         private void highlightPasswordFields(boolean highlight) {
             if (highlight) {
@@ -63,6 +68,7 @@
         public void mailrecuperer() {
             emailRecupered = mail.getText();
         }
+
 
         @FXML
         void modifiermotdePasse(ActionEvent event) throws SQLException {
@@ -437,7 +443,28 @@
         }
 
         public void back(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pageConnexion.fxml"));
+                Parent root = loader.load();
+                AdminLoginController adminLoginController = loader.getController();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) label.getScene().getWindow();
+
+                // Save reference to the parent stage
+                Stage parentStage = new Stage();
+                parentStage.initModality(Modality.WINDOW_MODAL);
+                parentStage.initOwner(stage);
+
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
+
 
         public void capturePhoto(ActionEvent event) {
         }
@@ -462,4 +489,10 @@
             }));
             timeline.play();
         }
+
+        @FXML
+        void FacialRecognition(ActionEvent event) {
+
+        }
+
     }

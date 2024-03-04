@@ -40,4 +40,9 @@ public class Administrateur extends Personne {
                 ", role= " + role + '\'' +
                 '}';
     }
+
+    public String getImageUrl() {
+        return getImage_personne(); // Appel du getter hérité de Personne
+    }
+
 }

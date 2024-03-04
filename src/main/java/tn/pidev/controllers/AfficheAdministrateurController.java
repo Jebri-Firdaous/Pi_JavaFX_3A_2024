@@ -52,6 +52,10 @@ public class AfficheAdministrateurController {
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
         try {
+            rechercherAdminDansLaBase("");
+            search.textProperty().addListener((observable, oldValue, newValue) -> {
+                rechercherAdminDansLaBase(newValue);
+            });
             List<Administrateur> AdminsFromService = sa.afficher();
             nomAdmin.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomAdmin.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
@@ -162,10 +166,7 @@ public class AfficheAdministrateurController {
     }
 
     public void recherche(ActionEvent event) throws SQLException {
-        rechercherAdminDansLaBase("");
-        search.textProperty().addListener((observable, oldValue, newValue) -> {
-            rechercherAdminDansLaBase(newValue);
-        });
+
 
     }
 }

@@ -8,12 +8,14 @@
     import javafx.fxml.FXMLLoader;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
-    import javafx.scene.control.ContextMenu;
     import javafx.scene.control.Label;
     import javafx.scene.control.MenuItem;
+    import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
+    import javafx.stage.Modality;
     import javafx.stage.Stage;
     import javafx.util.Duration;
+    import tn.pidev.services.ServiceAdmin;
 
     import java.io.IOException;
 
@@ -21,6 +23,7 @@
     public class AdminInterfaceControllers {
         /*--------------------------------------------------- Attribut ----------------------------------------------------------*/
 
+        ServiceAdmin sa = new ServiceAdmin();
         @FXML
         private Label label;
         @FXML
@@ -35,6 +38,11 @@
         private ImageView ProfileImage;
         @FXML
         private Label bienvenue;
+        private ImageView ImageProfile;
+        private String connectedAdminEmail;
+        private String connectedAdminPassword;
+        @FXML
+        private ImageView adminImage;
 
         /*------------------------------------------------------------------------------------------------------------------------*/
         /*------------------------------------Methode generale pour naviguer dans le meme stage-----------------------------------*/
@@ -70,6 +78,10 @@
                 e.printStackTrace();
             }
 
+        }
+
+        public void setProfileImage(String imageUrl) {
+            ImageProfile.setImage(new Image(imageUrl));
         }
 
         @FXML
@@ -121,27 +133,20 @@
         }
 
         public void initialize() {
-            ContextMenu contextMenu = new ContextMenu();
-            MenuItem voirProfilItem = new MenuItem("Voir le profil");
-            MenuItem parametresItem = new MenuItem("Paramètres");
-            contextMenu.getItems().addAll(voirProfilItem, parametresItem);
 
-//        // Associez le menu contextuel à l'ImageView
-//        ProfileImage.setOnMouseClicked(event -> {
-//            if (event.getButton() == MouseButton.SECONDARY) { // Clic droit
-//                contextMenu.show(ProfileImage, event.getScreenX(), event.getScreenY());
-//            }
-//        });
-            // Créer une transition de translation
             TranslateTransition transition = new TranslateTransition(Duration.seconds(15), bienvenue);
             transition.setFromX(1312); // Position de départ en X (hors de l'écran à droite)
             transition.setToX(-1312);
             transition.setCycleCount(Animation.INDEFINITE); // Répéter indéfiniment
 // Position finale en X (0)
-            transition.play(); // Démarrer la transition
+            transition.play();
 
         }
 
+        public void setAdminImage(String imagePath) {
+            Image image = new Image("file:" + imagePath);
+            adminImage.setImage(image);
+        }
 
         public void ToConnexion(ActionEvent actionEvent) {
             navigateToPage("pageConnexion.fxml");
@@ -152,5 +157,35 @@
         void afficherClient() {
 
             navigateToPage("afficherClient.fxml");
+        }
+
+
+        public void setConnectedAdminEmailPwd(String email, String pwd) {
+            this.connectedAdminEmail = email;
+            this.connectedAdminPassword = pwd;
+        }
+
+        @FXML
+        void disconnect(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pageConnexion.fxml"));
+                Parent root = loader.load();
+                AdminLoginController adminLoginController = loader.getController();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) label.getScene().getWindow();
+
+                // Save reference to the parent stage
+                Stage parentStage = new Stage();
+                parentStage.initModality(Modality.WINDOW_MODAL);
+                parentStage.initOwner(stage);
+
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }

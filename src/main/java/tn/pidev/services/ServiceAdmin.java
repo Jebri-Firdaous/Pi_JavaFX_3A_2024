@@ -167,8 +167,8 @@ public class ServiceAdmin implements IService<Administrateur> {
     public List<Administrateur> rechercher(String recherche) throws SQLException {
         List<Administrateur> administrateurs = new ArrayList<>();
         String sql = "SELECT a.id_personne, a.nom_personne, a.prenom_personne, a.numero_telephone, a.mail_personne , a.role" +
-                "FROM administrateur a " +
-                "WHERE c.nom_personne LIKE ? OR a.role LIKE ?";
+                "FROM administrateur a JOIN personne p ON a.id_personne = p.id_personne  " +
+                "WHERE a.nom_personne LIKE ? OR a.role LIKE ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, "%" + recherche + "%");
         preparedStatement.setString(2, "%" + recherche + "%");
@@ -240,6 +240,64 @@ public class ServiceAdmin implements IService<Administrateur> {
         }
         return administrateur;
     }
+
+    public String getImageByEmailPwd(String email, String mdp) {
+        String image_personne = "";
+        try {
+            String sql = "SELECT image_personne FROM administrateur JOIN personne ON administrateur.id_personne = personne.id_personne WHERE personne.mail_personne =  ? AND  personne.mdp_personne=?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.setString(2, mdp);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                int id_personne = rs.getInt("id_personne");
+                String role = rs.getString("role");
+                String nom = rs.getString("nom_personne");
+                String prenom = rs.getString("prenom_personne");
+                int tel = rs.getInt("numero_telephone");
+                String mail = rs.getString("mail_personne");
+                String mdpasse = rs.getString("mdp_personne");
+                String image = rs.getString("image_personne");
+                return image;
+            }
+            rs.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération de l'administrateur : " + e.getMessage());
+        }
+        return image_personne;
+
+
+    }
+
+    public Administrateur getConnectedAdmin(String email, String motDePasse) {
+        String query = "SELECT * FROM administrateur a JOIN personne p ON a.id_personne = p.id_personne WHERE p.mail_personne = ? AND p.mdp_personne = ?";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, email);
+            stmt.setString(2, motDePasse);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int id_personne = rs.getInt("id_personne");
+                String role = rs.getString("role");
+                String nom = rs.getString("nom_personne");
+                String prenom = rs.getString("prenom_personne");
+                int tel = rs.getInt("numero_telephone");
+                String mail = rs.getString("mail_personne");
+                String mdp = rs.getString("mdp_personne");
+                String image_personne = rs.getString("image_personne");
+
+                // Créez une instance d'Administrateur avec les données récupérées
+                return new Administrateur(id_personne, nom, prenom, tel, mail, mdp, image_personne, role);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
 
 
