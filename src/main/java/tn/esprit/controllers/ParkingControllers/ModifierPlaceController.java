@@ -1,58 +1,59 @@
-package tn.pidev.controllers.ParkingControllers;
+package tn.esprit.controllers.ParkingControllers;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
-import tn.pidev.entities.ParkingEntities.Parking;
-import tn.pidev.entities.ParkingEntities.Place;
-import tn.pidev.services.ParkingServices.ParkingService;
-import tn.pidev.services.ParkingServices.PlaceService;
+import tn.esprit.entities.ParkingEntities.Parking;
+import tn.esprit.entities.ParkingEntities.Place;
+import tn.esprit.services.ParkingServices.PlaceService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AjouterPlaceController implements Initializable {
+public class ModifierPlaceController  implements Initializable {
     private final PlaceService ps = new PlaceService();
-    private final ParkingService parkS = new ParkingService();
     public TextField numTF;
     public ComboBox<String> typeCB;
+    public TextField idTF;
     public Label errNum;
     public Label errType;
     private boolean test;
+    int id;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         typeCB.setItems(FXCollections.observableArrayList("normal", "moto", "handicap"));
     }
-    public void ajouterPlace(ActionEvent actionEvent) {
+    public void init(int idTF, int num, String type){
+        this.id=idTF;
+        this.numTF.setText(Integer.toString(num));
+        this.typeCB.setValue(type);
+    }
+    public void Update(ActionEvent actionEvent) {
         if(numTF.getText().isBlank()) {
             errNum.setText("Ce champ est obligatoire!");}
         if(typeCB.getSelectionModel().isEmpty()) {
             errType.setText("Ce champ est obligatoire!");}
         if (test && !typeCB.getSelectionModel().isEmpty()) {
             try {
-                System.out.println(typeCB.getValue());
-                Stage stage = (Stage) typeCB.getScene().getWindow();
-                Parking parking = (Parking) stage.getUserData();
-                System.out.println(parking.getRef());
-                if (parking.getNbPlaceMax()>parkS.calculNbPlace(parking.getRef())) {
-                    ps.ajouter(new Place(Integer.parseInt(numTF.getText()), typeCB.getValue(), parking.getRef()));
-//                    parkS.updateNbOcc(parking, 0);
-                }else{
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setContentText("Nombre place maximal atteint!");
-                    alert.showAndWait();
-                }
+                Place p = new Place(id,
+                        Integer.parseInt(numTF.getText()),
+                        typeCB.getValue());
+                ps.modifier(p);
                 try {
+                    Stage stage = (Stage) typeCB.getScene().getWindow();
+                    Parking parking = (Parking) stage.getUserData();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
                     Parent root = loader.load();
                     AfficherPlaceController ctr = loader.getController();
@@ -62,15 +63,12 @@ public class AjouterPlaceController implements Initializable {
                     System.err.println(e.getMessage());
                 }
             } catch (SQLException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
+                System.err.println(e.getMessage());
             }
         }
     }
 
-    public void naviguezVersAffichage(ActionEvent actionEvent) {
+    public void naviguerVersAffichage(ActionEvent actionEvent) {
         try {
             Stage stage = (Stage) typeCB.getScene().getWindow();
             Parking parking = (Parking) stage.getUserData();

@@ -1,4 +1,4 @@
-package tn.pidev.controllers.ParkingControllers;
+package tn.esprit.controllers.ParkingControllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,10 +14,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import tn.pidev.entities.ParkingEntities.Parking;
-import tn.pidev.entities.ParkingEntities.Place;
-import tn.pidev.services.ParkingServices.ParkingService;
-import tn.pidev.services.ParkingServices.PlaceService;
+import tn.esprit.entities.ParkingEntities.Parking;
+import tn.esprit.entities.ParkingEntities.Place;
+import tn.esprit.services.ParkingServices.ParkingService;
+import tn.esprit.services.ParkingServices.PlaceService;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

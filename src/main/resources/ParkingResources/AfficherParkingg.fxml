@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css, @Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.AfficherParkingController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css, @Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AfficherParkingController">
     <children>
         <!--      <fx:include source="navBar.fxml" />-->
         <!--      <BorderPane layoutX="19.0" layoutY="31.0" prefHeight="401.0" prefWidth="600.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
