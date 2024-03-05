@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -42,6 +43,7 @@ public class AfficherPlaceController {
     public ComboBox<Integer> idCli;
     public Group grp2;
     public VBox listVB;
+    public Pane paneId;
     PlaceService ps=new PlaceService();
     private final ParkingService parkS = new ParkingService();
     public ListView<Place> listid;
@@ -58,11 +60,9 @@ public class AfficherPlaceController {
             listid.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     details(newValue);
-                }
-            });
-            listid.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue != null) {
-                    details(newValue);
+                    paneId.setVisible(true);
+                }else {
+                    paneId.setVisible(false);
                 }
             });
 
@@ -190,16 +190,17 @@ public class AfficherPlaceController {
         Stage stage = (Stage) addB.getScene().getWindow();
         Parking parking = (Parking) stage.getUserData();
         Place p = listid.getSelectionModel().getSelectedItem();
-        if(p.getEtat().equals("Libre")) {
+        if(p.getEtat().equals("Libre") && idCli.getValue()!=0) {
             // GENERATE QR CODE
-            ByteArrayOutputStream out = QRCode.from(Integer.toString(p.getRef_place())+" , "+Integer.toString(p.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
+            ByteArrayOutputStream out = QRCode.from("Num Place: "+Integer.toString(p.getNum_place())+" , ID Client: "+Integer.toString(p.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
             ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
 
             // SHOW QR CODE
             Image image = new Image(in);
             try {
-                listid.getSelectionModel().getSelectedItem().setIdCli(idCli.getValue());
-                ps.updateEtat(listid.getSelectionModel().getSelectedItem(), 0);
+                p.setIdCli(idCli.getValue());
+//                listid.getSelectionModel().getSelectedItem().setIdCli(idCli.getValue());
+                ps.updateEtat(p, 0);
                 parkS.updateNbOcc(parkS.recupererById(parking.getRef()), 0);
                 try {
                     // Exemple avec JavaMail
@@ -247,8 +248,9 @@ public class AfficherPlaceController {
     }
 
     private void details(Place newValue) {
-        numL.setText(Integer.toString(newValue.getNum_place()));
-        addresseL.setText(newValue.getEtat());
+        numL.setText("Place N°: "+Integer.toString(newValue.getNum_place()));
+        addresseL.setText(newValue.getType_place());
+        etatL.setText(newValue.getEtat());
         idCli.getItems().clear();
         try {
             idCli.getItems().addAll(ps.refUser());
@@ -259,12 +261,14 @@ public class AfficherPlaceController {
             cancelRes.setVisible(false);
             res.setVisible(true);
             qr.setVisible(false);
+            paneId.setPrefHeight(358);
         }else {
             cancelRes.setVisible(true);
             res.setVisible(false);
             qr.setVisible(true);
+            paneId.setPrefHeight(500);
             // GENERATE QR CODE
-            ByteArrayOutputStream out = QRCode.from(Integer.toString(newValue.getRef_place())+" , "+Integer.toString(newValue.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
+            ByteArrayOutputStream out = QRCode.from("Num Place: "+Integer.toString(newValue.getNum_place())+" , ID Client: "+Integer.toString(newValue.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
             ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
 
             // SHOW QR CODE
@@ -275,5 +279,6 @@ public class AfficherPlaceController {
         idCli.setValue(newValue.getIdCli());
         grp2.setStyle("-fx-border-width: 2px;");
         grp2.setVisible(true);
+        paneId.setVisible(true);
     }
 }

@@ -54,12 +54,9 @@ public class AfficherParkingController {
         mapView = new MapView();
         mapView.setPrefWidth(534);
         mapView.setPrefHeight(226);
-        grp1.getChildren().add(0, mapView);
-        grp1.getChildren().get(0).setTranslateX(-52);
-        grp1.getChildren().get(0).setTranslateY(-220);
-        /*grp2.getChildren().add(1, mapView);
-        grp2.getChildren().get(1).setTranslateX(32);
-        grp2.getChildren().get(1).setTranslateY(8);*/
+        grp1.getChildren().add(1, mapView);
+        grp1.getChildren().get(1).setTranslateX(7);
+        grp1.getChildren().get(1).setTranslateY(14);
         ArcGISMap map = new ArcGISMap(BasemapStyle.ARCGIS_TOPOGRAPHIC);
         mapView.setMap(map);
         try {
@@ -71,7 +68,11 @@ public class AfficherParkingController {
             listid = new ListView<>(data1);
             listid.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
+                    grp1.setVisible(true);
                     details(newValue);
+                }
+                else{
+                    grp1.setVisible(false);
                 }
             });
 
@@ -224,7 +225,12 @@ public class AfficherParkingController {
         }
     }
     public void details(Parking newValue) {
-        nomL.setText(newValue.getNom());
+        if (newValue.getEtat().equals("Plein"))
+            etatL.setVisible(true);
+        else
+            etatL.setVisible(false);
+        etatL.setText(newValue.getEtat());
+        nomL.setText("Parking  "+newValue.getNom());
         addresseL.setText(newValue.getAddresse());
         try {
             nbL.setText(Integer.toString(ps.calculNbPlace(newValue.getRef())-newValue.getNbPlaceOcc()));

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
@@ -12,115 +13,56 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="780.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.AfficherPlaceController">
+<AnchorPane prefHeight="619.0" prefWidth="1249.0" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.AfficherPlaceController">
     <children>
-        <BorderPane layoutX="144.0" layoutY="178.0" prefHeight="739.0" prefWidth="1228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <top>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@logo.png" />
-                            </image>
-                        </ImageView>
-                        <!--                   <ImageView fitHeight="850" fitWidth="1235.0" layoutX="-3.0" layoutY="-1.0">-->
-                        <!--                       <image>-->
-                        <!--                           <Image url="@bk5.png" />-->
-                        <!--                       </image>-->
-                        <!--                   </ImageView>-->
-                        <MenuBar prefHeight="39.0" prefWidth="1160.0">
-                            <menus>
-                                <Menu mnemonicParsing="false" text="Accueil">
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion Sante">
-                                    <items>
-                                        <MenuItem text="Gerer medecin" />
-                                        <MenuItem text="Gerer RV" />
-                                        <!--                                <MenuItem onAction="#afficherMedecin" text="Gerer medecin"/>-->
-                                        <!--                                <Menu mnemonicParsing="false" >-->
-                                        <!--                                    <items>-->
-                                        <!--                                        <MenuItem mnemonicParsing="false" text="Liste d'article" />-->
-                                        <!--                                    </items>-->
-                                        <!--                                </Menu>-->
-                                        <!--&lt;!&ndash;                                <Menu mnemonicParsing="false" onAction="#afficherRV" text="Gerer RV">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;                                    <items>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;                                        <MenuItem mnemonicParsing="false" text="Action 1" />&ndash;&gt;-->
-                                        <!--&lt;!&ndash;                                    </items>&ndash;&gt;-->
-                                        <!--                                </Menu>-->
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion shopping">
-                                    <items>
-                                        <Menu mnemonicParsing="false" text="Article">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Liste d'article" />
-                                            </items>
-                                        </Menu>
-                                        <Menu mnemonicParsing="false" text="Commande">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Action 1" />
-                                            </items>
-                                        </Menu>
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion transport">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="About" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" onAction="#naviguerVersParkings" text="Gestion parking">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#naviguerVersParkings" text="Liste Parkings" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion tourisme">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="Gestion utilisateur">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    </items>
-                                </Menu>
-                            </menus>
-                        </MenuBar>
-                    </children>
-                </HBox>
-            </top>
+        <fx:include source="../navBar.fxml" />
+        <BorderPane layoutX="144.0" layoutY="120.0" prefHeight="619.0" prefWidth="1249.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <center>
-            <Group BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                    <Button fx:id="addB" layoutX="47.0" layoutY="299.0" mnemonicParsing="false" onAction="#naviguerVersAjouter" text="Ajouter" />
-                  <Label layoutX="-157.0" layoutY="-132.0" text="Num" visible="false" />
-                  <Label layoutX="104.0" layoutY="-132.0" text="Type" visible="false" />
-                  <Label layoutX="379.0" layoutY="-132.0" text="Etat" visible="false" />
-                   <Group fx:id="grp2" layoutX="310.0" layoutY="-425.0">
-                   <children>
-                       <Label layoutX="86.0" layoutY="350.0" text="Type :" />
-                       <Label layoutX="87.0" layoutY="397.0" text="Etat : " />
-                       <Label fx:id="numL" layoutX="266.0" layoutY="274.0" text="num" />
-                       <Label fx:id="etatL" layoutX="201.0" layoutY="397.0" text="Label" />
-                       <Label fx:id="addresseL" layoutX="201.0" layoutY="350.0" text="Label" />
-                          <Button fx:id="modifB" layoutX="165.0" layoutY="469.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
-                          <Button fx:id="delB" layoutX="302.0" layoutY="469.0" mnemonicParsing="false" onAction="#supprimerPlace" text="Supprimer" />
-                        <ImageView fx:id="qr" fitHeight="150.0" fitWidth="200.0" layoutX="174.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true" visible="false" />
-                          <Button fx:id="res" layoutX="347.0" layoutY="558.0" mnemonicParsing="false" onAction="#reserverPlace" text="Reserver" />
-                          <Button fx:id="cancelRes" layoutX="348.0" layoutY="558.0" mnemonicParsing="false" onAction="#annulerReservation" text="Annuler Reservation" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5e3ff" height="5.0" layoutX="93.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="375.0" />
-                        <ComboBox fx:id="idCli" layoutX="177.0" layoutY="560.0" prefWidth="150.0" />
-                        <Label layoutX="111.0" layoutY="565.0" text="ID Client" />
-                   </children>
-               </Group>
-                  <VBox fx:id="listVB" layoutX="-124.0" layoutY="-92.0" prefHeight="330.0" prefWidth="446.0" />
+                  <Label styleClass="title" stylesheets="@Button.css" text="Liste Places">
+                     <font>
+                        <Font name="Lucida Bright" size="15.0" />
+                     </font></Label>
+                  <Group>
+                     <children>
+                          <Button fx:id="addB" layoutX="47.0" layoutY="282.0" mnemonicParsing="false" onAction="#naviguerVersAjouter" text="Ajouter" />
+                        <Label layoutX="-157.0" layoutY="-132.0" text="Num" visible="false" />
+                        <Label layoutX="104.0" layoutY="-132.0" text="Type" visible="false" />
+                        <Label layoutX="379.0" layoutY="-132.0" text="Etat" visible="false" />
+                        <Pane fx:id="paneId" layoutX="354.0" layoutY="-189.0" prefHeight="358.0" prefWidth="405.0" style="-fx-background-color: rgba(211,211,211,0.16); -fx-background-radius: 20; -fx-border-width: 2px; -fx-border-color: rgba(128,127,127,0.25); -fx-border-radius: 20;" visible="false">
+                           <children>
+                               <Group fx:id="grp2" layoutX="-77.0" layoutY="-261.0">
+                               <children>
+                                   <Label layoutX="86.0" layoutY="350.0" text="Type :" />
+                                   <Label layoutX="87.0" layoutY="397.0" text="Etat : " />
+                                   <Label fx:id="numL" alignment="CENTER" layoutX="226.0" layoutY="274.0" text="num" textAlignment="CENTER" />
+                                   <Label fx:id="etatL" layoutX="201.0" layoutY="397.0" text="Label" />
+                                   <Label fx:id="addresseL" layoutX="201.0" layoutY="350.0" text="Label" />
+                                      <Button fx:id="modifB" layoutX="165.0" layoutY="469.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
+                                      <Button fx:id="delB" layoutX="302.0" layoutY="469.0" mnemonicParsing="false" onAction="#supprimerPlace" style="-fx-pref-width: 130;" text="Supprimer" />
+                                    <ImageView fx:id="qr" fitHeight="150.0" fitWidth="200.0" layoutX="187.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                                      <Button fx:id="res" layoutX="338.0" layoutY="558.0" mnemonicParsing="false" onAction="#reserverPlace" style="-fx-pref-width: 130;" text="Reserver" />
+                                      <Button fx:id="cancelRes" layoutX="339.0" layoutY="558.0" mnemonicParsing="false" onAction="#annulerReservation" style="-fx-pref-width: 130;" text="Annuler" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5e3ff" height="5.0" layoutX="93.0" layoutY="524.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="375.0" />
+                                    <ComboBox fx:id="idCli" layoutX="226.0" layoutY="560.0" prefHeight="33.0" prefWidth="90.0" />
+                                    <Label layoutX="97.0" layoutY="561.0" text="ID Client" />
+                               </children>
+                           </Group>
+                           </children>
+                        </Pane>
+                        <VBox fx:id="listVB" layoutX="-124.0" layoutY="-92.0" prefHeight="330.0" prefWidth="446.0" />
+                     </children>
+                  </Group>
                </children>
-            </Group>
+            </VBox>
          </center>
         </BorderPane>
     </children>
     <stylesheets>
         <URL value="@style.css" />
         <URL value="@BG.css" />
+        <URL value="@Button.css" />
     </stylesheets>
 
 </AnchorPane>

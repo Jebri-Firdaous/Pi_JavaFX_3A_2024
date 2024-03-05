@@ -3,23 +3,29 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import tn.esprit.controllers.gestionMedecin.AfficherListRendezVousController;
 import tn.esprit.controllers.gestionMedecin.AfficherMedecinsController;
 import tn.esprit.controllers.gestionTransport.AfficherBilletController;
 import tn.esprit.controllers.gestionTransport.AfficherStationController;
 
-public class NavBarController {
+public class NavBarController implements Initializable {
 
 
+    public AnchorPane child;
     @FXML
     private Pane contentPane;
 
@@ -267,6 +273,14 @@ public class NavBarController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        AnchorPane.setTopAnchor(child, 0.0);
+        AnchorPane.setBottomAnchor(child, 0.0);
+        AnchorPane.setLeftAnchor(child, 0.0);
+        AnchorPane.setRightAnchor(child, 0.0);
     }
 }
 

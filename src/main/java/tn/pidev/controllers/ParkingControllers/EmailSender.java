@@ -3,7 +3,7 @@ package tn.pidev.controllers.ParkingControllers;
 import javafx.scene.image.PixelFormat;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
-//import javafx.swing.SwingFXUtils;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 
@@ -56,46 +56,24 @@ public class EmailSender {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             message.setSubject(subject);
-
+            // Convert the Image object to a byte array
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            /*try {
-                ImageIO.write((RenderedImage) I, "png", baos);
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-            byte[] imageBytes = baos.toByteArray();*/
-
-
-
-            WritableImage writableImage = new WritableImage((int) I.getWidth(), (int) I.getHeight());
-
-//            I.snapshot(null, writableImage);
-
-            // Create a byte array to hold the pixel data
-            int imageWidth = (int) writableImage.getWidth();
-            int imageHeight = (int) writableImage.getHeight();
-            int pixelSize = 4; // Assuming 4 bytes per pixel (ARGB format)
-            byte[] byteArray = new byte[imageWidth * imageHeight * pixelSize];
-
-            ByteArrayInputStream bais = new ByteArrayInputStream(byteArray);
+            BufferedImage bufferedImage = SwingFXUtils.fromFXImage(I, null);
             try {
-                ImageIO.write(ImageIO.read(bais), "png", baos);
+                ImageIO.write(bufferedImage, "png", baos);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             byte[] imageBytes = baos.toByteArray();
-
 
             // Create the HTML email body with the image
             String htmlBody = "<html><body><p>" + body + "</p><img src=\"cid:image1\"></body></html>";
 
             // Create the image part
             MimeBodyPart imagePart = new MimeBodyPart();
-            //DataSource fds = new FileDataSource("path/to/your/image.png"); // Replace with the actual path to your image file
             DataSource fds = new ByteArrayDataSource(imageBytes, "image/png");
             imagePart.setDataHandler(new DataHandler(fds));
             imagePart.setHeader("Content-ID", "<image1>");
-
 
             // Create the multipart to hold the HTML body and the image
             Multipart multipart = new MimeMultipart();
@@ -106,8 +84,6 @@ public class EmailSender {
 
             // Set the multipart as the email content
             message.setContent(multipart);
-
-            message.setText(body);
 
             // Envoi du message
             Transport.send(message);
