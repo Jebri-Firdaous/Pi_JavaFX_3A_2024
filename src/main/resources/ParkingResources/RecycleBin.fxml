@@ -11,18 +11,21 @@
 <?import javafx.scene.image.Image?>
 <?import java.net.URL?>
 
-<AnchorPane prefHeight="660.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.RecycleBinController">
-    <fx:include source="../navBar.fxml" />
+<AnchorPane prefHeight="660.0" prefWidth="1110.0" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.RecycleBinController">
     <children>
-        <BorderPane layoutX="144.0" layoutY="139.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1300.0" styleClass="bgimage" stylesheets="@BG.css, @Button.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
-            <center>
-                <Group BorderPane.alignment="CENTER">
-                    <children>
-                        <Button fx:id="addB" layoutX="237.0" layoutY="561.0" mnemonicParsing="false" onAction="#returnP" prefWidth="141.0" text="Recuperer" />
-                        <ListView fx:id="listBin" layoutX="33.0" layoutY="113.0" prefHeight="410.0" prefWidth="506.0" />
-                    </children>
-                </Group>
-            </center>
+        <fx:include source="../navBar.fxml" />
+        <BorderPane layoutX="144.0" layoutY="139.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
+         <center>
+            <VBox fx:id="listVB" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                      <Group>
+                          <children>
+                              <Button fx:id="addB" layoutX="428.0" layoutY="553.0" mnemonicParsing="false" onAction="#returnP" prefWidth="141.0" style="-fx-pref-width: 130;" text="Recuperer" />
+                          </children>
+                      </Group>
+               </children>
+            </VBox>
+         </center>
         </BorderPane>
     </children>
     <stylesheets>

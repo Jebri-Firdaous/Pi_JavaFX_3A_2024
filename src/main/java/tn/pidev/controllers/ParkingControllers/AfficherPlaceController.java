@@ -191,14 +191,14 @@ public class AfficherPlaceController {
         Parking parking = (Parking) stage.getUserData();
         Place p = listid.getSelectionModel().getSelectedItem();
         if(p.getEtat().equals("Libre") && idCli.getValue()!=0) {
-            // GENERATE QR CODE
-            ByteArrayOutputStream out = QRCode.from("Num Place: "+Integer.toString(p.getNum_place())+" , ID Client: "+Integer.toString(p.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
-            ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
-
-            // SHOW QR CODE
-            Image image = new Image(in);
             try {
                 p.setIdCli(idCli.getValue());
+                // GENERATE QR CODE
+                ByteArrayOutputStream out = QRCode.from("Num Place: "+Integer.toString(p.getNum_place())+" , ID Client: "+Integer.toString(p.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
+                ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
+
+                // SHOW QR CODE
+                Image image = new Image(in);
 //                listid.getSelectionModel().getSelectedItem().setIdCli(idCli.getValue());
                 ps.updateEtat(p, 0);
                 parkS.updateNbOcc(parkS.recupererById(parking.getRef()), 0);

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" stylesheets="@BG.css, @Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.AfficherParkingController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" stylesheets="@BG.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.pidev.controllers.ParkingControllers.AfficherParkingController">
     <children>
         <fx:include source="../navBar.fxml" />
         <BorderPane layoutX="144.0" layoutY="95.0" prefHeight="685.0" prefWidth="1319.0" style="-fx-background-image: url(../gestionMedecin/doctor.png);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-19.0" AnchorPane.topAnchor="95.0">
@@ -31,12 +31,12 @@
                                     <Button fx:id="delB" layoutX="55.0" layoutY="508.0" mnemonicParsing="false" onAction="#supprimerParking" prefWidth="149.0" styleClass="my-button" text="Supprimer" />
                                     <Button fx:id="modifB" layoutX="224.0" layoutY="507.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
                                     <Button fx:id="listePlaceB" layoutX="356.0" layoutY="508.0" mnemonicParsing="false" onAction="#afficherPlace" styleClass="my-button" text="Liste Places" />
-                              <Label layoutX="39.0" layoutY="365.0" text="Addresse :" />
-                              <Label layoutX="34.0" layoutY="418.0" text="Nb de Places Libres :" />
-                              <Label fx:id="nomL" layoutX="245.0" layoutY="262.0" text="nom" />
-                              <Label fx:id="etatL" layoutX="240.0" layoutY="291.0" text="Label" textFill="RED" visible="false" />
-                              <Label fx:id="addresseL" layoutX="293.0" layoutY="365.0" text="Label" />
-                              <Label fx:id="nbL" layoutX="377.0" layoutY="418.0" text="Label" />
+                              <Label layoutX="39.0" layoutY="365.0" styleClass="my-label" text="Addresse :" />
+                              <Label layoutX="34.0" layoutY="418.0" styleClass="my-label" text="Nb de Places Libres :" />
+                              <Label fx:id="nomL" layoutX="196.0" layoutY="262.0" styleClass="my-label" text="nom" />
+                              <Label fx:id="etatL" layoutX="240.0" layoutY="291.0" styleClass="my-label" text="Label" textFill="RED" visible="false" />
+                              <Label fx:id="addresseL" layoutX="293.0" layoutY="365.0" styleClass="my-label" text="Label" />
+                              <Label fx:id="nbL" layoutX="377.0" layoutY="418.0" styleClass="my-label" text="Label" />
                            </children>
                         </Pane>
                         <Group fx:id="grp2" layoutX="602.0" layoutY="92.0" />
@@ -50,6 +50,5 @@
     <stylesheets>
         <URL value="@style.css" />
         <URL value="@BG.css" />
-        <URL value="@Button.css" />
     </stylesheets>
 </AnchorPane>

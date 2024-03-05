@@ -52,13 +52,17 @@ Button {
   /*cursor: pointer;*/
 }
 Label {
-  -fx-font-size: 25px;
-  -fx-font-family: "Cooper Black";
+    -fx-font-size: 25px;
+    -fx-font-family: "Cooper Black";
 }
-MapView {
-  -fx-font-family: "Cooper Black";
-  -fx-font-size: 1px;
+.my-label {
+    -fx-font-size: 2px;
+    -fx-font-family: "Cooper Black";
 }
+/*MapView {*/
+/*  -fx-font-family: "Cooper Black";*/
+/*  -fx-font-size: 1px;*/
+/*}*/
 ListView {
   -fx-background-color: #ffffff; /* Light background */
   -fx-border-color: #e0e0e0; /* Light grey border */

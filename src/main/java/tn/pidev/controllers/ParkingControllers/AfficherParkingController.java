@@ -54,6 +54,7 @@ public class AfficherParkingController {
         mapView = new MapView();
         mapView.setPrefWidth(534);
         mapView.setPrefHeight(226);
+        System.out.println(mapView.getStylesheets());
         grp1.getChildren().add(1, mapView);
         grp1.getChildren().get(1).setTranslateX(7);
         grp1.getChildren().get(1).setTranslateY(14);
