@@ -1,6 +1,7 @@
 package tn.esprit.services.gestionUserServices;
 
 import tn.esprit.entities.gestionUserEntities.Administrateur;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.utils.MyDataBase;
 
 
@@ -296,6 +297,11 @@ public class ServiceAdmin implements IService<Administrateur> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+    @Override
+
+    public List<Client> getAllClients() throws SQLException {
         return null;
     }
 

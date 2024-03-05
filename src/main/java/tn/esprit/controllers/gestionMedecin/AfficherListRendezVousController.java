@@ -24,6 +24,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import opennlp.tools.tokenize.TokenizerME;
+import opennlp.tools.tokenize.TokenizerModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -44,6 +46,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.Cleaner;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -280,7 +283,7 @@ public class AfficherListRendezVousController {
             initialize();
         }
         if (!attribut.toLowerCase().equals("client") && !attribut.toLowerCase().equals("dr.nom") && !attribut.toLowerCase().equals("specialite")
-                && !attribut.toLowerCase().equals("n°tel") && !attribut.toLowerCase().equals("adresse")){
+                && !attribut.toLowerCase().equals("n°tel") && !attribut.toLowerCase().equals("daterv") && !attribut.toLowerCase().equals("adresse")){
             msgErreur.setText("_attribut val");
             return;
         }
@@ -458,5 +461,9 @@ public class AfficherListRendezVousController {
         }
 
     }
+
+
+
+
 
 }

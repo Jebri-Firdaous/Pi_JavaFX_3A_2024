@@ -2,6 +2,7 @@ package tn.esprit.controllers.gestionMedecin;
 
 import com.twilio.rest.api.v2010.account.Message;
 
+import java.io.InputStream;
 import java.time.LocalDateTime; // Import the LocalDateTime class
 import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 
@@ -26,6 +27,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import opennlp.tools.tokenize.TokenizerME;
+import opennlp.tools.tokenize.TokenizerModel;
 import tn.esprit.entities.gestionMedecin.*;
 import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.gestionMedecin.ServiceClient;
@@ -48,6 +51,9 @@ public class AjouterRendezVousController implements Initializable {
     public Label n_TelTextField;
     public ComboBox<Client> comboboxClient;
     public Label labelClient;
+    public TextArea feelingBox;
+    public Label labelResultOfFeelingBox;
+    public Button envoyer;
     @FXML
     private ComboBox<Integer> hourComboBox;
 
@@ -463,6 +469,52 @@ public class AjouterRendezVousController implements Initializable {
             popup.show(adresse_TextField.getScene().getWindow());
             isPopupVisible = true;
         }
+
+    }
+
+//    ----------------------Tokenizer--------------------------
+public static String Tokenizer(String text){
+    try (InputStream modelIn = AjouterRendezVousController.class.getResourceAsStream("/gestionMedecin/en-token.bin")) {
+        TokenizerModel model = new TokenizerModel(modelIn);
+        TokenizerME tokenizer = new TokenizerME(model);
+        Map<String, List<String>> specialtyTokens = new HashMap<>();
+
+// Add tokens for each specialty in French, including technical terms in their original form
+        specialtyTokens.put("Cardiologue", Arrays.asList("coeur", "douleur", "angine", "infarctus "));
+        specialtyTokens.put("Dermatologue", Arrays.asList("peau", "cutanee", "acne", "dermatite"));
+        specialtyTokens.put("Endocrinologue", Arrays.asList("diabète", "hormone", "thyroïde", "hormone "));
+        specialtyTokens.put("Gastro-entérologue", Arrays.asList("estomac", "gastro-intestinal", "ulcère", "IBS"));
+        specialtyTokens.put("Neurologue", Arrays.asList("cerveau", "migraine", "vasculaire ", "convulsion"));
+        specialtyTokens.put("Ophtalmologue", Arrays.asList("œil", "vision", "cataracte", "glaucome"));
+        specialtyTokens.put("Orthopédiste", Arrays.asList("os", "articulation", "arthrite", "fracture"));
+        specialtyTokens.put("Pédiatre", Arrays.asList("enfant", "bébé", "bébé", "vaccin"));
+        specialtyTokens.put("Psychiatre", Arrays.asList("sante mentale", "depression", "anxiete", "psychose"));
+        specialtyTokens.put("Radiologue", Arrays.asList("x-ray", "irm", "scanner", "échographie"));
+        specialtyTokens.put("Rhumatologue", Arrays.asList("arthrite", "rhumatisme", "auto-immun", "articulaire"));
+        specialtyTokens.put("Urologue", Arrays.asList("urine", "vessie", "prostate", "renale"));
+        String[] tokens = tokenizer.tokenize(text);
+
+        for (Map.Entry<String, List<String>> entry : specialtyTokens.entrySet()) {
+            String specialty = entry.getKey();
+            List<String> specialtyTokensList = entry.getValue();
+
+            for (String token : tokens) {
+                if (specialtyTokensList.contains(token.toLowerCase())) {
+                    return specialty;
+                }
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return "no detected";
+}
+
+    public void determinerSpecialiteAdequat(ActionEvent event) {
+        if (feelingBox.getText()==null){
+            return;
+        }
+        labelResultOfFeelingBox.setText(Tokenizer(feelingBox.getText()));
 
     }
 }

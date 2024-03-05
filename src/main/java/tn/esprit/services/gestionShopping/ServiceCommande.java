@@ -19,17 +19,23 @@ public class ServiceCommande implements IServiceCommande<Commande> {
     }
 
 
+
     @Override
     public void ajouterCommande(Commande commande) throws SQLException {
         if (commande.getNombre_Article() < 1) {
             throw new IllegalArgumentException("Une commande doit contenir au moins un article.");
         }
 
-        String sql = "INSERT INTO commande (nombre_article, prix_totale, delais_commande) VALUES (?, ?, ?)";
+        // Requête pour insérer une nouvelle commande avec l'ID de la personne du client
+        String sql = "INSERT INTO commande (id_personne, nombre_article, prix_totale, delais_commande) VALUES (?, ?, ?, ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setInt(1, commande.getNombre_Article());
-        preparedStatement.setDouble(2, commande.getPrix_Totale());
-        preparedStatement.setDate(3, new java.sql.Date(commande.getDelais_Commande().getTime()));
+
+        // Insérer l'ID de la personne sélectionnée dans la commande
+        preparedStatement.setInt(1, commande.getId_Personne()); // Supposons que vous avez une méthode getId_Personne() dans la classe Commande pour récupérer l'ID de la personne
+
+        preparedStatement.setInt(2, commande.getNombre_Article());
+        preparedStatement.setDouble(3, commande.getPrix_Totale());
+        preparedStatement.setDate(4, new java.sql.Date(commande.getDelais_Commande().getTime()));
         preparedStatement.executeUpdate();
 
         // Récupérer l'ID de la commande nouvellement insérée
@@ -41,7 +47,7 @@ public class ServiceCommande implements IServiceCommande<Commande> {
             throw new SQLException("Échec de la création de la commande, aucun ID généré.");
         }
 
-        // Insérer les articles associés à la commande dans la table de liaison commande_article
+        // Insérer les ID des articles associés à la commande dans la table de liaison commande_article
         for (Article article : commande.getArticles()) {
             String insertCommandeArticleQuery = "INSERT INTO commande_article (id_commande, id_article) VALUES (?, ?)";
             PreparedStatement commandeArticleStatement = connection.prepareStatement(insertCommandeArticleQuery);
@@ -50,6 +56,7 @@ public class ServiceCommande implements IServiceCommande<Commande> {
             commandeArticleStatement.executeUpdate();
         }
     }
+
 
 
     // Méthode pour mettre à jour l'ID de la commande dans les articles associés
@@ -188,10 +195,12 @@ public class ServiceCommande implements IServiceCommande<Commande> {
     @Override
     public List<Commande> afficherCommande() throws SQLException {
         List<Commande> commandes = new ArrayList<>();
-        String sql = "SELECT c.id_commande, c.nombre_article, c.prix_totale, c.delais_commande, GROUP_CONCAT(a.id_article) as id_articles, GROUP_CONCAT(a.nom_article) as nom_articles " +
+        String sql = "SELECT c.id_commande, c.nombre_article, c.prix_totale, c.delais_commande, p.id_personne, p.nom_personne, p.prenom_personne, GROUP_CONCAT(a.id_article) as id_articles, GROUP_CONCAT(a.nom_article) as nom_articles " +
                 "FROM commande c " +
                 "INNER JOIN commande_article ca ON c.id_commande = ca.id_commande " +
                 "INNER JOIN article a ON ca.id_article = a.id_article " +
+                "INNER JOIN client cl ON c.id_personne = cl.id_personne " +
+                "INNER JOIN personne p ON cl.id_personne = p.id_personne " +
                 "GROUP BY c.id_commande";
         try (Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(sql)) {
@@ -201,6 +210,10 @@ public class ServiceCommande implements IServiceCommande<Commande> {
                 commande.setNombre_Article(rs.getInt("nombre_article"));
                 commande.setPrix_Totale(rs.getDouble("prix_totale"));
                 commande.setDelais_Commande(rs.getDate("delais_commande"));
+                commande.setId_Personne(rs.getInt("id_personne"));
+                commande.setNom_Personne(rs.getString("nom_personne"));
+                commande.setPrenom_Personne(rs.getString("prenom_personne"));
+
                 String[] idArticles = rs.getString("id_articles").split(",");
                 String[] nomArticles = rs.getString("nom_articles").split(",");
                 List<Article> articles = new ArrayList<>();
@@ -216,6 +229,7 @@ public class ServiceCommande implements IServiceCommande<Commande> {
         }
         return commandes;
     }
+
 
 
 

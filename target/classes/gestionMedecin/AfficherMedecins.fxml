@@ -12,7 +12,7 @@
    <children>
       <fx:include source="../navBar.fxml" />
       <ListView fx:id="listViewMedecins" layoutX="50.0" layoutY="264.0" prefHeight="339.0" prefWidth="1058.0" stylesheets="@stylesForGM.css" />
-      <HBox layoutX="55.0" layoutY="236.0" prefHeight="21.0" prefWidth="1111.0" spacing="117.0">
+      <HBox layoutX="73.0" layoutY="236.0" prefHeight="21.0" prefWidth="1111.0" spacing="100.0">
          <children>
             <Label layoutX="200.0" layoutY="236.0" prefHeight="21.0" prefWidth="100.0" text="Nom" />
             <Label layoutX="385.0" layoutY="236.0" prefHeight="21.0" prefWidth="118.0" text="Prenom" />

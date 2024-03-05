@@ -78,6 +78,7 @@ tn\esprit\controllers\gestionMedecin\AjouterMedecinController.class
 tn\esprit\utils\MyDataBase.class
 tn\esprit\utils\QrCodeHotel.class
 tn\esprit\controllers\gestionMedecin\AfficherListRendezVousController$1$1.class
+tn\esprit\controllers\TourismeController\SmsController.class
 tn\esprit\services\gestionMedecin\ServiceAdmin.class
 tn\esprit\entities\gestionTransport\billet.class
 tn\esprit\controllers\gestionMedecin\MofidierRvController.class

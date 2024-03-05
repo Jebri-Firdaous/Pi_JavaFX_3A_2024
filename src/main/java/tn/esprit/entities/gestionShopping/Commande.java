@@ -11,6 +11,10 @@ public class Commande {
     private double prix_Totale;
     private Date delais_Commande;
     private List<Article> articles;
+    private int id_Personne;
+    private String nom_Personne;
+    private String prenom_Personne;
+
 
 
     // Autres attributs et méthodes
@@ -57,5 +61,29 @@ public class Commande {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public int getId_Personne() {
+        return id_Personne;
+    }
+
+    public String getNom_Personne() {
+        return nom_Personne;
+    }
+
+    public String getPrenom_Personne() {
+        return prenom_Personne;
+    }
+
+    public void setId_Personne(int id_Personne) {
+        this.id_Personne = id_Personne;
+    }
+
+    public void setNom_Personne(String nom_Personne) {
+        this.nom_Personne = nom_Personne;
+    }
+
+    public void setPrenom_Personne(String prenom_Personne) {
+        this.prenom_Personne = prenom_Personne;
     }
 }

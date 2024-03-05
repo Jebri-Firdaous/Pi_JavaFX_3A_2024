@@ -152,6 +152,43 @@ public class ServiceClient implements IService<Client> {
         }
         return clients;
     }
+    @Override
+
+    public List<Client> getAllClients() throws SQLException {
+
+        List<Client> clients = new ArrayList<>();
+
+        String query = "SELECT c.id_personne, p.nom_personne, p.prenom_personne " +
+
+                "FROM client c " +
+
+                "INNER JOIN personne p ON c.id_personne = p.id_personne"; // Assurez-vous que les noms de vos tables et colonnes sont corrects
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Client client = new Client();
+
+                client.setId_personne(resultSet.getInt("id_personne"));
+
+                client.setNom_personne(resultSet.getString("nom_personne"));
+
+                client.setPrenom_personne(resultSet.getString("prenom_personne"));
+
+// Ajoutez d'autres propriétés de client si nécessaire
+
+                clients.add(client);
+
+            }
+
+        }
+
+        return clients;
+
+    }
 
 
 }

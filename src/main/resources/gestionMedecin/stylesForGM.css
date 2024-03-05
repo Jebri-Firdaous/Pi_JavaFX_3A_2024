@@ -121,5 +121,11 @@ Label{
     -fx-min-height: 60px; /* Increase the height */
     -fx-max-width: 60px; /* Increase the width */
     -fx-max-height: 60px; /* Increase the height */
+}
 
+.buttonDeterminerSentiment {
+    -fx-min-width: 96px;
+    -fx-min-height: 29px;
+    -fx-max-width: 96px;
+    -fx-max-height: 29px;
 }

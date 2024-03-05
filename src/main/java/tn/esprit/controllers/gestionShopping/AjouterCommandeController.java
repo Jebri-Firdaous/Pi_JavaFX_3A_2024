@@ -28,14 +28,20 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.controlsfx.control.Notifications;
 import tn.esprit.entities.gestionShopping.Article;
 import tn.esprit.entities.gestionShopping.Commande;
+import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.services.gestionShopping.ServiceArticle;
 import tn.esprit.services.gestionShopping.ServiceCommande;
+import tn.esprit.services.gestionUserServices.ServiceClient;
 
 import java.io.IOException;
 import java.util.function.UnaryOperator;
 
 
 public class AjouterCommandeController {
+
+    @FXML
+    private ComboBox<String> clientComboBox;
+
     @FXML
     public Button ajouterCommandeButton;
     @FXML
@@ -62,6 +68,7 @@ public class AjouterCommandeController {
 
     private double prixTotal = 0.0;
     private final List<Article> selectedArticles = new ArrayList<>();
+  List<Client> clients = new ArrayList<>();
 
 
 
@@ -71,6 +78,20 @@ public class AjouterCommandeController {
 
     @FXML
     public void initialize() {
+
+        // Charger les clients depuis la base de données
+        try {
+            clients = new ServiceClient().getAllClients(); // Créer une instance de ServiceClient et appeler getAllClients()
+            ObservableList<String> observableClientNames = FXCollections.observableArrayList();
+            for (Client client : clients) {
+                String clientInfo = client.getId_personne() + " - " + client.getNom_personne() + " - " + client.getPrenom_personne();
+                observableClientNames.add(clientInfo);
+            }
+            clientComboBox.setItems(observableClientNames);
+            clientComboBox.getSelectionModel().selectFirst();
+        } catch (SQLException e) {
+            afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Impossible de charger les clients : " + e.getMessage());
+        }
 
         try {
             List<Article> articles = serviceArticle.afficherArticle();
@@ -119,29 +140,35 @@ public class AjouterCommandeController {
 
     @FXML
     void ajouterCommande(javafx.event.ActionEvent event) {
+
         Commande commande = null;
         try {
-            // Vérifier si les champs de paiement sont vides
-            if (nomCarteTextField.getText().isEmpty() || numeroCarteTextField.getText().isEmpty()) {
-                afficherAlerte(Alert.AlertType.ERROR, "Erreur de paiement", "Veuillez remplir tous les champs de paiement.");
+            // Vérifier si aucun client n'a été sélectionné
+
+            if (clientComboBox.getSelectionModel().isEmpty()) {
+
+                afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Veuillez sélectionner un client.");
+
                 return;
+
             }
 
-            // Vérifier si aucun article n'a été sélectionné
-            if (selectedArticles.isEmpty()) {
-                afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Veuillez sélectionner au moins un article.");
-                return;
-            }
+// Obtenir l'ID du client sélectionné
+
+            String selectedClientInfo = clientComboBox.getSelectionModel().getSelectedItem();
+
+            int clientId = Integer.parseInt(selectedClientInfo.split(" - ")[0]);
 
             int nombreArticle = selectedArticles.size();
-            Date delaisCommande = Date.from(LocalDate.now().plusDays(2).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
+            Date delaisCommande = Date.from(LocalDate.now().plusDays(2).atStartOfDay(ZoneId.systemDefault()).toInstant());
             // Créer une nouvelle commande avec les articles sélectionnés
             commande = new Commande();
             commande.setArticles(selectedArticles);
             commande.setNombre_Article(nombreArticle);
             commande.setPrix_Totale(prixTotal);
             commande.setDelais_Commande(delaisCommande);
+            commande.setId_Personne(clientId);
 
             // Obtenez un token de carte de crédit (ici, nous utilisons un token fictif pour les tests)
             String token = "tok_visa"; // Utilisez le token de carte de crédit fourni par Stripe

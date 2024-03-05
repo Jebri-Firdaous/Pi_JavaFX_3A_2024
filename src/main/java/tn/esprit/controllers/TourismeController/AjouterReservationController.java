@@ -95,6 +95,17 @@ public class AjouterReservationController implements Initializable {
             // Ajouter la réservation
             sh.ajouter(new Reservation(dureeValue, prixValue, dateValue, idHotel, typeChambre , client.getValue().getId_personne()));
 
+/////////////////////////////////////SMS////////////////////////////////////////////
+
+            Reservation reservation = new Reservation();
+            String messageBody = "Bonjour, une reservation  a été ajouté :\n"
+                    + "Date: " + reservation.getDate_reservation() + "\n"
+                    + "Type chombre: " + reservation.getType_chambre() + "\n"
+                    + "Prix: " + reservation.getPrix_reservation() + "\n"
+                    + "Durée: " + reservation.getDuree_reservation();
+
+            String recipient = "+21655498385";
+            SmsController.sendSms(recipient, messageBody);
 
 
 

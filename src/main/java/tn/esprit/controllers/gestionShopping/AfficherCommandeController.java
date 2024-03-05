@@ -153,6 +153,12 @@ public class AfficherCommandeController implements ModificationListener {
             contentStream.newLineAtOffset(100, page.getMediaBox().getHeight() - 200);
             contentStream.showText("Référence Commande : " + commande.getId_Commande());
             contentStream.newLineAtOffset(0, -30); // Retour à la ligne
+            // Ajouter les informations du client
+            contentStream.showText("ID du client : " + commande.getId_Personne());
+            contentStream.newLineAtOffset(0, -30);
+            contentStream.showText("Nom du client : " + commande.getNom_Personne());
+            contentStream.newLineAtOffset(0, -30);
+
             contentStream.showText("Nombre des articles commandés : " + commande.getNombre_Article());
             contentStream.newLineAtOffset(0, -30); // Retour à la ligne
             contentStream.showText("Prix total de la commande : " + commande.getPrix_Totale() + "DT");
@@ -174,12 +180,26 @@ public class AfficherCommandeController implements ModificationListener {
         }
     }
 
+
     private VBox createCommandeBox(Commande commande) {
         VBox commandeBox = new VBox();
         commandeBox.setStyle("-fx-border-color: #cccccc; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-padding: 12px;");
 
+        // Récupérer les détails de la personne associée à la commande
+        int idPersonne = commande.getId_Personne(); // Supposons que vous avez une méthode getId_Personne() dans la classe Commande pour récupérer l'ID de la personne
+        String nomPersonne = commande.getNom_Personne();
+        String prenomPersonne = commande.getPrenom_Personne();
+
+        Label idPersonneLabel = new Label("ID de la personne : " + idPersonne);
+        idPersonneLabel.setStyle("-fx-font-size: 14px;");
+
+        Label nomLabel = new Label("Nom de client : " + nomPersonne);
+        nomLabel.setStyle("-fx-font-size: 14px;");
+
+
         // Création du code QR pour la commande
-        ImageView qrCodeImageView = generateQRCodeCommande("ID de la commande : " + commande.getId_Commande()+"Prix totale : " +commande.getPrix_Totale()+"Delais commande : "+commande.getDelais_Commande()+"Nombre des articles : "+commande.getNombre_Article(), 200, 200);
+        // Modification du texte pour inclure les informations du client
+        ImageView qrCodeImageView = generateQRCodeCommande("ID de la commande : " + commande.getId_Commande() + " - ID du client : " + commande.getId_Personne() + " - Nom du client : " + commande.getNom_Personne() + " - Prix total : " + commande.getPrix_Totale() + " - Date de livraison : " + commande.getDelais_Commande() + " - Nombre d'articles : " + commande.getNombre_Article(), 200, 200);
         qrCodeImageView.setFitWidth(100);
         qrCodeImageView.setFitHeight(100);
 
@@ -249,7 +269,7 @@ public class AfficherCommandeController implements ModificationListener {
         HBox buttonBox = new HBox(modifierButton, deleteButton, genererPDFButton);
         buttonBox.setSpacing(10);
 
-        commandeBox.getChildren().addAll(qrCodeImageView, idLabel, nombreArticleLabel, prixLabel, delaisLabel, separator, articlesLabel, articlesBox, buttonBox);
+        commandeBox.getChildren().addAll(qrCodeImageView, idPersonneLabel, nomLabel, idLabel, nombreArticleLabel, prixLabel, delaisLabel, separator, articlesLabel, articlesBox, buttonBox);
         return commandeBox;
     }
 
