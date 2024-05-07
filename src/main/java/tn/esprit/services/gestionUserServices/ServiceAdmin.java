@@ -168,9 +168,14 @@ public class ServiceAdmin implements IService<Administrateur> {
     @Override
     public List<Administrateur> rechercher(String recherche) throws SQLException {
         List<Administrateur> administrateurs = new ArrayList<>();
-        String sql = "SELECT a.id_personne, a.nom_personne, a.prenom_personne, a.numero_telephone, a.mail_personne , a.role" +
+
+
+        String sql = "SELECT p.id_personne, a.role, p.nom_personne, p.prenom_personne, p.numero_telephone, p.mail_personne, p.mdp_personne, p.image_personne " +
                 "FROM administrateur a " +
-                "WHERE c.nom_personne LIKE ? OR a.role LIKE ?";
+                "JOIN personne p ON a.id_personne = p.id_personne " +
+                "WHERE p.nom_personne LIKE ? OR a.role LIKE ?";
+
+
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, "%" + recherche + "%");
         preparedStatement.setString(2, "%" + recherche + "%");
@@ -180,7 +185,7 @@ public class ServiceAdmin implements IService<Administrateur> {
             admin.setId_personne(rs.getInt("id_personne"));
             admin.setNom_personne(rs.getString("nom_personne"));
             admin.setPrenom_personne(rs.getString("prenom_personne"));
-            admin.setNumero_telephone(rs.getInt("numero_personne"));
+            admin.setNumero_telephone(rs.getInt("numero_telephone"));
             admin.setMail_personne(rs.getString("mail_personne"));
             admin.setMdp_personne(rs.getString("mdp_personne"));
             admin.setRole(rs.getString("role"));
@@ -188,7 +193,6 @@ public class ServiceAdmin implements IService<Administrateur> {
         }
         return administrateurs;
     }
-
     public String getnombyEmail(String email) {
         String NomPrenom = "";
         try {

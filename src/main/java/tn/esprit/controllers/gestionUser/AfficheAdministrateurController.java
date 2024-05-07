@@ -52,6 +52,10 @@ public class AfficheAdministrateurController {
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
         try {
+            rechercherAdminDansLaBase("");
+            search.textProperty().addListener((observable, oldValue, newValue) -> {
+                rechercherAdminDansLaBase(newValue);
+            });
             List<Administrateur> AdminsFromService = sa.afficher();
             nomAdmin.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomAdmin.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
@@ -92,7 +96,6 @@ public class AfficheAdministrateurController {
             alert.showAndWait();
         }
     }
-
     public void ToAjouterAdmin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/AjouterCompteAdmin.fxml"));

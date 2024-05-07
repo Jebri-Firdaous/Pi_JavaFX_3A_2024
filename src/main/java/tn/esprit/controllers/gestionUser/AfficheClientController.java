@@ -7,10 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.entities.gestionUserEntities.Client;
@@ -45,11 +42,16 @@ public class AfficheClientController {
 
     @FXML
     private TableColumn<Client, String> nomClient;
-
+@FXML
+private TextField search;
 
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
         try {
+            RechercherClientDansLaBase("");
+            search.textProperty().addListener((observable, oldValue, newValue) -> {
+                RechercherClientDansLaBase(newValue);
+            });
             List<Client> ClientFromService = sc.afficher();
             nomClient.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomClient.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
@@ -69,15 +71,13 @@ public class AfficheClientController {
     }
 
     @FXML
-    void Rechercher(String recherche) {
+    void RechercherClientDansLaBase(String recherche) {
         tableViewClient.getItems().clear(); // Effacer les anciens résultats de la ListView
         try {
             List<Client> clientTrouve = sc.rechercher(recherche);
             if (!clientTrouve.isEmpty()) {
-                // Si des hôtels ont été trouvés, les ajouter à la ListView
                 tableViewClient.getItems().addAll(clientTrouve);
             } else {
-                // Si aucun hôtel n'a été trouvé, afficher un message d'erreur
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Résultat de la recherche");
                 alert.setHeaderText(null);
@@ -111,6 +111,9 @@ public class AfficheClientController {
     }
 
     public void rechercher(ActionEvent event) {
+    }
+
+    public void recherche(ActionEvent event) {
     }
 }
 

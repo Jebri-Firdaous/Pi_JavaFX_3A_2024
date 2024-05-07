@@ -3,6 +3,7 @@ D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gest
 D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionShopping\ModifierArticleController.java
 D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionUser\ModifierAdminController.java
 D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionTransport\SmsController.java
+D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\TourismeController\SmsController.java
 D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities\gestionTransport\billet.java
 D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\gestionUserServices\ServiceClient.java
 D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\utils\QrCodeHotel.java

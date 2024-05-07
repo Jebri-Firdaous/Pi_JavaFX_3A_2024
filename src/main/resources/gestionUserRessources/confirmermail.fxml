@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8"
             fx:controller="tn.esprit.controllers.gestionUser.AdminLoginController">
     <children>
         <ImageView fitHeight="774.0" fitWidth="1312.0">

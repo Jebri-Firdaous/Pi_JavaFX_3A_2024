@@ -1,4 +1,5 @@
 package tn.esprit.controllers.TourismeController;
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -100,9 +101,8 @@ public class AjouterReservationController implements Initializable {
             Reservation reservation = new Reservation();
             String messageBody = "Bonjour, une reservation  a été ajouté :\n"
                     + "Date: " + reservation.getDate_reservation() + "\n"
-                    + "Type chombre: " + reservation.getType_chambre() + "\n"
-                    + "Prix: " + reservation.getPrix_reservation() + "\n"
-                    + "Durée: " + reservation.getDuree_reservation();
+                    + "Type chombre: " + reservation.getType_chambre() + "\n" ;
+
 
             String recipient = "+21655498385";
             SmsController.sendSms(recipient, messageBody);
@@ -133,8 +133,14 @@ public class AjouterReservationController implements Initializable {
 
             // Afficher un message de confirmation
      //       afficherMessage("Succès", "La réservation a été ajoutée avec succès.", Alert.AlertType.INFORMATION);
+/////////////////////////Mail////////////////////////////////////////////////////////
 
-            String message = "Reservation de " + nomHotelSelectionne + " avec succès !";
+            String message = "Cher/chère \n\n"
+                    + "Nous sommes ravis de vous informer que votre réservation au " + nomHotelSelectionne + "</b> a été confirmée.\n\n"
+                    + "Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter.\n"
+                    + "Nous avons hâte de vous accueillir et de vous offrir une excellente expérience.\n"
+                    + "Cordialement,\n"
+                    + "L'équipe E-city";
             HotelMail.send("ecity.tunis2000@gmail.com", message);
 
 
@@ -159,8 +165,18 @@ public class AjouterReservationController implements Initializable {
     }
     /*--------------------------------------------------Controle-De-Saisie------------------------------------------------------*/
 
+
+    @FXML
+    private ImageView tourism;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(5), tourism);
+        transition.setFromX(1200); // Position de départ en X (hors de l'écran à droite)
+        transition.setToX(560);
+// Position finale en X (0)
+        transition.play();
 
         // Initialize Combobox Client
         ServiceClient serviceClient = new ServiceClient();

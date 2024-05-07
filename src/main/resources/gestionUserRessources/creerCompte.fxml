@@ -15,7 +15,7 @@
 <?import java.lang.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8"
+            prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8"
             fx:controller="tn.esprit.controllers.gestionUser.CreerAdminController">
 
 

@@ -128,30 +128,31 @@ public class ServiceClient implements IService<Client> {
 
     @Override
     public List<Client> rechercher(String recherche) throws SQLException {
-        List<Client> clients = new ArrayList<>();
-        String sql = "SELECT c.id_personne, c.nom_personne, c.prenom_personne, c.numero_telephone, c.mail_personne, c.mdp_personne , c.image_personne, c.age, c.genre" +
-                "FROM client c " +
-                "WHERE c.nom_personne LIKE ? OR a.numero_personne LIKE ?";
+        List<Client> Clients = new ArrayList<>();
+
+
+        String sql = "SELECT p.id_personne, p.nom_personne, p.prenom_personne, p.numero_telephone, p.mail_personne, p.mdp_personne, p.image_personne " +
+                "FROM Client a " +
+                "JOIN personne p ON a.id_personne = p.id_personne " +
+                "WHERE p.nom_personne LIKE ? ";
+
+
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, "%" + recherche + "%");
-        preparedStatement.setString(2, "%" + recherche + "%");
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             Client client = new Client();
             client.setId_personne(rs.getInt("id_personne"));
             client.setNom_personne(rs.getString("nom_personne"));
             client.setPrenom_personne(rs.getString("prenom_personne"));
-            client.setNumero_telephone(rs.getInt("numero_personne"));
+            client.setNumero_telephone(rs.getInt("numero_telephone"));
             client.setMail_personne(rs.getString("mail_personne"));
             client.setMdp_personne(rs.getString("mdp_personne"));
-            client.setImage_personne(rs.getString("image_personne"));
-            client.setImage_personne(rs.getString("image_personne"));
-            client.setAge(rs.getInt("age"));
-            client.setGenre(rs.getString("genre"));
-            clients.add(client);
+            Clients.add(client);
         }
-        return clients;
+        return Clients;
     }
+
     @Override
 
     public List<Client> getAllClients() throws SQLException {

@@ -12,7 +12,7 @@ Button{
     -fx-border-radius: 12px;
     -fx-background-radius: 50px;
     -fx-text-fill: white;
-   -fx-pref-width: 187;
+    -fx-pref-width: 187;
     -fx-pref-height: 40;
 }
 ComboBox , TextField{

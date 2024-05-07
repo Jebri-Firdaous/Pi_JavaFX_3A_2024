@@ -10,17 +10,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="837.0" prefWidth="1352.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.ModifierHotel">
+<AnchorPane prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.ModifierHotel">
    <children>
       <fx:include source="AdminInterface.fxml" />
 
-      <ImageView fitHeight="694.0" fitWidth="1332.0" layoutX="7.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="694.0" fitWidth="1309.0" layoutX="7.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="70.0" arcWidth="70.0" height="586.0" layoutX="751.0" layoutY="238.0" opacity="0.23" stroke="BLACK" strokeType="INSIDE" width="574.0" />
-      <Button layoutX="906.0" layoutY="707.0" mnemonicParsing="false" onAction="#modifierHotel" style="-fx-background-color: B0E847;" text="Modifier" textFill="#fffafa">
+      <Rectangle arcHeight="70.0" arcWidth="70.0" height="586.0" layoutX="751.0" layoutY="238.0" opacity="0.23" stroke="BLACK" strokeType="INSIDE" width="548.0" />
+      <Button layoutX="887.0" layoutY="707.0" mnemonicParsing="false" onAction="#modifierHotel" prefHeight="44.0" prefWidth="127.0" style="-fx-background-color: B0E847;" text="Modifier" textFill="#fffafa">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
@@ -36,27 +36,27 @@
             <Font name="System Bold Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="prix3Modif" layoutX="1044.0" layoutY="362.0" promptText="Entrez prix de luxe" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="prix3Modif" layoutX="1044.0" layoutY="362.0" prefHeight="48.0" prefWidth="251.0" promptText="Entrez prix de luxe" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="prix2Modif" layoutX="764.0" layoutY="615.0" promptText="Entrez  prix moyen" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="prix2Modif" layoutX="764.0" layoutY="615.0" prefHeight="48.0" prefWidth="251.0" promptText="Entrez  prix moyen" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="prix1Modif" layoutX="760.0" layoutY="531.0" promptText="Entrez bas prix" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="prix1Modif" layoutX="760.0" layoutY="531.0" prefHeight="48.0" prefWidth="251.0" promptText="Entrez bas prix" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="adressModif" layoutX="764.0" layoutY="452.0" promptText="Modifiez addresse" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="adressModif" layoutX="764.0" layoutY="452.0" prefHeight="48.0" prefWidth="251.0" promptText="Modifiez addresse" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="nomModif" layoutX="760.0" layoutY="362.0" promptText="Modifier  nom" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="nomModif" layoutX="760.0" layoutY="362.0" prefHeight="48.0" prefWidth="251.0" promptText="Modifier  nom" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
@@ -72,17 +72,17 @@
             <Font name="Comic Sans MS" size="56.0" />
          </font>
       </Label>
-      <TextField fx:id="nombre1Modif" layoutX="1057.0" layoutY="452.0" promptText="nombre normal" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="nombre1Modif" layoutX="1057.0" layoutY="452.0" prefHeight="48.0" prefWidth="240.0" promptText="nombre normal" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="nombre2Modif" layoutX="1055.0" layoutY="531.0" promptText="nombre standard" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="nombre2Modif" layoutX="1055.0" layoutY="531.0" prefHeight="48.0" prefWidth="240.0" promptText="nombre standard" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="nombre3Modif" layoutX="1057.0" layoutY="615.0" promptText="nombre  luxe" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
+      <TextField fx:id="nombre3Modif" layoutX="1057.0" layoutY="615.0" prefHeight="48.0" prefWidth="240.0" promptText="nombre  luxe" style="-fx-border-color: #808080; -fx-border-width: 2px; -fx-border-radius: 8px;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>

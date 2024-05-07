@@ -13,44 +13,41 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.AfficherHotel">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.AfficherHotel">
     <children>
         <fx:include source="../navBar.fxml" />
 
-        <Pane layoutX="152.0" layoutY="219.0" prefHeight="5.0" prefWidth="1045.0" style="-fx-background-color: #154360;" />
-        <Text fx:id="myText" layoutX="384.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sélectionner un hôtel" wrappingWidth="548.16943359375">
+        <Pane layoutX="111.0" layoutY="190.0" prefHeight="5.0" prefWidth="1045.0" style="-fx-background-color: #154360;" />
+        <Text fx:id="myText" layoutX="311.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sélectionner un hôtel" wrappingWidth="548.16943359375">
             <font>
                 <Font name="Comic Sans MS" size="55.0" />
             </font>
         </Text>
-        <ListView fx:id="listeView" layoutX="207.0" layoutY="287.0" prefHeight="453.0" prefWidth="912.0" style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6; -fx-border-color: #18405A; -fx-border-radius: 5px; -fx-border-width: 3px;" />
+        <ListView fx:id="listeView" layoutX="120.0" layoutY="278.0" prefHeight="419.0" prefWidth="852.0" style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6; -fx-border-color: #18405A; -fx-border-radius: 5px; -fx-border-width: 3px;" />
         <Label fx:id="SelectedHotel" layoutX="152.0" layoutY="684.0" />
-        <Button layoutX="1138.0" layoutY="340.0" mnemonicParsing="false" onAction="#bt_modifier" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: B0E847;" text="Modifier">
+        <Button layoutX="1014.0" layoutY="337.0" mnemonicParsing="false" onAction="#bt_modifier" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: B0E847;" text="Modifier">
             <font>
                 <Font name="System Bold Italic" size="20.0" />
             </font>
         </Button>
-        <Button layoutX="1138.0" layoutY="411.0" mnemonicParsing="false" onAction="#boutonSupprimer" prefHeight="44.0" prefWidth="152.0" style="-fx-background-color: B0E847;" text="Supprimer">
+        <Button layoutX="1017.0" layoutY="404.0" mnemonicParsing="false" onAction="#boutonSupprimer" prefHeight="44.0" prefWidth="142.0" style="-fx-background-color: B0E847;" text="Supprimer">
             <font>
                 <Font name="System Bold Italic" size="20.0" />
             </font>
         </Button>
-        <ImageView fitHeight="488.0" fitWidth="795.0" layoutX="360.0" layoutY="362.0" opacity="0.21">
+        <ImageView fitHeight="451.0" fitWidth="795.0" layoutX="236.0" layoutY="280.0" opacity="0.21">
             <image>
                 <Image url="@hotel.png" />
             </image>
         </ImageView>
         <ImageView fx:id="qrCode" fitHeight="134.0" fitWidth="136.0" layoutX="1146.0" layoutY="539.0" pickOnBounds="true" preserveRatio="true" />
       <HBox layoutX="238.0" layoutY="315.0" />
-      <HBox layoutX="390.0" layoutY="231.0">
-         <children>
-                <TextField fx:id="rechercheHotelTF" layoutX="390.0" layoutY="231.0" prefHeight="45.0" prefWidth="615.0" promptText="Chercher un hotel" style="-fx-background-radius: 10px; -fx-border-color: #000000; -fx-border-radius: 8px;" />
-         </children>
-      </HBox>
-      <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="338.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+      <HBox layoutX="390.0" layoutY="231.0" />
+      <ImageView fitHeight="45.0" fitWidth="44.0" layoutX="120.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@thumbnail_loop.png" />
          </image>
       </ImageView>
+          <TextField fx:id="rechercheHotelTF" layoutX="170.0" layoutY="215.0" prefHeight="45.0" prefWidth="615.0" promptText="Chercher un hotel" style="-fx-background-radius: 10px; -fx-border-color: #000000; -fx-border-radius: 8px;" />
     </children>
 </AnchorPane>

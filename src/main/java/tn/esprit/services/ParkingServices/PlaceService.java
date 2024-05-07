@@ -61,7 +61,7 @@ public class PlaceService implements IService<Place>{
         return places;
     }
     public List<Place> recupererFiltrer(int id) throws SQLException {
-        String sql = "select * from place pl join parking pr on pl.id_parking = pr.id_parking where pl.id_parking = ?";
+        String sql = "select * from place  where id_parking = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         ResultSet rs = preparedStatement.executeQuery();
@@ -73,7 +73,7 @@ public class PlaceService implements IService<Place>{
             p.setType_place(rs.getString("type_place"));
             p.setEtat(rs.getString("etat"));
             p.setId_Parking(rs.getInt("id_parking"));
-            p.setId_Parking(rs.getInt("id_user"));
+            p.setIdCli(rs.getInt("id_user"));
 
             places.add(p);
         }
@@ -104,7 +104,7 @@ public class PlaceService implements IService<Place>{
         }
     }
     public List<Integer> refUser() throws SQLException {
-        String sql = "select * from Personne";
+        String sql = "select * from Client";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         List<Integer> refs = new ArrayList<>();

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="774.0" prefWidth="1312.0" style="-fx-background-color: grey;"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="739" prefWidth="1228" style="-fx-background-color: grey;"
             xmlns="http://javafx.com/javafx/8"
             fx:controller="tn.esprit.controllers.gestionUser.FacialRecognitionLoginController">
     <children>

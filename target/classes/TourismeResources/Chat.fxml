@@ -10,33 +10,19 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="an" prefHeight="774.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.ChatController">
+<AnchorPane id="AnchorPane" fx:id="an" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.ChatController">
     <children>
+          <Circle fill="WHITE" layoutX="93.0" layoutY="194.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" />
+
+        <fx:include source="../navBar.fxml" />
+        
         <TextField fx:id="ASK" layoutX="328.0" layoutY="174.0" onAction="#UserA" prefHeight="61.0" prefWidth="661.0" />
-        <TextArea fx:id="textchat" layoutX="328.0" layoutY="291.0" prefHeight="371.0" prefWidth="661.0" promptText="coversation BOT / utilisateur">
+        <TextArea fx:id="textchat" layoutX="342.0" layoutY="301.0" prefHeight="371.0" prefWidth="661.0" promptText="coversation BOT / utilisateur">
             <font>
                 <Font size="23.0" />
             </font>
         </TextArea>
-        <Pane prefHeight="952.0" prefWidth="200.0" style="-fx-background-color: D6D5F2;">
-            <children>
-                <Circle fill="WHITE" layoutX="100.0" layoutY="80.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" />
-
-                <Label layoutX="65.0" layoutY="146.0" text="Capuce">
-                    <font>
-                        <Font name="Britannic Bold" size="21.0" />
-                    </font>
-                </Label>
-
-                <Circle fill="#1fff44" layoutX="176.0" layoutY="26.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-            <ImageView fitHeight="200.0" fitWidth="200.0" layoutY="-20.0">
-               <image>
-                  <Image url="@robot.png" />
-               </image>
-            </ImageView>
-            </children>
-        </Pane>
-        <Label layoutX="260.0" layoutY="77.0" prefHeight="31.0" prefWidth="671.0" text="N'hésitez pas à demander n'importe quoi à notre assistant" textFill="#00a6ff">
+        <Label layoutX="300.0" layoutY="125.0" prefHeight="31.0" prefWidth="671.0" text="N'hésitez pas à demander n'importe quoi à notre assistant" textFill="#00a6ff">
             <font>
                 <Font name="Arial Black" size="20.0" />
             </font>
@@ -51,6 +37,11 @@
                 <Font name="Arial Black" size="12.0" />
             </font>
         </Label>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-7.0" layoutY="94.0">
+         <image>
+            <Image url="@robot.png" />
+         </image>
+      </ImageView>
 
 
     </children>

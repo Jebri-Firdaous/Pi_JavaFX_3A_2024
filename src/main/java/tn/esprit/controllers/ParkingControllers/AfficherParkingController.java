@@ -13,10 +13,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -35,12 +35,10 @@ public class AfficherParkingController {
     public Label nomL;
     public Label etatL;
     public Label addresseL;
-    
+    public Label nbL;
     public Group grp2;
     public VBox listVB;
     public Pane grp1;
-    public Button addB1;
-    public Label nbL;
     ParkingService ps=new ParkingService();
     public Button addB;
     public ListView<Parking> listid;
@@ -56,12 +54,10 @@ public class AfficherParkingController {
         mapView = new MapView();
         mapView.setPrefWidth(534);
         mapView.setPrefHeight(226);
-        grp1.getChildren().add(0, mapView);
-        grp1.getChildren().get(0).setTranslateX(-52);
-        grp1.getChildren().get(0).setTranslateY(-220);
-        /*grp2.getChildren().add(1, mapView);
-        grp2.getChildren().get(1).setTranslateX(32);
-        grp2.getChildren().get(1).setTranslateY(8);*/
+        System.out.println(mapView.getStylesheets());
+        grp1.getChildren().add(1, mapView);
+        grp1.getChildren().get(1).setTranslateX(7);
+        grp1.getChildren().get(1).setTranslateY(14);
         ArcGISMap map = new ArcGISMap(BasemapStyle.ARCGIS_TOPOGRAPHIC);
         mapView.setMap(map);
         try {
@@ -73,7 +69,11 @@ public class AfficherParkingController {
             listid = new ListView<>(data1);
             listid.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
+                    grp1.setVisible(true);
                     details(newValue);
+                }
+                else{
+                    grp1.setVisible(false);
                 }
             });
 
@@ -166,18 +166,18 @@ public class AfficherParkingController {
         try {
             Parking parking = listid.getSelectionModel().getSelectedItem();
             ps.supprimer(listid.getSelectionModel().getSelectedItem().getRef());
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/ParkingResources/data.txt", true))) {
-                    StringJoiner joiner = new StringJoiner(",");
-                    joiner.add(Integer.toString(parking.getRef()));
-                    joiner.add(parking.getNom());
-                    joiner.add(parking.getAddresse());
-                    joiner.add(Integer.toString(parking.getNbPlaceMax()));
-                    joiner.add(Integer.toString(parking.getNbPlaceOcc()));
-                    joiner.add(Float.toString(parking.getLati()));
-                    joiner.add(Float.toString(parking.getLongi()));
-                    joiner.add(parking.getEtat());
-                    writer.write(joiner.toString());
-                    writer.newLine();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Java\\PIDEV\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\data.txt", true))) {
+                StringJoiner joiner = new StringJoiner(",");
+                joiner.add(Integer.toString(parking.getRef()));
+                joiner.add(parking.getNom());
+                joiner.add(parking.getAddresse());
+                joiner.add(Integer.toString(parking.getNbPlaceMax()));
+                joiner.add(Integer.toString(parking.getNbPlaceOcc()));
+                joiner.add(Float.toString(parking.getLati()));
+                joiner.add(Float.toString(parking.getLongi()));
+                joiner.add(parking.getEtat());
+                writer.write(joiner.toString());
+                writer.newLine();
             } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
@@ -207,11 +207,8 @@ public class AfficherParkingController {
     public void naviguezVersAjouter(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AjouterParkings.fxml"));
-            Parent addPageRoot = loader.load();
-            Scene newPageScene = new Scene(addPageRoot);
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) nbL.getScene().getWindow();
-            stage.setScene(newPageScene);
+            Parent root=loader.load();
+            addB.getScene().setRoot(root);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -220,15 +217,8 @@ public class AfficherParkingController {
     public void refresh(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherParkingg.fxml"));
-            Parent addPageRoot = loader.load();
-            Scene newPageScene = new Scene(addPageRoot);
-            // Get the current stage and set the new scene
-            nbL.setVisible(true);
-            nbL.setText("Lable");
-            Stage stage = (Stage) nbL.getScene().getWindow();
-            stage.setScene(newPageScene);
-//            Parent root=loader.load();
-//            nbL.getScene().setRoot(root);
+            Parent root=loader.load();
+            addB.getScene().setRoot(root);
 //            WebEngine webEngine = mapp.getEngine();
 //            webEngine.load(Objects.requireNonNull(getClass().getResource("map.html")).toExternalForm());
         } catch (IOException e) {
@@ -236,7 +226,12 @@ public class AfficherParkingController {
         }
     }
     public void details(Parking newValue) {
-        nomL.setText(newValue.getNom());
+        if (newValue.getEtat().equals("Plein"))
+            etatL.setVisible(true);
+        else
+            etatL.setVisible(false);
+        etatL.setText(newValue.getEtat());
+        nomL.setText("Parking  "+newValue.getNom());
         addresseL.setText(newValue.getAddresse());
         try {
             nbL.setText(Integer.toString(ps.calculNbPlace(newValue.getRef())-newValue.getNbPlaceOcc()));

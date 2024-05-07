@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="774.0" prefWidth="1312.0" styleClass="root"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="739" prefWidth="1228" styleClass="root"
             xmlns="http://javafx.com/javafx/8"
             fx:controller="tn.esprit.controllers.gestionUser.AdminInterfaceControllers">
     <children>

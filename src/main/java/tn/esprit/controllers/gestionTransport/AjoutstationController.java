@@ -96,6 +96,8 @@ public class AjoutstationController {
             ss.ajouter(new Station(nom, adresse, ttype1.getValue()));
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherStation.fxml"));
             Parent newRoot = loader.load();
+
+
             AfficherStationController afficherStationController = loader.getController();
             Image image = new Image("/resourcesGestionTransport/img.png");
             ImageView imageView = new ImageView(image);
@@ -112,7 +114,9 @@ public class AjoutstationController {
                     .show();
             tnom.clear();
             tadress.clear();
+            tnom.getScene().setRoot(newRoot);
         }
+
         catch (SQLException e) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
