@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyDataBase {
-    private final String URL= "jdbc:mysql://localhost:3307/e_city_final";
+    private final String URL= "jdbc:mysql://localhost:3306/e_city_final";
     private final String USER= "root";
-    private final String PWD= "0000";
+    private final String PWD= "";
 
     private Connection connection;
     public static MyDataBase instance;
