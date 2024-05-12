@@ -5,29 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d58e71d-8a70-4a65-a4f7-5915bd74f869" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tn/esprit/services/gestionUserServices/ServiceUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_03_2024_04_00__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_03_2024_04_00__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/RegistrationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/EmailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/MyDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/MyDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/SaisieCode.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/SaisieCode.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/confirmermail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/confirmermail.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutAdministrateurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/VlidateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/VlidateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/creerCompte.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/creerCompte.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifierMdp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifierMdp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/pageConnexion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/pageConnexion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/test/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/utils/MyDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/utils/MyDataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +61,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "GU",
     "last_directory_selection": "C:/Users/Ezzedine/Desktop/ProjetPDEV3A8-Smart-City-Codemasters/src/main/java",
-    "last_opened_file_path": "D:/nv_pi/ProjetPDEV3A8-Smart-City-Codemasters/src/main/resources/gestionUserRessources",
+    "last_opened_file_path": "D:/nv_pi/JavaFx/ProjetPDEV3A8-Smart-City-Codemasters",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -119,6 +102,7 @@
       <recent name="tn.esprit.services.gestionUserServices" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tn.esprit.controllers.gestionUser" />
       <recent name="tn.esprit.controllers.gestionMedecin" />
       <recent name="tn.esprit.controllers" />
       <recent name="tn.esprit" />
@@ -368,7 +352,9 @@
       <workItem from="1715442264410" duration="16000" />
       <workItem from="1715442325342" duration="31000" />
       <workItem from="1715442382806" duration="21000" />
-      <workItem from="1715442426764" duration="25728000" />
+      <workItem from="1715442426764" duration="26740000" />
+      <workItem from="1715504353731" duration="890000" />
+      <workItem from="1715507327963" duration="4631000" />
     </task>
     <servers />
   </component>

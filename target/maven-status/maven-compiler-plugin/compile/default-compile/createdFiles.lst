@@ -2,6 +2,7 @@ tn\esprit\controllers\gestionShopping\ModifierArticleController$2.class
 tn\esprit\entities\gestionShopping\Commande.class
 tn\esprit\controllers\TourismeController\AjouterReservationController$6$1.class
 tn\esprit\controllers\gestionShopping\AjouterCommandeController.class
+tn\esprit\controllers\gestionUser\RegistrationController$1.class
 tn\esprit\controllers\TourismeController\ModifierReservationController.class
 tn\esprit\entities\TourismeEntities\Hotel.class
 tn\esprit\controllers\gestionMedecin\AfficherMedecinsController.class
@@ -85,6 +86,7 @@ tn\esprit\controllers\gestionMedecin\MofidierRvController.class
 tn\esprit\controllers\TourismeController\AjouterReservationController$1.class
 tn\esprit\entities\gestionMedecin\SendEmail$1.class
 tn\esprit\controllers\gestionShopping\AdminInterfaceControllers.class
+tn\esprit\controllers\gestionUser\RegistrationController$5.class
 tn\esprit\controllers\gestionUser\imgProcessor.class
 tn\esprit\controllers\gestionShopping\AfficherArticleController.class
 tn\esprit\controllers\gestionUser\AfficheAdministrateurController.class
@@ -108,12 +110,14 @@ tn\esprit\test\MainFX.class
 tn\esprit\controllers\gestionUser\AjoutClientController.class
 tn\esprit\controllers\TourismeController\AjouterReservationController$2$1.class
 tn\esprit\entities\gestionMedecin\Medecin.class
+tn\esprit\controllers\gestionUser\RegistrationController$4.class
 tn\esprit\controllers\TourismeController\AdminInterfaceControllers.class
 tn\esprit\controllers\gestionMedecin\AfficherMedecinsController$1.class
 tn\esprit\controllers\gestionUser\CreerAdminController$1.class
 tn\esprit\controllers\ParkingControllers\AfficherParkingController$1.class
 tn\esprit\controllers\TourismeController\AjouterReservationController$2.class
 tn\esprit\controllers\ParkingControllers\RecycleBinController.class
+tn\esprit\controllers\gestionUser\RegistrationController.class
 tn\esprit\entities\gestionShopping\Article.class
 tn\esprit\controllers\TourismeController\ModifierReservationController$5.class
 tn\esprit\services\ParkingServices\IService.class
@@ -153,6 +157,7 @@ tn\esprit\controllers\gestionTransport\AfficherStationController$1$1.class
 tn\esprit\controllers\gestionUser\AdminInterfaceControllers.class
 tn\esprit\entities\TourismeEntities\Reservation.class
 tn\esprit\services\TourismeService\ServiceHotel$1.class
+tn\esprit\controllers\gestionUser\RegistrationController$3.class
 tn\esprit\controllers\gestionUser\AdministrateurController.class
 tn\esprit\controllers\TourismeController\ModifierHotel.class
 tn\esprit\controllers\gestionUser\AjoutAdministrateurController$2.class
@@ -172,6 +177,7 @@ tn\esprit\services\ParkingServices\PlaceService.class
 tn\esprit\controllers\TourismeController\ModifierReservationController$6.class
 tn\esprit\controllers\gestionTransport\AfficherBilletController.class
 tn\esprit\entities\gestionShopping\Article$TypeArticle.class
+tn\esprit\controllers\gestionUser\RegistrationController$2.class
 tn\esprit\controllers\gestionMedecin\MofidierRvController$3.class
 tn\esprit\controllers\TourismeController\ModifierReservationController$1$1.class
 tn\esprit\controllers\gestionMedecin\AfficherListRendezVousController$1.class

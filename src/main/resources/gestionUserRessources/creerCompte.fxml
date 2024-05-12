@@ -16,7 +16,7 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8"
-            fx:controller="tn.esprit.controllers.gestionUser.LoginController">
+            fx:controller="tn.esprit.controllers.gestionUser.RegistrationController">
 
 
     <children>

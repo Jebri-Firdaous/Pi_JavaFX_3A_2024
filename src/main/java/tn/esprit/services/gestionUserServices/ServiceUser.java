@@ -49,7 +49,7 @@ public class ServiceUser implements IUserService<User> {
         String jsonRoles = "[\"ADMIN\"]";
 
         String sql = "INSERT INTO `user`(`nom_personne`, `prenom_personne`," +
-                " `numero_telephone`, `email`,`password`,`image_personne`,`role_admin`,`roles`) VALUES (?, ?, ?,?,?,?,?,?)";
+                " `numero_telephone`, `email`,`password`,`image_personne`,`role_admin`,`roles`,`is_verified`,`is_banned`) VALUES (?, ?, ?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, user.getNom_personne());
         preparedStatement.setString(2, user.getPrenom_personne());
@@ -59,6 +59,8 @@ public class ServiceUser implements IUserService<User> {
         preparedStatement.setString(6, user.getImage_personne());
         preparedStatement.setString(7, user.getRole_admin());
         preparedStatement.setObject(8, jsonRoles);
+        preparedStatement.setBoolean(9, false);
+        preparedStatement.setBoolean(10, false);
 
         preparedStatement.executeUpdate();
     }
@@ -81,6 +83,22 @@ public class ServiceUser implements IUserService<User> {
         preparedStatement.executeUpdate();
 
 
+    }
+    public int getAdminId(String nom, String prenom, String mail, String mdp, String roles) throws SQLException {
+        String query = "SELECT id FROM user WHERE  nom_personne = ? AND prenom_personne = ? AND email= ? AND password=? AND JSON_CONTAINS(roles, '[\"ADMIN\"]')";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, prenom);
+            preparedStatement.setString(3, mail);
+            preparedStatement.setString(4, mdp);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("id");
+                } else {
+                    throw new SQLException("Admin introuvable");
+                }
+            }
+        }
     }
 
 
@@ -228,13 +246,19 @@ public class ServiceUser implements IUserService<User> {
 
             if (rs.next()) {
                 user = new User();
+                user.setId(id);
+                user.setEmail(rs.getString("email"));
+                user.setRoles(rs.getString("roles"));
+                user.setMdp_personne(rs.getString("password"));
                 user.setNom_personne(rs.getString("nom_personne"));
                 user.setPrenom_personne(rs.getString("prenom_personne"));
-                user.setEmail(rs.getString("email"));
-                user.setNumero_telephone(rs.getInt("numero_telephone"));
                 user.setImage_personne(rs.getString("image_personne"));
-                user.setPrenom_personne(rs.getString("is_verified"));
-                user.setPrenom_personne(rs.getString("is_banned"));
+                user.setRole_admin(rs.getString("role_admin"));
+                user.setAge(rs.getInt("age"));
+                user.setGenre(rs.getString("genre"));
+                user.setNumero_telephone(rs.getInt("numero_telephone"));
+                user.setIs_verified(rs.getBoolean("is_verified"));
+                user.setIs_banned(rs.getBoolean("is_banned"));
                 // Set other user properties similarly
             }
         } catch (SQLException ex) {
@@ -292,5 +316,33 @@ public class ServiceUser implements IUserService<User> {
     }
 
 
+    @Override
+    public List<User> rechercher(String recherche) throws SQLException {
+        List<User> administrateurs = new ArrayList<>();
+
+
+        String sql = "SELECT id,,email,nom_personne,prenom_personne,image_personne,role_admin, p.mdp_personne, p.image_personne " +
+                "FROM administrateur a " +
+                "JOIN personne p ON a.id_personne = p.id_personne " +
+                "WHERE p.nom_personne LIKE ? OR a.role LIKE ?";
+
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + recherche + "%");
+        preparedStatement.setString(2, "%" + recherche + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            Administrateur admin = new Administrateur();
+            admin.setId_personne(rs.getInt("id_personne"));
+            admin.setNom_personne(rs.getString("nom_personne"));
+            admin.setPrenom_personne(rs.getString("prenom_personne"));
+            admin.setNumero_telephone(rs.getInt("numero_telephone"));
+            admin.setMail_personne(rs.getString("mail_personne"));
+            admin.setMdp_personne(rs.getString("mdp_personne"));
+            admin.setRole(rs.getString("role"));
+            //administrateurs.add(admin);
+        }
+        return administrateurs;
+    }
 
 }

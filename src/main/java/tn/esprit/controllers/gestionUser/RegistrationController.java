@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import tn.esprit.entities.gestionUserEntities.Administrateur;
 import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
 import tn.esprit.services.gestionUserServices.ServiceUser;
@@ -21,9 +20,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public class AjoutAdministrateurController {
+public class RegistrationController {
     public ServiceAdmin sa = new ServiceAdmin();
-    ServiceUser serviceUser =new ServiceUser();
+    public ServiceUser serviceUser = new ServiceUser();
 
 
     @FXML
@@ -35,8 +34,7 @@ public class AjoutAdministrateurController {
     @FXML
     private TextField mdp;
 
-    @FXML
-    private TextField tel;
+
 
     @FXML
     private Button creercpt;
@@ -98,18 +96,7 @@ public class AjoutAdministrateurController {
                 }
             }
         });
-        tel.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!newValue.matches("\\d{0,8}")) {
-                    tel.setStyle("-fx-border-color: red; -fx-border-width: 2px");
-                    telInvalid.setVisible(true);
-                } else {
-                    tel.setStyle("");
-                    telInvalid.setVisible(false);
-                }
-            }
-        });
+
         mail.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -241,17 +228,13 @@ public class AjoutAdministrateurController {
                     User newUser = new User(nomSaisi, prenomSaisi, 0, mailSaisi, mdpSaisi, "", null, 0, "[\"ADMIN\"]", roleSelected, false, false);
 
                     serviceUser.ajouterAdmin(newUser);
+                    System.out.println(newUser);
                     int adminId = serviceUser.getAdminId(nomSaisi,prenomSaisi, mailSaisi, mdpSaisi,"[\"ADMIN\"]");
-                    ToAfficherListeAdmine();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Compte ajoutée avec succes!");
                     alert.showAndWait();
-                    nom.setText("");
-                    prenom.setText("");
-                    mail.setText("");
-                    mdp.setText("");
-                    role.setValue("");
+                    ToValidate(adminId);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -269,5 +252,26 @@ public class AjoutAdministrateurController {
 
     }
 
+
+    public void ToValidate(int adminId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/ValidateProfile.fxml"));
+            Parent root = loader.load();
+
+            // Accéder au contrôleur de la page de validation du compte
+            VlidateController validateController = loader.getController();
+            validateController.setAdminId(adminId);
+
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) nom.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
     }
 
+}

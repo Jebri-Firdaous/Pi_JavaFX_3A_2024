@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import tn.esprit.entities.gestionUserEntities.Administrateur;
 import tn.esprit.entities.gestionUserEntities.Personne;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public class AfficheAdministrateurController {
     private final ServiceAdmin sa = new ServiceAdmin();
+   ServiceUser serviceUser = new ServiceUser();
     ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
     Administrateur currentAdminSelected;
     @FXML

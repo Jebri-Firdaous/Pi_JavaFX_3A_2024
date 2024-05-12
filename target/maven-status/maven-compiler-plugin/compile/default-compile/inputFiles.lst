@@ -25,6 +25,7 @@ D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controller
 D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\gestionMedecin\ServiceAdmin.java
 D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities\gestionTransport\billet.java
 D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionMedecin\AjouterRendezVousController.java
+D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionUser\RegistrationController.java
 D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionShopping\ModificationListener.java
 D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\gestionTransport\StationService.java
 D:\nv_pi\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities\ParkingEntities\Place.java

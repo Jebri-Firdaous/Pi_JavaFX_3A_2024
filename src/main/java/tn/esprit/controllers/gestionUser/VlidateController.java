@@ -20,7 +20,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import tn.esprit.entities.gestionUserEntities.Administrateur;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +30,7 @@ import java.sql.SQLException;
 
 public class VlidateController {
     ServiceAdmin sa = new ServiceAdmin();
+    ServiceUser serviceUser = new ServiceUser();
     Administrateur admin = new Administrateur();
     @FXML
     private TextField tel;
@@ -92,31 +95,37 @@ public class VlidateController {
     @FXML
     public void ToValidate(ActionEvent actionEvent) throws SQLException {
         if (!cheminPhotoProfile.isEmpty() && selectedImageFile != null && adminId != 0) {
-            try {
-                Administrateur administrateur = sa.getAdministrateur(adminId);
-                administrateur.setImage_personne(cheminPhotoProfile);
-                administrateur.setNumero_telephone(Integer.parseInt(tel.getText()));
-                System.out.println(adminId);
+            User administrateur = serviceUser.getOneById(adminId);
+            System.out.println(administrateur);
 
-                sa.modifier(administrateur);
+// Update the properties of the administrateur object
+            administrateur.setImage_personne(cheminPhotoProfile);
+            administrateur.setNumero_telephone(Integer.parseInt(tel.getText()));
+
+            try {
+                // Call the modifierAdmin method to update the user in the database
+                serviceUser.modifierAdmin(administrateur);
+                System.out.println(administrateur);
+
+                // Display success notification
                 Image icon = new Image(getClass().getResourceAsStream("/gestionUserRessources/ticke_icon.png"));
                 ImageView imageView = new ImageView(icon);
-                imageView.setFitWidth(50); // Définir la largeur souhaitée de l'icône
-                imageView.setFitHeight(50); // Définir la hauteur souhaitée de l'icône
+                imageView.setFitWidth(50); // Set the desired width of the icon
+                imageView.setFitHeight(50); // Set the desired height of the icon
 
                 Notifications.create()
-                        .graphic(imageView) // Définir l'icône de la notification
+                        .graphic(imageView) // Set the notification icon
                         .title("Notification")
                         .text("Validation de compte avec succès !")
-                        .hideAfter(Duration.seconds(5)) // Cacher la notification après 5 secondes
-                        .position(Pos.BOTTOM_RIGHT) // Positionner la notification en haut à droite de l'écran
-                        .owner(rootPane) // Spécifier le conteneur parent de la notification
+                        .hideAfter(Duration.seconds(5)) // Hide the notification after 5 seconds
+                        .position(Pos.BOTTOM_RIGHT) // Position the notification at the bottom right of the screen
+                        .owner(rootPane) // Specify the parent container of the notification
                         .show();
-                System.out.println(sa.getAdministrateur(adminId));
+
                 System.out.println("Administrateur modifié avec succès !");
-                navigateToPage("gestionUserRessources/Acceuil.fxml");
+                navigateToPage("gestionUserRessources/pageConnexion.fxml");
             } catch (SQLException e) {
-                // Gérer les erreurs de modification
+                // Handle errors that occur during the modification process
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Erreur lors de la modification de l'administrateur");
                 alert.setContentText("Une erreur s'est produite lors de la modification de l'administrateur. Veuillez réessayer.");
