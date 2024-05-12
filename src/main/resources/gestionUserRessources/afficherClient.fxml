@@ -35,6 +35,12 @@
             </items>
         </SplitPane>
         <Button layoutX="1020.0" layoutY="324.0" mnemonicParsing="false" onAction="#AjouterClient" prefHeight="38.0" prefWidth="201.0" style="-fx-background-color: B0E847;" text="Ajouter">
+
+        <font>
+                <Font name="System Bold" size="17.0" />
+            </font>
+        </Button>
+        <Button layoutX="1021.0" layoutY="370.0" mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: B0E847;" text="Supprimer">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>

@@ -10,38 +10,39 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class AfficheClientController {
-    private final ServiceClient sc = new ServiceClient();
+    private final ServiceUser sc = new ServiceUser();
     @FXML
-    public TableView<Client> tableViewClient;
-    ObservableList<Client> listeClients = FXCollections.observableArrayList();
-    Client currentClientSelected;
+    public TableView<User> tableViewClient;
+    ObservableList<User> listeClients = FXCollections.observableArrayList();
+    User currentClientSelected;
     @FXML
-    private TableColumn<Client, Integer> ageClient;
+    private TableColumn<User, Integer> ageClient;
     @FXML
     private Label label;
     @FXML
-    private TableColumn<Client, String> mailClient;
+    private TableColumn<User, String> mailClient;
 
     @FXML
-    private TableColumn<Client, String> prenomClient;
+    private TableColumn<User, String> prenomClient;
 
     @FXML
-    private TableColumn<Client, String> genreClient;
+    private TableColumn<User, String> genreClient;
 
     @FXML
-    private TableColumn<Client, Integer> telClient;
+    private TableColumn<User, Integer> telClient;
 
 
     @FXML
-    private TableColumn<Client, String> nomClient;
+    private TableColumn<User, String> nomClient;
 @FXML
 private TextField search;
 
@@ -52,7 +53,7 @@ private TextField search;
             search.textProperty().addListener((observable, oldValue, newValue) -> {
                 RechercherClientDansLaBase(newValue);
             });
-            List<Client> ClientFromService = sc.afficher();
+            List<User> ClientFromService = sc.afficherClient();
             nomClient.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomClient.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
             telClient.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
@@ -74,7 +75,7 @@ private TextField search;
     void RechercherClientDansLaBase(String recherche) {
         tableViewClient.getItems().clear(); // Effacer les anciens résultats de la ListView
         try {
-            List<Client> clientTrouve = sc.rechercher(recherche);
+            List<User> clientTrouve = sc.rechercher(recherche);
             if (!clientTrouve.isEmpty()) {
                 tableViewClient.getItems().addAll(clientTrouve);
             } else {
@@ -114,6 +115,9 @@ private TextField search;
     }
 
     public void recherche(ActionEvent event) {
+    }
+
+    public void supprimerAdmin(ActionEvent event) {
     }
 }
 

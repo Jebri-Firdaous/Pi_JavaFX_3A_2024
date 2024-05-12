@@ -10,8 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import tn.esprit.entities.gestionUserEntities.Administrateur;
-import tn.esprit.entities.gestionUserEntities.Personne;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
 import tn.esprit.services.gestionUserServices.ServiceUser;
 
@@ -20,50 +19,50 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AfficheAdministrateurController {
-    private final ServiceAdmin sa = new ServiceAdmin();
+    private final ServiceUser sa = new ServiceUser();
    ServiceUser serviceUser = new ServiceUser();
-    ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
-    Administrateur currentAdminSelected;
+    ObservableList<User> listeAdmins = FXCollections.observableArrayList();
     @FXML
-    private ListView<Administrateur> listViewAdmin;
+    private ListView<User> listViewAdmin;
     @FXML
     private Label label;
 
 
     @FXML
-    private TableColumn<Personne, String> nomAdmin;
+    private TableColumn<User, String> nomAdmin;
 
     @FXML
-    private TableColumn<Personne, String> prenomAdmin;
+    private TableColumn<User, String> prenomAdmin;
     @FXML
-    private TableView<Administrateur> tableViewAdmin;
-
-
-    @FXML
-    private TableColumn<Administrateur, Integer> telAdmin;
-
-    @FXML
-    private TableColumn<Administrateur, String> mailAdmin;
+    private TableView<User> tableViewAdmin;
 
 
     @FXML
-    private TableColumn<Administrateur, String> role;
+    private TableColumn<User, Integer> telAdmin;
+
+    @FXML
+    private TableColumn<User, String> mailAdmin;
+
+
+    @FXML
+    private TableColumn<User, String> role;
     @FXML
     private TextField search;
 
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
+
     public void initialize() {
         try {
-            rechercherAdminDansLaBase("");
+            //rechercherAdminDansLaBase("");
             search.textProperty().addListener((observable, oldValue, newValue) -> {
-                rechercherAdminDansLaBase(newValue);
+                //rechercherAdminDansLaBase(newValue);
             });
-            List<Administrateur> AdminsFromService = sa.afficher();
+            List<User> AdminsFromService = sa.afficherAdmin();
             nomAdmin.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomAdmin.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
             telAdmin.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
-            mailAdmin.setCellValueFactory(new PropertyValueFactory<>("mail_personne"));
-            role.setCellValueFactory(new PropertyValueFactory<>("role"));
+            mailAdmin.setCellValueFactory(new PropertyValueFactory<>("email"));
+            role.setCellValueFactory(new PropertyValueFactory<>("role_admin"));
             tableViewAdmin.setItems(FXCollections.observableArrayList(AdminsFromService));
             // Utilisez AdminsFromService
         } catch (SQLException e) {
@@ -75,11 +74,11 @@ public class AfficheAdministrateurController {
             alert.showAndWait();
         }
     }
-
+/*
     private void rechercherAdminDansLaBase(String recherche) {
         tableViewAdmin.getItems().clear(); // Effacer les anciens résultats du TableView
         try {
-            List<Administrateur> administrateursTrouves = sa.rechercher(recherche);
+            List<User> administrateursTrouves = sa.rechercher(recherche);
             if (!administrateursTrouves.isEmpty()) {
                 // Si des administrateurs ont été trouvés, les ajouter au TableView
                 tableViewAdmin.getItems().addAll(administrateursTrouves);
@@ -97,7 +96,7 @@ public class AfficheAdministrateurController {
             alert.setContentText("Erreur lors de la recherche des administrateurs" + e.getMessage());
             alert.showAndWait();
         }
-    }
+    }*/
     public void ToAjouterAdmin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/AjouterCompteAdmin.fxml"));
@@ -120,12 +119,9 @@ public class AfficheAdministrateurController {
         ToAjouterAdmin();
     }
 
-    public void supprimer(ActionEvent actionEvent) {
-
-    }
 
     public void modifier(ActionEvent actionEvent) {
-        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
         if (adminSelectionne != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/modifier.fxml"));
@@ -147,10 +143,10 @@ public class AfficheAdministrateurController {
     }
 
     public void supprimerAdmin(ActionEvent actionEvent) {
-        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
         if (adminSelectionne != null) {
             try {
-                sa.supprimer(adminSelectionne.getId_personne());
+                sa.supprimerUser(adminSelectionne.getId());
                 // Afficher un message de confirmation
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");
@@ -166,11 +162,14 @@ public class AfficheAdministrateurController {
         }
     }
 
-    public void recherche(ActionEvent event) throws SQLException {
+    public void recherche(ActionEvent event) {
+    }
+
+    /*public void recherche(ActionEvent event) throws SQLException {
         rechercherAdminDansLaBase("");
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             rechercherAdminDansLaBase(newValue);
         });
 
-    }
+    }*/
 }

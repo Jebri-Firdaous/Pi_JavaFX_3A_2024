@@ -22,7 +22,7 @@ import java.sql.SQLException;
 
 
 public class AjoutAdministrateurController {
-    public ServiceAdmin sa = new ServiceAdmin();
+    public ServiceUser sa = new ServiceUser();
     ServiceUser serviceUser =new ServiceUser();
 
 

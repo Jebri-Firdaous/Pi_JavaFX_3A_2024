@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -303,6 +304,8 @@ public class NavBarController {
         }
     }
 
+    @FXML
+    private Label label;
     @FXML
     void afficherAdmin() {
 

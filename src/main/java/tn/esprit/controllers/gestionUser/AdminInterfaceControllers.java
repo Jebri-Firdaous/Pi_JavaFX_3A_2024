@@ -16,6 +16,7 @@
     import javafx.stage.Stage;
     import javafx.util.Duration;
     import tn.esprit.services.gestionUserServices.ServiceAdmin;
+    import tn.esprit.services.gestionUserServices.ServiceUser;
 
     import java.io.IOException;
 
@@ -23,7 +24,7 @@
     public class AdminInterfaceControllers {
         /*--------------------------------------------------- Attribut ----------------------------------------------------------*/
 
-        ServiceAdmin sa = new ServiceAdmin();
+        ServiceUser sa = new ServiceUser();
         @FXML
         private Label label;
         @FXML

@@ -18,10 +18,10 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import tn.esprit.entities.TourismeEntities.Reservation;
-import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 import tn.esprit.utils.HotelMail;
 
 import java.io.IOException;
@@ -36,7 +36,7 @@ import java.util.ResourceBundle;
 public class AjouterReservationController implements Initializable {
 
     @FXML
-    private ComboBox<Client>  client ;
+    private ComboBox<User>  client ;
 
     private final ServiceReservation sh = new ServiceReservation();
     private final ServiceHotel serviceHotel = new ServiceHotel();
@@ -56,7 +56,7 @@ public class AjouterReservationController implements Initializable {
 
     @FXML
     void choisirHotel(ActionEvent event) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/e_city_final", "root", "0000")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_city_final", "root", "")) {
             String query = "SELECT `nom_hotel` FROM `hotel`";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                  ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -94,7 +94,7 @@ public class AjouterReservationController implements Initializable {
             }
             ServiceReservation sr = new ServiceReservation(); // Créez une instance de ServiceReservation
             // Ajouter la réservation
-            sh.ajouter(new Reservation(dureeValue, prixValue, dateValue, idHotel, typeChambre , client.getValue().getId_personne()));
+            sh.ajouter(new Reservation(dureeValue, prixValue, dateValue, idHotel, typeChambre , client.getValue().getId()));
 
 /////////////////////////////////////SMS////////////////////////////////////////////
 
@@ -179,11 +179,11 @@ public class AjouterReservationController implements Initializable {
         transition.play();
 
         // Initialize Combobox Client
-        ServiceClient serviceClient = new ServiceClient();
-        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        ServiceUser serviceClient = new ServiceUser();
+        ObservableList<User> clientsList = FXCollections.observableArrayList();
         client.setItems(clientsList);
         try {
-            clientsList.addAll(serviceClient.afficher());
+            clientsList.addAll(serviceClient.afficherClient());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

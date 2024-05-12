@@ -51,7 +51,7 @@
                 <Font name="System Bold" size="17.0" />
             </font>
         </Button>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="143.0" prefHeight="44.0" prefWidth="603.0" text="Liste des Administrateurs" textFill="#1e3163">
+        <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="143.0" prefHeight="44.0" prefWidth="603.0" text="Liste des Administrateurs" textFill="#1e3163">
             <font>
                 <Font name="Arial Black" size="30.0" />
             </font>

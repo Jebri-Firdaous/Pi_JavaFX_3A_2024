@@ -18,9 +18,11 @@ import tn.esprit.entities.TourismeEntities.Hotel;
 
 import tn.esprit.entities.TourismeEntities.Reservation;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
 import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 import tn.esprit.utils.ReservationPDF;
 
 import java.awt.*;
@@ -73,8 +75,8 @@ public class AfficherReservationController {
                         // Si la cellule est vide ou l'objet réservation est null, ne rien afficher
                         setText(null);
                     } else {
-                        ServiceClient serviceClient = new ServiceClient();
-                        Client client = serviceClient.getClientById(reservation.getId_personne());
+                        ServiceUser serviceClient = new ServiceUser();
+                        User client = serviceClient.getOneById(reservation.getId_personne());
 
                         // Crée un GridPane pour aligner les valeurs horizontalement
                         GridPane gridPane = new GridPane();

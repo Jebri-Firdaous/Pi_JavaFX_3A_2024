@@ -66,16 +66,15 @@ public class ServiceReservation implements IService<Reservation> {
                 "r.id_hotel, " +
                 "r.type_chambre, " +
                 "h.nom_hotel, " +
-                "p.nom_personne, " +
-                "c.id_personne " +  // Ajout de l'ID de la personne
+                "c.nom_personne, " +
+                "c.id " +  // Ajout de l'ID de la personne
                 "FROM " +
                 "reservation r " +
                 "JOIN " +
                 "hotel h ON r.id_hotel = h.id_hotel " +
                 "JOIN " +
-                "client c ON r.id_personne = c.id_personne " +  // Jointure avec la table client
-                "JOIN " +
-                "personne p ON c.id_personne = p.id_personne";  // Jointure avec la table personne
+                "user c ON r.id_personne = c.id " ;  // Jointure avec la table client
+               // Jointure avec la table personne
 
 
         try (Statement statement = connection.createStatement();
@@ -96,7 +95,7 @@ public class ServiceReservation implements IService<Reservation> {
                 Reservation.TypeChambre typeChambre = Reservation.TypeChambre.valueOf(typeChambreStr.toUpperCase());
                 reservation.setType_chambre(typeChambre);
               //  reservation.setId_personne(rs.getInt("id_personne"));
-                reservation.setId_personne(rs.getInt("id_personne"));
+                reservation.setId_personne(rs.getInt("id"));
 
                 reservations.add(reservation);
             }

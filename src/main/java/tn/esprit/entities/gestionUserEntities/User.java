@@ -163,22 +163,10 @@ public class User {
 
     }
 
+
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nom_personne='" + nom_personne + '\'' +
-                ", prenom_personne='" + prenom_personne + '\'' +
-                ", numero_telephone=" + numero_telephone +
-                ", email='" + email + '\'' +
-                ", mdp_personne='" + password + '\'' +
-                ", image_personne='" + image_personne + '\'' +
-                ", genre='" + genre + '\'' +
-                ", age=" + age +
-                ", roles='" + roles + '\'' +
-                ", role_admin='" + role_admin + '\'' +
-                ", is_verified=" + is_verified +
-                ", is_banned=" + is_banned +
-                '}';
+        return getNom_personne()+" "+getPrenom_personne();
+
     }
 }

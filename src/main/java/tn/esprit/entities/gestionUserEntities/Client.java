@@ -47,4 +47,5 @@ public class Client extends Personne {
     public String toString() {
         return getNom_personne()+" "+getPrenom_personne();
     }
+
 }

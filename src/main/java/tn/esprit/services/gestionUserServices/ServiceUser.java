@@ -15,11 +15,34 @@ public class ServiceUser implements IUserService<User> {
     private Connection connection;
     private List<User> adminList;
     private List<User> clientList;
+    private List<User> nomClient;
+
     public ServiceUser() {
 
         connection = MyDataBase.getInstance().getConnection();
         adminList = new ArrayList<>();
         clientList = new ArrayList<>();
+    }
+    public List<String> afficherclient() throws SQLException {
+        List<String> nomClients = new ArrayList<>(); // Liste pour stocker les noms des clients
+
+        String sql = "SELECT * FROM User";
+        try (Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)) {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNom_personne(rs.getString("Nom_personne"));
+                user.setPrenom_personne(rs.getString("prenom_personne"));
+
+                if (user.getRoles().contains("CLIENT")) {
+                    // Ajouter le nom du client à la liste
+                    nomClients.add(user.getNom_personne() + " " + user.getPrenom_personne());
+                }
+            }
+        } // La connexion sera automatiquement fermée après la fin du bloc try-with-resources
+
+        return nomClients; // Retourner la liste des noms des clients
     }
 
 
@@ -187,6 +210,9 @@ public class ServiceUser implements IUserService<User> {
         }
 
 
+
+
+
     @Override
     public void supprimerUser(int id) throws SQLException {
         String sql = "DELETE FROM `user` WHERE `id`= ?  ";
@@ -293,6 +319,8 @@ public class ServiceUser implements IUserService<User> {
         }
         return user;
     }
+
+
 
     public String getnombyEmail(String email) {
         String NomPrenom = "";
