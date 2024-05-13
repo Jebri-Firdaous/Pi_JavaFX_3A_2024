@@ -30,10 +30,10 @@ import javafx.stage.Stage;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import tn.esprit.entities.gestionMedecin.*;
-import tn.esprit.entities.gestionUserEntities.Client;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +49,7 @@ public class AjouterRendezVousController implements Initializable {
     public ComboBox<String> specialiteR;
     public Label adresse_TextField;
     public Label n_TelTextField;
-    public ComboBox<Client> comboboxClient;
+    public ComboBox<User> comboboxClient;
     public Label labelClient;
     public TextArea feelingBox;
     public Label labelResultOfFeelingBox;
@@ -78,11 +78,11 @@ public class AjouterRendezVousController implements Initializable {
             throw new RuntimeException(e);
         }
         // Initialize Combobox Client
-        ServiceClient serviceClient = new ServiceClient();
-        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        ServiceUser serviceClient = new ServiceUser();
+        ObservableList<User> clientsList = FXCollections.observableArrayList();
         comboboxClient.setItems(clientsList);
         try {
-            clientsList.addAll(serviceClient.afficher());
+            clientsList.addAll(serviceClient.afficherClient());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -151,6 +151,7 @@ public class AjouterRendezVousController implements Initializable {
                 }
             }
         });
+
 
     }
 
@@ -222,20 +223,21 @@ public class AjouterRendezVousController implements Initializable {
 
         }
         try {
-            serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin, comboboxClient.getValue().getId_personne()));
+            serviceRendezVous.ajouter(new Rendez_vous(dateTime, medecinR.getValue().id_medecin, comboboxClient.getValue().getId()));
             // for sms to doctor
             ServiceMedecin serviceMedecin = new ServiceMedecin();
             Medecin medecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
             TwilioSendSms twilioSendSms = new TwilioSendSms();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
             String msg = "Bonjour Dr. " + medecin.getNom_medecin() + " vous avez un rendez-vous le " + dateTime.format(myFormatObj);
-            Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
+//            Twilio --------------------------------
+//            Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
 
             // For email to client
-            ServiceClient serviceClient = new ServiceClient();
-            Client client = serviceClient.getClientById(comboboxClient.getValue().getId_personne());
+            ServiceUser serviceUser = new ServiceUser();
+            User client = serviceUser.getOneById(comboboxClient.getValue().getId());
             // 7ot email l client
-            String receiverAdresse = "tavef44143@aersm.com";
+            String receiverAdresse = "xofisa6262@facais.com";
             String subject = "Ajouter Rendez-Vous";
             String body = "Bonjour Mr." + client.getNom_personne() + " votre rendezVous avec Dr." + medecin.getNom_medecin() + " sera le " + dateTime.format(myFormatObj);
             new SendEmail(receiverAdresse, subject, body);
@@ -429,10 +431,10 @@ public class AjouterRendezVousController implements Initializable {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
         ServiceMedecin serviceMedecin = new ServiceMedecin();
-        List<RendezVous> listRendezvous = serviceRendezVous.afficher();
+        List<Rendez_vous> listRendezvous = serviceRendezVous.afficher();
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
-        for (RendezVous rendezVous : listRendezvous) {
+        for (Rendez_vous rendezVous : listRendezvous) {
             int yearRendezVous = rendezVous.getDate_rendez_vous().toLocalDateTime().getYear();
             int monthNumberRendezvous = rendezVous.getDate_rendez_vous().toLocalDateTime().getMonth().getValue();
             if ((yearRendezVous == year) && (monthNumberRendezvous == month)) {

@@ -19,50 +19,37 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.TokenizerModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import tn.esprit.entities.gestionMedecin.*;
-import tn.esprit.entities.gestionTransport.Station;
-import tn.esprit.entities.gestionTransport.billet;
-import tn.esprit.entities.gestionUserEntities.Client;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.ref.Cleaner;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AfficherListRendezVousController {
-    public ListView<RendezVous> listViewRendezVous;
+    public ListView<Rendez_vous> listViewRendezVous;
     @FXML
     public Label labelListRV;
 
@@ -72,9 +59,9 @@ public class AfficherListRendezVousController {
 
     public ImageView downloadPdf;
     public ImageView tri;
-    RendezVous currentRendezVousSelected;
+    Rendez_vous currentRendezVousSelected;
     private final ServiceRendezVous serviceRendezVous = new ServiceRendezVous();
-    ObservableList<RendezVous> listRndezVous;
+    ObservableList<Rendez_vous> listRndezVous;
 
     public void initialize() {
         downloadPdf.setOnMouseClicked(event -> {
@@ -86,16 +73,16 @@ public class AfficherListRendezVousController {
         listRndezVous = FXCollections.observableArrayList();
         listViewRendezVous.setItems(listRndezVous);
         try {
-            List<RendezVous> rendezvousFromService = serviceRendezVous.afficher();
+            List<Rendez_vous> rendezvousFromService = serviceRendezVous.afficher();
             listRndezVous.addAll(rendezvousFromService);
 
             // Set a custom CellFactory for the ListView
-            listViewRendezVous.setCellFactory(new Callback<ListView<RendezVous>, ListCell<RendezVous>>() {
+            listViewRendezVous.setCellFactory(new Callback<ListView<Rendez_vous>, ListCell<Rendez_vous>>() {
                 @Override
-                public ListCell<RendezVous> call(ListView<RendezVous> param) {
-                    return new ListCell<RendezVous>() {
+                public ListCell<Rendez_vous> call(ListView<Rendez_vous> param) {
+                    return new ListCell<Rendez_vous>() {
                         @Override
-                        protected void updateItem(RendezVous rendezVous, boolean empty) {
+                        protected void updateItem(Rendez_vous rendezVous, boolean empty) {
                             super.updateItem(rendezVous, empty);
                             if (empty || rendezVous == null) {
                                 setText(null);
@@ -103,9 +90,9 @@ public class AfficherListRendezVousController {
                             } else {
                                 // Assuming this code is inside a method where you have access to the rendezVous object
                                 ServiceMedecin sm = new ServiceMedecin();
-                                ServiceClient serviceClient = new ServiceClient();
+                                ServiceUser serviceClient = new ServiceUser();
                                 Medecin medecin = sm.getMedecinById(rendezVous.getId_medecin());
-                                Client client = serviceClient.getClientById(rendezVous.getId_personne());
+                                User client = serviceClient.getOneById(rendezVous.getId_personne());
                                 String doctorName = medecin.getNom_medecin();
                                 String doctorSurname = medecin.getPrenom_medecin_medecin();
                                 String specialty = medecin.getSpecialite_medecin();
@@ -159,9 +146,9 @@ public class AfficherListRendezVousController {
                 }
             });
 
-            listViewRendezVous.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<RendezVous>() {
+            listViewRendezVous.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Rendez_vous>() {
                 @Override
-                public void changed(ObservableValue<? extends RendezVous> observableValue, RendezVous oldRendezVous, RendezVous newRendezVous) {
+                public void changed(ObservableValue<? extends Rendez_vous> observableValue, Rendez_vous oldRendezVous, Rendez_vous newRendezVous) {
                     currentRendezVousSelected = newRendezVous;
                     // Display the selected item
                     if (currentRendezVousSelected != null) {
@@ -199,13 +186,13 @@ public class AfficherListRendezVousController {
                 LocalDateTime dateTime = currentRendezVousSelected.getDate_rendez_vous().toLocalDateTime();
                 // Sms for Doctor
                 String msg = "Bonjour Dr. "+medecin.getNom_medecin()+" Votre rendez-vous le " + dateTime.format(myFormatObj) +" sera annulé ";
-                Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
+//                Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
 
                 // For email to client
-                ServiceClient serviceClient = new ServiceClient();
-                Client client = serviceClient.getClientById(currentRendezVousSelected.getId_personne());
+                ServiceUser serviceClient = new ServiceUser();
+                User client = serviceClient.getOneById(currentRendezVousSelected.getId_personne());
                 // 7ot email l client
-                String receiverAdresse = "tavef44143@aersm.com";
+                String receiverAdresse = "xofisa6262@facais.com";
                 String subject = "supprimer Rendez-Vous";
                 String body = "Bonjour Mr."+client.getNom_personne()+" votre rendezVous avec Dr."+medecin.getNom_medecin()+" à "+dateTime.format(myFormatObj) + " sera annulé";
                 new SendEmail(receiverAdresse, subject, body);
@@ -342,7 +329,7 @@ public class AfficherListRendezVousController {
     }
 
     public void sortByDate() {
-        ObservableList<RendezVous> rendezVous = listViewRendezVous.getItems();
+        ObservableList<Rendez_vous> rendezVous = listViewRendezVous.getItems();
         rendezVous.sort((rv1, rv2) -> rv1.getDate_rendez_vous().compareTo(rv2.getDate_rendez_vous()));
     }
 /*------------------------- pdf ----------------------------------*/
@@ -398,7 +385,7 @@ public class AfficherListRendezVousController {
 
             // Assuming listRndezVous is your ObservableList<RendezVous>
             // For demonstration, let's assume you have a method to get all items
-            List<RendezVous> rendezvousList = listViewRendezVous.getItems();
+            List<Rendez_vous> rendezvousList = listViewRendezVous.getItems();
 
             // Draw table headers
             float yPosition = yStart - rowHeight - tableMargin;
@@ -417,10 +404,10 @@ public class AfficherListRendezVousController {
 
             // Draw table data
             yPosition -= rowHeight + tableMargin;
-            for (RendezVous rendezVous : rendezvousList) {
+            for (Rendez_vous rendezVous : rendezvousList) {
                 xPosition = margin;
                 // Assuming you have methods to get details from RendezVous
-                String clientName = new ServiceClient().getClientById(rendezVous.getId_personne()).getNom_personne(); // Example method
+                String clientName = new ServiceUser().getOneById(rendezVous.getId_personne()).getNom_personne(); // Example method
                 String doctorName = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getNom_medecin(); // Example method
                 String specialty = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getSpecialite_medecin(); // Example method
 

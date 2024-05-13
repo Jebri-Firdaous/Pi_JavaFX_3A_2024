@@ -14,8 +14,8 @@ import java.util.Objects;
 import javafx.stage.Stage;
 import tn.esprit.controllers.gestionMedecin.AfficherListRendezVousController;
 import tn.esprit.controllers.gestionMedecin.AfficherMedecinsController;
-import tn.esprit.controllers.gestionTransport.AfficherBilletController;
-import tn.esprit.controllers.gestionTransport.AfficherStationController;
+//import tn.esprit.controllers.gestionTransport.AfficherBilletController;
+//import tn.esprit.controllers.gestionTransport.AfficherStationController;
 
 public class NavBarController {
 
@@ -90,42 +90,42 @@ public class NavBarController {
         }
     }
 
-    public void afficherBillet(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherBillet.fxml"));
-            Parent newPageRoot = loader.load();
-            AfficherBilletController afficherBilletController = loader.getController();
+//    public void afficherBillet(ActionEvent actionEvent) {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherBillet.fxml"));
+//            Parent newPageRoot = loader.load();
+//            AfficherBilletController afficherBilletController = loader.getController();
+//
+//            // Create a new scene with the newPageRoot
+//            Scene pageScene = new Scene(newPageRoot);
+//
+//            // Get the current stage and set the new scene
+//            Stage stage = (Stage) contentPane.getScene().getWindow();
+//            stage.setScene(pageScene);
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-            // Create a new scene with the newPageRoot
-            Scene pageScene = new Scene(newPageRoot);
-
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) contentPane.getScene().getWindow();
-            stage.setScene(pageScene);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void afficherStation(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherStation.fxml"));
-            Parent newPageRoot = loader.load();
-            AfficherStationController afficherStationController = loader.getController();
-
-            // Create a new scene with the newPageRoot
-            Scene pageScene = new Scene(newPageRoot);
-
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) contentPane.getScene().getWindow();
-            stage.setScene(pageScene);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
+//    public void afficherStation(ActionEvent actionEvent) {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherStation.fxml"));
+//            Parent newPageRoot = loader.load();
+//            AfficherStationController afficherStationController = loader.getController();
+//
+//            // Create a new scene with the newPageRoot
+//            Scene pageScene = new Scene(newPageRoot);
+//
+//            // Get the current stage and set the new scene
+//            Stage stage = (Stage) contentPane.getScene().getWindow();
+//            stage.setScene(pageScene);
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
 
     @FXML
     void afficherArticle() {

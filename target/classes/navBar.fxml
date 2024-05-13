@@ -50,8 +50,8 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion transport">
                             <items>
-                                <MenuItem onAction="#afficherBillet" text="Gerer Billet" />
-                                <MenuItem onAction="#afficherStation" text="Gerer Station" />
+<!--                                <MenuItem onAction="#afficherBillet" text="Gerer Billet" />-->
+<!--                                <MenuItem onAction="#afficherStation" text="Gerer Station" />-->
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion parking">
