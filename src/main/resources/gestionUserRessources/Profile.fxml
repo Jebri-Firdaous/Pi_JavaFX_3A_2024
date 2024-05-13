@@ -16,17 +16,88 @@
         <fx:include source="../navBar.fxml" />
 
         <Label fx:id="labeldisconnect" text="Label" visible="false" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="192.0" layoutX="-8.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="1241.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#64e3e7" height="192.0" layoutX="-3.0" layoutY="135.0" stroke="#ffffff00" strokeType="INSIDE" width="1236.0" />
       <ImageView fitHeight="119.0" fitWidth="135.0" layoutX="547.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="534.0" layoutY="256.0" prefHeight="21.0" prefWidth="194.0" text="Nom et Prenom" textAlignment="CENTER">
+      <Label fx:id="Nom_prenom" layoutX="534.0" layoutY="256.0" prefHeight="21.0" prefWidth="194.0" text="Nom et Prenom" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="559.0" layoutY="284.0" prefHeight="21.0" prefWidth="194.0" text="Nom et Prenom" textAlignment="CENTER">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
+      <Label fx:id="role_administrateur" layoutX="555.0" layoutY="290.0" prefHeight="21.0" prefWidth="194.0" text="Role Administrateur" textAlignment="CENTER" />
+      <VBox layoutX="450.0" layoutY="340.0" prefHeight="318.0" prefWidth="342.0">
+         <children>
+            <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="18.0" prefWidth="397.0" />
+            <TextField fx:id="prenom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre prenom">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="15.0" prefWidth="397.0" />
+            <TextField fx:id="tel" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre numero de telephone">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="15.0" prefWidth="397.0">
+               <children>
+                  <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <ComboBox fx:id="role" prefHeight="42.0" prefWidth="401.0" promptText="Role" style="&#10;                    ">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Gestion Utilisateur" />
+                     <String fx:value="Gestion Transport" />
+                     <String fx:value="Gestion Santé" />
+                     <String fx:value="Gestion Parking" />
+                     <String fx:value="Gestion Tourisme" />
+                     <String fx:value="Gestion Shopping" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <VBox prefHeight="15.0" prefWidth="397.0">
+               <children>
+                  <Label fx:id="SelectionnerRole" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="SelectionnerRole1" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <TextField fx:id="mail" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre adresse mail">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </TextField>
+            <VBox prefHeight="15.0" prefWidth="397.0">
+               <children>
+                  <Label fx:id="mailInvalid1" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#modifierAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #64e3e7;" text="Modifier">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

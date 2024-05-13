@@ -41,7 +41,7 @@ public class HotelMail {
                     InternetAddress.parse(Recipient));
 
             // Set Subject: header field
-            message.setSubject("Testing Subject");
+            message.setSubject("Réservation comfirmé");
 
             // Now set the actual message
             message.setText(messageToSend);

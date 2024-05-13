@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d58e71d-8a70-4a65-a4f7-5915bd74f869" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/client.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iTextTable.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/iTextTable.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AdminInterfaceControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AdminInterfaceControllers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheAdministrateurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteClient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/HotelMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/HotelMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Profile.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/navBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/navBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/navBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/navBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +26,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="JavaFXApplication" />
         <option value="Interface" />
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -368,7 +361,9 @@
       <workItem from="1715533245570" duration="5158000" />
       <workItem from="1715551370863" duration="10309000" />
       <workItem from="1715588208636" duration="24412000" />
-      <workItem from="1715615132969" duration="618000" />
+      <workItem from="1715615132969" duration="1342000" />
+      <workItem from="1715618003674" duration="1018000" />
+      <workItem from="1715619033252" duration="2889000" />
     </task>
     <servers />
   </component>

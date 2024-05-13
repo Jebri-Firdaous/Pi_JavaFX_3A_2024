@@ -472,23 +472,7 @@
         }
 
 
-        public void ToAcceuil(ActionEvent event) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionMedecin/Acceuil.fxml"));
-                Parent newPageRoot = loader.load();
-                AfficherListRendezVousController afficherListRendezVousController = loader.getController();
 
-                // Create a new scene with the newPageRoot
-                Scene pageScene = new Scene(newPageRoot);
-
-                // Get the current stage and set the new scene
-                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
-                stage.setScene(pageScene);
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
 
 
@@ -502,7 +486,7 @@
             modifyProfileMenuItem.setOnAction(event -> {
                 // Handle the action when "Modifier le profil" is clicked
                 // For example:
-                System.out.println("Modifier le profil clicked!");
+                Profile();
             });
 
             Deconnexion.setOnAction(event -> {
@@ -520,4 +504,28 @@
             // Show the context menu at the location of the mouse click
             contextMenu.show(profilePicture, Side.BOTTOM, 0, 0);
         }
+        @FXML
+        private void Profile() {
+            Session session = Session.getInstance();
+            session.setCurrentUser(null);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Profile.fxml"));
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) profilePicture.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @FXML
+        private Label Nom_prenom;
+
+        @FXML
+        private Label role_administrateur;
+
     }

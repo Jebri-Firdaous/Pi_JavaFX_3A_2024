@@ -105,7 +105,7 @@ public class AjouterReservationController implements Initializable {
 
 
             String recipient = "+21655498385";
-            SmsController.sendSms(recipient, messageBody);
+          //  SmsController.sendSms(recipient, messageBody);
 
 
 
@@ -135,13 +135,13 @@ public class AjouterReservationController implements Initializable {
      //       afficherMessage("Succès", "La réservation a été ajoutée avec succès.", Alert.AlertType.INFORMATION);
 /////////////////////////Mail////////////////////////////////////////////////////////
 
-            String message = "Cher/chère \n\n"
-                    + "Nous sommes ravis de vous informer que votre réservation au " + nomHotelSelectionne + "</b> a été confirmée.\n\n"
+            String message = "Cher/chère,\n\n"
+                    + "Nous sommes ravis de vous informer que votre réservation au <strong>" + nomHotelSelectionne + "</strong> a été confirmée.\n\n"
                     + "Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter.\n"
-                    + "Nous avons hâte de vous accueillir et de vous offrir une excellente expérience.\n"
+                    + "Nous avons hâte de vous accueillir et de vous offrir une excellente expérience.\n\n"
                     + "Cordialement,\n"
                     + "L'équipe E-city";
-            HotelMail.send("ecity.tunis2000@gmail.com", message);
+            HotelMail.send("dhifallahdarine@gmail.com", message);
 
 
             //  HotelMail.send("ali.ammari@esprit.tn","Reservation hotel avec succée !" );

@@ -21,7 +21,7 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="Accueil">
                         </Menu>
-                        <Menu mnemonicParsing="false" onAction="#ToAcceuil" text="Gestion Sante">
+                        <Menu mnemonicParsing="false" text="Gestion Sante">
                             <items>
                                 <MenuItem onAction="#afficherMedecin" text="Gerer medecin" />
                                 <MenuItem onAction="#afficherRV" text="Gerer RV" />
