@@ -386,9 +386,12 @@ public class LoginController {
     public void modifiermotdePasse(ActionEvent event) throws SQLException {
         String password1 = pwd1.getText();
         String password2 = pwd2.getText();
+
         if (!password1.isEmpty() && !password2.isEmpty() && password1.equals(password2)) {
             User userAdmin = serviceUser.getOneByEmail(emailRecupered);
-            userAdmin.setMdp_personne(password1);
+            String hashedPassword = PasswordEncryption.hashPassword(password1); // Hash the password
+
+            userAdmin.setMdp_personne(hashedPassword);
             serviceUser.modifierAdmin(userAdmin);
             boolean emailSent = compte_récuperer(emailRecupered);
             navigateTo("gestionUserRessources/pageConnexion.fxml");

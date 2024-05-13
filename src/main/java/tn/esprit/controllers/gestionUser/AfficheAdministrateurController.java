@@ -106,11 +106,11 @@ public class AfficheAdministrateurController {
             alert.showAndWait();
         }
     }
-/*
+
     private void rechercherAdminDansLaBase(String recherche) {
         tableViewAdmin.getItems().clear(); // Effacer les anciens résultats du TableView
         try {
-            List<User> administrateursTrouves = sa.rechercher(recherche);
+            List<User> administrateursTrouves = sa.rechercherAdmin(recherche);
             if (!administrateursTrouves.isEmpty()) {
                 // Si des administrateurs ont été trouvés, les ajouter au TableView
                 tableViewAdmin.getItems().addAll(administrateursTrouves);
@@ -128,7 +128,7 @@ public class AfficheAdministrateurController {
             alert.setContentText("Erreur lors de la recherche des administrateurs" + e.getMessage());
             alert.showAndWait();
         }
-    }*/
+    }
     public void ToAjouterAdmin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/AjouterCompteAdmin.fxml"));
@@ -211,8 +211,6 @@ public class AfficheAdministrateurController {
         }
     }
 
-    public void recherche(ActionEvent event) {
-    }
 
     public void banne(ActionEvent event) {
         User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
@@ -258,11 +256,11 @@ public class AfficheAdministrateurController {
         }
     }
 
-    /*public void recherche(ActionEvent event) throws SQLException {
+    public void recherche(ActionEvent event) throws SQLException {
         rechercherAdminDansLaBase("");
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             rechercherAdminDansLaBase(newValue);
         });
 
-    }*/
+    }
 }

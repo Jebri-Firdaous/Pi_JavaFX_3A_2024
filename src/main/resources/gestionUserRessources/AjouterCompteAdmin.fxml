@@ -14,19 +14,19 @@
 
     <children>
         <fx:include source="../navBar.fxml" />
-        <ImageView fitHeight="612.0" fitWidth="806.0" layoutX="2.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="278.0" fitWidth="301.0" layoutX="193.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@image1.png" />
+                <Image url="@admin.png" />
             </image>
         </ImageView>
 
-        <Rectangle arcHeight="70.0" arcWidth="70.0" height="514.0" layoutX="817.0" layoutY="177.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="388.0" />
-        <Label layoutX="921.0" layoutY="193.0" text="Ajouter Administrateur">
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="514.0" layoutX="572.0" layoutY="172.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="388.0" />
+        <Label layoutX="635.0" layoutY="183.0" text="Ajouter Administrateur">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <VBox layoutX="844.0" layoutY="238.0" prefHeight="440.0" prefWidth="339.0">
+        <VBox layoutX="597.0" layoutY="228.0" prefHeight="440.0" prefWidth="339.0">
             <children>
                 <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                     <font>
@@ -110,17 +110,7 @@
                 </Button>
             </children>
         </VBox>
-        <VBox layoutX="400.0" layoutY="699.0" prefHeight="32.0" prefWidth="467.0">
-            <children>
-                <Label fx:id="remplirChamps" prefHeight="31.0" prefWidth="469.0" textFill="#dd0f0f">
-                    <font>
-                        <Font size="11.0" />
-                    </font>
-                </Label>
-            </children>
-        </VBox>
         <Label fx:id="label" layoutX="1095.0" layoutY="37.0" />
-        <HBox layoutX="497.0" layoutY="641.0" prefHeight="46.0" prefWidth="431.0" />
       <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>

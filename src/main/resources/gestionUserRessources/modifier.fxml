@@ -14,19 +14,19 @@
 
     <children>
         <fx:include source="../navBar.fxml" />
-        <ImageView fitHeight="677.0" fitWidth="896.0" layoutX="200.0" layoutY="107.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="278.0" fitWidth="301.0" layoutX="192.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@image1.png" />
+                <Image url="@admin.png" />
             </image>
         </ImageView>
 
-        <Rectangle arcHeight="70.0" arcWidth="70.0" height="448.0" layoutX="408.0" layoutY="181.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
-        <Label layoutX="502.0" layoutY="203.0" text="Ajouter Administrateur">
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="448.0" layoutX="572.0" layoutY="172.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
+        <Label layoutX="666.0" layoutY="194.0" text="Modifier Administrateur">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <VBox layoutX="437.0" layoutY="256.0" prefHeight="368.0" prefWidth="397.0">
+        <VBox layoutX="601.0" layoutY="247.0" prefHeight="368.0" prefWidth="397.0">
             <children>
                 <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                     <font>

@@ -6,12 +6,15 @@
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
+    import javafx.geometry.Side;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
+    import javafx.scene.control.ContextMenu;
     import javafx.scene.control.Label;
     import javafx.scene.control.MenuItem;
     import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
+    import javafx.scene.input.MouseEvent;
     import javafx.stage.Modality;
     import javafx.stage.Stage;
     import javafx.util.Duration;
@@ -49,6 +52,9 @@
         private String connectedAdminPassword;
         @FXML
         private ImageView adminImage;
+        @FXML
+        private ImageView profilePicture;
+
 
         /*------------------------------------------------------------------------------------------------------------------------*/
         /*------------------------------------Methode generale pour naviguer dans le meme stage-----------------------------------*/
@@ -123,6 +129,7 @@
 
         public void initialize() {
 
+
             TranslateTransition transition = new TranslateTransition(Duration.seconds(15), bienvenue);
             transition.setFromX(1312); // Position de départ en X (hors de l'écran à droite)
             transition.setToX(-1312);
@@ -160,7 +167,7 @@
         @FXML
         private Label labeldisconnect;
         @FXML
-        void disconnect(ActionEvent event) {
+        private void disconnect() {
             Session session = Session.getInstance();
             session.setCurrentUser(null);
             try {
@@ -170,19 +177,12 @@
                 Scene pageScene = new Scene(root);
 
                 // Get the current stage and set the new scene
-                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
-
-                // Save reference to the parent stage
-                Stage parentStage = new Stage();
-                parentStage.initModality(Modality.WINDOW_MODAL);
-                parentStage.initOwner(stage);
-
+                Stage stage = (Stage) profilePicture.getScene().getWindow();
                 stage.setScene(pageScene);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
 
 
@@ -488,5 +488,36 @@
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+
+
+        @FXML
+        private void handleProfilePictureClicked() {
+            ContextMenu contextMenu = new ContextMenu();
+
+            MenuItem modifyProfileMenuItem = new MenuItem("Modifier le profil");
+            MenuItem Deconnexion = new MenuItem("Deconnexion");
+
+            modifyProfileMenuItem.setOnAction(event -> {
+                // Handle the action when "Modifier le profil" is clicked
+                // For example:
+                System.out.println("Modifier le profil clicked!");
+            });
+
+            Deconnexion.setOnAction(event -> {
+                // Handle the action when "Deconnexion" is clicked
+                disconnect();
+            });
+
+
+            // Add more menu items if needed
+
+            contextMenu.getItems().addAll(modifyProfileMenuItem);
+            contextMenu.getItems().addAll(Deconnexion);
+
+
+            // Show the context menu at the location of the mouse click
+            contextMenu.show(profilePicture, Side.BOTTOM, 0, 0);
         }
     }

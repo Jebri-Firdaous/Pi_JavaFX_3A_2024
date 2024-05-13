@@ -391,15 +391,13 @@ public class ServiceUser implements IUserService<User> {
     }
 
 
-    @Override
-    public List<User> rechercher(String recherche) throws SQLException {
+    public List<User> rechercherAdmin(String recherche) throws SQLException {
         List<User> administrateurs = new ArrayList<>();
 
 
-        String sql = "SELECT id,,email,nom_personne,prenom_personne,image_personne,role_admin, p.mdp_personne, p.image_personne " +
-                "FROM administrateur a " +
-                "JOIN personne p ON a.id_personne = p.id_personne " +
-                "WHERE p.nom_personne LIKE ? OR a.role LIKE ?";
+        String sql = "SELECT id,role_admin,email,nom_personne,prenom_personne,numero_telephone " +
+                "FROM user " +
+                "WHERE (nom_personne LIKE ? OR role_admin LIKE ?) AND JSON_CONTAINS(roles, '[\"ADMIN\"]') ";
 
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -407,17 +405,48 @@ public class ServiceUser implements IUserService<User> {
         preparedStatement.setString(2, "%" + recherche + "%");
         ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
-            Administrateur admin = new Administrateur();
-            admin.setId_personne(rs.getInt("id_personne"));
+            User admin = new User();
+            admin.setId(rs.getInt("id"));
             admin.setNom_personne(rs.getString("nom_personne"));
             admin.setPrenom_personne(rs.getString("prenom_personne"));
             admin.setNumero_telephone(rs.getInt("numero_telephone"));
-            admin.setMail_personne(rs.getString("mail_personne"));
-            admin.setMdp_personne(rs.getString("mdp_personne"));
-            admin.setRole(rs.getString("role"));
-            //administrateurs.add(admin);
+            admin.setEmail(rs.getString("email"));
+            admin.setRole_admin(rs.getString("role_admin"));
+
+            administrateurs.add(admin);
         }
+        System.out.println(administrateurs);
         return administrateurs;
     }
+
+    @Override
+    public List<User> recherClient(String recherche) throws SQLException {
+        List<User> administrateurs = new ArrayList<>();
+
+
+        String sql = "SELECT id,email,nom_personne,prenom_personne,numero_telephone,age,genre " +
+                "FROM user " +
+                "WHERE (nom_personne LIKE ?OR prenom_personne LIKE ?) AND JSON_CONTAINS(roles, '[\"CLIENT\"]') ";
+
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, "%" + recherche + "%");
+        preparedStatement.setString(2, "%" + recherche + "%");
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            User admin = new User();
+            admin.setId(rs.getInt("id"));
+            admin.setNom_personne(rs.getString("nom_personne"));
+            admin.setPrenom_personne(rs.getString("prenom_personne"));
+            admin.setNumero_telephone(rs.getInt("numero_telephone"));
+            admin.setEmail(rs.getString("email"));
+            admin.setGenre(rs.getString("genre"));
+            admin.setAge(rs.getInt("age"));
+
+            administrateurs.add(admin);
+        }
+        System.out.println(administrateurs);
+        return administrateurs;    }
+
 
 }

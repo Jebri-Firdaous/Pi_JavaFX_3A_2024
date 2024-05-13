@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.ModifierAdminController">
+
+
+    <children>
+        <fx:include source="../navBar.fxml" />
+
+        <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="192.0" layoutX="-8.0" layoutY="135.0" stroke="BLACK" strokeType="INSIDE" width="1241.0" />
+      <ImageView fitHeight="119.0" fitWidth="135.0" layoutX="547.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="534.0" layoutY="256.0" prefHeight="21.0" prefWidth="194.0" text="Nom et Prenom" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="559.0" layoutY="284.0" prefHeight="21.0" prefWidth="194.0" text="Nom et Prenom" textAlignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

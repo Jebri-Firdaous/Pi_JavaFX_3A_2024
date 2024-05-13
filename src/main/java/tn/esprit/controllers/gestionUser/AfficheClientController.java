@@ -99,12 +99,12 @@ private TextField search;
             alert.showAndWait();
         }
     }
-/*
+
     @FXML
     void RechercherClientDansLaBase(String recherche) {
         tableViewClient.getItems().clear(); // Effacer les anciens résultats de la ListView
         try {
-            List<User> clientTrouve = sc.rechercher(recherche);
+            List<User> clientTrouve = sc.recherClient(recherche);
             if (!clientTrouve.isEmpty()) {
                 tableViewClient.getItems().addAll(clientTrouve);
             } else {
@@ -122,7 +122,13 @@ private TextField search;
             alert.showAndWait();
         }
     }
-*/
+    public void recherche(ActionEvent event) throws SQLException {
+        RechercherClientDansLaBase("");
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            RechercherClientDansLaBase(newValue);
+        });
+
+    }
     @FXML
     void AjouterClient(ActionEvent event) {
         try {
@@ -140,8 +146,7 @@ private TextField search;
         }
     }
 
-    public void recherche(ActionEvent event) {
-    }
+
 
     public void supprimerAdmin(ActionEvent event) {
     }

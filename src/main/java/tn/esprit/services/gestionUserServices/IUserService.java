@@ -15,7 +15,9 @@ public interface IUserService <T>{
 
 
     void supprimerUser(int id) throws SQLException;
-    List<T> rechercher(String recherche) throws SQLException;
+    List<T> rechercherAdmin(String recherche) throws SQLException;
+    List<T> recherClient(String recherche) throws SQLException;
+
 
 
 }
