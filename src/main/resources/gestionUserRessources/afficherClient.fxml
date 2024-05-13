@@ -20,12 +20,14 @@
                             <children>
                                 <TableView fx:id="tableViewClient" prefHeight="555.0" prefWidth="992.0">
                                     <columns>
-                                        <TableColumn fx:id="nomClient" prefWidth="185.0" text="NOM" />
-                                        <TableColumn fx:id="prenomClient" prefWidth="195.0" text="PRENOM" />
-                                        <TableColumn fx:id="telClient" prefWidth="259.0" text="NUMERO DE TELEPHONE" />
-                                        <TableColumn fx:id="mailClient" prefWidth="358.0" text="MAIL" />
-                                        <TableColumn fx:id="ageClient" prefWidth="167.0" text="Age" />
-                                        <TableColumn fx:id="genreClient" prefWidth="133.0" text="Genre" />
+                                        <TableColumn fx:id="nomClient" prefWidth="84.0" text="NOM" />
+                                        <TableColumn fx:id="prenomClient" prefWidth="112.0" text="PRENOM" />
+                                        <TableColumn fx:id="telClient" prefWidth="210.0" text="NUMERO DE TELEPHONE" />
+                                        <TableColumn fx:id="mailClient" prefWidth="231.0" text="MAIL" />
+                                        <TableColumn fx:id="ageClient" prefWidth="85.0" text="AGE" />
+                              <TableColumn fx:id="genreClient" prefWidth="120.0" text="GENRE" />
+                              <TableColumn fx:id="IS_BANNED" minWidth="0.0" prefWidth="74.0" text="VERIFIE" />
+                              <TableColumn fx:id="IS_VERIFIED" prefWidth="79.0" text="BANNE" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -37,11 +39,6 @@
         <Button layoutX="1020.0" layoutY="324.0" mnemonicParsing="false" onAction="#AjouterClient" prefHeight="38.0" prefWidth="201.0" style="-fx-background-color: B0E847;" text="Ajouter">
 
         <font>
-                <Font name="System Bold" size="17.0" />
-            </font>
-        </Button>
-        <Button layoutX="1021.0" layoutY="370.0" mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: B0E847;" text="Supprimer">
-            <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </Button>
@@ -57,5 +54,15 @@
         </Label>
         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="84.0" layoutX="1020.0" layoutY="226.0" stroke="#b0e847" strokeType="INSIDE" strokeWidth="2.0" width="201.0" />
         <TextField fx:id="search" layoutX="1035.0" layoutY="268.0" onAction="#recherche" prefHeight="33.0" prefWidth="179.0" promptText="Recherche" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 30; -fx-background-radius: 10;" />
+      <Button layoutX="1146.0" layoutY="370.0" mnemonicParsing="false" onAction="#banne" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: B0E847;" text="Banner">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1022.0" layoutY="370.0" mnemonicParsing="false" onAction="#annulerbanne" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: B0E847;" text="Annuler Bann">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

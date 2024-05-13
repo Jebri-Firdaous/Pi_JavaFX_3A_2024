@@ -233,15 +233,16 @@ public class AjoutAdministrateurController {
         String prenomSaisi = prenom.getText();
         String mailSaisi = mail.getText();
         String mdpSaisi = mdp.getText();
+        String telf = tel.getText();
+        int numsaisie = Integer.parseInt(tel.getText());
 
 
         if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !mdpSaisi.isEmpty() && !roleSelected.isEmpty()) {
             if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isValidRole(roleSelected)) {
                 try {
-                    User newUser = new User(nomSaisi, prenomSaisi, 0, mailSaisi, mdpSaisi, "", null, 0, "[\"ADMIN\"]", roleSelected, false, false);
+                    User newUser = new User(nomSaisi, prenomSaisi, numsaisie, mailSaisi, mdpSaisi, "", null, 0, "[\"ADMIN\"]", roleSelected, false, false);
 
                     serviceUser.ajouterAdmin(newUser);
-                    int adminId = serviceUser.getAdminId(nomSaisi,prenomSaisi, mailSaisi, mdpSaisi,"[\"ADMIN\"]");
                     ToAfficherListeAdmine();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");

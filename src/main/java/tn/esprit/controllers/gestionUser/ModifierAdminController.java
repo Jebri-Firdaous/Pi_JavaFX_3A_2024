@@ -70,7 +70,6 @@ public class ModifierAdminController {
         prenom.setText(administrateur.getPrenom_personne());
         tel.setText(String.valueOf(administrateur.getNumero_telephone()));
         mail.setText(administrateur.getEmail());
-        mdp.setText(administrateur.getMdp_personne());
         role.setValue(administrateur.getRole_admin());
 
 
@@ -101,7 +100,6 @@ public class ModifierAdminController {
         String nouveauNumero = tel.getText();
         String nouveauRole = role.getValue();
         String nouveauMail = mail.getText();
-        String nouveauMdp = mdp.getText();
 
         // Mettre à jour les valeurs de l'objet admin
         admin.setId(id_personne);
@@ -110,7 +108,6 @@ public class ModifierAdminController {
         admin.setNumero_telephone(Integer.parseInt(nouveauNumero));
         admin.setEmail(nouveauMail);
         admin.setRole_admin(nouveauRole);
-        admin.setMdp_personne(nouveauMdp);
 
         try {
             // Appeler la méthode de service pour modifier l'administrateur dans la base de données

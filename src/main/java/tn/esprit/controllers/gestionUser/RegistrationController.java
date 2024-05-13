@@ -229,7 +229,7 @@ public class RegistrationController {
 
                     serviceUser.ajouterAdmin(newUser);
                     System.out.println(newUser);
-                    int adminId = serviceUser.getAdminId(nomSaisi,prenomSaisi, mailSaisi, mdpSaisi,"[\"ADMIN\"]");
+                    int adminId = serviceUser.getAdminId(nomSaisi,prenomSaisi, mailSaisi,mdpSaisi,"[\"ADMIN\"]");
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Compte ajoutée avec succes!");

@@ -243,6 +243,7 @@ public class AjoutClientController {
                     prenom.setText("");
                     mail.setText("");
                     mdp.setText("");
+                    tel.setText("");
 
                     age.setText("");
 

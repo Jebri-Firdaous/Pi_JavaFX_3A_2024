@@ -43,24 +43,53 @@ public class AfficheClientController {
 
     @FXML
     private TableColumn<User, String> nomClient;
+    @FXML
+    private TableColumn<User, Boolean> IS_VERIFIED;
+
+    @FXML
+    private TableColumn<User, Boolean> IS_BANNED;
 @FXML
 private TextField search;
 
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
     public void initialize() {
         try {
-            RechercherClientDansLaBase("");
+            //RechercherClientDansLaBase("");
             search.textProperty().addListener((observable, oldValue, newValue) -> {
-                RechercherClientDansLaBase(newValue);
+                //RechercherClientDansLaBase(newValue);
             });
             List<User> ClientFromService = sc.afficherClient();
             nomClient.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomClient.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
             telClient.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
-            mailClient.setCellValueFactory(new PropertyValueFactory<>("mail_personne"));
+            mailClient.setCellValueFactory(new PropertyValueFactory<>("email"));
             genreClient.setCellValueFactory(new PropertyValueFactory<>("genre"));
             ageClient.setCellValueFactory(new PropertyValueFactory<>("age"));
-            tableViewClient.setItems(FXCollections.observableArrayList(ClientFromService)); // Utilisez ClientFromService
+            tableViewClient.setItems(FXCollections.observableArrayList(ClientFromService));
+            IS_VERIFIED.setCellValueFactory(new PropertyValueFactory<>("is_verified"));
+            IS_VERIFIED.setCellFactory(column -> new TableCell<User, Boolean>() {
+                @Override
+                protected void updateItem(Boolean item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item ? "oui" : "non");
+                    }
+                }
+            });
+            IS_BANNED.setCellValueFactory(new PropertyValueFactory<>("is_banned"));
+            IS_BANNED.setCellFactory(column -> new TableCell<User, Boolean>() {
+                @Override
+                protected void updateItem(Boolean item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item ? "oui" : "non");
+                    }
+                }
+            });// Utilisez ClientFromService
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,7 +99,7 @@ private TextField search;
             alert.showAndWait();
         }
     }
-
+/*
     @FXML
     void RechercherClientDansLaBase(String recherche) {
         tableViewClient.getItems().clear(); // Effacer les anciens résultats de la ListView
@@ -93,7 +122,7 @@ private TextField search;
             alert.showAndWait();
         }
     }
-
+*/
     @FXML
     void AjouterClient(ActionEvent event) {
         try {
@@ -111,13 +140,68 @@ private TextField search;
         }
     }
 
-    public void rechercher(ActionEvent event) {
-    }
-
     public void recherche(ActionEvent event) {
     }
 
     public void supprimerAdmin(ActionEvent event) {
+    }
+
+    public void banne(ActionEvent event) {
+        User adminSelectionne = tableViewClient.getSelectionModel().getSelectedItem();
+        if (adminSelectionne != null) {
+            try {
+                sc.banner(adminSelectionne.getId());
+                // Afficher un message de confirmation
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Le client a été banné avec succès !");
+                alert.showAndWait();
+                ToAfficherListeClient();
+                initialize();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+        }
+    }
+    public void ToAfficherListeClient() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherClient.fxml"));
+            Parent root = loader.load();
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) label.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
+    }
+    public void annulerbanne(ActionEvent event) {
+        User adminSelectionne = tableViewClient.getSelectionModel().getSelectedItem();
+        if (adminSelectionne != null) {
+            try {
+                sc.annulerbann(adminSelectionne.getId());
+                // Afficher un message de confirmation
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Le bann a ete ennulé avec succes !");
+                alert.showAndWait();
+                ToAfficherListeClient();
+                initialize();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+        }
     }
 }
 

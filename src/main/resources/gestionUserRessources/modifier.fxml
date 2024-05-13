@@ -20,13 +20,13 @@
             </image>
         </ImageView>
 
-        <Rectangle arcHeight="70.0" arcWidth="70.0" height="514.0" layoutX="408.0" layoutY="181.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="448.0" layoutX="408.0" layoutY="181.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
         <Label layoutX="502.0" layoutY="203.0" text="Ajouter Administrateur">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <VBox layoutX="437.0" layoutY="256.0" prefHeight="422.0" prefWidth="397.0">
+        <VBox layoutX="437.0" layoutY="256.0" prefHeight="368.0" prefWidth="397.0">
             <children>
                 <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                     <font>
@@ -94,20 +94,6 @@
                 <VBox prefHeight="15.0" prefWidth="397.0">
                     <children>
                         <Label fx:id="mailInvalid1" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
-                            <font>
-                                <Font size="11.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </VBox>
-                <VBox prefHeight="69.0" prefWidth="397.0">
-                    <children>
-                  <PasswordField fx:id="mdp" prefHeight="49.0" prefWidth="397.0" promptText="Choisissez le mot de passe">
-                     <font>
-                        <Font name="Arial" size="20.0" />
-                     </font>
-                  </PasswordField>
-                        <Label fx:id="mdpCourt" prefHeight="1.0" prefWidth="397.0" textFill="#dd0f0f">
                             <font>
                                 <Font size="11.0" />
                             </font>

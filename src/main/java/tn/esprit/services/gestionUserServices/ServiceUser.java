@@ -11,6 +11,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static tn.esprit.test.Main.hashPassword;
+
 public class ServiceUser implements IUserService<User> {
     private Connection connection;
     private List<User> adminList;
@@ -45,10 +47,10 @@ public class ServiceUser implements IUserService<User> {
         return nomClients; // Retourner la liste des noms des clients
     }
 
-
     @Override
     public void ajouterClient(User user) throws SQLException {
         String jsonRoles = "[\"CLIENT\"]";
+        String hashedPassword = hashPassword(user.getMdp_personne()); // Hash the password
 
         String sql = "INSERT INTO `user`(`nom_personne`, `prenom_personne`," +
                 " `numero_telephone`, `email`,`password`,`image_personne`,`genre`,`age`,`roles`) VALUES (?, ?, ?, ?,?,?,?,?,?)";
@@ -57,49 +59,45 @@ public class ServiceUser implements IUserService<User> {
         preparedStatement.setString(2, user.getPrenom_personne());
         preparedStatement.setInt(3, user.getNumero_telephone());
         preparedStatement.setString(4, user.getEmail());
-        preparedStatement.setString(5, user.getMdp_personne());
+        preparedStatement.setString(5, hashedPassword); // Use hashed password
         preparedStatement.setString(6, user.getImage_personne());
         preparedStatement.setString(7, user.getGenre());
         preparedStatement.setInt(8, user.getAge());
         preparedStatement.setObject(9, jsonRoles);
 
         preparedStatement.executeUpdate();
-
     }
-
     @Override
     public void ajouterAdmin(User user) throws SQLException {
         String jsonRoles = "[\"ADMIN\"]";
+        String hashedPassword = hashPassword(user.getMdp_personne()); // Hash the password
 
         String sql = "INSERT INTO `user`(`nom_personne`, `prenom_personne`," +
-                " `numero_telephone`, `email`,`password`,`image_personne`,`role_admin`,`roles`,`is_verified`,`is_banned`) VALUES (?, ?, ?,?,?,?,?,?,?,?)";
+                " `numero_telephone`, `email`,`password`,`image_personne`,`role_admin`,`roles`) VALUES ( ?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, user.getNom_personne());
         preparedStatement.setString(2, user.getPrenom_personne());
         preparedStatement.setInt(3, user.getNumero_telephone());
         preparedStatement.setString(4, user.getEmail());
-        preparedStatement.setString(5, user.getMdp_personne());
+        preparedStatement.setString(5, hashedPassword); // Use hashed password
         preparedStatement.setString(6, user.getImage_personne());
         preparedStatement.setString(7, user.getRole_admin());
         preparedStatement.setObject(8, jsonRoles);
-        preparedStatement.setBoolean(9, false);
-        preparedStatement.setBoolean(10, false);
+
 
         preparedStatement.executeUpdate();
     }
-
     @Override
     public void modifierAdmin(User user) throws SQLException {
-        String sql = "UPDATE User SET nom_personne = ?, prenom_personne = ?, numero_telephone = ?, email = ?, password = ?, image_personne = ?, role_admin = ? WHERE id = ? AND JSON_CONTAINS(roles, '[\"ADMIN\"]')";
+        String sql = "UPDATE User SET nom_personne = ?, prenom_personne = ?, numero_telephone = ?, email = ?, image_personne = ?, role_admin = ? WHERE id = ? AND JSON_CONTAINS(roles, '[\"ADMIN\"]')";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, user.getNom_personne());
         preparedStatement.setString(2, user.getPrenom_personne());
         preparedStatement.setInt(3, user.getNumero_telephone());
         preparedStatement.setString(4, user.getEmail());
-        preparedStatement.setString(5, user.getMdp_personne());
-        preparedStatement.setString(6, user.getImage_personne());
-        preparedStatement.setString(7, user.getRole_admin());
-        preparedStatement.setInt(8, user.getId()); // Assuming the ID is an integer
+        preparedStatement.setString(5, user.getImage_personne());
+        preparedStatement.setString(6, user.getRole_admin());
+        preparedStatement.setInt(7, user.getId()); // Assuming the ID is an integer
 
 
 
@@ -108,21 +106,26 @@ public class ServiceUser implements IUserService<User> {
 
     }
     public int getAdminId(String nom, String prenom, String mail, String mdp, String roles) throws SQLException {
-        String query = "SELECT id FROM user WHERE  nom_personne = ? AND prenom_personne = ? AND email= ? AND password=? AND JSON_CONTAINS(roles, '[\"ADMIN\"]')";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, nom);
-            preparedStatement.setString(2, prenom);
-            preparedStatement.setString(3, mail);
-            preparedStatement.setString(4, mdp);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
+        String sql = "SELECT id FROM user WHERE nom_personne = ? AND prenom_personne = ? AND email = ? AND password = ? AND roles = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, nom);
+            statement.setString(2, prenom);
+            statement.setString(3, mail);
+            statement.setString(4, mdp);
+            statement.setString(5, roles);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return resultSet.getInt("id");
                 } else {
-                    throw new SQLException("Admin introuvable");
+                    throw new SQLException("Admin not found.");
                 }
             }
         }
-    }
+
+
+}
 
 
 
@@ -195,7 +198,6 @@ public class ServiceUser implements IUserService<User> {
                 user.setGenre(rs.getString("genre"));
                 user.setAge(rs.getInt("age"));
                 user.setRoles(rs.getString("roles"));
-                user.setRole_admin(rs.getString("role_admin"));
                 user.setIs_verified(rs.getBoolean("is_verified"));
                 user.setIs_banned(rs.getBoolean("is_banned"));
 
@@ -220,6 +222,37 @@ public class ServiceUser implements IUserService<User> {
         preparedStatement.setInt(1, id);
         preparedStatement.executeUpdate();
     }
+    public void banner(int id) throws SQLException {
+        String sql = "UPDATE User SET is_verified = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setBoolean(1, true);
+            statement.setInt(2, id);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected == 0) {
+                // Handle case where no rows were updated (user not found)
+                System.out.println("not found");
+            } else {
+                // Handle successful update
+                System.out.println("found");
+            }
+        }
+    }
+    public void annulerbann(int id) throws SQLException {
+        String sql = "UPDATE User SET is_verified = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setBoolean(1, false);
+            statement.setInt(2, id);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected == 0) {
+                // Handle case where no rows were updated (user not found)
+                System.out.println("not found");
+            } else {
+                // Handle successful update
+                System.out.println("found");
+            }
+        }
+    }
+
     public String getUserRoles(int userId) throws SQLException {
         String roles = null;
         String sql = "SELECT roles FROM User WHERE id = ?";

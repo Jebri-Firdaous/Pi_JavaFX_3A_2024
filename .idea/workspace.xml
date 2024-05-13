@@ -6,28 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="1d58e71d-8a70-4a65-a4f7-5915bd74f869" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/NavBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/NavBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AfficherReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AfficherReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/ModifierReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/ModifierReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AdminInterfaceControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AdminInterfaceControllers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iTextTable.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/iTextTable.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheAdministrateurController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutAdministrateurController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/ModifierAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/ModifierAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceHotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/RegistrationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/test/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteClient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/MailHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/MailHotel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Acceuil.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/afficherAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/afficherAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/afficherClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/afficherClient.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifier.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/NavBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/NavBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/MailHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/MailHotel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,6 +366,8 @@
       <workItem from="1715504353731" duration="890000" />
       <workItem from="1715507327963" duration="4958000" />
       <workItem from="1715520097288" duration="12955000" />
+      <workItem from="1715533245570" duration="5158000" />
+      <workItem from="1715551370863" duration="10036000" />
     </task>
     <servers />
   </component>

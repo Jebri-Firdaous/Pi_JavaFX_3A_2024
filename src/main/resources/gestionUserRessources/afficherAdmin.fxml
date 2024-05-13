@@ -8,24 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AfficheAdministrateurController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AfficheAdministrateurController">
     <children>
         <fx:include source="../navBar.fxml" />
         <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
-        <SplitPane layoutY="209.0" orientation="VERTICAL" prefHeight="529.0" prefWidth="995.0">
+        <SplitPane layoutY="209.0" orientation="VERTICAL" prefHeight="529.0" prefWidth="1012.0">
             <items>
                 <VBox prefHeight="508.0" prefWidth="849.0">
                     <children>
                         <VBox prefHeight="0.0" prefWidth="640.0" />
                         <VBox prefHeight="513.0" prefWidth="1298.0">
                             <children>
-                                <TableView fx:id="tableViewAdmin" prefHeight="548.0" prefWidth="849.0">
+                                <TableView fx:id="tableViewAdmin" prefHeight="513.0" prefWidth="1012.0">
                                     <columns>
-                                        <TableColumn fx:id="nomAdmin" prefWidth="149.0" text="NOM" />
-                                        <TableColumn fx:id="prenomAdmin" prefWidth="187.0" text="PRENOM" />
-                                        <TableColumn fx:id="telAdmin" prefWidth="219.0" text="NUMERO DE TELEPHONE" />
-                                        <TableColumn fx:id="mailAdmin" prefWidth="235.0" text="MAIL" />
-                                        <TableColumn fx:id="role" prefWidth="202.0" text="ROLE" />
+                                        <TableColumn fx:id="nomAdmin" prefWidth="120.0" text="NOM" />
+                                        <TableColumn fx:id="prenomAdmin" prefWidth="125.0" text="PRENOM" />
+                                        <TableColumn fx:id="telAdmin" prefWidth="167.0" sortable="false" style="font-size: 15px;" text="NUMERO DE TELEPHONE" />
+                                        <TableColumn fx:id="mailAdmin" prefWidth="239.0" text="MAIL" />
+                                        <TableColumn fx:id="role" prefWidth="140.0" text="ROLE" />
+                              <TableColumn fx:id="IS_VERIFIED" prefWidth="114.0" text="BANNE" />
+                              <TableColumn fx:id="IS_BANNED" prefWidth="104.0" text="VERIFIE" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -34,14 +36,14 @@
                 </VBox>
             </items>
         </SplitPane>
-        <Button layoutX="1024.0" layoutY="410.0" mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: B0E847;" text="Supprimer">
+        <Button layoutX="1024.0" layoutY="396.0" mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: B0E847;" text="Supprimer">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </Button>
         <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="84.0" layoutX="1021.0" layoutY="209.0" stroke="#b0e847" strokeType="INSIDE" strokeWidth="2.0" width="209.0" />
         <TextField fx:id="search" layoutX="1036.0" layoutY="251.0" onAction="#recherche" prefHeight="33.0" prefWidth="187.0" promptText="Recherche" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 30; -fx-background-radius: 10;" />
-        <Button layoutX="1024.0" layoutY="360.0" mnemonicParsing="false" onAction="#modifier" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: B0E847;" text="Modifier">
+        <Button layoutX="1024.0" layoutY="351.0" mnemonicParsing="false" onAction="#modifier" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: B0E847;" text="Modifier">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
@@ -51,16 +53,26 @@
                 <Font name="System Bold" size="17.0" />
             </font>
         </Button>
-        <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="143.0" prefHeight="44.0" prefWidth="603.0" text="Liste des Administrateurs" textFill="#1e3163">
+        <Label fx:id="labeltite" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="143.0" prefHeight="44.0" prefWidth="603.0" text="Liste des Administrateurs" textFill="#1e3163">
             <font>
                 <Font name="Arial Black" size="30.0" />
             </font>
         </Label>
-        <Label layoutX="1033.0" layoutY="220.0" prefHeight="25.0" prefWidth="187.0" text="Recherche par nom ou par role">
+        <Label fx:id="recherche" layoutX="1033.0" layoutY="220.0" prefHeight="25.0" prefWidth="187.0" text="Recherche par nom ou par role">
             <font>
                 <Font name="System Bold" size="10.0" />
             </font>
         </Label>
+      <Button layoutX="1147.0" layoutY="441.0" mnemonicParsing="false" onAction="#banne" prefHeight="38.0" prefWidth="76.0" style="-fx-background-color: B0E847;" text="Banne">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="1024.0" layoutY="441.0" mnemonicParsing="false" onAction="#annulerbanne" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: B0E847;" text="Annuler banne">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
 
     </children>
 </AnchorPane>
