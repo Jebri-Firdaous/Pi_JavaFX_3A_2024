@@ -31,6 +31,7 @@
                 <Bloom threshold="0.0" />
             </effect>
         </Label>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
         
     </children>

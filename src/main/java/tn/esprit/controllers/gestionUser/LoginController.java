@@ -16,6 +16,7 @@ import javafx.util.Duration;
 import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.entities.gestionUserEntities.Administrateur;
 import tn.esprit.entities.gestionUserEntities.User;
+import tn.esprit.services.gestionUserServices.PasswordEncryption;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
 import tn.esprit.services.gestionUserServices.ServiceUser;
 import tn.esprit.services.gestionUserServices.Session;
@@ -25,7 +26,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Random;
 
-import static tn.esprit.test.Main.hashPassword;
 
 public class LoginController {
     /*************************** Partie déclaration *************************************************/
@@ -54,7 +54,7 @@ public class LoginController {
 
         String emailText = email.getText();
         String passwordText = mdp.getText();
-        String hashedPassword = hashPassword(passwordText);
+        String hashedPassword = PasswordEncryption.hashPassword(passwordText);
 
 
         int authentificated = serviceUser.authentication(emailText, passwordText);

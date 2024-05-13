@@ -41,6 +41,7 @@
         </ImageView>
         <!-- Ligne verticale -->
         <Rectangle fill="#979494" height="474.0" layoutX="106.0" width="2.0" x="520.0" y="219.0" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
     <stylesheets>
         <URL value="@StyleShopping.css" />

@@ -16,27 +16,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
-    public static String hashPassword(String password) {
-        return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
-    public static boolean verifyPassword(String password, String hashedPassword) {
-        return BCrypt.checkpw(password, hashedPassword);
-    }
+
     public static void main(String[] args) throws SQLException, JsonProcessingException {
         // Initialize connection parameters
         String url = "jdbc:mysql://localhost:3306/e_city_final";
         String username = "root";
         String password = "";
 
-        String pwd = "myPassword";
 
-        System.out.println(pwd);
-        String hashedPassword = hashPassword(pwd);
-        System.out.println("Hashed Password: " + hashedPassword);
-        String mdp="myPassword";
-        // Verify password
-        boolean isValid = verifyPassword(mdp, hashedPassword);
-        System.out.println("Is Valid Password? " + isValid);
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             ServiceUser userService = new ServiceUser();

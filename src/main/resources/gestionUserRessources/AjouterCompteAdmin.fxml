@@ -121,5 +121,6 @@
         </VBox>
         <Label fx:id="label" layoutX="1095.0" layoutY="37.0" />
         <HBox layoutX="497.0" layoutY="641.0" prefHeight="46.0" prefWidth="431.0" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>

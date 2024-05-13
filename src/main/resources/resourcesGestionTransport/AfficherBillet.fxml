@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AfficherBilletController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AfficherBilletController">
    <children>
       <fx:include source="../navBar.fxml" />
       <ListView fx:id="listbillets" layoutX="21.0" layoutY="405.0" prefHeight="232.0" prefWidth="895.0" />
@@ -108,5 +109,6 @@
             <Image url="@img_2.png" />
          </image>
       </ImageView>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
    </children>
 </AnchorPane>

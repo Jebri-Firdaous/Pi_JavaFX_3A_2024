@@ -67,6 +67,7 @@
             <Image url="@Modifier.png" />
          </image>
       </ImageView>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
    </children>
 
 </AnchorPane>

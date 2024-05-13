@@ -49,5 +49,6 @@
          </image>
       </ImageView>
           <TextField fx:id="rechercheHotelTF" layoutX="170.0" layoutY="215.0" prefHeight="45.0" prefWidth="615.0" promptText="Chercher un hotel" style="-fx-background-radius: 10px; -fx-border-color: #000000; -fx-border-radius: 8px;" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>

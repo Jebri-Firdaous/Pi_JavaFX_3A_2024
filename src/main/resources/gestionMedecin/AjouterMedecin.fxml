@@ -67,6 +67,7 @@
       </ImageView>
       <Button layoutX="79.0" layoutY="147.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToDisplay" prefHeight="39.0" prefWidth="213.0" styleClass="returnToDisplayPage" text="&lt;==Afficher Les Medecins" />
       <Label fx:id="msgErreur" layoutX="447.0" layoutY="430.0" prefHeight="21.0" prefWidth="213.0" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
    </children>
 </AnchorPane>

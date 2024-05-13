@@ -99,6 +99,7 @@
             </padding>
         </HBox>
       <Button layoutX="48.0" layoutY="133.0" mnemonicParsing="false" onAction="#returnDisplayRv" styleClass="returnToDisplayPage" text="&lt;==Afficher Les RVs" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 
 </AnchorPane>

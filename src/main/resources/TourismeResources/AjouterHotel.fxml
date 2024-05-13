@@ -98,5 +98,6 @@
         <Label fx:id="label6" layoutX="1014.0" layoutY="414.0" prefHeight="21.0" prefWidth="238.0" text="Nombre du chombre Normal vide " textFill="#f80000" visible="false" />
         <Label fx:id="label7" layoutX="1014.0" layoutY="512.0" text="Nombre du chombre Moyenne vide" textFill="RED" visible="false" />
         <Label fx:id="label8" layoutX="1040.0" layoutY="628.0" text="Nombre du chombre Luxe vide" textFill="RED" visible="false" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>

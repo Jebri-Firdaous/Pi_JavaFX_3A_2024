@@ -42,6 +42,7 @@
             <Image url="@robot.png" />
          </image>
       </ImageView>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
 
     </children>

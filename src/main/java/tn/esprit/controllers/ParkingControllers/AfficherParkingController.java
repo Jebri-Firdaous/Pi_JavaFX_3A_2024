@@ -49,7 +49,7 @@ public class AfficherParkingController {
 
     @FXML
     void initialize(){
-        String yourApiKey = "AAPK35cf4b021e7a4c019b63243490179ac2jBL4IBgUxMIrLCpGR5HmtaB-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy";
+        String yourApiKey = "AAPK35cf4b021e7a4c019b63243490179ac2jBL4IBgUxMIrLCpGR5HmtaB-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy";
         ArcGISRuntimeEnvironment.setApiKey(yourApiKey);
         mapView = new MapView();
         mapView.setPrefWidth(534);

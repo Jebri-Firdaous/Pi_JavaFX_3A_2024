@@ -73,6 +73,7 @@
             <Image url="@img_4.png" />
          </image>
       </ImageView>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
 
    </children>

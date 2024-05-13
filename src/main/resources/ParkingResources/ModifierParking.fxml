@@ -90,6 +90,7 @@
             </Pane>
          </center>
       </BorderPane>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
    </children>
    <stylesheets>
       <URL value="@style.css" />

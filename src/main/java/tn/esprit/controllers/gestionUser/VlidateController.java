@@ -26,8 +26,12 @@ import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
-
+import java.util.UUID;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 public class VlidateController {
     ServiceAdmin sa = new ServiceAdmin();
     ServiceUser serviceUser = new ServiceUser();
@@ -71,38 +75,77 @@ public class VlidateController {
         );
         File selectedFile = fileChooser.showOpenDialog(new Stage());
         if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            profileImageView.setImage(image);
-            Circle clip = new Circle();
-            double radius = 150;
-            clip.setCenterX(radius); // Centre X du cercle, adapté à votre mise en page
-            clip.setCenterY(radius); // Centre Y du cercle, adapté à votre mise en page
-            clip.setRadius(radius);
-            profileImageView.setClip(clip);
-            profileImageView.setPreserveRatio(true);
+            selectedImageFile = selectedFile; // Set selectedImageFile to the selected file
 
-            // Position de l'image dans votre mise en page
-            double layoutX = 100;
-            double layoutY = 25;
-            profileImageView.setLayoutX(layoutX);
-            profileImageView.setLayoutY(layoutY);
+            // Generate a random file name
+            String fileName = UUID.randomUUID().toString() + "." + getFileExtension(selectedFile.getName());
+            // Define the destination directory
+            String destinationDirectory = "D:/nv_pi/pidev_symfony/public/img/image_compte/";
+            // Define the destination path
+            Path destinationPath = Paths.get(destinationDirectory + fileName);
 
-            selectedImageFile = selectedFile;
-            cheminPhotoProfile = selectedFile.getAbsolutePath();
+            try {
+                // Copy the selected file to the destination directory with the new name
+                Files.copy(selectedFile.toPath(), destinationPath);
+                // Update the image view
+                Image image = new Image(destinationPath.toUri().toString());
+                profileImageView.setImage(image);
+                Circle clip = new Circle();
+                double radius = 150;
+                clip.setCenterX(radius);
+                clip.setCenterY(radius);
+                clip.setRadius(radius);
+                profileImageView.setClip(clip);
+                profileImageView.setPreserveRatio(true);
+                double layoutX = 100;
+                double layoutY = 25;
+                profileImageView.setLayoutX(layoutX);
+                profileImageView.setLayoutY(layoutY);
+
+                // Store the new image path
+                cheminPhotoProfile = destinationPath.toString();
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle file copy error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Erreur lors de la copie de l'image");
+                alert.setContentText("Une erreur s'est produite lors de la copie de l'image. Veuillez réessayer.");
+                alert.showAndWait();
+            }
         }
     }
 
+    // Helper method to get file extension
+    private String getFileExtension(String fileName) {
+        int lastIndexOfDot = fileName.lastIndexOf(".");
+        if (lastIndexOfDot == -1) {
+            return ""; // No extension found
+        }
+        return fileName.substring(lastIndexOfDot + 1);
+    }
     @FXML
     public void ToValidate(ActionEvent actionEvent) throws SQLException {
         if (!cheminPhotoProfile.isEmpty() && selectedImageFile != null && adminId != 0) {
             User administrateur = serviceUser.getOneById(adminId);
             System.out.println(administrateur);
 
-// Update the properties of the administrateur object
-            administrateur.setImage_personne(cheminPhotoProfile);
-            administrateur.setNumero_telephone(Integer.parseInt(tel.getText()));
+            // Generate a unique file name for the uploaded image
+            String fileName = UUID.randomUUID().toString() + "." + getFileExtension(selectedImageFile.getName());
+
+            // Define the destination directory
+            String destinationDirectory = "D:/nv_pi/pidev_symfony/public/img/image_compte/";
+
+            // Define the destination path
+            Path destinationPath = Paths.get(destinationDirectory + fileName);
 
             try {
+                // Move the selected file to the destination directory with the new name
+                Files.copy(selectedImageFile.toPath(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // Update the properties of the administrateur object with the file name
+                administrateur.setImage_personne(fileName);
+                administrateur.setNumero_telephone(Integer.parseInt(tel.getText()));
+
                 // Call the modifierAdmin method to update the user in the database
                 serviceUser.modifierAdmin(administrateur);
                 System.out.println(administrateur);
@@ -124,7 +167,7 @@ public class VlidateController {
 
                 System.out.println("Administrateur modifié avec succès !");
                 navigateToPage("gestionUserRessources/pageConnexion.fxml");
-            } catch (SQLException e) {
+            } catch (IOException | SQLException e) {
                 // Handle errors that occur during the modification process
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Erreur lors de la modification de l'administrateur");
@@ -138,9 +181,8 @@ public class VlidateController {
             alert.setContentText("Veuillez sélectionner une image de profil et entrer un numéro de téléphone.");
             alert.showAndWait();
         }
-
-
     }
+
 
     public void setAdminId(int adminId) {
         this.adminId = adminId;

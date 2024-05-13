@@ -53,5 +53,6 @@
                 <TextField fx:id="rechercheArticleTF" layoutX="94.0" layoutY="253.0" prefHeight="31.0" prefWidth="584.0" promptText="Chercher un article" style="-fx-background-color: transparent;" />
          </children>
       </HBox>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>

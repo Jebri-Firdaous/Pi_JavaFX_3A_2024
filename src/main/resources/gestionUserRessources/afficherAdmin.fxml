@@ -73,6 +73,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
     </children>
 </AnchorPane>

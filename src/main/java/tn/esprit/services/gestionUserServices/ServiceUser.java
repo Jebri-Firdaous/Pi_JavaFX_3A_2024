@@ -12,8 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static tn.esprit.test.Main.hashPassword;
-import static tn.esprit.test.Main.verifyPassword;
+
 
 public class ServiceUser implements IUserService<User> {
     private Connection connection;
@@ -52,7 +51,7 @@ public class ServiceUser implements IUserService<User> {
     @Override
     public void ajouterClient(User user) throws SQLException {
         String jsonRoles = "[\"CLIENT\"]";
-        String hashedPassword = hashPassword(user.getMdp_personne()); // Hash the password
+        String hashedPassword = PasswordEncryption.hashPassword(user.getMdp_personne()); // Hash the password
 
         String sql = "INSERT INTO `user`(`nom_personne`, `prenom_personne`," +
                 " `numero_telephone`, `email`,`password`,`image_personne`,`genre`,`age`,`roles`) VALUES (?, ?, ?, ?,?,?,?,?,?)";
@@ -72,7 +71,7 @@ public class ServiceUser implements IUserService<User> {
     @Override
     public void ajouterAdmin(User user) throws SQLException {
         String jsonRoles = "[\"ADMIN\"]";
-        String hashedPassword = hashPassword(user.getMdp_personne()); // Hash the password
+        String hashedPassword = PasswordEncryption.hashPassword(user.getMdp_personne()); // Hash the password
 
         String sql = "INSERT INTO `user`(`nom_personne`, `prenom_personne`," +
                 " `numero_telephone`, `email`,`password`,`image_personne`,`role_admin`,`roles`) VALUES ( ?,?,?,?,?,?,?,?)";
@@ -118,7 +117,7 @@ public class ServiceUser implements IUserService<User> {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     String hashedPassword = resultSet.getString("password");
-                    if (verifyPassword(mdp, hashedPassword)) {
+                    if (PasswordEncryption.verifyPassword(mdp, hashedPassword)) {
                         return resultSet.getInt("id");
                     } else {
                         throw new SQLException("Invalid password.");
@@ -295,7 +294,7 @@ public class ServiceUser implements IUserService<User> {
         }
 
         // Verify the password using the hashed password from the database
-        if (verifyPassword(password, storedHashedPassword)) {
+        if (PasswordEncryption.verifyPassword(password, storedHashedPassword)) {
             if (isBanned == 1) {
                 id = 0;
             }

@@ -48,6 +48,7 @@
             <ComboBox fx:id="comboBoxTri" layoutX="549.0" layoutY="183.0" onAction="#trierCommandes" prefHeight="31.0" prefWidth="271.0" promptText="Trier par date de livraison">
 
                         </ComboBox>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
     </children>
 </AnchorPane>

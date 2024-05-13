@@ -13,15 +13,15 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1312.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TourismeController.AdminInterfaceControllers">
     <children>
         <fx:include source="../navBar.fxml" />
-
-
-
-        <Label fx:id="label" layoutX="1180.0" layoutY="14.0" />
         <ImageView fitHeight="655.0" fitWidth="1312.0" layoutY="122.0">
             <image>
                 <Image url="@smartcity.png" />
             </image>
         </ImageView>
+
+
+
+        <Label fx:id="label" layoutX="1180.0" layoutY="14.0" />
         <Label layoutX="335.0" layoutY="344.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="71.0" layoutY="414.0" opacity="0.47" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
         <Label fx:id="bienvenue" layoutX="8.0" layoutY="427.0" text="Accédez au contrôle total de la ville intelligente. Bienvenue dans l'espace administrateur." textFill="WHITE">
@@ -32,6 +32,7 @@
                 <Bloom threshold="0.0" />
             </effect>
         </Label>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
 
 
     </children>

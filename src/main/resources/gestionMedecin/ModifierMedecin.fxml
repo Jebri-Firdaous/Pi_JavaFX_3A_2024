@@ -32,5 +32,6 @@
       </ImageView>
       <Button layoutX="54.0" layoutY="146.0" mnemonicParsing="false" onAction="#returnToDisplayM" prefWidth="218.0" styleClass="returnToDisplayPage" text="&lt;==Afficher Les medecins" />
       <Label fx:id="msgErreur" layoutX="395.0" layoutY="403.0" onKeyReleased="#numTelTyped" prefHeight="33.0" prefWidth="112.0" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
    </children>
 </AnchorPane>

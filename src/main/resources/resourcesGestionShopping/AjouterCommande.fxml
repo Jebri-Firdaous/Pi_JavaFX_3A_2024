@@ -83,5 +83,6 @@
              <Button fx:id="validerPaiementButton" onAction="#validerPaiement" text="Valider Paiement" />
          </children>
       </VBox>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>

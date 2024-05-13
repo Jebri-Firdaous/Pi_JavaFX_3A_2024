@@ -24,6 +24,7 @@ tn\esprit\entities\gestionMedecin\SendEmail$1.class
 tn\esprit\controllers\ParkingControllers\AjouterPlaceController.class
 tn\esprit\controllers\gestionShopping\ModifierArticleController$1.class
 tn\esprit\controllers\gestionMedecin\AjouterRendezVousController$2.class
+tn\esprit\services\gestionUserServices\PasswordEncryption.class
 tn\esprit\controllers\gestionUser\CreerAdminController$5.class
 tn\esprit\controllers\gestionMedecin\AjouterRendezVousController$3.class
 tn\esprit\controllers\gestionUser\CreerAdminController$1.class
