@@ -1,6 +1,7 @@
 package tn.esprit.services.gestionUserServices;
 
 import com.mysql.cj.xdevapi.JsonArray;
+import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.entities.gestionMedecin.Medecin;
 import tn.esprit.entities.gestionUserEntities.Administrateur;
 import tn.esprit.entities.gestionUserEntities.User;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static tn.esprit.test.Main.hashPassword;
+import static tn.esprit.test.Main.verifyPassword;
 
 public class ServiceUser implements IUserService<User> {
     private Connection connection;
@@ -106,23 +108,27 @@ public class ServiceUser implements IUserService<User> {
 
     }
     public int getAdminId(String nom, String prenom, String mail, String mdp, String roles) throws SQLException {
-
-        String sql = "SELECT id FROM user WHERE nom_personne = ? AND prenom_personne = ? AND email = ? AND password = ? AND roles = ?";
+        String sql = "SELECT id, password FROM user WHERE nom_personne = ? AND prenom_personne = ? AND email = ? AND roles = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, nom);
             statement.setString(2, prenom);
             statement.setString(3, mail);
-            statement.setString(4, mdp);
-            statement.setString(5, roles);
+            statement.setString(4, roles);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    return resultSet.getInt("id");
+                    String hashedPassword = resultSet.getString("password");
+                    if (verifyPassword(mdp, hashedPassword)) {
+                        return resultSet.getInt("id");
+                    } else {
+                        throw new SQLException("Invalid password.");
+                    }
                 } else {
                     throw new SQLException("Admin not found.");
                 }
             }
         }
+
 
 
 }
@@ -270,31 +276,40 @@ public class ServiceUser implements IUserService<User> {
         int id = -1;
         int isBanned = 0;
         String roleUser = "";
+        String storedHashedPassword = "";
 
         try {
-            String req = "SELECT * FROM `user` WHERE `email` = ? AND `password` = ?";
+            String req = "SELECT * FROM `user` WHERE `email` = ?";
             PreparedStatement stmt = connection.prepareStatement(req);
             stmt.setString(1, email);
-            stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 id = rs.getInt("id");
                 isBanned = rs.getInt("is_banned");
                 roleUser = rs.getString("roles");
+                storedHashedPassword = rs.getString("password");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        if (isBanned == 1) {
-            id = 0;
+        // Verify the password using the hashed password from the database
+        if (verifyPassword(password, storedHashedPassword)) {
+            if (isBanned == 1) {
+                id = 0;
+            }
+            if (roleUser.equals("[\"CLIENT\"]")) {
+                id = -2;
+            }
+        } else {
+            // Password doesn't match
+            id = -1;
         }
-        if (roleUser.equals("[\"CLIENT\"]")) {
-            id = -2;
-        }
+
         return id;
     }
+
     public User getOneById(int id) {
         User user = null;
         try {

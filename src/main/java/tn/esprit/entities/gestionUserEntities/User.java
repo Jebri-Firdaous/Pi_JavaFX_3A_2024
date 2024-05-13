@@ -152,6 +152,26 @@ public class User {
         this.is_verified = is_verified;
         this.is_banned = is_banned;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nom_personne='" + nom_personne + '\'' +
+                ", prenom_personne='" + prenom_personne + '\'' +
+                ", numero_telephone=" + numero_telephone +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", image_personne='" + image_personne + '\'' +
+                ", genre='" + genre + '\'' +
+                ", age=" + age +
+                ", roles='" + roles + '\'' +
+                ", role_admin='" + role_admin + '\'' +
+                ", is_verified=" + is_verified +
+                ", is_banned=" + is_banned +
+                '}';
+    }
+
     public User(int id, String nom_personne, String prenom_personne, int numero_telephone, String email, String mdp_personne, String role_admin) {
         this.id = id;
         this.nom_personne = nom_personne;
@@ -164,9 +184,9 @@ public class User {
     }
 
 
-    @Override
+    /*@Override
     public String toString() {
         return getNom_personne()+" "+getPrenom_personne();
 
-    }
+    }*/
 }

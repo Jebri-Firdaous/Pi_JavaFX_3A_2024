@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Random;
 
+import static tn.esprit.test.Main.hashPassword;
+
 public class LoginController {
     /*************************** Partie déclaration *************************************************/
     private final String url = "jdbc:mysql://localhost:3306/e_city_final";
@@ -43,22 +45,20 @@ public class LoginController {
 
     private int loginAttempts = 0;
 
-    public static String hashPassword(String password) {
-        return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
-
-    public static boolean verifyPassword(String password, String hashedPassword) {
-        return BCrypt.checkpw(password, hashedPassword);
-    }
-
     /**
      * I-******************************* Logique de login + ban
      ***************************************/
     //-1- logique de login et ban:------------------------------------------------------------------/
+
     public void login(ActionEvent actionEvent) {
+
         String emailText = email.getText();
         String passwordText = mdp.getText();
+        String hashedPassword = hashPassword(passwordText);
+
+
         int authentificated = serviceUser.authentication(emailText, passwordText);
+        System.out.println(authentificated);
         Alert alert = new Alert(Alert.AlertType.ERROR);
         Session sessionAdmin = Session.getInstance();
 
@@ -107,6 +107,7 @@ public class LoginController {
             alert.showAndWait();
         }
     }
+
 
     //-2- bloquer les champs pendant 20 minutes----------------------------------------------------------/
     private void disableFieldsTemporarily() {

@@ -29,19 +29,18 @@ public class Main {
         String password = "";
 
         String pwd = "myPassword";
+
         System.out.println(pwd);
         String hashedPassword = hashPassword(pwd);
-
         System.out.println("Hashed Password: " + hashedPassword);
-
-        String mdp="ooooo";
+        String mdp="myPassword";
         // Verify password
         boolean isValid = verifyPassword(mdp, hashedPassword);
         System.out.println("Is Valid Password? " + isValid);
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             ServiceUser userService = new ServiceUser();
-
+userService.authentication("jdsnjs@gmail.com","A123456789+");
    // ------------------------Test d'affichage-----------------------
             /*
             System.out.println("Les Administrateurs: \n");
