@@ -19,7 +19,7 @@
                         <Font name="Calibri Bold Italic" size="56.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nom" layoutX="108.0" layoutY="203.0" prefHeight="31.0" prefWidth="232.0">
+                  <TextField fx:id="nom" layoutX="108.0" layoutY="203.0" prefHeight="31.0" prefWidth="232.0" promptText="Saisissez nom">
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
@@ -32,13 +32,13 @@
                         <Font name="Yu Gothic UI Semilight" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="prenom" layoutX="116.0" layoutY="274.0" prefHeight="31.0" prefWidth="204.0" />
+                  <TextField fx:id="prenom" layoutX="116.0" layoutY="274.0" prefHeight="31.0" prefWidth="204.0" promptText="Saisissez prenom" />
                </children>
             </VBox>
             <VBox>
                <children>
                   <Label layoutX="115.0" layoutY="313.0" text="Numéro de téléphone" />
-                  <TextField fx:id="numeroTel" layoutX="115.0" layoutY="355.0" onKeyTyped="#numTelTyped">
+                  <TextField fx:id="numeroTel" layoutX="115.0" layoutY="355.0" onKeyTyped="#numTelTyped" promptText="Saisissez numero telephone">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -48,25 +48,36 @@
             <VBox>
                <children>
                   <Label layoutX="130.0" layoutY="395.0" text="Addresse" />
-                  <TextField fx:id="addresse" layoutX="133.0" layoutY="422.0" />
+                  <TextField fx:id="addresse" layoutX="133.0" layoutY="422.0" promptText="Saisissez adresse" />
                </children>
             </VBox>
             <VBox>
                <children>
                   <Label layoutX="139.0" layoutY="459.0" text="Specialité" />
-                  <ComboBox fx:id="specialiteR" layoutX="139.0" layoutY="494.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="39.0" prefWidth="243.0" />
+                  <ComboBox fx:id="specialiteR" layoutX="139.0" layoutY="494.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="39.0" prefWidth="243.0" promptText="Choisir la spécialité" />
                </children>
             </VBox>
          </children>
       </VBox>
-      <Button layoutX="87.0" layoutY="641.0" mnemonicParsing="false" onAction="#AjouterMedecin" prefHeight="31.0" prefWidth="187.0" text="Ajouter" />
+      <Button layoutX="297.0" layoutY="638.0" maxWidth="118.0" mnemonicParsing="false" onAction="#AjouterMedecin" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: #57c0dd; -fx-max-width: 140;" text="Ajouter">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Button>
       <ImageView fx:id="imageDoctorTrans" fitHeight="524.0" fitWidth="540.0" layoutX="546.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons/medecinIcon.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="79.0" layoutY="147.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToDisplay" prefHeight="39.0" prefWidth="213.0" styleClass="returnToDisplayPage" text="&lt;==Afficher Les Medecins" />
+      <Button layoutX="87.0" layoutY="638.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToDisplay" prefHeight="39.0" prefWidth="194.0" style="-fx-background-color: #57c0dd; -fx-background-radius: 50; -fx-text-fill: white; -fx-border-radius: 12; -fx-border-color: transparent;" styleClass="returnToDisplayPage" text="Les Medecins">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Button>
       <Label fx:id="msgErreur" layoutX="447.0" layoutY="430.0" prefHeight="21.0" prefWidth="213.0" />
       <Label fx:id="labeldisconnect" layoutX="138.0" layoutY="14.0" visible="false" />
+      <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="91.0" layoutY="646.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@retour.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
