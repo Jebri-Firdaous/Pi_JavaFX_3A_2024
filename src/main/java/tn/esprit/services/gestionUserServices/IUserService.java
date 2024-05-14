@@ -1,5 +1,7 @@
 package tn.esprit.services.gestionUserServices;
 
+import tn.esprit.entities.gestionUserEntities.User;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public interface IUserService <T>{
     void supprimerUser(int id) throws SQLException;
     List<T> rechercherAdmin(String recherche) throws SQLException;
     List<T> recherClient(String recherche) throws SQLException;
-
+    List<User> listClient() throws SQLException;
 
 
 }

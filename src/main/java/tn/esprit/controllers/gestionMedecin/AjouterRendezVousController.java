@@ -31,9 +31,11 @@ import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import tn.esprit.entities.gestionMedecin.*;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +51,7 @@ public class AjouterRendezVousController implements Initializable {
     public ComboBox<String> specialiteR;
     public Label adresse_TextField;
     public Label n_TelTextField;
-    public ComboBox<Client> comboboxClient;
+    public ComboBox<User> comboboxClient;
     public Label labelClient;
     public TextArea feelingBox;
     public Label labelResultOfFeelingBox;
@@ -78,11 +80,11 @@ public class AjouterRendezVousController implements Initializable {
             throw new RuntimeException(e);
         }
         // Initialize Combobox Client
-        ServiceClient serviceClient = new ServiceClient();
-        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        ServiceUser serviceClient = new ServiceUser();
+        ObservableList<User> clientsList = FXCollections.observableArrayList();
         comboboxClient.setItems(clientsList);
         try {
-            clientsList.addAll(serviceClient.afficher());
+            clientsList.addAll(serviceClient.afficherClient());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -151,6 +153,7 @@ public class AjouterRendezVousController implements Initializable {
                 }
             }
         });
+
 
     }
 
@@ -222,20 +225,21 @@ public class AjouterRendezVousController implements Initializable {
 
         }
         try {
-            serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin, comboboxClient.getValue().getId_personne()));
+            serviceRendezVous.ajouter(new RendezVous(dateTime, medecinR.getValue().id_medecin, comboboxClient.getValue().getId()));
             // for sms to doctor
             ServiceMedecin serviceMedecin = new ServiceMedecin();
             Medecin medecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
             TwilioSendSms twilioSendSms = new TwilioSendSms();
             DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:mm");
             String msg = "Bonjour Dr. " + medecin.getNom_medecin() + " vous avez un rendez-vous le " + dateTime.format(myFormatObj);
-            Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
+//            Twilio --------------------------------
+//            Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
 
             // For email to client
-            ServiceClient serviceClient = new ServiceClient();
-            Client client = serviceClient.getClientById(comboboxClient.getValue().getId_personne());
+            ServiceUser serviceUser = new ServiceUser();
+            User client = serviceUser.getOneById(comboboxClient.getValue().getId());
             // 7ot email l client
-            String receiverAdresse = "tavef44143@aersm.com";
+            String receiverAdresse = "xofisa6262@facais.com";
             String subject = "Ajouter Rendez-Vous";
             String body = "Bonjour Mr." + client.getNom_personne() + " votre rendezVous avec Dr." + medecin.getNom_medecin() + " sera le " + dateTime.format(myFormatObj);
             new SendEmail(receiverAdresse, subject, body);
@@ -472,43 +476,43 @@ public class AjouterRendezVousController implements Initializable {
 
     }
 
-//    ----------------------Tokenizer--------------------------
-public static String Tokenizer(String text){
-    try (InputStream modelIn = AjouterRendezVousController.class.getResourceAsStream("/gestionMedecin/en-token.bin")) {
-        TokenizerModel model = new TokenizerModel(modelIn);
-        TokenizerME tokenizer = new TokenizerME(model);
-        Map<String, List<String>> specialtyTokens = new HashMap<>();
+    //    ----------------------Tokenizer--------------------------
+    public static String Tokenizer(String text){
+        try (InputStream modelIn = AjouterRendezVousController.class.getResourceAsStream("/gestionMedecin/en-token.bin")) {
+            TokenizerModel model = new TokenizerModel(modelIn);
+            TokenizerME tokenizer = new TokenizerME(model);
+            Map<String, List<String>> specialtyTokens = new HashMap<>();
 
 // Add tokens for each specialty in French, including technical terms in their original form
-        specialtyTokens.put("Cardiologue", Arrays.asList("coeur", "douleur", "angine", "infarctus "));
-        specialtyTokens.put("Dermatologue", Arrays.asList("peau", "cutanee", "acne", "dermatite"));
-        specialtyTokens.put("Endocrinologue", Arrays.asList("diabète", "hormone", "thyroïde", "hormone "));
-        specialtyTokens.put("Gastro-entérologue", Arrays.asList("estomac", "gastro-intestinal", "ulcère", "IBS"));
-        specialtyTokens.put("Neurologue", Arrays.asList("cerveau", "migraine", "vasculaire ", "convulsion"));
-        specialtyTokens.put("Ophtalmologue", Arrays.asList("œil", "vision", "cataracte", "glaucome"));
-        specialtyTokens.put("Orthopédiste", Arrays.asList("os", "articulation", "arthrite", "fracture"));
-        specialtyTokens.put("Pédiatre", Arrays.asList("enfant", "bébé", "bébé", "vaccin"));
-        specialtyTokens.put("Psychiatre", Arrays.asList("sante mentale", "depression", "anxiete", "psychose"));
-        specialtyTokens.put("Radiologue", Arrays.asList("x-ray", "irm", "scanner", "échographie"));
-        specialtyTokens.put("Rhumatologue", Arrays.asList("arthrite", "rhumatisme", "auto-immun", "articulaire"));
-        specialtyTokens.put("Urologue", Arrays.asList("urine", "vessie", "prostate", "renale"));
-        String[] tokens = tokenizer.tokenize(text);
+            specialtyTokens.put("Cardiologue", Arrays.asList("coeur", "douleur", "angine", "infarctus "));
+            specialtyTokens.put("Dermatologue", Arrays.asList("peau", "cutanee", "acne", "dermatite"));
+            specialtyTokens.put("Endocrinologue", Arrays.asList("diabète", "hormone", "thyroïde", "hormone "));
+            specialtyTokens.put("Gastro-entérologue", Arrays.asList("estomac", "gastro-intestinal", "ulcère", "IBS"));
+            specialtyTokens.put("Neurologue", Arrays.asList("cerveau", "migraine", "vasculaire ", "convulsion"));
+            specialtyTokens.put("Ophtalmologue", Arrays.asList("œil", "vision", "cataracte", "glaucome"));
+            specialtyTokens.put("Orthopédiste", Arrays.asList("os", "articulation", "arthrite", "fracture"));
+            specialtyTokens.put("Pédiatre", Arrays.asList("enfant", "bébé", "bébé", "vaccin"));
+            specialtyTokens.put("Psychiatre", Arrays.asList("sante mentale", "depression", "anxiete", "psychose"));
+            specialtyTokens.put("Radiologue", Arrays.asList("x-ray", "irm", "scanner", "échographie"));
+            specialtyTokens.put("Rhumatologue", Arrays.asList("arthrite", "rhumatisme", "auto-immun", "articulaire"));
+            specialtyTokens.put("Urologue", Arrays.asList("urine", "vessie", "prostate", "renale"));
+            String[] tokens = tokenizer.tokenize(text);
 
-        for (Map.Entry<String, List<String>> entry : specialtyTokens.entrySet()) {
-            String specialty = entry.getKey();
-            List<String> specialtyTokensList = entry.getValue();
+            for (Map.Entry<String, List<String>> entry : specialtyTokens.entrySet()) {
+                String specialty = entry.getKey();
+                List<String> specialtyTokensList = entry.getValue();
 
-            for (String token : tokens) {
-                if (specialtyTokensList.contains(token.toLowerCase())) {
-                    return specialty;
+                for (String token : tokens) {
+                    if (specialtyTokensList.contains(token.toLowerCase())) {
+                        return specialty;
+                    }
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+        return "no detected";
     }
-    return "no detected";
-}
 
     public void determinerSpecialiteAdequat(ActionEvent event) {
         if (feelingBox.getText()==null){
@@ -518,4 +522,5 @@ public static String Tokenizer(String text){
 
     }
 }
+
 

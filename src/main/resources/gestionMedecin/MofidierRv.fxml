@@ -98,8 +98,8 @@
                 <Insets right="9.0" />
             </padding>
         </HBox>
-      <Button layoutX="48.0" layoutY="133.0" mnemonicParsing="false" onAction="#returnDisplayRv" styleClass="returnToDisplayPage" text="&lt;==Afficher Les RVs" />
-      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+        <Button layoutX="48.0" layoutY="133.0" mnemonicParsing="false" onAction="#returnDisplayRv" styleClass="returnToDisplayPage" text="&lt;==Afficher Les RVs" />
+        <Label fx:id="labeldisconnect" layoutX="138.0" layoutY="14.0" visible="false" />
     </children>
 
 </AnchorPane>

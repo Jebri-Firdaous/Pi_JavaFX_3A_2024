@@ -528,4 +528,21 @@
         @FXML
         private Label role_administrateur;
 
+        public void ToAcceuil(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Acceuil.fxml"));
+                Parent newPageRoot = loader.load();
+
+                // Create a new scene with the newPageRoot
+                Scene pageScene = new Scene(newPageRoot);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
     }

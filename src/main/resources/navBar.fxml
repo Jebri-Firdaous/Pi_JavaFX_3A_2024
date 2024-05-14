@@ -19,7 +19,10 @@
                 </ImageView>
                 <MenuBar layoutX="187.0" layoutY="61.0" prefHeight="32.0" prefWidth="887.0">
                     <menus>
-                        <Menu mnemonicParsing="false" text="Accueil">
+                        <Menu mnemonicParsing="true" text="Accueil" >
+                            <items>
+                                <MenuItem onAction="#ToAcceuil" text="Accueil" />
+                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion Sante">
                             <items>

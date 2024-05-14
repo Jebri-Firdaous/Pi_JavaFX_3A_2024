@@ -29,9 +29,11 @@ import org.controlsfx.control.Notifications;
 import tn.esprit.entities.gestionShopping.Article;
 import tn.esprit.entities.gestionShopping.Commande;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionShopping.ServiceArticle;
 import tn.esprit.services.gestionShopping.ServiceCommande;
 import tn.esprit.services.gestionUserServices.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.util.function.UnaryOperator;
@@ -68,7 +70,7 @@ public class AjouterCommandeController {
 
     private double prixTotal = 0.0;
     private final List<Article> selectedArticles = new ArrayList<>();
-  List<Client> clients = new ArrayList<>();
+    List<Client> clients = new ArrayList<>();
 
 
 
@@ -79,12 +81,11 @@ public class AjouterCommandeController {
     @FXML
     public void initialize() {
 
-        // Charger les clients depuis la base de données
         try {
-            clients = new ServiceClient().getAllClients(); // Créer une instance de ServiceClient et appeler getAllClients()
+            List<User> clients = new ServiceUser().listClient(); // Crée une instance de ServiceUser et appelle afficherClient()
             ObservableList<String> observableClientNames = FXCollections.observableArrayList();
-            for (Client client : clients) {
-                String clientInfo = client.getId_personne() + " - " + client.getNom_personne() + " - " + client.getPrenom_personne();
+            for (User client : clients) {
+                String clientInfo = client.getId() + " - " + client.getNom_personne() + " - " + client.getPrenom_personne();
                 observableClientNames.add(clientInfo);
             }
             clientComboBox.setItems(observableClientNames);
@@ -242,13 +243,13 @@ public class AjouterCommandeController {
         String nomCarte = nomCarteTextField.getText();
         String numeroCarte = numeroCarteTextField.getText();
 
-            // Logique pour effectuer le paiement
-            // Afficher une alerte de paiement réussi
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Paiement effectué");
-            alert.setHeaderText(null);
-            alert.setContentText("Paiement effectué avec succès.");
-            alert.showAndWait();
+        // Logique pour effectuer le paiement
+        // Afficher une alerte de paiement réussi
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Paiement effectué");
+        alert.setHeaderText(null);
+        alert.setContentText("Paiement effectué avec succès.");
+        alert.showAndWait();
     }
 
     private void afficherAlerte(Alert.AlertType type, String titre, String message) {

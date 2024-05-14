@@ -16,7 +16,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
     @Override
     public void ajouter(RendezVous rendezVous) throws SQLException {
-        String sql = "INSERT INTO `rendez-vous`(`date_rendez_vous`, `id_medecin`, `id_personne`) VALUES (?,?,?)";
+        String sql = "INSERT INTO `rendez_vous`(`date_rendez_vous`, `id_medecin`, `id_personne`) VALUES (?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setTimestamp(1, rendezVous.getDate_rendez_vous());
         preparedStatement.setInt(2, rendezVous.getId_medecin());
@@ -24,7 +24,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
         preparedStatement.executeUpdate();
     }
     public void modifier(int refRv, Timestamp date_rendez_vous, int id_medecin) throws SQLException {
-        String sql = "UPDATE `rendez-vous` SET `date_rendez_vous`= ?,`id_medecin`= ? WHERE `ref_rendez_vous`= ? ";
+        String sql = "UPDATE `rendez_vous` SET `date_rendez_vous`= ?,`id_medecin`= ? WHERE `ref_rendez_vous`= ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setTimestamp(1,date_rendez_vous);
         preparedStatement.setInt(2,id_medecin);
@@ -43,7 +43,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
 
     @Override
     public void supprimer(int id) throws SQLException {
-        String sql = "DELETE FROM `rendez-vous` WHERE `ref_rendez_vous` = ?";
+        String sql = "DELETE FROM `rendez_vous` WHERE `ref_rendez_vous` = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.executeUpdate();
@@ -53,7 +53,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     @Override
     public List<RendezVous> afficher() throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
-        String sql = "select * from `rendez-vous` ";
+        String sql = "select * from `rendez_vous` ";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         while (rs.next()) {
@@ -68,7 +68,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
     public List<RendezVous> afficherByNomClient(String nomClient) throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
-        String sql = "SELECT * FROM `rendez-vous` WHERE id_personne IN (SELECT id_personne FROM personne WHERE UPPER(nom_personne) LIKE ?)";
+        String sql = "SELECT * FROM `rendez_vous` WHERE id_personne IN (SELECT id FROM user WHERE UPPER(nom_personne) LIKE ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,nomClient.toUpperCase()+"%");
         ResultSet rs = preparedStatement.executeQuery();
@@ -84,7 +84,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
     public List<RendezVous> afficherByNomDoctor(String nomMedecin) throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
-        String sql = "SELECT * FROM `rendez-vous` WHERE id_medecin IN (SELECT id_medecin FROM medecin WHERE UPPER(nom_medecin) LIKE ?)";
+        String sql = "SELECT * FROM `rendez_vous` WHERE id_medecin IN (SELECT id_medecin FROM medecin WHERE UPPER(nom_medecin) LIKE ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,nomMedecin.toUpperCase()+"%");
         ResultSet rs = preparedStatement.executeQuery();
@@ -100,7 +100,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
     public List<RendezVous> afficherBySpecialite(String specialite) throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
-        String sql = "SELECT * FROM `rendez-vous` WHERE id_medecin IN (SELECT id_medecin FROM medecin WHERE UPPER(specialite_medecin) LIKE ?)";
+        String sql = "SELECT * FROM `rendez_vous` WHERE id_medecin IN (SELECT id_medecin FROM medecin WHERE UPPER(specialite_medecin) LIKE ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,specialite.toUpperCase()+"%");
         ResultSet rs = preparedStatement.executeQuery();
@@ -117,7 +117,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     public List<RendezVous> afficherByDate(String localDateTimeString) throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
 
-        String sql = "SELECT * FROM `rendez-vous` WHERE CAST(DATE_FORMAT(date_rendez_vous, '%d-%b-%Y %H:%i') AS CHAR) LIKE ?";
+        String sql = "SELECT * FROM `rendez_vous` WHERE CAST(DATE_FORMAT(date_rendez_vous, '%d-%b-%Y %H:%i') AS CHAR) LIKE ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,localDateTimeString.toUpperCase()+"%");
         ResultSet rs = preparedStatement.executeQuery();
@@ -135,7 +135,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     public List<RendezVous> afficherByAdresse(String adresse) throws SQLException {
         List<RendezVous> desrendezVous = new ArrayList<>();
 
-        String sql = "SELECT * FROM `rendez-vous` WHERE id_medecin IN (SELECT id_medecin FROM medecin WHERE UPPER(address_medecin) LIKE ?)";
+        String sql = "SELECT * FROM `rendez_vous` WHERE id_medecin IN (SELECT id_medecin FROM medecin WHERE UPPER(address_medecin) LIKE ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,adresse.toUpperCase()+"%");
         ResultSet rs = preparedStatement.executeQuery();
@@ -151,7 +151,7 @@ public class ServiceRendezVous implements IService<RendezVous>{
     }
     public List<LocalDateTime> getAllDateRendezVousByidMedeicn(int id) throws SQLException {
         List<LocalDateTime> dateRendezVous = new ArrayList<>();
-        String sql = "SELECT `date_rendez_vous` FROM `rendez-vous` WHERE `id_medecin` = ? ";
+        String sql = "SELECT `date_rendez_vous` FROM `rendez_vous` WHERE `id_medecin` = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         preparedStatement.executeQuery();
@@ -162,9 +162,10 @@ public class ServiceRendezVous implements IService<RendezVous>{
         return  dateRendezVous;
     }
 
+
     public RendezVous getRendezVousByRefRv(int refRV) throws SQLException {
         RendezVous rendezVous = new RendezVous();
-        String sql = "SELECT * FROM `rendez-vous` WHERE `ref_rendez_vous` = ? ";
+        String sql = "SELECT * FROM `rendez_vous` WHERE `ref_rendez_vous` = ? ";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, refRV);
         preparedStatement.executeQuery();

@@ -109,7 +109,7 @@
          </graphic></Button>
       <ComboBox fx:id="client" layoutX="408.0" layoutY="255.0" onAction="#choisirClient" prefHeight="47.0" prefWidth="404.0" promptText="choisir client" />
 
-        <ImageView fx:id="tourism" fitHeight="128.0" fitWidth="326.0" layoutX="202.0" layoutY="69.0">
+                          <ImageView fx:id="tourism" fitHeight="128.0" fitWidth="326.0" layoutX="252.0" layoutY="367.0">
             <image>
                 <Image url="@tesswire.png" />
             </image>

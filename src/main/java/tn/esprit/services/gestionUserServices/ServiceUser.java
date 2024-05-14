@@ -447,6 +447,33 @@ public class ServiceUser implements IUserService<User> {
         }
         System.out.println(administrateurs);
         return administrateurs;    }
+    @Override
+    public List<User> listClient() throws SQLException {
+        List<User> clients = new ArrayList<>();
 
+        String sql = "SELECT * FROM user WHERE JSON_CONTAINS(roles, '[\"CLIENT\"]')";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet rs = preparedStatement.executeQuery()) {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNom_personne(rs.getString("Nom_personne"));
+                user.setPrenom_personne(rs.getString("prenom_personne"));
+                user.setNumero_telephone(rs.getInt("numero_telephone"));
+                user.setEmail(rs.getString("email"));
+                user.setImage_personne(rs.getString("image_personne"));
+                user.setGenre(rs.getString("genre"));
+                user.setAge(rs.getInt("age"));
+                user.setRoles(rs.getString("roles"));
+                user.setRole_admin(rs.getString("role_admin"));
+                user.setIs_verified(rs.getBoolean("is_verified"));
+                user.setIs_banned(rs.getBoolean("is_banned"));
+
+                clients.add(user);
+            }
+        }
+
+        return clients;
+    }
 
 }

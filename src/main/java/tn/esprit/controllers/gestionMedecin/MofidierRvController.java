@@ -21,10 +21,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import tn.esprit.entities.gestionUserEntities.Client;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -111,22 +111,22 @@ public class MofidierRvController implements Initializable {
                         TwilioSendSms twilioSendSms = new TwilioSendSms();
                         // for old doctor
                         String msgForOldDoctor = "Bonjour Dr. " + oldMedecin.getNom_medecin() + " Votre rendez-vous le " + oldDateRv.toLocalDateTime().format(myFormatObj) + " sera annulé";
-                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForOldDoctor).create();
+//                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForOldDoctor).create();
                         // for new doctor
                         String msgForNewDoctor = "Bonjour Dr. " + newMedecin.getNom_medecin() + " vous avez un rendez-vous le " + dateTime.format(myFormatObj);
-                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForNewDoctor).create();
+//                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForNewDoctor).create();
                     } else if (id_oldMedecin == medecinR.getValue().getId_medecin() && !oldDateRv.toLocalDateTime().equals(dateTime)) {
                         medecin = serviceMedecin.getMedecinById(medecinR.getValue().getId_medecin());
                         TwilioSendSms twilioSendSms = new TwilioSendSms();
 
                         // for old doctor
                         String msgForUpdatedDateToDoctor = "Bonjour Dr. " + medecin.getNom_medecin() + " Votre rendez-vous le " + oldDateRv.toLocalDateTime().format(myFormatObj) + " sera changé au " + dateTime.format(myFormatObj);
-                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForUpdatedDateToDoctor).create();
+//                        Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msgForUpdatedDateToDoctor).create();
 
                     }
                     // For email to client
-                    ServiceClient serviceClient = new ServiceClient();
-                    Client client = serviceClient.getClientById(serviceRendezVous.getRendezVousByRefRv(ref_rendez_vous).getId_personne());
+                    ServiceUser serviceUser = new ServiceUser();
+                    User client = serviceUser.getOneById(serviceRendezVous.getRendezVousByRefRv(ref_rendez_vous).getId_personne());
                     // 7ot email l client
                     String receiverAdresse = "tavef44143@aersm.com";
                     String subject = "Modifier Rendez-Vous";

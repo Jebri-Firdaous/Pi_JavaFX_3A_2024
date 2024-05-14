@@ -71,9 +71,9 @@
          </children>
       </VBox>
       <Button layoutX="50.0" layoutY="664.0" mnemonicParsing="false" onAction="#reserverBT" prefHeight="52.0" prefWidth="262.0" text="Réserver" />
-   
+
       <FlowPane />
-   
+
       <!-- Calender ///////////////////////////////////     -->
       <FlowPane fx:id="calendar" hgap="10.0" layoutX="380.0" layoutY="259.0" prefHeight="350.0" prefWidth="817.0" vgap="5.0" />
       <HBox alignment="CENTER" layoutX="529.0" layoutY="148.0" prefHeight="78.0" prefWidth="527.0" spacing="5.0">
@@ -110,6 +110,6 @@
       <TextArea fx:id="feelingBox" layoutX="475.0" layoutY="633.0" prefHeight="72.0" prefWidth="288.0" />
       <Label fx:id="labelResultOfFeelingBox" layoutX="879.0" layoutY="649.0" prefHeight="31.0" prefWidth="222.0" />
       <Button fx:id="envoyer" layoutX="772.0" layoutY="654.0" mnemonicParsing="false" onAction="#determinerSpecialiteAdequat" prefHeight="21.0" prefWidth="79.0" styleClass="buttonDeterminerSentiment" text="déterminer" />
-      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Label fx:id="labeldisconnect" layoutX="138.0" layoutY="14.0" visible="false" />
    </children>
 </AnchorPane>
