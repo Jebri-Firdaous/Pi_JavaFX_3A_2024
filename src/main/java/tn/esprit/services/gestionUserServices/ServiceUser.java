@@ -294,6 +294,7 @@ public class ServiceUser implements IUserService<User> {
         }
 
         // Verify the password using the hashed password from the database
+
         if (PasswordEncryption.verifyPassword(password, storedHashedPassword)) {
             if (isBanned == 1) {
                 id = 0;

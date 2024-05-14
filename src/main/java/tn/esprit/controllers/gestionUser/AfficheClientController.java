@@ -90,6 +90,49 @@ private TextField search;
                     }
                 }
             });// Utilisez ClientFromService
+
+            nomClient.setStyle("-fx-background-color: lightblue;");
+            prenomClient.setStyle("-fx-background-color: lightblue;");
+            telClient.setStyle("-fx-background-color: lightblue;");
+            mailClient.setStyle("-fx-background-color: lightblue;");
+            ageClient.setStyle("-fx-background-color: lightblue;");
+            genreClient.setStyle("-fx-background-color: lightblue;");
+            IS_VERIFIED.setStyle("-fx-background-color: lightblue;");
+            IS_BANNED.setStyle("-fx-background-color: lightblue;");
+            tableViewClient.setRowFactory(tv -> {
+                TableRow<User> row = new TableRow<>();
+                row.setStyle("-fx-background-color: black;"); // Couleur de fond pour les lignes
+                row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+                row.setOnMouseClicked(event -> {
+                    if (!row.isEmpty()) {
+                        if (row.isSelected()) {
+                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("-fx-font-color: black");
+                            row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne est sélectionnée
+                        } else {
+                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne n'est pas sélectionnée
+                        }
+                    }
+                });
+                row.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+                    if (isNowSelected) {
+                        row.setStyle("-fx-background-color: white;");
+                        row.setStyle("-fx-font-color: black");
+                        row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne est sélectionnée
+// Change la couleur de fond quand la ligne est sélectionnée
+                    } else {
+                        // Réinitialise la couleur de fond quand la ligne n'est plus sélectionnée
+                        row.setStyle("-fx-background-color: white;");
+                        row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+
+                    }
+                });
+                return row;
+            });
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -56,7 +56,6 @@ public class LoginController {
         String passwordText = mdp.getText();
         String hashedPassword = PasswordEncryption.hashPassword(passwordText);
 
-
         int authentificated = serviceUser.authentication(emailText, passwordText);
         System.out.println(authentificated);
         Alert alert = new Alert(Alert.AlertType.ERROR);

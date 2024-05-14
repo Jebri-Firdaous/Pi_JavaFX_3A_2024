@@ -49,7 +49,7 @@ public class AfficherParkingController {
 
     @FXML
     void initialize(){
-        String yourApiKey = "AAPK35cf4b021e7a4c019b63243490179ac2jBL4IBgUxMIrLCpGR5HmtaB-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy";
+        String yourApiKey = "AAPK35cf4b021e7a4c019b63243490179ac2jBL4IBgUxMIrLCpGR5HmtaB-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy";
         ArcGISRuntimeEnvironment.setApiKey(yourApiKey);
         mapView = new MapView();
         mapView.setPrefWidth(534);
@@ -166,7 +166,7 @@ public class AfficherParkingController {
         try {
             Parking parking = listid.getSelectionModel().getSelectedItem();
             ps.supprimer(listid.getSelectionModel().getSelectedItem().getRef());
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Java\\PIDEV\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\data.txt", true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\pi\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\ParkingResources\\data.txt", true))) {
                 StringJoiner joiner = new StringJoiner(",");
                 joiner.add(Integer.toString(parking.getRef()));
                 joiner.add(parking.getNom());

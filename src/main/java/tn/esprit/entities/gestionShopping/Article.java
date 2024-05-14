@@ -19,16 +19,16 @@ public class Article {
     // Enum pour les types d'articles
     public enum TypeArticle {
 
-        electronique,
-        vetements,
-        livres,
-        appareils_menagers,
-        equipements_sportifs,
-        produits_de_beaute,
-        meubles,
-        jouets,
-        alimentation_et_boissons,
-        bijoux
+        Electronique,
+        Vetements,
+        Livres,
+        Appareils_menagers,
+        Equipements_sportifs,
+        Produits_de_beaute,
+        Meubles,
+        Jouets,
+        Alimentation_et_boissons,
+        Bijoux
     }
 
     // Constructeurs, getters et setters

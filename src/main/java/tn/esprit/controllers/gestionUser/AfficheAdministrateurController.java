@@ -97,6 +97,49 @@ public class AfficheAdministrateurController {
             });
             // Populate the TableView with the updated list of admins
             tableViewAdmin.setItems(FXCollections.observableArrayList(adminsFromService));
+            nomAdmin.setStyle("-fx-background-color: lightblue;");
+            prenomAdmin.setStyle("-fx-background-color: lightblue;");
+            telAdmin.setStyle("-fx-background-color: lightblue;");
+            mailAdmin.setStyle("-fx-background-color: lightblue;");
+            role.setStyle("-fx-background-color: lightblue;");
+            IS_VERIFIED.setStyle("-fx-background-color: lightblue;");
+            IS_BANNED.setStyle("-fx-background-color: lightblue;");
+            tableViewAdmin.setRowFactory(tv -> {
+                TableRow<User> row = new TableRow<>();
+                row.setStyle("-fx-background-color: black;"); // Couleur de fond pour les lignes
+                row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+                row.setOnMouseClicked(event -> {
+                    if (!row.isEmpty()) {
+                        if (row.isSelected()) {
+                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("-fx-font-color: black");
+                            row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne est sélectionnée
+                        } else {
+                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne n'est pas sélectionnée
+                        }
+                    }
+                });
+                row.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+                    if (isNowSelected) {
+                        row.setStyle("-fx-background-color: white;");
+                        row.setStyle("-fx-font-color: black");
+                        row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne est sélectionnée
+// Change la couleur de fond quand la ligne est sélectionnée
+                    } else {
+                        // Réinitialise la couleur de fond quand la ligne n'est plus sélectionnée
+                        row.setStyle("-fx-background-color: white;");
+                        row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+
+                    }
+                });
+                return row;
+            });
+
+
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -105,6 +148,7 @@ public class AfficheAdministrateurController {
             alert.setContentText("Une erreur s'est produite lors de la récupération des données. Veuillez réessayer plus tard.");
             alert.showAndWait();
         }
+
     }
 
     private void rechercherAdminDansLaBase(String recherche) {

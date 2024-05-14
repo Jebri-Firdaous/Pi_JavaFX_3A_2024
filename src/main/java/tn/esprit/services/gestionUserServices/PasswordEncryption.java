@@ -7,6 +7,10 @@ public class PasswordEncryption {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
     public static boolean verifyPassword(String password, String hashedPassword) {
+        if(hashedPassword.startsWith("$2y$"))
+        {
+            hashedPassword = "$2a$" + hashedPassword.substring(4);
+        }
         return BCrypt.checkpw(password, hashedPassword);
     }
 }

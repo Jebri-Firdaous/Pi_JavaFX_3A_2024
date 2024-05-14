@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" stylesheets="@BG.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AfficherParkingController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" stylesheets="@BG.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AfficherParkingController">
     <children>
         <fx:include source="../navBar.fxml" />
         <BorderPane layoutX="144.0" layoutY="95.0" prefHeight="685.0" prefWidth="1319.0" style="-fx-background-image: url(../gestionMedecin/doctor.png);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-19.0" AnchorPane.topAnchor="95.0">
@@ -24,7 +17,7 @@
                             <children>
                                 <Button fx:id="addB" layoutX="369.0" layoutY="636.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" prefWidth="132.0" text="Ajouter" />
                                 <VBox fx:id="listVB" layoutX="218.0" layoutY="297.0" prefHeight="327.0" prefWidth="413.0" />
-                                <Button fx:id="addB1" layoutX="503.0" layoutY="636.0" mnemonicParsing="false" onAction="#naviguerVersBin" text="bin" />
+                                <Button fx:id="addB1" layoutX="503.0" layoutY="636.0" mnemonicParsing="false" onAction="#naviguerVersBin" text="bin" visible="false" />
                                 <Pane fx:id="grp1" layoutX="693.0" layoutY="227.0" prefHeight="570.0" prefWidth="550.0" style="-fx-background-color: rgba(211,211,211,0.16); -fx-background-radius: 20; -fx-border-width: 2px; -fx-border-color: rgba(128,127,127,0.25); -fx-border-radius: 20;" visible="false">
                                     <children>
                                         <!--                        <ImageView fitHeight="226.0" fitWidth="534.0" layoutX="32.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />-->
@@ -46,11 +39,9 @@
                 </VBox>
             </center>
         </BorderPane>
-      <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
     <stylesheets>
         <URL value="@style.css" />
         <URL value="@BG.css" />
-        <URL value="@Button.css" />
     </stylesheets>
 </AnchorPane>

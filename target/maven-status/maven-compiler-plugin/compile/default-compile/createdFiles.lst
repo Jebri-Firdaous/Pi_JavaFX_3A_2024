@@ -28,6 +28,7 @@ tn\esprit\services\gestionUserServices\PasswordEncryption.class
 tn\esprit\controllers\gestionUser\CreerAdminController$5.class
 tn\esprit\controllers\gestionMedecin\AjouterRendezVousController$3.class
 tn\esprit\controllers\gestionUser\CreerAdminController$1.class
+tn\esprit\controllers\ParkingControllers\RecycleBinController$1.class
 tn\esprit\controllers\gestionUser\AjoutAdministrateurController$3.class
 tn\esprit\controllers\gestionTransport\PDFGenerator.class
 tn\esprit\controllers\gestionTransport\AfficherStationController$1.class
@@ -37,9 +38,11 @@ tn\esprit\controllers\gestionUser\CreerAdminController$2.class
 tn\esprit\controllers\gestionUser\EmailSender$1.class
 tn\esprit\controllers\gestionTransport\AfficherStationController$1$1.class
 tn\esprit\controllers\gestionUser\AjoutAdministrateurController$2.class
+tn\esprit\controllers\ParkingControllers\RecycleBinController$1$1.class
 tn\esprit\controllers\gestionUser\CreerAdminController.class
 tn\esprit\controllers\gestionMedecin\AfficherListRendezVousController$1.class
 tn\esprit\controllers\gestionTransport\AfficherStationController.class
+tn\esprit\controllers\ParkingControllers\RecycleBinController$1$1$1.class
 tn\esprit\controllers\gestionUser\AjoutAdministrateurController$4.class
 tn\esprit\entities\gestionMedecin\SendEmail.class
 tn\esprit\controllers\gestionUser\AjoutAdministrateurController$5.class

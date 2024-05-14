@@ -5,11 +5,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AjoutAdministrateurController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AjoutAdministrateurController">
 
 
     <children>
@@ -21,9 +20,9 @@
         </ImageView>
 
         <Rectangle arcHeight="70.0" arcWidth="70.0" height="514.0" layoutX="572.0" layoutY="172.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="388.0" />
-        <Label layoutX="635.0" layoutY="183.0" text="Ajouter Administrateur">
+        <Label layoutX="635.0" layoutY="184.0" text="Ajouter Administrateur">
             <font>
-                <Font name="System Bold" size="24.0" />
+                <Font name="Arial Bold" size="24.0" />
             </font>
         </Label>
         <VBox layoutX="597.0" layoutY="228.0" prefHeight="440.0" prefWidth="339.0">

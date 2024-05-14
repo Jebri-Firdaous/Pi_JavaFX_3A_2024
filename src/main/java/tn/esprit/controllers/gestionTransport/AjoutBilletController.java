@@ -15,9 +15,11 @@ import javafx.util.converter.IntegerStringConverter;
 import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.entities.gestionTransport.billet;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionTransport.BilletService;
 import tn.esprit.services.gestionTransport.StationService;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +31,7 @@ import java.util.*;
 
 public class AjoutBilletController implements Initializable {
     public ComboBox<Integer> hourCombobox;
-    public ComboBox<Client> comboboxclient;
+    public ComboBox<User> comboboxclient;
     public ComboBox<Integer> minuteCombobox;
     BilletService bs = new BilletService();
     @FXML
@@ -62,11 +64,11 @@ private Label client;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        ServiceClient serviceClient = new ServiceClient();
-        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        ServiceUser serviceUser = new ServiceUser();
+        ObservableList<User> clientsList = FXCollections.observableArrayList();
         comboboxclient.setItems(clientsList);
         try {
-            clientsList.addAll(serviceClient.afficher());
+            clientsList.addAll(serviceUser.afficherClient());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -245,7 +247,7 @@ private Label client;
         Station selectedObject = depart.getValue();
         System.out.println(selectedObject.getId_station());
         StationService stationService = new StationService();
-        bs.ajouter(new billet(des, Timestamp.valueOf(dateTime), selectedObject.getId_station(), prixx, duration,comboboxclient.getValue().getId_personne()));
+        bs.ajouter(new billet(des, Timestamp.valueOf(dateTime), selectedObject.getId_station(), prixx, duration,comboboxclient.getValue().getId()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherBillet.fxml"));
         Parent newRoot = loader.load();
         AfficherBilletController afficherBilletController = loader.getController();
@@ -256,7 +258,7 @@ private Label client;
                 + "Date de départ: " + bi.getDate_depart() + "\n"
                 + "Prix: " + bi.getPrix() + "\n"
                 + "Durée: " + bi.getDuree();
-        SmsController.sendSms(recipientPhoneNumber, messageBody);
+        //SmsController.sendSms(recipientPhoneNumber, messageBody);
 
         // Mettre à jour les statistiques de destination dans le contrôleur de la vue AfficherBillet.fxml
         afficherBilletController.updateDestinationStats(destination.getText());
