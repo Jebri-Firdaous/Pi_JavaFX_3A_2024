@@ -139,6 +139,7 @@ public class VlidateController {
 
                 // Update the properties of the administrateur object with the file name
                 administrateur.setImage_personne(fileName);
+                administrateur.setIs_verified(true);
                 administrateur.setNumero_telephone(Integer.parseInt(tel.getText()));
 
                 // Call the modifierAdmin method to update the user in the database
