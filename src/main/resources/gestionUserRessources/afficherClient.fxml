@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AfficheClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AfficheClientController">
     <children>
         <fx:include source="../navBar.fxml" />
         <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
-        <SplitPane layoutY="226.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="1228.0">
+        <SplitPane layoutY="226.0" orientation="VERTICAL" prefHeight="341.0" prefWidth="1228.0">
             <items>
                 <VBox prefHeight="522.0" prefWidth="992.0">
                     <children>
@@ -32,28 +36,38 @@
                 </VBox>
             </items>
         </SplitPane>
-        <Button layoutX="1108.0" layoutY="156.0" mnemonicParsing="false" onAction="#AjouterClient" prefHeight="38.0" prefWidth="106.0" text="Ajouter">
+        <Button layoutX="742.0" layoutY="592.0" mnemonicParsing="false" onAction="#AjouterClient" prefHeight="38.0" prefWidth="160.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Ajouter">
 
         <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </Button>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="450.0" layoutY="158.0" prefHeight="21.0" prefWidth="356.0" text="Liste des Clients">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="450.0" layoutY="158.0" prefHeight="21.0" prefWidth="356.0">
             <font>
                 <Font name="Arial Bold" size="30.0" />
             </font>
         </Label>
-        <TextField fx:id="search" layoutX="916.0" layoutY="159.0" onAction="#recherche" prefHeight="33.0" prefWidth="179.0" promptText="Recherche" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 30; -fx-background-radius: 10;" />
-      <Button layoutX="463.0" layoutY="666.0" mnemonicParsing="false" onAction="#banne" prefHeight="38.0" prefWidth="74.0" text="Banner">
+        <TextField fx:id="search" layoutX="979.0" layoutY="170.0" onAction="#recherche" prefHeight="33.0" prefWidth="204.0" promptText="Recherche un Client" style="-fx-border-radius: 30; -fx-border-color: grey; -fx-background-radius: 10; -fx-background-color: white;" />
+      <Button layoutX="316.0" layoutY="592.0" mnemonicParsing="false" onAction="#banne" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Banner">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="579.0" layoutY="666.0" mnemonicParsing="false" onAction="#annulerbanne" prefHeight="38.0" prefWidth="116.0" text="Annuler Bann">
+      <Button layoutX="510.0" layoutY="592.0" mnemonicParsing="false" onAction="#annulerbanne" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Annuler Bann">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Text fill="#57c0dd" layoutX="459.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Clients" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="39.0" />
+         </font>
+      </Text>
+        <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="1139.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../gestionMedecin/searchIcon.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

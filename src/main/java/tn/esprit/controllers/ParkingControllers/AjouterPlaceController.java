@@ -53,7 +53,7 @@ public class AjouterPlaceController implements Initializable {
                     alert.showAndWait();
                 }
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/afficherPlace.fxml"));
                     Parent root = loader.load();
                     AfficherPlaceController ctr = loader.getController();
                     ctr.init(parking.getRef());
@@ -74,7 +74,7 @@ public class AjouterPlaceController implements Initializable {
         try {
             Stage stage = (Stage) typeCB.getScene().getWindow();
             Parking parking = (Parking) stage.getUserData();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/afficherPlace.fxml"));
             Parent root=loader.load();
             AfficherPlaceController ctr= loader.getController();
             ctr.init(parking.getRef());

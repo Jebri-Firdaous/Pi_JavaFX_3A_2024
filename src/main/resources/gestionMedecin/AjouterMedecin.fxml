@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -16,7 +17,7 @@
                <children>
                   <Label layoutX="111.0" layoutY="160.0" prefHeight="43.0" prefWidth="99.0" text="Nom :">
                      <font>
-                        <Font name="Calibri Bold Italic" size="56.0" />
+                        <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="nom" layoutX="108.0" layoutY="203.0" prefHeight="31.0" prefWidth="232.0" promptText="Saisissez nom">
@@ -29,7 +30,7 @@
                <children>
                   <Label layoutX="115.0" layoutY="244.0" prefHeight="30.0" prefWidth="118.0" text="Prenom:">
                      <font>
-                        <Font name="Yu Gothic UI Semilight" size="15.0" />
+                        <Font name="Arial" size="15.0" />
                      </font>
                   </Label>
                   <TextField fx:id="prenom" layoutX="116.0" layoutY="274.0" prefHeight="31.0" prefWidth="204.0" promptText="Saisissez prenom" />
@@ -48,20 +49,20 @@
             <VBox>
                <children>
                   <Label layoutX="130.0" layoutY="395.0" text="Addresse" />
-                  <TextField fx:id="addresse" layoutX="133.0" layoutY="422.0" promptText="Saisissez adresse" />
+                  <TextField fx:id="addresse" layoutX="133.0" layoutY="422.0" promptText="Saisissez sddresse" />
                </children>
             </VBox>
             <VBox>
                <children>
                   <Label layoutX="139.0" layoutY="459.0" text="Specialité" />
-                  <ComboBox fx:id="specialiteR" layoutX="139.0" layoutY="494.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="39.0" prefWidth="243.0" promptText="Choisir la spécialité" />
+                  <ComboBox fx:id="specialiteR" layoutX="139.0" layoutY="494.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="39.0" prefWidth="243.0" promptText="Choisissez la spécialité" style="-fx-background-color: transparent;" />
                </children>
             </VBox>
          </children>
       </VBox>
       <Button layoutX="297.0" layoutY="638.0" maxWidth="118.0" mnemonicParsing="false" onAction="#AjouterMedecin" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: #57c0dd; -fx-max-width: 140;" text="Ajouter">
          <font>
-            <Font name="Arial Bold" size="18.0" />
+            <Font name="Arial Bold" size="16.0" />
          </font></Button>
       <ImageView fx:id="imageDoctorTrans" fitHeight="524.0" fitWidth="540.0" layoutX="546.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -70,14 +71,20 @@
       </ImageView>
       <Button layoutX="87.0" layoutY="638.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToDisplay" prefHeight="39.0" prefWidth="194.0" style="-fx-background-color: #57c0dd; -fx-background-radius: 50; -fx-text-fill: white; -fx-border-radius: 12; -fx-border-color: transparent;" styleClass="returnToDisplayPage" text="Les Medecins">
          <font>
-            <Font name="Arial Bold" size="18.0" />
+            <Font name="Arial Bold" size="16.0" />
          </font></Button>
       <Label fx:id="msgErreur" layoutX="447.0" layoutY="430.0" prefHeight="21.0" prefWidth="213.0" />
       <Label fx:id="labeldisconnect" layoutX="138.0" layoutY="14.0" visible="false" />
-      <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="91.0" layoutY="646.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="105.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@retour.png" />
          </image>
       </ImageView>
+      <Label layoutX="102.0" layoutY="144.0" prefHeight="66.0" prefWidth="391.0" style="-fx-font-size: 35;" text="Ajouter un médecin" textFill="#57c0dd">
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+      </Label>
+      <Rectangle fill="#979494" height="474.0" layoutX="43.0" layoutY="-35.0" width="2.0" x="520.0" y="219.0" />
    </children>
 </AnchorPane>

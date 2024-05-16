@@ -8,24 +8,22 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AjoutAdministrateurController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AjoutAdministrateurController">
 
 
     <children>
         <fx:include source="../navBar.fxml" />
-        <ImageView fitHeight="278.0" fitWidth="301.0" layoutX="193.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="385.0" fitWidth="432.0" layoutX="694.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@admin.png" />
             </image>
         </ImageView>
-
-        <Rectangle arcHeight="70.0" arcWidth="70.0" height="514.0" layoutX="572.0" layoutY="172.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="388.0" />
-        <Label layoutX="635.0" layoutY="184.0" text="Ajouter Administrateur">
+        <Label layoutX="116.0" layoutY="163.0">
             <font>
                 <Font name="Arial Bold" size="24.0" />
             </font>
         </Label>
-        <VBox layoutX="597.0" layoutY="228.0" prefHeight="440.0" prefWidth="339.0">
+        <VBox layoutX="90.0" layoutY="229.0" prefHeight="440.0" prefWidth="339.0">
             <children>
                 <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                     <font>
@@ -102,7 +100,7 @@
 
                     </children>
                 </VBox>
-                <Button fx:id="inscrire" mnemonicParsing="false" onAction="#AjouterAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #B0E847;" text="Ajouter">
+                <Button fx:id="inscrire" mnemonicParsing="false" onAction="#AjouterAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Ajouter">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -111,5 +109,11 @@
         </VBox>
         <Label fx:id="label" layoutX="1095.0" layoutY="37.0" />
       <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Text fill="#57c0dd" layoutX="47.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Administrateur" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="39.0" />
+         </font>
+      </Text>
+      <Rectangle fill="#979494" height="474.0" layoutX="50.0" layoutY="-34.0" width="2.0" x="520.0" y="219.0" />
     </children>
 </AnchorPane>

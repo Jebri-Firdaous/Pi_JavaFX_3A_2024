@@ -80,12 +80,12 @@
                 </VBox>
                 <AnchorPane prefHeight="60.0" prefWidth="404.0">
                     <children>
-                        <Button layoutX="1.0" layoutY="12.0" mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: B0E847;" text="Reserver">
+                        <Button layoutX="1.0" layoutY="12.0" mnemonicParsing="false" onAction="#ajouterReservation" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Reserver">
                             <font>
                                 <Font name="System Bold Italic" size="20.0" />
                             </font>
                         </Button>
-                        <Button layoutX="217.0" layoutY="13.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="49.0" prefWidth="187.0" style="-fx-background-color: B0E847;" text="Afficher">
+                        <Button layoutX="217.0" layoutY="13.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="49.0" prefWidth="187.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Afficher">
                             <font>
                                 <Font name="System Bold Italic" size="20.0" />
                             </font>
@@ -96,7 +96,7 @@
         </VBox>
         <Label layoutX="481.0" layoutY="184.0" text="Ajouter  Réservation" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="27.0" />
+                <Font name="Arial Bold" size="27.0" />
             </font>
         </Label>
         <Button layoutX="1097.0" layoutY="627.0" mnemonicParsing="false" onAction="#naviguerToChat" prefHeight="36.0" prefWidth="115.0" style="-fx-background-color: transparent;">
@@ -115,5 +115,10 @@
             </image>
         </ImageView>
       <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Label layoutX="443.0" layoutY="223.0" text="Réservez dès maintenant votre séjour parfait !" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

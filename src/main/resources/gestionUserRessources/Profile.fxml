@@ -9,22 +9,22 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.ModifierAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.ProfileController">
 
 
     <children>
         <fx:include source="../navBar.fxml" />
 
         <Label fx:id="labeldisconnect" text="Label" visible="false" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#64e3e7" height="192.0" layoutX="-3.0" layoutY="135.0" stroke="#ffffff00" strokeType="INSIDE" width="1236.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#57c0dd" height="192.0" layoutX="-3.0" layoutY="135.0" stroke="#ffffff00" strokeType="INSIDE" width="1236.0" />
       <ImageView fitHeight="119.0" fitWidth="135.0" layoutX="547.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="Nom_prenom" layoutX="534.0" layoutY="256.0" prefHeight="21.0" prefWidth="194.0" text="Nom et Prenom" textAlignment="CENTER">
+      <Label fx:id="Nom_prenom" layoutX="512.0" layoutY="270.0" prefHeight="34.0" prefWidth="177.0" style="-fx-alignment: center;">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Label fx:id="role_administrateur" layoutX="555.0" layoutY="290.0" prefHeight="21.0" prefWidth="194.0" text="Role Administrateur" textAlignment="CENTER" />
-      <VBox layoutX="450.0" layoutY="340.0" prefHeight="318.0" prefWidth="342.0">
+      <Label fx:id="role_administrateur" layoutX="503.0" layoutY="293.0" prefHeight="21.0" prefWidth="194.0" style="-fx-alignment: center;" />
+      <VBox layoutX="429.0" layoutY="345.0" prefHeight="318.0" prefWidth="342.0">
          <children>
             <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                <font>
@@ -71,11 +71,6 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <Label fx:id="SelectionnerRole1" prefHeight="21.0" prefWidth="426.0" textFill="#dd0f0f">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
                </children>
             </VBox>
             <TextField fx:id="mail" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre adresse mail">
@@ -92,12 +87,17 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#modifierAdmin" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #64e3e7;" text="Modifier">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Button>
          </children>
       </VBox>
+      <ImageView fx:id="profilePicture" fitHeight="141.0" fitWidth="143.0" layoutX="530.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@login.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="modifierButton" layoutX="504.0" layoutY="663.0" mnemonicParsing="false" onAction="#modifierAdmin" prefHeight="32.0" prefWidth="192.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Modifier">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

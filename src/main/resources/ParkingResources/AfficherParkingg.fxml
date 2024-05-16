@@ -3,45 +3,91 @@
 <?import java.net.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1300.0" stylesheets="@BG.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AfficherParkingController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="738.0" prefWidth="1231.0" stylesheets="@BG.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AfficherParkingController">
     <children>
         <fx:include source="../navBar.fxml" />
-        <BorderPane layoutX="144.0" layoutY="95.0" prefHeight="685.0" prefWidth="1319.0" style="-fx-background-image: url(../gestionMedecin/doctor.png);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-19.0" AnchorPane.topAnchor="95.0">
-            <center>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <Label styleClass="title" stylesheets="@Button.css" text="Liste Parkings" />
-                        <Group>
-                            <children>
-                                <Button fx:id="addB" layoutX="369.0" layoutY="636.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" prefWidth="132.0" text="Ajouter" />
-                                <VBox fx:id="listVB" layoutX="218.0" layoutY="297.0" prefHeight="327.0" prefWidth="413.0" />
-                                <Button fx:id="addB1" layoutX="503.0" layoutY="636.0" mnemonicParsing="false" onAction="#naviguerVersBin" text="bin" visible="false" />
-                                <Pane fx:id="grp1" layoutX="693.0" layoutY="227.0" prefHeight="570.0" prefWidth="550.0" style="-fx-background-color: rgba(211,211,211,0.16); -fx-background-radius: 20; -fx-border-width: 2px; -fx-border-color: rgba(128,127,127,0.25); -fx-border-radius: 20;" visible="false">
-                                    <children>
-                                        <!--                        <ImageView fitHeight="226.0" fitWidth="534.0" layoutX="32.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />-->
-                                        <Button fx:id="delB" layoutX="55.0" layoutY="508.0" mnemonicParsing="false" onAction="#supprimerParking" prefWidth="149.0" styleClass="my-button" text="Supprimer" />
-                                        <Button fx:id="modifB" layoutX="224.0" layoutY="507.0" mnemonicParsing="false" onAction="#naviguezVersModifier" text="Modifier" />
-                                        <Button fx:id="listePlaceB" layoutX="356.0" layoutY="508.0" mnemonicParsing="false" onAction="#afficherPlace" styleClass="my-button" text="Liste Places" />
-                                        <Label layoutX="39.0" layoutY="365.0" styleClass="my-label" text="Addresse :" />
-                                        <Label layoutX="34.0" layoutY="418.0" styleClass="my-label" text="Nb de Places Libres :" />
-                                        <Label fx:id="nomL" layoutX="196.0" layoutY="262.0" styleClass="my-label" text="nom" />
-                                        <Label fx:id="etatL" layoutX="240.0" layoutY="291.0" styleClass="my-label" text="Label" textFill="RED" visible="false" />
-                                        <Label fx:id="addresseL" layoutX="293.0" layoutY="365.0" styleClass="my-label" text="Label" />
-                                        <Label fx:id="nbL" layoutX="377.0" layoutY="418.0" styleClass="my-label" text="Label" />
-                                    </children>
-                                </Pane>
-                                <Group fx:id="grp2" layoutX="602.0" layoutY="92.0" />
-                            </children>
-                        </Group>
-                    </children>
-                </VBox>
-            </center>
-        </BorderPane>
+            <Label layoutX="81.0" layoutY="177.0" styleClass="title" stylesheets="@Button.css" text="Liste des Parkings" textFill="#57c0dd">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+        <Group fx:id="grp2" layoutX="260.0" layoutY="590.0" />
+
+        <Group layoutX="-160.0">
+                <children>
+                    <VBox fx:id="listVB" layoutX="218.0" layoutY="250.0" prefHeight="355.0" prefWidth="399.0" />
+                    <Button fx:id="addB1" layoutX="503.0" layoutY="604.0" mnemonicParsing="false" onAction="#naviguerVersBin" text="bin" visible="false" />
+
+                </children>
+            </Group>
+              <Pane fx:id="grp1" layoutX="530.0" layoutY="180.0" prefHeight="400.0" prefWidth="685.0" style="-fx-background-color: rgba(211,211,211,0.16); -fx-background-radius: 20; -fx-border-width: 2px; -fx-border-color: rgba(128,127,127,0.25); -fx-border-radius: 20;" visible="false">
+                  <children>
+                      <Label fx:id="nomL" layoutX="25.0" layoutY="292.0" styleClass="my-label" text="nom">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+                      <Label layoutX="25.0" layoutY="315.0" prefHeight="35.0" prefWidth="117.0" styleClass="my-label" text="Addresse :">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+                      <Label layoutX="25.0" layoutY="350.0" prefHeight="34.0" prefWidth="178.0" styleClass="my-label" text="Nb de Places Libres :">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+                      <Label fx:id="addresseL" layoutX="110.0" layoutY="320.0" styleClass="my-label" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+                      <Label fx:id="etatL" layoutX="145.0" layoutY="294.0" styleClass="my-label" text="Label" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font></Label>
+                      <Label fx:id="nbL" layoutX="180.0" layoutY="356.0" styleClass="my-label" text="Label">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font></Label>
+                  </children>
+              </Pane>
+                <!--                        <ImageView fitHeight="226.0" fitWidth="534.0" layoutX="32.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />-->
+                <Button fx:id="delB" layoutX="690.0" layoutY="604.0" mnemonicParsing="false" onAction="#supprimerParking" prefWidth="149.0" style="-fx-background-color: #57c0dd; -fx-background-radius: 50; -fx-text-fill: white; -fx-border-radius: 12; -fx-border-color: transparent;" styleClass="add-btn" text="Supprimer" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+              <Button fx:id="addB" layoutX="192.0" layoutY="604.0" mnemonicParsing="false" onAction="#naviguezVersAjouter" prefWidth="132.0" style="-fx-background-color: #57C0DD; fx-background-radius: 50; -fx-text-fill: white; -fx-border-color: transparent; -fx-border-radius: 12;" styleClass="add-btn" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="image" fitHeight="343.0" fitWidth="477.0" layoutX="673.0" layoutY="250.0" opacity="0.77" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@parking.png" />
+         </image>
+      </ImageView>
+                <Button fx:id="modifB" layoutX="864.0" layoutY="604.0" mnemonicParsing="false" onAction="#naviguezVersModifier" style="-fx-background-color: #57c0dd;" styleClass="add-btn" text="Modifier" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+                <Button fx:id="listePlaceB" layoutX="977.0" layoutY="604.0" mnemonicParsing="false" onAction="#afficherPlace" style="-fx-background-color: #57c0dd;" styleClass="add-btn" text="Liste Places" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+        <Rectangle fill="#979494" height="400.0" layoutX="509.0" layoutY="180.0" width="2.0" />
+
     </children>
     <stylesheets>
         <URL value="@style.css" />
         <URL value="@BG.css" />
     </stylesheets>
+
 </AnchorPane>

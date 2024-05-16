@@ -26,8 +26,8 @@
       </ImageView>
         <VBox alignment="CENTER_LEFT" layoutX="68.0" layoutY="319.0" prefHeight="355.0" prefWidth="389.0" spacing="10.0">
             <children>
-                <ComboBox fx:id="clientComboBox" prefWidth="200" />
-                <ComboBox fx:id="articleComboBox" onAction="#updateTotalPrice" prefHeight="36.0" prefWidth="404.0" promptText="Sélectionner un article" styleClass="combo-box">
+                <ComboBox fx:id="clientComboBox" prefHeight="61.0" prefWidth="349.0" style="-fx-background-color: transparent; -fx-border-color: grey;" />
+                <ComboBox fx:id="articleComboBox" onAction="#updateTotalPrice" prefHeight="58.0" prefWidth="349.0" promptText="Sélectionner un article" style="-fx-background-color: transparent; -fx-border-color: grey;" styleClass="combo-box">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin></ComboBox>
@@ -58,14 +58,14 @@
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
         </VBox>
-        <Label layoutX="59.0" layoutY="247.0" prefHeight="62.0" prefWidth="513.0" text="Ajouter une commande" textFill="#2196f3">
+        <Label layoutX="59.0" layoutY="247.0" prefHeight="62.0" prefWidth="513.0" text="Ajouter une commande" textFill="#57c0dd">
             <font>
                 <Font name="Cambria Bold" size="38.0" />
             </font></Label>
-        <Button fx:id="ajouterCommandeButton" layoutX="632.0" layoutY="640.0" onAction="#ajouterCommande" prefHeight="40.0" prefWidth="167.0" styleClass="action-button" text="Ajouter Commande" />
+        <Button fx:id="ajouterCommandeButton" layoutX="553.0" layoutY="618.0" onAction="#ajouterCommande" prefHeight="40.0" prefWidth="195.0" style="-fx-background-color: #57c0dd; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white; -fx-background-radius: 30;" styleClass="action-button" text="Ajouter Commande" />
       <VBox alignment="CENTER" layoutX="502.0" layoutY="309.0" prefHeight="309.0" prefWidth="297.0">
          <children>
-             <Button fx:id="paiementButton" onAction="#afficherChampsPaiement" prefHeight="34.0" prefWidth="306.0" style="-fx-background-color: #2196f3; -fx-text-fill: white;" text="Effectuer le paiement">
+             <Button fx:id="paiementButton" onAction="#afficherChampsPaiement" prefHeight="34.0" prefWidth="306.0" style="-fx-background-color: #2196f3; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial;" text="Effectuer le paiement">
                  <VBox.margin>
                      <Insets bottom="40.0" />
                  </VBox.margin>
@@ -80,7 +80,7 @@
                   <Insets bottom="40.0" />
                </VBox.margin></TextField>
 
-             <Button fx:id="validerPaiementButton" onAction="#validerPaiement" text="Valider Paiement" />
+             <Button fx:id="validerPaiementButton" onAction="#validerPaiement" style="-fx-background-color: #57c0dd; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white; -fx-background-radius: 30;" text="Valider Paiement" />
          </children>
       </VBox>
       <Label fx:id="labeldisconnect" text="Label" visible="false" />

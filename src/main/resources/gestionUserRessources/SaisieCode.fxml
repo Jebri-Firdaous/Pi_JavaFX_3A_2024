@@ -60,7 +60,7 @@
                     <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Button alignment="CENTER" layoutX="219.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmercode" prefHeight="38.0" prefWidth="241.0" style="-fx-background-color: #B0E847;" text="Continuer">
+                                <Button alignment="CENTER" layoutX="219.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmercode" prefHeight="38.0" prefWidth="241.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Continuer">
                                     <font>
                                         <Font name="System Bold" size="17.0" />
                                     </font>

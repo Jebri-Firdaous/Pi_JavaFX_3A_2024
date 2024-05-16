@@ -22,6 +22,7 @@
     import tn.esprit.controllers.gestionMedecin.AfficherMedecinsController;
     import tn.esprit.controllers.gestionTransport.AfficherBilletController;
     import tn.esprit.controllers.gestionTransport.AfficherStationController;
+    import tn.esprit.entities.gestionUserEntities.User;
     import tn.esprit.services.gestionUserServices.ServiceAdmin;
     import tn.esprit.services.gestionUserServices.ServiceUser;
     import tn.esprit.services.gestionUserServices.Session;
@@ -474,7 +475,8 @@
 
 
 
-
+        Session session = Session.getInstance();
+        User user = session.getCurrentUser();
 
         @FXML
         private void handleProfilePictureClicked() {
@@ -484,9 +486,26 @@
             MenuItem Deconnexion = new MenuItem("Deconnexion");
 
             modifyProfileMenuItem.setOnAction(event -> {
-                // Handle the action when "Modifier le profil" is clicked
-                // For example:
-                Profile();
+                if (user != null)
+                {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Profile.fxml"));
+                        Parent root = loader.load();
+                        Scene pageScene = new Scene(root);
+                        ProfileController profile= loader.getController();
+                        profile.initData(user); // Passez l'administrateur sélectionné au contrôleur de la vue de modification
+                        Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                        stage.setScene(pageScene);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+
+                    }
+
+                }
+                else {
+                    // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+                }
             });
 
             Deconnexion.setOnAction(event -> {
@@ -510,6 +529,7 @@
             session.setCurrentUser(null);
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Profile.fxml"));
+                ProfileController pc= loader.getController();
                 Parent root = loader.load();
                 Scene pageScene = new Scene(root);
 

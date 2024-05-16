@@ -15,7 +15,7 @@
 <AnchorPane prefHeight="739.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionShopping.AjouterArticleController">
     <children>
         <fx:include source="../navBar.fxml" />
-        <Button layoutX="241.0" layoutY="651.0" onAction="#ajouterArticle" prefHeight="31.0" prefWidth="150.0" styleClass="action-button" text="Ajouter" />
+        <Button layoutX="241.0" layoutY="651.0" onAction="#ajouterArticle" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #57c0dd; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white; -fx-background-radius: 50;" styleClass="action-button" text="Ajouter" />
         <VBox alignment="CENTER" layoutX="124.0" layoutY="244.0" prefHeight="382.0" prefWidth="380.0" spacing="20.0">
             <children>
                 <TextField fx:id="nomArticleTF" prefHeight="40.0" prefWidth="380.0" promptText="Nom de l'article" styleClass="input-field" />
@@ -25,13 +25,16 @@
                     <!-- Options de votre ComboBox -->
                 </ComboBox>
                 <TextField fx:id="descriptionArticleTF" prefHeight="100.0" prefWidth="490.0" promptText="Description de l'article" styleClass="text-area" />
-                <Button onAction="#insererPhoto" prefHeight="45.0" prefWidth="380.0" styleClass="insert-photo-button" text="Insérer Photo" />
+                <Button onAction="#insererPhoto" prefHeight="45.0" prefWidth="380.0" style="-fx-font-family: Arial; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" styleClass="insert-photo-button" text="Insérer Photo">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
 
             </children>
         </VBox>
-        <Label layoutX="119.0" layoutY="162.0" prefHeight="66.0" prefWidth="391.0" text="Ajouter un article :" textFill="#04a7ff">
+        <Label layoutX="139.0" layoutY="164.0" prefHeight="66.0" prefWidth="391.0" text="Ajouter un article" textFill="#57c0dd">
             <font>
-                <Font name="Cambria Bold" size="39.0" />
+                <Font name="Arial Bold" size="39.0" />
             </font>
         </Label>
         <ImageView fitHeight="423.0" fitWidth="594.0" layoutX="631.0" layoutY="219.0">

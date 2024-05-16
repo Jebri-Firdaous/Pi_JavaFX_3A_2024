@@ -90,12 +90,7 @@ public class VlidateController {
                 // Update the image view
                 Image image = new Image(destinationPath.toUri().toString());
                 profileImageView.setImage(image);
-                Circle clip = new Circle();
-                double radius = 150;
-                clip.setCenterX(radius);
-                clip.setCenterY(radius);
-                clip.setRadius(radius);
-                profileImageView.setClip(clip);
+                profileImageView.setImage(image);
                 profileImageView.setPreserveRatio(true);
                 double layoutX = 100;
                 double layoutY = 25;

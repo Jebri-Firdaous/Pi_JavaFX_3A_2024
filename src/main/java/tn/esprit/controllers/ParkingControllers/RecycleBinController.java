@@ -40,7 +40,7 @@ public class RecycleBinController implements Initializable {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        try (BufferedReader reader = new BufferedReader(new FileReader("D:\\pi\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\ParkingResources\\data.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("D:\\version_final_projet\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\ParkingResources\\data.txt"))) {
             String line;
             List<Parking> parkings = new ArrayList<>();
             while ((line = reader.readLine()) != null) {

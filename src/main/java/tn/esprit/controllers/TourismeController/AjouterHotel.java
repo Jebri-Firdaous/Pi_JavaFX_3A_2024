@@ -117,7 +117,7 @@ public class AjouterHotel implements Initializable {
             } else {
                 // Ajouter l'hôtel uniquement si le nom n'est pas déjà utilisé
                 sh.ajouter(new Hotel(nomHotel, adress.getText(), Integer.parseInt(prix1.getText()), Integer.parseInt(prix2.getText()), Integer.parseInt(prix3.getText()), Integer.parseInt(nombre1.getText()), Integer.parseInt(nombre2.getText()), Integer.parseInt(nombre3.getText())));
-
+                navigueztoAffichage();
                 // Effacer les champs de saisie après l'ajout
                 nom.setText("");
                 adress.setText("");
@@ -384,6 +384,20 @@ public class AjouterHotel implements Initializable {
     }
 
 
+    void navigueztoAffichage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
+            Parent root = loader.load();
+            AfficherHotel AfficheController = loader.getController();
+            Scene pageScene = new Scene(root);
+
+            Stage stage = (Stage) nom.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     /*--------------------------------------------------Naviguer-Vers-Affichage------------------------------------------------------*/

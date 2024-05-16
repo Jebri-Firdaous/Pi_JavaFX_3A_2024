@@ -34,9 +34,9 @@
                 </VBox>
             </content>
         </ScrollPane>
-        <Label layoutX="33.0" layoutY="169.0" prefHeight="59.0" prefWidth="370.0" text="Listes des commandes : " textFill="#277dff">
+        <Label layoutX="33.0" layoutY="169.0" prefHeight="59.0" prefWidth="486.0" text="Listes des commandes : " textFill="#57c0dd">
             <font>
-                <Font name="Cambria Bold" size="32.0" />
+                <Font name="Arial Bold" size="38.0" />
             </font>
         </Label>
         <ImageView fitHeight="368.0" fitWidth="406.0" layoutX="820.0" layoutY="238.0">
@@ -45,7 +45,7 @@
             </image>
         </ImageView>
             <!-- ComboBox pour trier les commandes -->
-            <ComboBox fx:id="comboBoxTri" layoutX="549.0" layoutY="183.0" onAction="#trierCommandes" prefHeight="31.0" prefWidth="271.0" promptText="Trier par date de livraison">
+            <ComboBox fx:id="comboBoxTri" layoutX="594.0" layoutY="183.0" onAction="#trierCommandes" prefHeight="33.0" prefWidth="226.0" promptText="Trier par date de livraison" style="-fx-background-color: transparent; -fx-border-color: black;">
 
                         </ComboBox>
       <Label fx:id="labeldisconnect" text="Label" visible="false" />

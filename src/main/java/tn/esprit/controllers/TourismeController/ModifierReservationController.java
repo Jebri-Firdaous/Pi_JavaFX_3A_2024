@@ -1,5 +1,6 @@
 package tn.esprit.controllers.TourismeController;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import tn.esprit.entities.TourismeEntities.Reservation;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
@@ -26,6 +29,8 @@ public class ModifierReservationController implements Initializable {
     private final ServiceReservation serviceReservation = new ServiceReservation();
     private final ServiceHotel servicehotel = new ServiceHotel();
     int ref_reservation;
+    @FXML
+    private ImageView tourism;
     @FXML
     private ComboBox<Reservation.TypeChambre> typeModif;
     @FXML
@@ -147,12 +152,28 @@ public class ModifierReservationController implements Initializable {
 
             Reservation nouvelReservation = new Reservation(reservation.getRef_reservation(), dureeReservation, prixReservation, dateReservation, hotelId, selectedType);
             serviceReservation.modifier(nouvelReservation);
+            navigueztoAffichage();
 
             afficherAlerte(Alert.AlertType.INFORMATION, "Succès", "L'article a été modifié avec succès.");
         } catch (NumberFormatException e) {
             afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Veuillez saisir des valeurs valides pour le prix et la quantité.");
         } catch (SQLException e) {
             afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Une erreur est survenue lors de la modification de l'article : " + e.getMessage());
+        }
+    }
+
+    void navigueztoAffichage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherReservation.fxml"));
+            Parent root = loader.load();
+            AfficherReservationController AfficheController = loader.getController();
+            Scene pageScene = new Scene(root);
+
+            Stage stage = (Stage) tourism.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -405,6 +426,11 @@ public class ModifierReservationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(5), tourism);
+        transition.setFromX(1200); // Position de départ en X (hors de l'écran à droite)
+        transition.setToX(560);
+// Position finale en X (0)
+        transition.play();
         choisirHotel(null);
         typeModif.getItems().addAll(Reservation.TypeChambre.values());
         // nomhotel.getItems().addAll(choisirHotel);

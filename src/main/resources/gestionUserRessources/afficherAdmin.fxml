@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AfficheAdministrateurController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AfficheAdministrateurController">
     <children>
         <fx:include source="../navBar.fxml" />
         <Label fx:id="label" layoutX="120.0" layoutY="472.0" />
-        <SplitPane layoutY="209.0" orientation="VERTICAL" prefHeight="406.0" prefWidth="1228.0">
+        <SplitPane layoutY="209.0" orientation="VERTICAL" prefHeight="354.0" prefWidth="1228.0">
             <items>
                 <VBox prefHeight="474.0" prefWidth="1226.0">
                     <children>
@@ -32,38 +36,48 @@
                 </VBox>
             </items>
         </SplitPane>
-        <Button layoutX="462.0" layoutY="647.0" mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="38.0" prefWidth="199.0" text="Supprimer">
+        <Button layoutX="907.0" layoutY="582.0" mnemonicParsing="false" onAction="#supprimerAdmin" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Supprimer">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <TextField fx:id="search" layoutX="893.0" layoutY="148.0" onAction="#recherche" prefHeight="33.0" prefWidth="187.0" promptText="Recherche" style="-fx-background-color: white; -fx-border-color: grey; -fx-border-radius: 30; -fx-background-radius: 10;" />
-        <Button layoutX="681.0" layoutY="647.0" mnemonicParsing="false" onAction="#modifier" prefHeight="38.0" prefWidth="199.0" text="Modifier">
+        <TextField fx:id="search" layoutX="891.0" layoutY="159.0" onAction="#recherche" prefHeight="33.0" prefWidth="271.0" promptText="Rechercher un Administrateur" style="-fx-border-radius: 30; -fx-border-color: grey; -fx-background-radius: 10; -fx-background-color: white;" />
+        <Button layoutX="268.0" layoutY="582.0" mnemonicParsing="false" onAction="#modifier" prefHeight="38.0" prefWidth="199.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Modifier">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button layoutX="1096.0" layoutY="146.0" mnemonicParsing="false" onAction="#toAddpage" prefHeight="38.0" prefWidth="115.0" text="Ajouter">
+        <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="1109.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../gestionMedecin/searchIcon.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="109.0" layoutY="582.0" mnemonicParsing="false" onAction="#toAddpage" prefHeight="38.0" prefWidth="115.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Ajouter">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Label fx:id="labeltite" alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="143.0" prefHeight="44.0" prefWidth="603.0" text="Liste des Administrateurs">
+        <Label fx:id="labeltite" alignment="CENTER" contentDisplay="CENTER" layoutX="245.0" layoutY="143.0" prefHeight="44.0" prefWidth="603.0" text="Liste des Administrateurs" visible="false">
             <font>
                 <Font name="Arial Bold" size="30.0" />
             </font>
         </Label>
-      <Button layoutX="356.0" layoutY="647.0" mnemonicParsing="false" onAction="#banne" prefHeight="38.0" prefWidth="76.0" text="Banne">
+      <Button layoutX="530.0" layoutY="582.0" mnemonicParsing="false" onAction="#banne" prefHeight="38.0" prefWidth="76.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Banne">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="150.0" layoutY="647.0" mnemonicParsing="false" onAction="#annulerbanne" prefHeight="38.0" prefWidth="172.0" text="Annuler banne">
+      <Button layoutX="667.0" layoutY="582.0" mnemonicParsing="false" onAction="#annulerbanne" prefHeight="38.0" prefWidth="172.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Annuler banne">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Text fill="#57c0dd" layoutX="360.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Administrateurs" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="39.0" />
+         </font>
+      </Text>
 
     </children>
 </AnchorPane>

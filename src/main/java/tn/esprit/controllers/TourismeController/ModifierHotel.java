@@ -381,6 +381,7 @@ public class ModifierHotel  {
 
             Hotel nouvelHotel = new Hotel(hotel.getId_hotel(), nomHotel, adressHotel, prix1Hotel, prix2Hotel , prix3Hotel , nombre1Hotel , nombre2Hotel ,nombre3Hotel );
             serviceHotel.modifier(nouvelHotel);
+            navigueztoAffichage();
 
             afficherAlerte(Alert.AlertType.INFORMATION, "Succès", "L'article a été modifié avec succès.");
         } catch (NumberFormatException e) {
@@ -391,7 +392,20 @@ public class ModifierHotel  {
 
 
     }
+    void navigueztoAffichage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
+            Parent root = loader.load();
+            AfficherHotel AfficheController = loader.getController();
+            Scene pageScene = new Scene(root);
 
+            Stage stage = (Stage) nombre1Modif.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /*--------------------------------------------------Message_Alerte------------------------------------------------------*/
 
@@ -412,9 +426,11 @@ public class ModifierHotel  {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Récupérer le stage actuel
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            AfficherHotel AfficheController = loader.getController();
+            Scene pageScene = new Scene(root);
+
+            Stage stage = (Stage) nombre1Modif.getScene().getWindow();
+            stage.setScene(pageScene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

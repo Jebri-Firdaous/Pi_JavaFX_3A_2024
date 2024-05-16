@@ -223,12 +223,12 @@ public class AfficherArticleController implements ModificationListener {
 
         // Bouton Modifier
         Button modifierButton = new Button("Modifier");
-        modifierButton.setStyle("-fx-background-color: #3CB371; -fx-font-size: 14px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px;");
+        modifierButton.setStyle("-fx-background-color: #57c0dd; -fx-font-size: 13px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px; -fx-background-radius: 30;-fx-font-family: Arial; -fx-font-weight: bold;");
         modifierButton.setOnAction(event -> navigateToModification(article));
 
         // Bouton Supprimer
         Button supprimerButton = new Button("Supprimer");
-        supprimerButton.setStyle("-fx-background-color: #FF6347; -fx-font-size: 14px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px;");
+        supprimerButton.setStyle("-fx-background-color: #57c0dd; -fx-font-size: 13px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px; -fx-background-radius: 30; -fx-font-family: Arial;-fx-font-weight: bold;");
         supprimerButton.setOnAction(event -> supprimerArticle(article));
 
         // Ajout des boutons à la VBox des boutons

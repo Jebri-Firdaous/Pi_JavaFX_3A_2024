@@ -41,6 +41,7 @@ D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\es
 D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\gestionTransport\BilletService.java
 D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\entities\ParkingEntities\Place.java
 D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionTransport\ModifierBilletController.java
+D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\gestionUser\ProfileController.java
 D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers\TourismeController\AjouterReservationController.java
 D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\ParkingServices\ParkingService.java
 D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services\TourismeService\ServiceReservation.java

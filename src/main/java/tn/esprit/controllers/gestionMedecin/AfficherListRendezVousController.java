@@ -19,43 +19,30 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.TokenizerModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import tn.esprit.entities.gestionMedecin.*;
-import tn.esprit.entities.gestionTransport.Station;
-import tn.esprit.entities.gestionTransport.billet;
-import tn.esprit.entities.gestionUserEntities.Client;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.ref.Cleaner;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -103,9 +90,9 @@ public class AfficherListRendezVousController {
                             } else {
                                 // Assuming this code is inside a method where you have access to the rendezVous object
                                 ServiceMedecin sm = new ServiceMedecin();
-                                ServiceClient serviceClient = new ServiceClient();
+                                ServiceUser serviceClient = new ServiceUser();
                                 Medecin medecin = sm.getMedecinById(rendezVous.getId_medecin());
-                                Client client = serviceClient.getClientById(rendezVous.getId_personne());
+                                User client = serviceClient.getOneById(rendezVous.getId_personne());
                                 String doctorName = medecin.getNom_medecin();
                                 String doctorSurname = medecin.getPrenom_medecin_medecin();
                                 String specialty = medecin.getSpecialite_medecin();
@@ -127,23 +114,23 @@ public class AfficherListRendezVousController {
                                 hbox.setSpacing(65); // Adjust spacing as needed
 
                                 Label nomClientLabel = new Label(client.getNom_personne());
-                                nomClientLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
+                                nomClientLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");
 
 // Add details to the HBox with styled Labels
                                 Label nomPrenomDoctorLabel = new Label("Dr. "+doctorName+" "+doctorSurname);
-                                nomPrenomDoctorLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
+                                nomPrenomDoctorLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
 
                                 /*Label prenomLabel = new Label(doctorSurname);
                                 prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");*/
 
                                 Label dateLabel = new Label(dateRvDisplayedInInterface);
-                                dateLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
+                                dateLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
 
                                 Label specialiteLabel = new Label(specialty);
-                                specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
+                                specialiteLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
 
                                 Label adresseLabel = new Label(address);
-                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
+                                adresseLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
 
 // Add the date Label with the full month name
 
@@ -199,13 +186,13 @@ public class AfficherListRendezVousController {
                 LocalDateTime dateTime = currentRendezVousSelected.getDate_rendez_vous().toLocalDateTime();
                 // Sms for Doctor
                 String msg = "Bonjour Dr. "+medecin.getNom_medecin()+" Votre rendez-vous le " + dateTime.format(myFormatObj) +" sera annulé ";
-                Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
+//                Message.creator(new PhoneNumber("+4915510686794"), new PhoneNumber(twilioSendSms.getFromNumberMyTwillioNumber()), msg).create();
 
                 // For email to client
-                ServiceClient serviceClient = new ServiceClient();
-                Client client = serviceClient.getClientById(currentRendezVousSelected.getId_personne());
+                ServiceUser serviceClient = new ServiceUser();
+                User client = serviceClient.getOneById(currentRendezVousSelected.getId_personne());
                 // 7ot email l client
-                String receiverAdresse = "tavef44143@aersm.com";
+                String receiverAdresse = "xofisa6262@facais.com";
                 String subject = "supprimer Rendez-Vous";
                 String body = "Bonjour Mr."+client.getNom_personne()+" votre rendezVous avec Dr."+medecin.getNom_medecin()+" à "+dateTime.format(myFormatObj) + " sera annulé";
                 new SendEmail(receiverAdresse, subject, body);
@@ -345,7 +332,7 @@ public class AfficherListRendezVousController {
         ObservableList<RendezVous> rendezVous = listViewRendezVous.getItems();
         rendezVous.sort((rv1, rv2) -> rv1.getDate_rendez_vous().compareTo(rv2.getDate_rendez_vous()));
     }
-/*------------------------- pdf ----------------------------------*/
+    /*------------------------- pdf ----------------------------------*/
     public void downloadPdfListRv() {
         try {
             // Create a new PDF document
@@ -420,7 +407,7 @@ public class AfficherListRendezVousController {
             for (RendezVous rendezVous : rendezvousList) {
                 xPosition = margin;
                 // Assuming you have methods to get details from RendezVous
-                String clientName = new ServiceClient().getClientById(rendezVous.getId_personne()).getNom_personne(); // Example method
+                String clientName = new ServiceUser().getOneById(rendezVous.getId_personne()).getNom_personne(); // Example method
                 String doctorName = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getNom_medecin(); // Example method
                 String specialty = new ServiceMedecin().getMedecinById(rendezVous.getId_medecin()).getSpecialite_medecin(); // Example method
 

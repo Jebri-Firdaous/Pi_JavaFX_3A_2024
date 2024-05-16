@@ -75,15 +75,7 @@ TextField {
     -fx-padding: 12px;
 }
 
-.returnToDisplayPage {
-    -fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-border-style: solid;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
-    -fx-pref-height: fit-content;
-    -fx-pref-width: fit-content;
-}
+
 
 #stationLabel {
     -fx-font-size: 50px;

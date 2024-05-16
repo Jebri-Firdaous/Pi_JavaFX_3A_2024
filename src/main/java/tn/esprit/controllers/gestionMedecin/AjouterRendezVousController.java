@@ -30,9 +30,7 @@ import javafx.stage.Stage;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import tn.esprit.entities.gestionMedecin.*;
-import tn.esprit.entities.gestionUserEntities.Client;
 import tn.esprit.entities.gestionUserEntities.User;
-import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.services.gestionMedecin.ServiceMedecin;
 import tn.esprit.services.gestionMedecin.ServiceRendezVous;
 import tn.esprit.services.gestionUserServices.ServiceUser;
@@ -522,5 +520,3 @@ public class AjouterRendezVousController implements Initializable {
 
     }
 }
-
-

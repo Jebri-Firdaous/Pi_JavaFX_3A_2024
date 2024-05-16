@@ -12,103 +12,73 @@
 <AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.AfficherBilletController">
    <children>
       <fx:include source="../navBar.fxml" />
-      <ListView fx:id="listbillets" layoutX="21.0" layoutY="405.0" prefHeight="232.0" prefWidth="895.0" />
-      <Button layoutX="282.0" layoutY="676.0" mnemonicParsing="false" onAction="#deletebillet" prefHeight="38.0" prefWidth="194.0" text="Supprimer" textFill="#dddada">
+      <ListView fx:id="listbillets" layoutX="14.0" layoutY="331.0" prefHeight="232.0" prefWidth="895.0" />
+      <Button layoutX="275.0" layoutY="593.0" mnemonicParsing="false" onAction="#deletebillet" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Supprimer" textFill="#dddada">
 
       </Button>
-      <Button layoutX="48.0" layoutY="676.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="38.0" prefWidth="200.0" text="Modifier" textFill="#eeeaea">
+      <Button layoutX="48.0" layoutY="593.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="38.0" prefWidth="200.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Modifier" textFill="#eeeaea">
 
       </Button>
-      <Button layoutX="506.0" layoutY="676.0" mnemonicParsing="false" onAction="#addbillet" prefHeight="38.0" prefWidth="200.0" text="Ajouter" textFill="#eeeaea">
+      <Button layoutX="500.0" layoutY="593.0" mnemonicParsing="false" onAction="#addbillet" prefHeight="38.0" prefWidth="200.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Ajouter" textFill="#eeeaea">
 
       </Button>
-   
+
       <Label fx:id="billetlabel" layoutX="510.0" layoutY="258.0" text="." />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="-10.0" layoutY="-61.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1251.0">
-         <fill>
-            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
-               <stops>
-                  <Stop color="#5ee1e5a6" />
-                  <Stop color="#5ee1e500" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="141.0" layoutX="-10.0" layoutY="724.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1271.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
-               <stops>
-                  <Stop color="#5ee1e5a6" />
-                  <Stop color="#5ee1e500" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Text layoutX="490.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LES BILLETS" textAlignment="CENTER">
+      <Text fill="#57c0dd" layoutX="323.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Les Buillets" textAlignment="CENTER">
          <font>
-            <Font name="Cambria Bold" size="46.0" />
+            <Font name="Arial Bold" size="39.0" />
          </font>
       </Text>
-      <TextField fx:id="searchfield" layoutX="170.0" layoutY="246.0" prefHeight="200.0" prefWidth="293.0" promptText="Destination" />
-      <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="117.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="searchfield" layoutX="711.0" layoutY="248.0" minWidth="202.0" prefHeight="41.0" prefWidth="202.0" promptText="Destination" style="-fx-background-color: white; -fx-border-color: grey; -fx-background-radius: 10; -fx-border-radius: 30;" />
+      <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="862.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@chercher.png" />
+            <Image url="@../gestionMedecin/searchIcon.png" />
          </image>
       </ImageView>
-      <Label fx:id="client" layoutX="25.0" layoutY="381.0" text="Client">
+      <Label fx:id="client" layoutX="18.0" layoutY="307.0" text="Client">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="170.0" layoutY="381.0" text="DESTINATION">
+      <Label layoutX="163.0" layoutY="307.0" text="DESTINATION">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="351.0" layoutY="381.0" text="DATE">
+      <Label layoutX="344.0" layoutY="307.0" text="DATE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="521.0" layoutY="381.0" text="STATION">
+      <Label layoutX="514.0" layoutY="307.0" text="STATION">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="700.0" layoutY="381.0" text="DUREE">
+      <Label layoutX="693.0" layoutY="307.0" text="DUREE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="818.0" layoutY="381.0" prefHeight="22.0" prefWidth="55.0" text="PRIX">
+      <Label layoutX="811.0" layoutY="307.0" prefHeight="22.0" prefWidth="55.0" text="PRIX">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <PieChart fx:id="statistiquesPieChart" layoutX="924.0" layoutY="111.0" prefHeight="232.0" prefWidth="275.0" />
-      <Text layoutX="992.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTIQUES    DESTINATONS " wrappingWidth="166.9111328125">
-         <font>
-            <Font name="Cambria Bold" size="18.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="905.0" layoutY="361.0" onMouseClicked="#sortButton" pickOnBounds="true" preserveRatio="true">
+      <PieChart fx:id="statistiquesPieChart" layoutX="933.0" layoutY="279.0" prefHeight="232.0" prefWidth="275.0" />
+      <ImageView fitHeight="22.0" fitWidth="29.0" layoutX="887.0" layoutY="307.0" onMouseClicked="#sortButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@sort.png" />
          </image></ImageView>
-      <HBox layoutX="936.0" layoutY="589.0" prefHeight="47.0" prefWidth="187.0" spacing="20.0" style="-fx-border-color: black;">
+      <HBox layoutX="961.0" layoutY="516.0" prefHeight="47.0" prefWidth="187.0" spacing="20.0">
          <children>
-      
+
             <Button fx:id="promoo" minHeight="35.0" minWidth="28.0" mnemonicParsing="false" onAction="#promo" prefHeight="35.0" prefWidth="28.0" text="20%" />
             <Button fx:id="promoo50" mnemonicParsing="false" onAction="#promo50" text="50%" />
             <Button fx:id="promoo70" lineSpacing="50.0" mnemonicParsing="false" text="70%" />
             <Button fx:id="nopromoo" mnemonicParsing="false" onAction="#nopromo" text="0%" />
          </children>
       </HBox>
-      <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="1040.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img_2.png" />
-         </image>
-      </ImageView>
       <Label fx:id="labeldisconnect" text="Label" visible="false" />
    </children>
 </AnchorPane>

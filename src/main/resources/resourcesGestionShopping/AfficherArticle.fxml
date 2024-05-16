@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.geometry.Insets?>
-<?import javafx.stage.FileChooser?>
-<?import java.io.File?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 
-<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@StyleShopping.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionShopping.AfficherArticleController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@StyleShopping.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionShopping.AfficherArticleController">
     <children>
         <fx:include source="../navBar.fxml" />
 
@@ -42,17 +29,21 @@
                 </ScrollPane>
             </children>
         </VBox>
-
         <!-- Image d'arrière-plan -->
-        <ImageView fx:id="backgroundImageView" fitHeight="210.0" fitWidth="1228.0" layoutX="1.0" layoutY="132.0" />
+        <ImageView fx:id="backgroundImageView" fitHeight="210.0" fitWidth="1228.0" layoutX="3.0" layoutY="125.0" />
         <!-- ComboBox pour trier par prix -->
-        <ComboBox fx:id="triComboBox" layoutX="725.0" layoutY="358.0" prefHeight="31.0" prefWidth="156.0" promptText="Trier par prix" />
-      <HBox alignment="CENTER" layoutX="97.0" layoutY="357.0" prefHeight="31.0" prefWidth="615.0" style="-fx-border-color: grey; -fx-border-radius: 10;">
-         <children>
+        <ComboBox fx:id="triComboBox" layoutX="725.0" layoutY="358.0" prefHeight="31.0" prefWidth="156.0" promptText="Trier par prix" style="-fx-background-color: transparent; -fx-border-color: #000000;" />
+        <HBox alignment="CENTER" layoutX="97.0" layoutY="357.0" prefHeight="31.0" prefWidth="615.0" style="-fx-border-color: grey; -fx-border-radius: 10;">
+            <children>
 
                 <TextField fx:id="rechercheArticleTF" layoutX="94.0" layoutY="253.0" prefHeight="31.0" prefWidth="584.0" promptText="Chercher un article" style="-fx-background-color: transparent;" />
-         </children>
-      </HBox>
-      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+              <ImageView fitHeight="30.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../gestionMedecin/searchIcon.png" />
+                  </image>
+              </ImageView>
+            </children>
+        </HBox>
+        <Label fx:id="labeldisconnect" text="Label" visible="false" />
     </children>
 </AnchorPane>
