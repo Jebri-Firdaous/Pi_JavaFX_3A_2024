@@ -36,6 +36,8 @@ public class AfficherHotel {
     private Text myText;
     @FXML
     private ImageView qrCode;
+    @FXML
+    private Label LABEL;
     // Hotel currentHotelSelected;
 
 
@@ -163,16 +165,18 @@ public class AfficherHotel {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/ModifierHotel.fxml"));
-            Parent root = loader.load();
 
+            Parent root = loader.load();
             ModifierHotel modifierArticleController = loader.getController();
             modifierArticleController.setHotel(hotel);
+            Scene pageScene = new Scene(root);
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            Stage stage = (Stage) LABEL.getScene().getWindow();
+            stage.setScene(pageScene);
             stage.show();
         } catch (IOException e) {
             afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement de la page de modification : " + e.getMessage());
+
         }
 
 

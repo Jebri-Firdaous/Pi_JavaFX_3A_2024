@@ -13,14 +13,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AdminLoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.LoginController">
     <children>
-        <ImageView fitHeight="774.0" fitWidth="1312.0">
+        <ImageView fitHeight="739.0" fitWidth="1228.0">
             <image>
                 <Image url="@smartcity.png" />
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="745.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1228.0" />
         <Rectangle arcHeight="70.0" arcWidth="70.0" height="380.0" layoutX="420.0" layoutY="177.0" opacity="0.5" stroke="TRANSPARENT" strokeType="INSIDE" width="450.0" />
         <Label fx:id="label" layoutX="489.0" layoutY="206.0" text="Se connecter à E-city" textFill="WHITE">
             <font>
@@ -45,7 +45,7 @@
                 <Font name="System Bold" size="17.0" />
             </font>
         </Label>
-        <Hyperlink layoutX="680.0" layoutY="566.0" onAction="#ToaddPage" text="Créer un Compte" textFill="#b0e847" wrapText="true">
+        <Hyperlink layoutX="680.0" layoutY="566.0" onAction="#ToaddPage" text="Créer un Compte" textFill="#57c0dd" wrapText="true">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
@@ -140,7 +140,7 @@
                 </VBox>
                 <VBox prefHeight="43.0" prefWidth="397.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="397.0" style="-fx-background-color: #B0E847;" text="Se Connecter">
+                        <Button mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="397.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Se Connecter">
                             <font>
                                 <Font name="System Bold" size="17.0" />
                             </font>

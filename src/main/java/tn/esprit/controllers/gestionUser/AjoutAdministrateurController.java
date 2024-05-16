@@ -12,7 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tn.esprit.entities.gestionUserEntities.Administrateur;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,7 +22,8 @@ import java.sql.SQLException;
 
 
 public class AjoutAdministrateurController {
-    public ServiceAdmin sa = new ServiceAdmin();
+    public ServiceUser sa = new ServiceUser();
+    ServiceUser serviceUser =new ServiceUser();
 
 
     @FXML
@@ -230,15 +233,17 @@ public class AjoutAdministrateurController {
         String prenomSaisi = prenom.getText();
         String mailSaisi = mail.getText();
         String mdpSaisi = mdp.getText();
+        String telf = tel.getText();
+        int numsaisie = Integer.parseInt(tel.getText());
 
 
         if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !mdpSaisi.isEmpty() && !roleSelected.isEmpty()) {
             if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isValidRole(roleSelected)) {
                 try {
-                    sa.ajouter(new Administrateur(nom.getText(), prenom.getText(), 0,
-                            mail.getText(), mdp.getText(), "", roleSelected));
-                    int adminId = sa.getAdminId(nom.getText(), prenom.getText(), mail.getText(), mdp.getText());
-                    ToValidate(adminId);
+                    User newUser = new User(nomSaisi, prenomSaisi, numsaisie, mailSaisi, mdpSaisi, "", null, 0, "[\"ADMIN\"]", roleSelected, false, false);
+
+                    serviceUser.ajouterAdmin(newUser);
+                    ToAfficherListeAdmine();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Compte ajoutée avec succes!");
@@ -265,26 +270,5 @@ public class AjoutAdministrateurController {
 
     }
 
-
-    public void ToValidate(int adminId) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/ValidateProfile.fxml"));
-            Parent root = loader.load();
-
-            // Accéder au contrôleur de la page de validation du compte
-            VlidateController validateController = loader.getController();
-            validateController.setAdminId(adminId);
-
-            Scene pageScene = new Scene(root);
-
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) nom.getScene().getWindow();
-            stage.setScene(pageScene);
-            stage.show();
-        } catch (IOException e) {
-            System.err.println("Erreur lors du chargement de la page ");
-            e.printStackTrace();
-        }
     }
 
-}

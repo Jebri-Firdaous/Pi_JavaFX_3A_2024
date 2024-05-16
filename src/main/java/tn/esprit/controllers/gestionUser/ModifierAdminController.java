@@ -8,14 +8,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.entities.gestionUserEntities.Administrateur;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class ModifierAdminController {
 
-    private final ServiceAdmin sa = new ServiceAdmin();
+    private final ServiceUser sa = new ServiceUser();
     @FXML
     private Label mdpCourt;
     @FXML
@@ -56,20 +58,19 @@ public class ModifierAdminController {
 
     @FXML
     private Label remplirChamps;
-    private Administrateur admin;
+    private User admin;
     private int id_personne;
 
 
-    void initData(Administrateur administrateur) {
+    void initData(User administrateur) {
         this.admin = administrateur;
-        id_personne = administrateur.getId_personne();
+        id_personne = administrateur.getId();
 
         nom.setText(administrateur.getNom_personne());
         prenom.setText(administrateur.getPrenom_personne());
         tel.setText(String.valueOf(administrateur.getNumero_telephone()));
-        mail.setText(administrateur.getMail_personne());
-        mdp.setText(administrateur.getMdp_personne());
-        role.setValue(administrateur.getRole());
+        mail.setText(administrateur.getEmail());
+        role.setValue(administrateur.getRole_admin());
 
 
     }
@@ -92,29 +93,27 @@ public class ModifierAdminController {
 
 
     public void modifierAdmin(ActionEvent actionEvent) {
-        Administrateur administrateur = new Administrateur();
+        User administrateur = new User();
         // Récupérer les nouvelles valeurs des champs de la page de modification
         String nouveauNom = nom.getText();
         String nouveauPrenom = prenom.getText();
         String nouveauNumero = tel.getText();
         String nouveauRole = role.getValue();
         String nouveauMail = mail.getText();
-        String nouveauMdp = mdp.getText();
 
         // Mettre à jour les valeurs de l'objet admin
-        admin.setId_personne(id_personne);
+        admin.setId(id_personne);
         admin.setNom_personne(nouveauNom);
         admin.setPrenom_personne(nouveauPrenom);
         admin.setNumero_telephone(Integer.parseInt(nouveauNumero));
-        admin.setMail_personne(nouveauMail);
-        admin.setRole(nouveauRole);
-        admin.setMdp_personne(nouveauMdp);
+        admin.setEmail(nouveauMail);
+        admin.setRole_admin(nouveauRole);
 
         try {
             // Appeler la méthode de service pour modifier l'administrateur dans la base de données
             System.out.println(id_personne);
-            System.out.println(admin.getId_personne());
-            sa.modifier(admin);
+            System.out.println(admin.getId());
+            sa.modifierAdmin(admin);
 
             // Afficher un message de succès
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -143,6 +142,8 @@ public class ModifierAdminController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
 }
 
 

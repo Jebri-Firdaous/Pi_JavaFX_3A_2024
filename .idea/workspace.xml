@@ -5,40 +5,118 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d58e71d-8a70-4a65-a4f7-5915bd74f869" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/hs_err_pid11016.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid18380.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid22372.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid35008.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/replay_pid11016.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/ProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/RegistrationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/PasswordEncryption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/Session.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/afficherPlace.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/park.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/parking.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/place.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/add2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/retour.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/suiv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Profile.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/admin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/client.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/TICKET.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ajoutstation.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/buillettransport.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/promo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/stationpng.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tn/esprit/services/gestionUserServices/ServiceUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_03_2024_04_00__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_03_2024_04_00__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ListViewContent.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/ListViewContent.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stations.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Stations.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iTextTable.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/iTextTable.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/NavBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/NavBarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/AfficherParkingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/AfficherParkingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/AfficherPlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/AfficherPlaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/AjouterPlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/AjouterPlaceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/ModifierPlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/ModifierPlaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/RecycleBinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ParkingControllers/RecycleBinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AfficherHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AfficherHotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AfficherReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AfficherReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterHotel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/AjouterReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/SmsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/SmsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AjoutstationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AjoutstationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/SmsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/SmsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/ModifierHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/ModifierHotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/ModifierReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TourismeController/ModifierReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/AjouterRendezVousController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/AjouterRendezVousController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/MofidierRvController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionMedecin/MofidierRvController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AfficherArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AfficherArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AfficherCommandeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AfficherCommandeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AjouterArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AjouterArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AjouterCommandeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/AjouterCommandeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/ModifierArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionShopping/ModifierArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AfficherBilletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AfficherBilletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AjoutBilletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionTransport/AjoutBilletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AdminInterfaceControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AdminInterfaceControllers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheAdministrateurController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AfficheClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionMedecin/TwilioSendSms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionMedecin/TwilioSendSms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutAdministrateurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutAdministrateurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/AjoutClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/EmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/EmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/ModifierAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/ModifierAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/VlidateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/gestionUser/VlidateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionShopping/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionShopping/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/gestionUserEntities/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ParkingServices/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ParkingServices/PlaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionUserServices/ServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/test/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceHotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceHotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/TourismeService/ServiceReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionMedecin/ServiceMedecin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionMedecin/ServiceMedecin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionMedecin/ServiceRendezVous.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionMedecin/ServiceRendezVous.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionShopping/ServiceCommande.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/gestionShopping/ServiceCommande.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/HotelMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/HotelMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/MyDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/MyDataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/AfficherParkingg.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/AfficherParkingg.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/AfficherPlaces.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/AfficherPlaces.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/AfficherPlaces.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/AjouterParkings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/AjouterParkings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/AjouterPlace.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/AjouterPlace.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/Button.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/Button.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/ModifierParking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/ModifierParking.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/ModifierPlace.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/ModifierPlace.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/RecycleBin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/RecycleBin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ParkingResources/stylesForGM.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ParkingResources/stylesForGM.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/Acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/Acceuil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/AdminInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/AdminInterface.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/AfficherHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/AfficherHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/AfficherReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/AfficherReservation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/AjouterHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/AjouterHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/AjouterReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/AjouterReservation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/Chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/Chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/MailHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/MailHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/ModifierHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/ModifierHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/TourismeResources/ModifierReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TourismeResources/ModifierReservation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AfficherListRendezVous.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AfficherListRendezVous.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AfficherMedecins.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AfficherMedecins.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AjouterMedecin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AjouterMedecin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AjouterRendezVous.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/AjouterRendezVous.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/ModifierMedecin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/ModifierMedecin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/MofidierRv.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/MofidierRv.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionMedecin/stylesForGM.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionMedecin/stylesForGM.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/Acceuil.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/AjouterCompteClient.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/SaisieCode.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/SaisieCode.fxml" afterDir="false" />
@@ -47,18 +125,63 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/afficherClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/afficherClient.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/confirmermail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/confirmermail.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/creerCompte.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/creerCompte.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/facial_recognition_login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/facial_recognition_login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/firstpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/firstpage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifier.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifierMdp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/modifierMdp.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/pageConnexion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gestionUserRessources/pageConnexion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/navBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/navBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/Acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/Acceuil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AfficherArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AfficherArticle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AfficherCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AfficherCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AjouterArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AjouterArticle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AjouterCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/AjouterCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/ModifierArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/ModifierArticle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/ModifierCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionShopping/ModifierCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/AfficherBillet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/AfficherBillet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/AfficherStation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/AfficherStation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/AjoutBillet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/AjoutBillet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ModifierBillet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ModifierBillet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ModifierStation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ModifierStation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ajoutstation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/ajoutstation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resourcesGestionTransport/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/Acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/Acceuil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/AdminInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/AdminInterface.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/AfficherHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/AfficherHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/AfficherReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/AfficherReservation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/AjouterHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/AjouterHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/AjouterReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/AjouterReservation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/Chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/Chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/MailHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/MailHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/ModifierHotel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/ModifierHotel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/TourismeResources/ModifierReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TourismeResources/ModifierReservation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/AfficherListRendezVous.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/AfficherListRendezVous.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/AfficherMedecins.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/AfficherMedecins.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/AjouterMedecin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/AjouterMedecin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/AjouterRendezVous.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/AjouterRendezVous.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/ModifierMedecin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/ModifierMedecin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/MofidierRv.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/MofidierRv.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gestionMedecin/stylesForGM.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/gestionMedecin/stylesForGM.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/navBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/navBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/Acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/Acceuil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AfficherArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AfficherArticle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AfficherCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AfficherCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AjouterArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AjouterArticle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AjouterCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/AjouterCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/ModifierArticle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/ModifierArticle.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/ModifierCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionShopping/ModifierCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/AfficherBillet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/AfficherBillet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/AfficherStation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/AfficherStation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/AjoutBillet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/AjoutBillet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/ModifierBillet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/ModifierBillet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/ModifierStation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/ModifierStation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/ajoutstation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/ajoutstation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/resourcesGestionTransport/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/NavBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/NavBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherHotel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherHotel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherHotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherHotel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherReservationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherReservationController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AfficherReservationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterHotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterHotel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$1$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$2$1.class" afterDir="false" />
@@ -73,10 +196,57 @@
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/AjouterReservationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AjoutstationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AjoutstationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/SmsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/SmsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/entities/gestionMedecin/TwilioSendSms.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/entities/gestionMedecin/TwilioSendSms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/test/MainFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/test/MainFX.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierHotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierHotel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$6$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TourismeController/ModifierReservationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherListRendezVousController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AfficherMedecinsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AjouterRendezVousController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AjouterRendezVousController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AjouterRendezVousController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/AjouterRendezVousController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/MofidierRvController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionMedecin/MofidierRvController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AfficherArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AfficherArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AfficherCommandeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AfficherCommandeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterArticleController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterArticleController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterArticleController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterArticleController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterCommandeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/AjouterCommandeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/ModifierArticleController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/ModifierArticleController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/ModifierArticleController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/ModifierArticleController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/ModifierArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionShopping/ModifierArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AfficherBilletController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AjoutBilletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/gestionTransport/AjoutBilletController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/entities/gestionShopping/Article$TypeArticle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/entities/gestionShopping/Article$TypeArticle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceHotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceHotel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceReservation$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceReservation$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceReservation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/TourismeService/ServiceReservation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/gestionMedecin/ServiceRendezVous.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/gestionMedecin/ServiceRendezVous.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/gestionShopping/ServiceCommande.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/gestionShopping/ServiceCommande.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/utils/HotelMail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/utils/HotelMail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/utils/MyDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/utils/MyDataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,8 +261,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="JavaFXApplication" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -100,7 +272,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="crudmedecin" />
+        <entry key="$PROJECT_DIR$" value="GU" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,6 +280,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -117,39 +290,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/Ezzedine/Desktop/ProjetPDEV3A8-Smart-City-Codemasters/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/pidevSymfony&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.4&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "last_directory_selection": "C:/Users/Ezzedine/Desktop/ProjetPDEV3A8-Smart-City-Codemasters/src/main/java",
+    "last_opened_file_path": "D:/version_final_projet/ProjetPDEV3A8-Smart-City-Codemasters/src/main/resources/resourcesGestionTransport",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\gestionMedecin\icons" />
-      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\gestionMedecin\icons" />
-      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\resourcesGestionTransport" />
-      <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\icons" />
-      <recent name="C:\Users\Ezzedine\Desktop\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\services" />
+      <recent name="D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\resourcesGestionTransport" />
+      <recent name="D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\resourcesGestionShopping" />
+      <recent name="D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\TourismeResources" />
+      <recent name="D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\ParkingResources" />
+      <recent name="D:\version_final_projet\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources\gestionMedecin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\resources" />
@@ -158,7 +334,14 @@
       <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit\controllers" />
       <recent name="D:\ProjetPDEV3A8-Smart-City-Codemasters\src\main\java\tn\esprit" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="tn.esprit.services.gestionUserServices" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tn.esprit.controllers.gestionUser" />
       <recent name="tn.esprit.controllers.gestionMedecin" />
       <recent name="tn.esprit.controllers" />
       <recent name="tn.esprit" />
@@ -232,18 +415,18 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.TwilioSendSms" />
       <item itemvalue="Application.MainFX" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.SendEmail" />
-      <item itemvalue="Application.TwilioSendSms" />
       <item itemvalue="Application.sendEmail" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.sendEmail" />
+        <item itemvalue="Application.SendEmail" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.MainFX" />
-        <item itemvalue="Application.SendEmail" />
-        <item itemvalue="Application.sendEmail" />
         <item itemvalue="Application.TwilioSendSms" />
       </list>
     </recent_temporary>
@@ -400,6 +583,65 @@
       <workItem from="1714556065231" duration="14000" />
       <workItem from="1714558942028" duration="149000" />
       <workItem from="1714732346519" duration="4000" />
+      <workItem from="1715106213742" duration="18024000" />
+      <workItem from="1715376325853" duration="21332000" />
+      <workItem from="1715430842959" duration="9610000" />
+      <workItem from="1715442221355" duration="31000" />
+      <workItem from="1715442264410" duration="16000" />
+      <workItem from="1715442325342" duration="31000" />
+      <workItem from="1715442382806" duration="21000" />
+      <workItem from="1715442426764" duration="26740000" />
+      <workItem from="1715504353731" duration="890000" />
+      <workItem from="1715507327963" duration="4958000" />
+      <workItem from="1715520097288" duration="12955000" />
+      <workItem from="1715533245570" duration="5158000" />
+      <workItem from="1715551370863" duration="10309000" />
+      <workItem from="1715588208636" duration="24412000" />
+      <workItem from="1715615132969" duration="1342000" />
+      <workItem from="1715618003674" duration="1018000" />
+      <workItem from="1715619033252" duration="3396000" />
+      <workItem from="1715629357845" duration="2685000" />
+      <workItem from="1715632207831" duration="8121000" />
+      <workItem from="1715669596662" duration="93000" />
+      <workItem from="1715669728837" duration="14000" />
+      <workItem from="1715669771799" duration="3000" />
+      <workItem from="1715669782620" duration="104000" />
+      <workItem from="1715669892947" duration="4000" />
+      <workItem from="1715670016561" duration="26000" />
+      <workItem from="1715670158041" duration="4604000" />
+      <workItem from="1715677130585" duration="8252000" />
+      <workItem from="1715685640945" duration="9229000" />
+      <workItem from="1715695966566" duration="367000" />
+      <workItem from="1715696526094" duration="644000" />
+      <workItem from="1715697623779" duration="67000" />
+      <workItem from="1715699396375" duration="18000" />
+      <workItem from="1715699462421" duration="3503000" />
+      <workItem from="1715703277409" duration="10000" />
+      <workItem from="1715703307269" duration="15000" />
+      <workItem from="1715703328033" duration="2479000" />
+      <workItem from="1715711576593" duration="1742000" />
+      <workItem from="1715713682863" duration="8262000" />
+      <workItem from="1715723615824" duration="11741000" />
+      <workItem from="1715735549968" duration="30000" />
+      <workItem from="1715735636992" duration="795000" />
+      <workItem from="1715736440078" duration="56000" />
+      <workItem from="1715736547624" duration="23913000" />
+      <workItem from="1715775049418" duration="9942000" />
+      <workItem from="1715787282248" duration="11523000" />
+      <workItem from="1715799939841" duration="2000" />
+      <workItem from="1715799996405" duration="79000" />
+      <workItem from="1715800169096" duration="97000" />
+      <workItem from="1715800338706" duration="261000" />
+      <workItem from="1715800666592" duration="8000" />
+      <workItem from="1715801007731" duration="1233000" />
+      <workItem from="1715802263177" duration="2054000" />
+      <workItem from="1715806290849" duration="43000" />
+      <workItem from="1715806367417" duration="597000" />
+      <workItem from="1715806972760" duration="3318000" />
+      <workItem from="1715810299774" duration="3696000" />
+      <workItem from="1715814007042" duration="8060000" />
+      <workItem from="1715822211919" duration="2000" />
+      <workItem from="1715822220601" duration="916000" />
     </task>
     <servers />
   </component>

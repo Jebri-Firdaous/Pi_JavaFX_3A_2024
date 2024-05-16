@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -10,7 +11,7 @@
 <AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionMedecin.ModifierMedecinController">
    <children>
       <fx:include source="../navBar.fxml" />
-      <VBox layoutX="91.0" layoutY="226.0" prefHeight="402.0" prefWidth="287.0" spacing="6.0">
+      <VBox layoutX="86.0" layoutY="189.0" prefHeight="361.0" prefWidth="349.0" spacing="6.0">
          <children>
             <Label layoutX="100.0" layoutY="189.0" text="Nom :" />
             <TextField fx:id="nom" layoutX="100.0" layoutY="210.0" />
@@ -24,13 +25,26 @@
             <ComboBox fx:id="specialiteM" layoutX="100.0" layoutY="502.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="187.0" />
          </children>
       </VBox>
-      <Button layoutX="91.0" layoutY="622.0" mnemonicParsing="false" onAction="#ModifierMedecin" prefHeight="31.0" prefWidth="187.0" text="Modifier" />
-      <ImageView fitHeight="393.0" fitWidth="614.0" layoutX="549.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="426.0" fitWidth="653.0" layoutX="549.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@modifiermedecinImage.png" />
          </image>
       </ImageView>
-      <Button layoutX="54.0" layoutY="146.0" mnemonicParsing="false" onAction="#returnToDisplayM" prefWidth="218.0" styleClass="returnToDisplayPage" text="&lt;==Afficher Les medecins" />
+      <Button layoutX="86.0" layoutY="570.0" mnemonicParsing="false" onAction="#returnToDisplayM" prefHeight="39.0" prefWidth="194.0" style="-fx-background-color: #57c0dd; -fx-background-radius: 50; -fx-text-fill: white; -fx-border-radius: 12; -fx-border-color: transparent;" styleClass="returnToDisplayPage" text="Les Medecins">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font></Button>
       <Label fx:id="msgErreur" layoutX="395.0" layoutY="403.0" onKeyReleased="#numTelTyped" prefHeight="33.0" prefWidth="112.0" />
+      <Label fx:id="labeldisconnect" layoutX="138.0" layoutY="14.0" visible="false" />
+      <ImageView fitHeight="21.0" fitWidth="19.0" layoutX="99.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@retour.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="301.0" layoutY="570.0" maxWidth="118.0" mnemonicParsing="false" onAction="#ModifierMedecin" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: #57c0dd; -fx-max-width: 140;" text="Modifier">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

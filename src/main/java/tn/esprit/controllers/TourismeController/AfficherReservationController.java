@@ -18,9 +18,11 @@ import tn.esprit.entities.TourismeEntities.Hotel;
 
 import tn.esprit.entities.TourismeEntities.Reservation;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
 import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 import tn.esprit.utils.ReservationPDF;
 
 import java.awt.*;
@@ -45,6 +47,9 @@ public class AfficherReservationController {
     private Button reservationPDF;
     @FXML
     private ListView<Reservation> listeView;
+
+    @FXML
+    private Label LAbel;
 
     public void initialize() {
         try {
@@ -73,8 +78,8 @@ public class AfficherReservationController {
                         // Si la cellule est vide ou l'objet réservation est null, ne rien afficher
                         setText(null);
                     } else {
-                        ServiceClient serviceClient = new ServiceClient();
-                        Client client = serviceClient.getClientById(reservation.getId_personne());
+                        ServiceUser serviceClient = new ServiceUser();
+                        User client = serviceClient.getOneById(reservation.getId_personne());
 
                         // Crée un GridPane pour aligner les valeurs horizontalement
                         GridPane gridPane = new GridPane();
@@ -95,7 +100,7 @@ public class AfficherReservationController {
                         gridPane.addRow(4, new Label("Type de chambre:"), new Label(reservation.getType_chambre().toString()));
                         // Vérifie si l'ID de la personne dans la réservation est valide
 
-                            gridPane.addRow(5, new Label("Nom de client:"), new Label(client.getNom_personne()));
+                        gridPane.addRow(5, new Label("Nom de client:"), new Label(client.getNom_personne()));
 
 
                         // Affiche le GridPane dans la cellule
@@ -112,7 +117,11 @@ public class AfficherReservationController {
                 if (event.getClickCount() == 2) {
                     Reservation selectedReservation = listeView.getSelectionModel().getSelectedItem();
                     if (selectedReservation != null) {
-                        switchToUpdatePage(selectedReservation); //code
+                        try {
+                            switchToUpdatePage(selectedReservation); //code
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             });
@@ -134,23 +143,28 @@ public class AfficherReservationController {
     }
 
 
-    private void switchToUpdatePage(Reservation reservation) {
-        try {
+    private void switchToUpdatePage(Reservation reservation) throws IOException {
+        try
+        {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/ModifierReservation.fxml"));
-            Parent root = loader.load();
 
+            Parent root = loader.load();
             ModifierReservationController modifierReservationController = loader.getController();
             modifierReservationController.afficherDetailsHotel(reservation); // Initialise les champs de modification
+            Scene pageScene = new Scene(root);
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            Stage stage = (Stage) LAbel.getScene().getWindow();
+            stage.setScene(pageScene);
             stage.show();
-        } catch (IOException e) {
+        }catch (IOException e) {
             afficherAlerte(Alert.AlertType.ERROR, "Erreur", "Erreur lors du chargement de la page de modification : " + e.getMessage());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
+
+
 
     /////////////////////////////////////////////////AfficherAlerte//////////////////////////////////////////////////////////////
     private void afficherAlerte(Alert.AlertType type, String titre, String contenu) {
@@ -173,7 +187,7 @@ public class AfficherReservationController {
     //////////////////////////////////////////Recuperation de Modification//////////////////////////////////////////////////////////
 
     @FXML
-    void reservationModifier(ActionEvent event) {
+    void reservationModifier(ActionEvent event) throws IOException {
 
         // Récupérer l'objet Hotel sélectionné dans la ListView
         Reservation selectedReservation = listeView.getSelectionModel().getSelectedItem();

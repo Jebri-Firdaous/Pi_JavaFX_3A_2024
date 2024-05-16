@@ -50,23 +50,24 @@ public class AfficherPlaceController {
     public int ref;
     private Place currentPlaceSelected;
     public void init(int ref){
-        this.ref=ref;
+        this.ref = ref;
         System.out.println(ref);
         try {
-            List<Place> places =ps.recupererFiltrer(ref);
+            List<Place> places = ps.recupererFiltrer(ref);
             ObservableList<Place> data1 = FXCollections.observableArrayList(places);
 
             listid = new ListView<>(data1);
             listid.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     details(newValue);
-                    paneId.setVisible(true);
-                }else {
-                    paneId.setVisible(false);
+                   // paneId.setVisible(true);
+                } else {
+                   // paneId.setVisible(false);
                 }
             });
 
-            Pagination pagination = new Pagination((int) Math.ceil((double) data1.size() / 5), 0);
+            Pagination pagination = new Pagination(3, 0); // Display only 3 pages
+
             pagination.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer pageIndex) {
@@ -84,45 +85,30 @@ public class AfficherPlaceController {
                                         setText(null);
                                         setGraphic(null);
                                     } else {
-                                        // Assuming this code is inside a method where you have access to the rendezVous object
                                         int numPlace = place.getNum_place();
                                         String typePlace = place.getType_place();
                                         String placeEtat = place.getEtat();
-// Create an HBox to hold the details
-                                        HBox hbox = new HBox();
-                                        hbox.setSpacing(40); // Adjust spacing as needed
 
-// Add details to the HBox with styled Labels
+                                        HBox hbox = new HBox();
+                                        hbox.setSpacing(40);
+
                                         Label numLabel = new Label("Place Numero " + Integer.toString(numPlace));
                                         numLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   250; -fx-pref-height:   21");
-
-                                /*Label prenomLabel = new Label(doctorSurname);
-                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   118; -fx-pref-height:   21");*/
 
                                         Label typeLabel = new Label(typePlace);
                                         typeLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   200; -fx-pref-height:   21");
 
                                         Label etatLabel = new Label(placeEtat);
                                         etatLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width:   150; -fx-pref-height:   21");
-// Add the date Label with the full month name
-                                        HBox hbox2 = new HBox();
-                                        hbox.setSpacing(5); // Adjust spacing as needed
-//
-//                                    Button modifB = new Button("Modifier");
-//                                    modifB.setOnAction(Eve);
-//                                    Button suppB = new Button("Supprimer");
 
-// Add the Labels to the HBox
-//                                    hbox2.getChildren().addAll(modifB, suppB);
                                         hbox.getChildren().addAll(numLabel);
-
-// Assuming this is inside a ListCell or similar where you can set the graphic
                                         setGraphic(hbox);
                                     }
                                 }
                             };
                         }
                     });
+
                     return new VBox(listid);
                 }
             });
@@ -154,7 +140,7 @@ public class AfficherPlaceController {
             ps.supprimer(listid.getSelectionModel().getSelectedItem().getRef_place());
             parkS.updateNbOcc(parking, 1);
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/afficherPlace.fxml"));
                 Parent root=loader.load();
                 AfficherPlaceController ctr= loader.getController();
                 ctr.init(parking.getRef());
@@ -211,7 +197,7 @@ public class AfficherPlaceController {
                     e.printStackTrace();
                 }
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/afficherPlace.fxml"));
                     Parent root = loader.load();
                     AfficherPlaceController ctr = loader.getController();
                     ctr.init(parking.getRef());
@@ -233,7 +219,7 @@ public class AfficherPlaceController {
                 ps.updateEtat(listid.getSelectionModel().getSelectedItem(), 1);
                 parkS.updateNbOcc(parkS.recupererById(parking.getRef()), 1);
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/afficherPlace.fxml"));
                     Parent root = loader.load();
                     AfficherPlaceController ctr = loader.getController();
                     ctr.init(parking.getRef());
@@ -261,12 +247,10 @@ public class AfficherPlaceController {
             cancelRes.setVisible(false);
             res.setVisible(true);
             qr.setVisible(false);
-            paneId.setPrefHeight(358);
         }else {
             cancelRes.setVisible(true);
             res.setVisible(false);
             qr.setVisible(true);
-            paneId.setPrefHeight(500);
             // GENERATE QR CODE
             ByteArrayOutputStream out = QRCode.from("Num Place: "+Integer.toString(newValue.getNum_place())+" , ID Client: "+Integer.toString(newValue.getIdCli())).to(ImageType.PNG).withSize(100, 100).stream();
             ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());

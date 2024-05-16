@@ -18,10 +18,11 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import tn.esprit.entities.TourismeEntities.Reservation;
-import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.TourismeService.ServiceHotel;
 import tn.esprit.services.TourismeService.ServiceReservation;
-import tn.esprit.services.gestionMedecin.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
+import tn.esprit.services.gestionUserServices.Session;
 import tn.esprit.utils.HotelMail;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ import java.util.ResourceBundle;
 public class AjouterReservationController implements Initializable {
 
     @FXML
-    private ComboBox<Client>  client ;
+    private ComboBox<User>  client ;
 
     private final ServiceReservation sh = new ServiceReservation();
     private final ServiceHotel serviceHotel = new ServiceHotel();
@@ -56,7 +57,7 @@ public class AjouterReservationController implements Initializable {
 
     @FXML
     void choisirHotel(ActionEvent event) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/e_city_final", "root", "0000")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_city_final", "root", "")) {
             String query = "SELECT `nom_hotel` FROM `hotel`";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                  ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -82,6 +83,10 @@ public class AjouterReservationController implements Initializable {
             String nomHotelSelectionne = nomhotel.getValue();
             Reservation.TypeChambre typeChambre = type.getValue();
             int idHotel = serviceHotel.getHotelIdByNom(nomHotelSelectionne);
+            User selectedUser = client.getValue();
+            String recipientEmail = selectedUser.getEmail();
+
+
 
             // Vérifier si la date est valide (aujourd'hui ou après un mois)
             LocalDate dateActuelle = LocalDate.now();
@@ -94,7 +99,7 @@ public class AjouterReservationController implements Initializable {
             }
             ServiceReservation sr = new ServiceReservation(); // Créez une instance de ServiceReservation
             // Ajouter la réservation
-            sh.ajouter(new Reservation(dureeValue, prixValue, dateValue, idHotel, typeChambre , client.getValue().getId_personne()));
+            sh.ajouter(new Reservation(dureeValue, prixValue, dateValue, idHotel, typeChambre , client.getValue().getId()));
 
 /////////////////////////////////////SMS////////////////////////////////////////////
 
@@ -105,7 +110,7 @@ public class AjouterReservationController implements Initializable {
 
 
             String recipient = "+21655498385";
-            SmsController.sendSms(recipient, messageBody);
+          //  SmsController.sendSms(recipient, messageBody);
 
 
 
@@ -135,13 +140,13 @@ public class AjouterReservationController implements Initializable {
      //       afficherMessage("Succès", "La réservation a été ajoutée avec succès.", Alert.AlertType.INFORMATION);
 /////////////////////////Mail////////////////////////////////////////////////////////
 
-            String message = "Cher/chère \n\n"
-                    + "Nous sommes ravis de vous informer que votre réservation au " + nomHotelSelectionne + "</b> a été confirmée.\n\n"
-                    + "Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter.\n"
-                    + "Nous avons hâte de vous accueillir et de vous offrir une excellente expérience.\n"
-                    + "Cordialement,\n"
-                    + "L'équipe E-city";
-            HotelMail.send("ecity.tunis2000@gmail.com", message);
+            String message = "Cher/chère " + selectedUser.getNom_personne() + ",<br><br>" +
+                    "Nous sommes ravis de vous informer que votre réservation au <strong>" + nomHotelSelectionne + "</strong> a été confirmée.<br><br>" +
+                    "Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter.<br>" +
+                    "Nous avons hâte de vous accueillir et de vous offrir une excellente expérience.<br><br>" +
+                    "Cordialement,<br>" +
+                    "L'équipe E-city";
+            HotelMail.send(recipientEmail, message);
 
 
             //  HotelMail.send("ali.ammari@esprit.tn","Reservation hotel avec succée !" );
@@ -179,11 +184,11 @@ public class AjouterReservationController implements Initializable {
         transition.play();
 
         // Initialize Combobox Client
-        ServiceClient serviceClient = new ServiceClient();
-        ObservableList<Client> clientsList = FXCollections.observableArrayList();
+        ServiceUser serviceClient = new ServiceUser();
+        ObservableList<User> clientsList = FXCollections.observableArrayList();
         client.setItems(clientsList);
         try {
-            clientsList.addAll(serviceClient.afficher());
+            clientsList.addAll(serviceClient.afficherClient());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import java.lang.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -16,84 +15,74 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8"
-            fx:controller="tn.esprit.controllers.gestionUser.VlidateController">
+<AnchorPane prefHeight="739" prefWidth="1228" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.VlidateController">
 
 
     <children>
         <ImageView fitHeight="774.0" fitWidth="1312.0" layoutX="1.0" layoutY="1.0">
             <image>
-                <Image url="@smartcity.png"/>
+                <Image url="@smartcity.png" />
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE"
-                   width="1312.0"/>
-        <Rectangle arcHeight="70.0" arcWidth="70.0" height="458.0" layoutX="420.0" layoutY="177.0" opacity="0.5"
-                   stroke="TRANSPARENT" strokeType="INSIDE" width="461.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="1312.0" />
+        <Rectangle arcHeight="70.0" arcWidth="70.0" height="458.0" layoutX="420.0" layoutY="177.0" opacity="0.5" stroke="TRANSPARENT" strokeType="INSIDE" width="461.0" />
         <Label layoutX="448.0" layoutY="191.0" text="Valider votre Compte E-city" textFill="WHITE">
             <font>
-                <Font name="System Bold" size="32.0"/>
+                <Font name="System Bold" size="32.0" />
             </font>
             <effect>
                 <Lighting diffuseConstant="1.46" specularConstant="1.47" specularExponent="0.49" surfaceScale="6.62">
                     <bumpInput>
-                        <Shadow/>
+                        <Shadow />
                     </bumpInput>
                     <light>
                     </light>
                 </Lighting>
             </effect>
         </Label>
-        <VBox layoutX="452.0" layoutY="259.0" prefHeight="358.0" prefWidth="397.0">
+        <VBox layoutX="452.0" layoutY="259.0" prefHeight="326.0" prefWidth="397.0">
             <children>
                 <VBox prefHeight="250.0" prefWidth="397.0">
                     <children>
                         <AnchorPane prefHeight="247.0" prefWidth="397.0">
                             <children>
-                                <HBox layoutX="87.0" layoutY="12.0"/>
-                                <Circle fill="#ffffff00" layoutX="193.0" layoutY="125.0" radius="107.0" stroke="#b0e847"
-                                        strokeType="INSIDE" strokeWidth="3.0"/>
-                                <ImageView fx:id="profileImageView" fitHeight="200.0" fitWidth="200.0" layoutX="93.0"
-                                           layoutY="25.0" pickOnBounds="true" preserveRatio="true"/>
-                                <Button layoutX="177.0" layoutY="213.0" mnemonicParsing="false"
-                                        onAction="#uploadProfilePicture" style="-fx-background-color: #B0E847;"
-                                        text="+"/>
+                                <HBox layoutX="87.0" layoutY="12.0" />
+                                <ImageView fx:id="profileImageView" fitHeight="200.0" fitWidth="200.0" layoutX="93.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="215.0" layoutX="84.0" layoutY="14.0" stroke="#57c0dd" strokeType="INSIDE" strokeWidth="5.0" width="209.0" />
+                                <Button layoutX="177.0" layoutY="213.0" mnemonicParsing="false" onAction="#uploadProfilePicture" style="-fx-background-color: #57c0dd;" text="+" />
                             </children>
                         </AnchorPane>
                     </children>
                 </VBox>
-                <VBox prefHeight="15.0" prefWidth="397.0"/>
+                <VBox prefHeight="15.0" prefWidth="397.0" />
                 <VBox prefHeight="43.0" prefWidth="397.0">
                     <children>
                         <!--   <FontAwesomeIcon fill="#00000077" glyphName="PHONE" size="2em" />-->
-                        <TextField fx:id="tel" prefHeight="40.0" prefWidth="344.0" promptText="Entrer votre numéro"
-                                   style="-fx-background-color: white;">
+                        <TextField fx:id="tel" prefHeight="40.0" prefWidth="344.0" promptText="Entrer votre numéro" style="-fx-background-color: white;">
                             <font>
-                                <Font name="Arial" size="20.0"/>
+                                <Font name="Arial" size="20.0" />
                             </font>
                         </TextField>
-                        <HBox alignment="CENTER" style="-fx-background-color: WHITE; -fx-background-radius: 20;"/>
+                        <HBox alignment="CENTER" style="-fx-background-color: WHITE; -fx-background-radius: 20;" />
                     </children>
                 </VBox>
-                <VBox prefHeight="10.0" prefWidth="397.0">
+                <VBox prefHeight="14.0" prefWidth="397.0">
                     <children>
-                        <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="397.0" text="numéro invalide"
-                               textFill="RED" visible="false"/>
+                        <Label fx:id="telInvalid" prefHeight="21.0" prefWidth="397.0" text="numéro invalide" textFill="RED" visible="false" />
                     </children>
                 </VBox>
-                <Button fx:id="inscrire" mnemonicParsing="false" onAction="#ToValidate" prefHeight="39.0"
-                        prefWidth="397.0" style="-fx-background-color: #B0E847;" text="Valider">
-                    <font>
-                        <Font name="System Bold" size="17.0"/>
-                    </font>
-                </Button>
             </children>
         </VBox>
         <ImageView fitHeight="175.0" fitWidth="200.0" layoutX="547.0" layoutY="28.0">
             <image>
-                <Image url="@logoblanc.png"/>
+                <Image url="@logoblanc.png" />
             </image>
         </ImageView>
-        <AnchorPane layoutX="942.0" layoutY="249.0" prefHeight="255.0" prefWidth="347.0"/>
+        <AnchorPane layoutX="942.0" layoutY="249.0" prefHeight="255.0" prefWidth="347.0" />
+          <Button fx:id="inscrire" layoutX="528.0" layoutY="576.0" mnemonicParsing="false" onAction="#ToValidate" prefHeight="37.0" prefWidth="227.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Valider">
+              <font>
+                  <Font name="System Bold" size="17.0" />
+              </font>
+          </Button>
     </children>
 </AnchorPane>

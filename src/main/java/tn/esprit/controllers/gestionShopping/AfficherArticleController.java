@@ -60,6 +60,7 @@ public class AfficherArticleController implements ModificationListener {
     private int currentImageIndex = 0;
 
 
+
     @FXML
     void initialize() {
         // Ajouter les chemins d'accès aux images
@@ -175,6 +176,7 @@ public class AfficherArticleController implements ModificationListener {
     }
 
     private Node createArticleCard(Article article) {
+        String imagePath = "";
         HBox card = new HBox();
         card.setSpacing(10);
         card.setStyle("-fx-background-color: #ffffff; " +
@@ -221,21 +223,33 @@ public class AfficherArticleController implements ModificationListener {
 
         // Bouton Modifier
         Button modifierButton = new Button("Modifier");
-        modifierButton.setStyle("-fx-background-color: #3CB371; -fx-font-size: 14px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px;");
+        modifierButton.setStyle("-fx-background-color: #57c0dd; -fx-font-size: 13px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px; -fx-background-radius: 30;-fx-font-family: Arial; -fx-font-weight: bold;");
         modifierButton.setOnAction(event -> navigateToModification(article));
 
         // Bouton Supprimer
         Button supprimerButton = new Button("Supprimer");
-        supprimerButton.setStyle("-fx-background-color: #FF6347; -fx-font-size: 14px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px;");
+        supprimerButton.setStyle("-fx-background-color: #57c0dd; -fx-font-size: 13px; -fx-text-fill: white; -fx-pref-width: 100px; -fx-pref-height: 30px; -fx-background-radius: 30; -fx-font-family: Arial;-fx-font-weight: bold;");
         supprimerButton.setOnAction(event -> supprimerArticle(article));
 
         // Ajout des boutons à la VBox des boutons
         buttonsVBox.getChildren().addAll(modifierButton, supprimerButton);
 
-        // Création de l'ImageView pour l'image de l'article
+
         ImageView imageView = null;
         if (article.getPhoto_article() != null && !article.getPhoto_article().isEmpty()) {
-            imageView = new ImageView(new Image(new File(article.getPhoto_article()).toURI().toString()));
+            imagePath = article.getPhoto_article().replace("\\", "/");
+            if (!imagePath.startsWith("http://")) {
+                imagePath = "http://localhost/img/" + imagePath;
+            }
+
+            Image image = new Image(imagePath);
+            String finalImagePath = imagePath;
+            image.errorProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    System.out.println("Erreur de chargement de l'image : " + finalImagePath);
+                }
+            });
+            imageView = new ImageView(image);
             imageView.setFitWidth(140);
             imageView.setFitHeight(140);
         }

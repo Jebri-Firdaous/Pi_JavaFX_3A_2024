@@ -54,7 +54,7 @@ public class PlaceService implements IService<Place>{
             p.setType_place(rs.getString("type_place"));
             p.setEtat(rs.getString("etat"));
             p.setId_Parking(rs.getInt("id_parking"));
-            p.setId_Parking(rs.getInt("id_user"));
+            p.setIdCli(rs.getInt("id_personne"));
 
             places.add(p);
         }
@@ -73,7 +73,7 @@ public class PlaceService implements IService<Place>{
             p.setType_place(rs.getString("type_place"));
             p.setEtat(rs.getString("etat"));
             p.setId_Parking(rs.getInt("id_parking"));
-            p.setIdCli(rs.getInt("id_user"));
+            p.setIdCli(rs.getInt("id_personne"));
 
             places.add(p);
         }
@@ -90,26 +90,26 @@ public class PlaceService implements IService<Place>{
     }
     public void updateEtat(Place place, int choice) throws SQLException {
         if (choice==0) {
-            String sql = "update `place` set `etat` = 'Reservee', `id_user` = ? where `ref_place` = ?";
+            String sql = "update `place` set `etat` = 'Reservee', `id_personne` = ? where `ref_place` = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, place.getIdCli());
             preparedStatement.setInt(2, place.getRef_place());
             preparedStatement.executeUpdate();
         }
         if (choice==1){
-            String sql = "update `place` set `etat` = 'Libre', `id_user` = null where `ref_place` = ?";
+            String sql = "update `place` set `etat` = 'Libre', `id_personne` = null where `ref_place` = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, place.getRef_place());
             preparedStatement.executeUpdate();
         }
     }
     public List<Integer> refUser() throws SQLException {
-        String sql = "select * from Client";
+        String sql = "select * from User";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         List<Integer> refs = new ArrayList<>();
         while (rs.next()) {
-            refs.add(rs.getInt("id_personne"));
+            refs.add(rs.getInt("id"));
         }
         return refs;
     }

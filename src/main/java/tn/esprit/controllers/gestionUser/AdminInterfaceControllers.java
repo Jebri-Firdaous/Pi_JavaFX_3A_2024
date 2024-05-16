@@ -6,16 +6,26 @@
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
+    import javafx.geometry.Side;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
+    import javafx.scene.control.ContextMenu;
     import javafx.scene.control.Label;
     import javafx.scene.control.MenuItem;
     import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
+    import javafx.scene.input.MouseEvent;
     import javafx.stage.Modality;
     import javafx.stage.Stage;
     import javafx.util.Duration;
+    import tn.esprit.controllers.gestionMedecin.AfficherListRendezVousController;
+    import tn.esprit.controllers.gestionMedecin.AfficherMedecinsController;
+    import tn.esprit.controllers.gestionTransport.AfficherBilletController;
+    import tn.esprit.controllers.gestionTransport.AfficherStationController;
+    import tn.esprit.entities.gestionUserEntities.User;
     import tn.esprit.services.gestionUserServices.ServiceAdmin;
+    import tn.esprit.services.gestionUserServices.ServiceUser;
+    import tn.esprit.services.gestionUserServices.Session;
 
     import java.io.IOException;
 
@@ -23,7 +33,7 @@
     public class AdminInterfaceControllers {
         /*--------------------------------------------------- Attribut ----------------------------------------------------------*/
 
-        ServiceAdmin sa = new ServiceAdmin();
+        ServiceUser sa = new ServiceUser();
         @FXML
         private Label label;
         @FXML
@@ -43,6 +53,9 @@
         private String connectedAdminPassword;
         @FXML
         private ImageView adminImage;
+        @FXML
+        private ImageView profilePicture;
+
 
         /*------------------------------------------------------------------------------------------------------------------------*/
         /*------------------------------------Methode generale pour naviguer dans le meme stage-----------------------------------*/
@@ -110,29 +123,13 @@
 
         }
 
-        @FXML
-        void afficherAdmin() {
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherAdmin.fxml"));
-                Parent root = loader.load();
-                Scene pageScene = new Scene(root);
-
-                // Get the current stage and set the new scene
-                Stage stage = (Stage) label.getScene().getWindow();
-                stage.setScene(pageScene);
-                stage.show();
-            } catch (
-                    IOException e) {
-                System.err.println("Erreur lors du chargement de la page ");
-                e.printStackTrace();
-            }
-        }
 
         public void goBack(ActionEvent actionEvent) {
         }
 
         public void initialize() {
+
 
             TranslateTransition transition = new TranslateTransition(Duration.seconds(15), bienvenue);
             transition.setFromX(1312); // Position de départ en X (hors de l'écran à droite)
@@ -160,31 +157,411 @@
         }
 
 
+
+
+
+
         public void setConnectedAdminEmailPwd(String email, String pwd) {
             this.connectedAdminEmail = email;
             this.connectedAdminPassword = pwd;
         }
-
         @FXML
-        void disconnect(ActionEvent event) {
+        private Label labeldisconnect;
+        @FXML
+        private void disconnect() {
+            Session session = Session.getInstance();
+            session.setCurrentUser(null);
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/pageConnexion.fxml"));
                 Parent root = loader.load();
-                AdminLoginController adminLoginController = loader.getController();
+                LoginController adminLoginController = loader.getController();
                 Scene pageScene = new Scene(root);
 
                 // Get the current stage and set the new scene
-                Stage stage = (Stage) label.getScene().getWindow();
-
-                // Save reference to the parent stage
-                Stage parentStage = new Stage();
-                parentStage.initModality(Modality.WINDOW_MODAL);
-                parentStage.initOwner(stage);
-
+                Stage stage = (Stage) profilePicture.getScene().getWindow();
                 stage.setScene(pageScene);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+
+
+        public void afficherBillet(ActionEvent actionEvent) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherBillet.fxml"));
+                Parent newPageRoot = loader.load();
+                AfficherBilletController afficherBilletController = loader.getController();
+
+                // Create a new scene with the newPageRoot
+                Scene pageScene = new Scene(newPageRoot);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void afficherStation(ActionEvent actionEvent) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionTransport/AfficherStation.fxml"));
+                Parent newPageRoot = loader.load();
+                AfficherStationController afficherStationController = loader.getController();
+
+                // Create a new scene with the newPageRoot
+                Scene pageScene = new Scene(newPageRoot);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        @FXML
+        void afficherArticle() {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionShopping/AfficherArticle.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/resourcesGestionShopping/StyleShopping.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        @FXML
+        void ajouterArticle() {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionShopping/AjouterArticle.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/resourcesGestionShopping/StyleShopping.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        @FXML
+        void ajouterCommande() {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionShopping/AjouterCommande.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/resourcesGestionShopping/StyleShopping.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        @FXML
+        void afficherCommande() {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/resourcesGestionShopping/AfficherCommande.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/resourcesGestionShopping/StyleShopping.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void ajouterHotel(ActionEvent actionEvent) {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AjouterHotel.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void afficherHotel(ActionEvent actionEvent) {
+
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherHotel.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        public void AjouterReservation(ActionEvent actionEvent) {
+
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AjouterReservation.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void AfficherReservation(ActionEvent actionEvent) {
+
+
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/TourismeResources/AfficherReservation.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        public void afficherParking(ActionEvent event) {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherParkingg.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void recupererParking(ActionEvent event) {
+            try {
+//           for load an FXML file and create a scene graph from it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/RecycleBin.fxml"));
+                Parent addPageRoot = loader.load();
+                Scene newPageScene = new Scene(addPageRoot);
+                newPageScene.getStylesheets().add(getClass().getResource("/TourismeResources/style.css").toExternalForm());
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(newPageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        @FXML
+        void afficherAdmin() {
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherAdmin.fxml"));
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (
+                    IOException e) {
+                System.err.println("Erreur lors du chargement de la page ");
+                e.printStackTrace();
+            }
+        }
+
+        public void afficherClient(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherClient.fxml"));
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (
+                    IOException e) {
+                System.err.println("Erreur lors du chargement de la page ");
+                e.printStackTrace();
+            }
+        }
+
+        public void afficherMedecin(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionMedecin/AfficherMedecins.fxml"));
+                Parent newPageRoot = loader.load();
+                AfficherMedecinsController afficherMedecinsController = loader.getController();
+
+                // Create a new scene with the newPageRoot
+                Scene pageScene = new Scene(newPageRoot);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void afficherRV(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionMedecin/AfficherListRendezVous.fxml"));
+                Parent newPageRoot = loader.load();
+                AfficherListRendezVousController afficherListRendezVousController = loader.getController();
+
+                // Create a new scene with the newPageRoot
+                Scene pageScene = new Scene(newPageRoot);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
+
+        Session session = Session.getInstance();
+        User user = session.getCurrentUser();
+
+        @FXML
+        private void handleProfilePictureClicked() {
+            ContextMenu contextMenu = new ContextMenu();
+
+            MenuItem modifyProfileMenuItem = new MenuItem("Modifier le profil");
+            MenuItem Deconnexion = new MenuItem("Deconnexion");
+
+            modifyProfileMenuItem.setOnAction(event -> {
+                if (user != null)
+                {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Profile.fxml"));
+                        Parent root = loader.load();
+                        Scene pageScene = new Scene(root);
+                        ProfileController profile= loader.getController();
+                        profile.initData(user); // Passez l'administrateur sélectionné au contrôleur de la vue de modification
+                        Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                        stage.setScene(pageScene);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+
+                    }
+
+                }
+                else {
+                    // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+                }
+            });
+
+            Deconnexion.setOnAction(event -> {
+                // Handle the action when "Deconnexion" is clicked
+                disconnect();
+            });
+
+
+            // Add more menu items if needed
+
+            contextMenu.getItems().addAll(modifyProfileMenuItem);
+            contextMenu.getItems().addAll(Deconnexion);
+
+
+            // Show the context menu at the location of the mouse click
+            contextMenu.show(profilePicture, Side.BOTTOM, 0, 0);
+        }
+        @FXML
+        private void Profile() {
+            Session session = Session.getInstance();
+            session.setCurrentUser(null);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Profile.fxml"));
+                ProfileController pc= loader.getController();
+                Parent root = loader.load();
+                Scene pageScene = new Scene(root);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) profilePicture.getScene().getWindow();
+                stage.setScene(pageScene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @FXML
+        private Label Nom_prenom;
+
+        @FXML
+        private Label role_administrateur;
+
+        public void ToAcceuil(ActionEvent event) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/Acceuil.fxml"));
+                Parent newPageRoot = loader.load();
+
+                // Create a new scene with the newPageRoot
+                Scene pageScene = new Scene(newPageRoot);
+
+                // Get the current stage and set the new scene
+                Stage stage = (Stage) labeldisconnect.getScene().getWindow();
+                stage.setScene(pageScene);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
         }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -7,84 +8,97 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifierBilletController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifierBilletController">
 
     <children>
         <fx:include source="../navBar.fxml" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="1.0" layoutY="-53.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1258.0">
-            <fill>
-                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
-                    <stops>
-                        <Stop color="#5ee1e5a6" />
-                        <Stop color="#5ee1e500" offset="1.0" />
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
 
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="-11.0" layoutY="675.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1281.0">
-            <fill>
-                <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
-                    <stops>
-                        <Stop color="#5ee1e5a6" />
-                        <Stop color="#5ee1e500" offset="1.0" />
-                    </stops>
-                </LinearGradient>
-            </fill>
-        </Rectangle>
-
-        <Label layoutX="47.0" layoutY="250.0" prefHeight="25.0" prefWidth="119.0" text="Destination">
+        <Label layoutX="68.0" layoutY="241.0" prefHeight="25.0" prefWidth="119.0" text="Destination">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <Label layoutX="884.0" layoutY="234.0" text="Date_Départ">
+        <Label layoutX="65.0" layoutY="401.0" text="Date_Départ">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <Label layoutX="886.0" layoutY="468.0" text="Prix">
+        <Label layoutX="68.0" layoutY="531.0" text="Prix">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <Label layoutX="885.0" layoutY="354.0" text="Durée">
+        <Label layoutX="68.0" layoutY="466.0" text="Durée">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <Label layoutX="40.0" layoutY="380.0" text="Point de Départ">
+        <Label layoutX="68.0" layoutY="293.0" text="Point de Départ">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
-        <TextField fx:id="mddestination" layoutX="41.0" layoutY="289.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-        <TextField fx:id="mduree" layoutX="877.0" layoutY="396.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-        <TextField fx:id="mprix" layoutX="877.0" layoutY="513.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-        <DatePicker fx:id="mdateR" layoutX="877.0" layoutY="278.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-     
-        <ComboBox fx:id="mdepart" layoutX="39.0" layoutY="423.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-        <ComboBox fx:id="mhourCombobox" layoutX="35.0" layoutY="552.0" prefHeight="54.0" prefWidth="82.0" style="-fx-border-color: black;" />
-        <ComboBox fx:id="mminuteCombobox" layoutX="158.0" layoutY="552.0" prefHeight="54.0" prefWidth="82.0" style="-fx-border-color: black;" />
-      <Button layoutX="470.0" layoutY="632.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="54.0" prefWidth="245.0" style="-fx-border-color: white;" text="Modifier" textFill="#ebe4e4">
+      <Button layoutX="202.0" layoutY="600.0" mnemonicParsing="false" onAction="#modifybillet" prefHeight="54.0" prefWidth="245.0" style="-fx-border-color: white;" text="Modifier" textFill="#ebe4e4">
          <font>
             <Font size="22.0" />
          </font></Button>
-      <Label layoutX="47.0" layoutY="513.0" text="Heure">
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <VBox layoutX="214.0" layoutY="231.0" prefHeight="340.0" prefWidth="350.0">
+         <children>
+            <VBox prefHeight="53.0" prefWidth="347.0">
+               <children>
+                    <TextField fx:id="mddestination" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+               </children>
+            </VBox>
+            <VBox prefHeight="51.0" prefWidth="350.0">
+               <children>
+                 
+                    <ComboBox fx:id="mdepart" minWidth="350.0" prefHeight="54.0" prefWidth="350.0" style="-fx-border-color: black;" />
+               </children>
+            </VBox>
+            <VBox prefHeight="61.0" prefWidth="350.0">
+               <children>
+                  <AnchorPane prefHeight="54.0" prefWidth="352.0">
+                     <children>
+                          <ComboBox fx:id="mhourCombobox" layoutX="1.0" layoutY="7.0" minWidth="167.0" prefHeight="54.0" prefWidth="207.0" style="-fx-border-color: black;" />
+                          <ComboBox fx:id="mminuteCombobox" layoutX="137.0" layoutY="7.0" minWidth="215.0" prefHeight="54.0" prefWidth="215.0" style="-fx-border-color: black;" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="67.0" prefWidth="352.0">
+               <children>
+                    <DatePicker fx:id="mdateR" prefHeight="54.0" prefWidth="500.0" style="-fx-border-color: black;" />
+               </children>
+            </VBox>
+            <VBox prefHeight="58.0" prefWidth="352.0">
+               <children>
+                    <TextField fx:id="mduree" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+               </children>
+            </VBox>
+            <VBox prefHeight="47.0" prefWidth="352.0">
+               <children>
+                    <TextField fx:id="mprix" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Label layoutX="65.0" layoutY="349.0" text="Date_Départ">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="160.0" layoutY="513.0" text="Minutes">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="381.0" fitWidth="270.0" layoutX="427.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fill="#979494" height="474.0" layoutX="127.0" layoutY="-36.0" width="2.0" x="520.0" y="219.0" />
+      <ImageView fitHeight="487.0" fitWidth="506.0" layoutX="712.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@billet-de-train.png" />
+            <Image url="@TICKET.png" />
          </image>
       </ImageView>
+      <Text fill="#57c0dd" layoutX="185.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier buillet " textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="39.0" />
+         </font>
+      </Text>
 
 
 

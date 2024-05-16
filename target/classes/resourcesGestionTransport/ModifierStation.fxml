@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -7,59 +8,40 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifieStationController">
+<AnchorPane prefHeight="739.0" prefWidth="1228.0" stylesheets="@../gestionMedecin/stylesForGM.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionTransport.ModifieStationController">
    <children>
       <fx:include source="../navBar.fxml" />
-      <Label fx:id="labelnom" layoutX="407.0" layoutY="245.0" prefHeight="34.0" prefWidth="175.0" text="Nom Station">
+      <Label fx:id="labelnom" layoutX="54.0" layoutY="343.0" prefHeight="34.0" prefWidth="175.0" text="Nom Station">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Label layoutX="407.0" layoutY="368.0" prefHeight="32.0" prefWidth="175.0" text="adress Station">
+      <Label layoutX="54.0" layoutY="399.0" prefHeight="32.0" prefWidth="175.0" text="adress Station">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <Label layoutX="407.0" layoutY="480.0" text="type Station">
+      <Label layoutX="54.0" layoutY="462.0" text="type Station">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <TextField fx:id="mdnom" layoutX="407.0" layoutY="292.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-      <TextField fx:id="mdadress" layoutX="407.0" layoutY="410.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-      <Button layoutX="687.0" layoutY="612.0" mnemonicParsing="false" onAction="#modifierfinale" prefHeight="64.0" prefWidth="245.0" style="-fx-border-color: white;" text="Modifier" textFill="#eeeaea">
+      <TextField fx:id="mdnom" layoutX="191.0" layoutY="340.0" minWidth="320.0" prefHeight="41.0" prefWidth="320.0" style="-fx-border-color: grey; -fx-background-color: transparent;" />
+      <TextField fx:id="mdadress" layoutX="191.0" layoutY="395.0" minWidth="320.0" prefHeight="41.0" prefWidth="320.0" style="-fx-border-color: grey; -fx-background-color: transparent;" />
+      <Button layoutX="224.0" layoutY="539.0" mnemonicParsing="false" onAction="#modifierfinale" prefHeight="64.0" prefWidth="245.0"  text="Modifier" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" textFill="#eeeaea">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Text fill="#1a1b1b" layoutX="366.0" layoutY="195.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Votre Station" underline="true">
-         <font>
-            <Font name="Cambria Bold" size="46.0" />
-         </font>
-      </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="107.0" layoutX="-3.0" layoutY="-61.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1243.0">
-         <fill>
-            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0">
-               <stops>
-                  <Stop color="#5ee1e5a6" />
-                  <Stop color="#5ee1e500" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutY="683.0" opacity="0.75" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" width="1269.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="0.2961165048543689" startX="1.0" startY="1.0">
-               <stops>
-                  <Stop color="#5ee1e5a6" />
-                  <Stop color="#5ee1e500" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <ComboBox fx:id="mdtype1" layoutX="407.0" layoutY="519.0" prefHeight="54.0" prefWidth="201.0" style="-fx-border-color: black;" />
-      <ImageView fitHeight="299.0" fitWidth="340.0" layoutX="863.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
+      <ComboBox fx:id="mdtype1" layoutX="191.0" layoutY="453.0" minWidth="320.0" prefHeight="54.0" prefWidth="320.0" style="-fx-border-color: GREY; -fx-background-color: trandparent;" />
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <ImageView fitHeight="474.0" fitWidth="449.0" layoutX="685.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@station.png" />
+            <Image url="@ajoutstation.png" />
          </image>
       </ImageView>
+      <Label layoutX="67.0" layoutY="229.0" prefHeight="66.0" prefWidth="464.0" style="-fx-font-size: 39;" text="Modifier Votre Station" textFill="#57c0dd">
+         <font>
+            <Font name="Arial Bold" size="1.0" />
+         </font>
+      </Label>
+      <Rectangle fill="#979494" height="474.0" layoutX="61.0" layoutY="-59.0" width="2.0" x="520.0" y="219.0" />
    </children>
 </AnchorPane>

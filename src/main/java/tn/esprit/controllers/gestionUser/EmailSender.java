@@ -12,8 +12,8 @@ public class EmailSender {
         // Paramètres SMTP
         String host = "smtp.gmail.com";
         String port = "587"; // Port SMTP
-        String username = "ecity.tunis2000@gmail.com";
-        String password = "nsyy dwge swzu oshg";
+        String username = "jebrifirdaous0@gmail.com";
+        String password = "itdf edeq jgic qyos";
 
         // Propriétés de connexion
         Properties props = new Properties();

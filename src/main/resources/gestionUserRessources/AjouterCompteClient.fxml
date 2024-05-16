@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.shape.*?>
@@ -15,13 +16,17 @@
 
     <children>
         <fx:include source="../navBar.fxml" />
-        <Rectangle arcHeight="70.0" arcWidth="70.0" height="553.0" layoutX="817.0" layoutY="177.0" opacity="0.07" stroke="TRANSPARENT" strokeType="INSIDE" width="388.0" />
-        <Label layoutX="964.0" layoutY="192.0" text="Ajouter Client">
+      <ImageView fitHeight="380.0" fitWidth="372.0" layoutX="731.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@client.png" />
+         </image>
+      </ImageView>
+        <Label layoutX="169.0" layoutY="162.0">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <VBox layoutX="844.0" layoutY="238.0" prefHeight="475.0" prefWidth="341.0">
+        <VBox layoutX="80.0" layoutY="205.0" prefHeight="475.0" prefWidth="341.0">
             <children>
                 <TextField fx:id="nom" prefHeight="46.0" prefWidth="397.0" promptText="Entrer votre nom">
                     <font>
@@ -108,23 +113,20 @@
 
                     </children>
                 </VBox>
-                <Button mnemonicParsing="false" onAction="#AjouterClient" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #B0E847;" text="Ajouter">
+                <Button mnemonicParsing="false" onAction="#AjouterClient" prefHeight="38.0" prefWidth="402.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Ajouter">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Button>
             </children>
         </VBox>
-        <VBox layoutX="400.0" layoutY="699.0" prefHeight="32.0" prefWidth="467.0">
-            <children>
-                <Label fx:id="remplirChamps" prefHeight="31.0" prefWidth="469.0" textFill="#dd0f0f">
-                    <font>
-                        <Font size="11.0" />
-                    </font>
-                </Label>
-            </children>
-        </VBox>
-        <Label fx:id="label" layoutX="1095.0" layoutY="37.0" />
-        <HBox layoutX="497.0" layoutY="641.0" prefHeight="46.0" prefWidth="431.0" />
+        <Label fx:id="label" layoutX="699.0" layoutY="-5.0" />
+      <Label fx:id="labeldisconnect" layoutX="-396.0" layoutY="-42.0" text="Label" visible="false" />
+      <Rectangle fill="#979494" height="474.0" layoutX="60.0" layoutY="-24.0" width="2.0" x="520.0" y="219.0" />
+      <Text fill="#57c0dd" layoutX="129.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Client" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="32.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

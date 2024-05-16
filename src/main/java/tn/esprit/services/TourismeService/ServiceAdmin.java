@@ -124,7 +124,7 @@ public class ServiceAdmin implements IService <Administrateur> {
 
         try {
             // Établir une connexion à votre base de données
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-city", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e_city_final", "root", "");
 
             // Préparer la requête SQL pour récupérer l'ID de l'admin par son nom et prénom
             String query = "SELECT administrateur.id_admin " +

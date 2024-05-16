@@ -7,9 +7,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@gestionMedecin/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.NavBarController">
+<AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@gestionMedecin/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.gestionUser.AdminInterfaceControllers">
     <children>
-
         <!-- Contenu de l'interface qui changera en fonction des actions -->
         <Pane fx:id="contentPane" opacity="0.95" prefHeight="740.0" prefWidth="1233.0" BorderPane.alignment="CENTER">
             <children>
@@ -18,9 +17,12 @@
                         <Image url="@gestionMedecin/bk5.png" />
                     </image>
                 </ImageView>
-                <MenuBar layoutX="177.0" layoutY="60.0" prefHeight="32.0" prefWidth="1002.0">
+                <MenuBar layoutX="187.0" layoutY="61.0" prefHeight="32.0" prefWidth="887.0">
                     <menus>
-                        <Menu mnemonicParsing="false" text="Accueil">
+                        <Menu mnemonicParsing="true" text="Accueil" >
+                            <items>
+                                <MenuItem onAction="#ToAcceuil" text="Accueil" />
+                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion Sante">
                             <items>
@@ -56,39 +58,47 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion parking">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Afficher Parking" onAction="#afficherParking" />
-                                <MenuItem mnemonicParsing="false" text="Récuperer Parking" onAction="#recupererParking" />
+                                <MenuItem mnemonicParsing="false" onAction="#afficherParking" text="Afficher Parking" />
+                                <MenuItem mnemonicParsing="false" onAction="#recupererParking" text="Récuperer Parking" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion tourisme">
                             <items>
                                 <Menu mnemonicParsing="false" text="Hotel">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#ajouterHotel"
-                                                  text="Ajouter Hotel"/>
-                                        <MenuItem mnemonicParsing="false" onAction="#afficherHotel"
-                                                  text="Afficher Hotel"/>
+                                        <MenuItem mnemonicParsing="false" onAction="#ajouterHotel" text="Ajouter Hotel" />
+                                        <MenuItem mnemonicParsing="false" onAction="#afficherHotel" text="Afficher Hotel" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Reservation">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#AjouterReservation"
-                                                  text="Ajouter Reservation"/>
-                                        <MenuItem mnemonicParsing="false" onAction="#AfficherReservation"
-                                                  text="Afficher Reservation"/>
+                                        <MenuItem mnemonicParsing="false" onAction="#AjouterReservation" text="Ajouter Reservation" />
+                                        <MenuItem mnemonicParsing="false" onAction="#AfficherReservation" text="Afficher Reservation" />
                                     </items>
                                 </Menu>
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Gestion utilisateur">
-                            <Menu mnemonicParsing="false" onAction="#afficherAdmin" text="Administrateurs"/>
-
-                            <Menu mnemonicParsing="false" onAction="#afficherClient" text="Clients"/>
+                           <items>
+                               <Menu mnemonicParsing="false" onAction="#afficherAdmin" text="Administrateurs" />
+   
+                               <Menu mnemonicParsing="false" onAction="#afficherClient" text="Clients" />
+                           </items>
                         </Menu>
                     </menus>
                 </MenuBar>
+              <ImageView fx:id="profilePicture" fitHeight="81.0" fitWidth="84.0" layoutX="1101.0" layoutY="37.0" onMouseClicked="#handleProfilePictureClicked" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@gestionUserRessources/login.png" />
+                  </image>
+
+              </ImageView>
+
             </children>
+
         </Pane>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+
     </children>
 
 

@@ -117,12 +117,12 @@ public class AfficherCommandeController implements ModificationListener {
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
             // Logo de l'entreprise
-            PDImageXObject image = PDImageXObject.createFromFile("C:\\Users\\Ezzedine\\Desktop\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\resourcesGestionShopping\\logo.png", document);
+//            PDImageXObject image = PDImageXObject.createFromFile("C:\\Users\\Ezzedine\\Desktop\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\resourcesGestionShopping\\logo.png", document);
             float imageWidth = 100; // Largeur de l'image
             float imageHeight = 100; // Hauteur de l'image
             float imageX = 50; // Position horizontale du logo
             float imageY = page.getMediaBox().getHeight() - 150; // Position verticale du logo
-            contentStream.drawImage(image, imageX, imageY, imageWidth, imageHeight);
+        //    contentStream.drawImage(image, imageX, imageY, imageWidth, imageHeight);
 
 // Entête de l'entreprise
             contentStream.setFont(PDType1Font.HELVETICA, 10);
@@ -262,7 +262,7 @@ public class AfficherCommandeController implements ModificationListener {
         Button genererPDFButton = new Button("Télécharger PDF");
         genererPDFButton.setStyle("-fx-background-color: #0059ff; -fx-text-fill: white; -fx-font-size: 14px;");
         genererPDFButton.setOnAction(event -> {
-            genererBonDeCommandePDF(commande);
+            //genererBonDeCommandePDF(commande);
         });
         VBox.setMargin(genererPDFButton, new Insets(10, 0, 0, 0)); // Ajout de marge en haut pour le bouton PDF
 

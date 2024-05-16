@@ -40,7 +40,13 @@ public class AfficherMedecinsController {
 
     //    To can populate our list view with data
     /*public void initialize() {
-        ObservableList<Medecin> medecinList = FXCollections.observableArrayList();
+        Observable
+
+
+
+
+
+     <Medecin> medecinList = FXCollections.observableArrayList();
         listViewMedecins.setItems(medecinList);
         try {
             List<Medecin> medecinsFromService = serviceMedecin.afficher();
@@ -87,19 +93,19 @@ public class AfficherMedecinsController {
 
                                 // Add details to the HBox
                                 Label nomLabel = new Label(medecin.getNom_medecin());
-                                nomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 130; -fx-pref-height: 21");
+                                nomLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black;  -fx-pref-width: 130; -fx-pref-height: 21");
 
                                 Label prenomLabel = new Label(medecin.getPrenom_medecin_medecin());
 
-                                prenomLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
+                                prenomLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
                                 Label specialiteLabel = new Label(medecin.getSpecialite_medecin());
-                                specialiteLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 150; -fx-pref-height: 21");
+                                specialiteLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black;  -fx-pref-width: 150; -fx-pref-height: 21");
 
                                 Label numTelLabel = new Label(String.valueOf(medecin.getNumero_telephone_medecin()));
-                                numTelLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
+                                numTelLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black; -fx-pref-width: 118; -fx-pref-height: 21");
 
                                 Label adresseLabel = new Label(medecin.getAddress_medecin());
-                                adresseLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black;  -fx-pref-width: 150; -fx-pref-height: 21");
+                                adresseLabel.setStyle("-fx-font-weight: regular;-fx-font-family: Arial;-fx-font-size: 16px; -fx-text-fill: black;  -fx-pref-width: 150; -fx-pref-height: 21");
 
 
                                 // Add the TextFields to the HBox
@@ -217,7 +223,7 @@ public class AfficherMedecinsController {
             initialize();
         }
         if (!attribut.toLowerCase().equals("nom") && !attribut.toLowerCase().equals("prenom") && !attribut.toLowerCase().equals("specialite")
-        && !attribut.toLowerCase().equals("n°tel") && !attribut.toLowerCase().equals("adresse")){
+                && !attribut.toLowerCase().equals("n°tel") && !attribut.toLowerCase().equals("adresse")){
             msgErreurLabel.setText("_attribut val");
             return;
         }

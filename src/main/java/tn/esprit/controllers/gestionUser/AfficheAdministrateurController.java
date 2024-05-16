@@ -10,60 +10,136 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import tn.esprit.entities.gestionUserEntities.Administrateur;
-import tn.esprit.entities.gestionUserEntities.Personne;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceAdmin;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class AfficheAdministrateurController {
-    private final ServiceAdmin sa = new ServiceAdmin();
-    ObservableList<Administrateur> listeAdmins = FXCollections.observableArrayList();
-    Administrateur currentAdminSelected;
+    private final ServiceUser sa = new ServiceUser();
+   ServiceUser serviceUser = new ServiceUser();
+    ObservableList<User> listeAdmins = FXCollections.observableArrayList();
     @FXML
-    private ListView<Administrateur> listViewAdmin;
+    private ListView<User> listViewAdmin;
     @FXML
     private Label label;
 
 
     @FXML
-    private TableColumn<Personne, String> nomAdmin;
+    private TableColumn<User, String> nomAdmin;
 
     @FXML
-    private TableColumn<Personne, String> prenomAdmin;
+    private TableColumn<User, String> prenomAdmin;
     @FXML
-    private TableView<Administrateur> tableViewAdmin;
-
-
-    @FXML
-    private TableColumn<Administrateur, Integer> telAdmin;
-
-    @FXML
-    private TableColumn<Administrateur, String> mailAdmin;
+    private TableView<User> tableViewAdmin;
 
 
     @FXML
-    private TableColumn<Administrateur, String> role;
+    private TableColumn<User, Integer> telAdmin;
+
+    @FXML
+    private TableColumn<User, String> mailAdmin;
+
+
+    @FXML
+    private TableColumn<User, String> role;
     @FXML
     private TextField search;
 
+    @FXML
+    private TableColumn<User, Boolean> IS_VERIFIED;
+
+    @FXML
+    private TableColumn<User, Boolean> IS_BANNED;
+
     /*-----------------------------AFFICHE ET RECUPERATION DES DONNEE DANS LA TABEVIEW--------------------------------*/
+
     public void initialize() {
         try {
-            rechercherAdminDansLaBase("");
-            search.textProperty().addListener((observable, oldValue, newValue) -> {
-                rechercherAdminDansLaBase(newValue);
-            });
-            List<Administrateur> AdminsFromService = sa.afficher();
+            // Clear the TableView before reloading data
+            tableViewAdmin.getItems().clear();
+
+            // Get the updated list of admins from the service
+            List<User> adminsFromService = sa.afficherAdmin();
+
+            // Set cell value factories for each column
             nomAdmin.setCellValueFactory(new PropertyValueFactory<>("nom_personne"));
             prenomAdmin.setCellValueFactory(new PropertyValueFactory<>("prenom_personne"));
             telAdmin.setCellValueFactory(new PropertyValueFactory<>("numero_telephone"));
-            mailAdmin.setCellValueFactory(new PropertyValueFactory<>("mail_personne"));
-            role.setCellValueFactory(new PropertyValueFactory<>("role"));
-            tableViewAdmin.setItems(FXCollections.observableArrayList(AdminsFromService));
-            // Utilisez AdminsFromService
+            mailAdmin.setCellValueFactory(new PropertyValueFactory<>("email"));
+            role.setCellValueFactory(new PropertyValueFactory<>("role_admin"));
+            IS_VERIFIED.setCellValueFactory(new PropertyValueFactory<>("is_verified"));
+            IS_VERIFIED.setCellFactory(column -> new TableCell<User, Boolean>() {
+                @Override
+                protected void updateItem(Boolean item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item ? "oui" : "non");
+                    }
+                }
+            });
+            IS_BANNED.setCellValueFactory(new PropertyValueFactory<>("is_banned"));
+            IS_BANNED.setCellFactory(column -> new TableCell<User, Boolean>() {
+                @Override
+                protected void updateItem(Boolean item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item ? "oui" : "non");
+                    }
+                }
+            });
+            // Populate the TableView with the updated list of admins
+            tableViewAdmin.setItems(FXCollections.observableArrayList(adminsFromService));
+            nomAdmin.setStyle("-fx-background-color: lightblue;");
+            prenomAdmin.setStyle("-fx-background-color: lightblue;");
+            telAdmin.setStyle("-fx-background-color: lightblue;");
+            mailAdmin.setStyle("-fx-background-color: lightblue;");
+            role.setStyle("-fx-background-color: lightblue;");
+            IS_VERIFIED.setStyle("-fx-background-color: lightblue;");
+            IS_BANNED.setStyle("-fx-background-color: lightblue;");
+            tableViewAdmin.setRowFactory(tv -> {
+                TableRow<User> row = new TableRow<>();
+                row.setStyle("-fx-background-color: black;"); // Couleur de fond pour les lignes
+                row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+                row.setOnMouseClicked(event -> {
+                    if (!row.isEmpty()) {
+                        if (row.isSelected()) {
+                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("-fx-font-color: black");
+                            row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne est sélectionnée
+                        } else {
+                            row.setStyle("-fx-background-color: white;");
+                            row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne n'est pas sélectionnée
+                        }
+                    }
+                });
+                row.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+                    if (isNowSelected) {
+                        row.setStyle("-fx-background-color: white;");
+                        row.setStyle("-fx-font-color: black");
+                        row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+// Change la couleur au clic si la ligne est sélectionnée
+// Change la couleur de fond quand la ligne est sélectionnée
+                    } else {
+                        // Réinitialise la couleur de fond quand la ligne n'est plus sélectionnée
+                        row.setStyle("-fx-background-color: white;");
+                        row.setStyle("-fx-font-weight: bold;"); // Couleur de fond pour les lignes
+
+                    }
+                });
+                return row;
+            });
+
+
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -72,12 +148,13 @@ public class AfficheAdministrateurController {
             alert.setContentText("Une erreur s'est produite lors de la récupération des données. Veuillez réessayer plus tard.");
             alert.showAndWait();
         }
+
     }
 
     private void rechercherAdminDansLaBase(String recherche) {
         tableViewAdmin.getItems().clear(); // Effacer les anciens résultats du TableView
         try {
-            List<Administrateur> administrateursTrouves = sa.rechercher(recherche);
+            List<User> administrateursTrouves = sa.rechercherAdmin(recherche);
             if (!administrateursTrouves.isEmpty()) {
                 // Si des administrateurs ont été trouvés, les ajouter au TableView
                 tableViewAdmin.getItems().addAll(administrateursTrouves);
@@ -118,12 +195,9 @@ public class AfficheAdministrateurController {
         ToAjouterAdmin();
     }
 
-    public void supprimer(ActionEvent actionEvent) {
-
-    }
 
     public void modifier(ActionEvent actionEvent) {
-        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
         if (adminSelectionne != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/modifier.fxml"));
@@ -145,17 +219,79 @@ public class AfficheAdministrateurController {
     }
 
     public void supprimerAdmin(ActionEvent actionEvent) {
-        Administrateur adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
         if (adminSelectionne != null) {
             try {
-                sa.supprimer(adminSelectionne.getId_personne());
+                sa.supprimerUser(adminSelectionne.getId());
                 // Afficher un message de confirmation
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succès");
                 alert.setHeaderText(null);
                 alert.setContentText("L'administrateur a été supprimé avec succès !");
                 alert.showAndWait();
+                ToAfficherListeAdmine();
                 initialize();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+        }
+    }
+    public void ToAfficherListeAdmine() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gestionUserRessources/afficherAdmin.fxml"));
+            Parent root = loader.load();
+            Scene pageScene = new Scene(root);
+
+            // Get the current stage and set the new scene
+            Stage stage = (Stage) label.getScene().getWindow();
+            stage.setScene(pageScene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Erreur lors du chargement de la page ");
+            e.printStackTrace();
+        }
+    }
+
+
+    public void banne(ActionEvent event) {
+        User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        if (adminSelectionne != null) {
+            try {
+                sa.banner(adminSelectionne.getId());
+                // Afficher un message de confirmation
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("L'administrateur a été banné avec succès !");
+                alert.showAndWait();
+                ToAfficherListeAdmine();
+                initialize();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Affichez un message indiquant à l'utilisateur de sélectionner un administrateur
+        }
+    }
+
+    public void annulerbanne(ActionEvent event) {
+        User adminSelectionne = tableViewAdmin.getSelectionModel().getSelectedItem();
+        if (adminSelectionne != null) {
+            try {
+                sa.annulerbann(adminSelectionne.getId());
+                // Afficher un message de confirmation
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succès");
+                alert.setHeaderText(null);
+                alert.setContentText("Le bann a ete ennulé avec succes !");
+                alert.showAndWait();
+                ToAfficherListeAdmine();
+                initialize();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

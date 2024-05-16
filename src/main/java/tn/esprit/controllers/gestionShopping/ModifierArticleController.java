@@ -16,6 +16,12 @@ import tn.esprit.services.gestionShopping.ServiceArticle;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.function.UnaryOperator;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class ModifierArticleController {
 
@@ -156,6 +162,9 @@ public class ModifierArticleController {
         alert.setContentText(contenu);
         alert.showAndWait();
     }
+    private String cheminPhotoSelectionne = "";
+    private final String CHEMIN_HTDOCS = "C:/xampp/htdocs"; // Chemin vers htdocs
+    private final String URL_HTDOCS = "http://localhost/"; // URL de base pour accéder à htdocs
 
     @FXML
     void modifierPhotoArticle() {
@@ -164,12 +173,23 @@ public class ModifierArticleController {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
         );
-        File selectedFile = fileChooser.showOpenDialog(null);
+
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
         if (selectedFile != null) {
-            // Mettez à jour le champ de texte de la photo avec le nouveau chemin de la photo sélectionnée
-            article.setPhoto_article(selectedFile.getAbsolutePath());
+            // Copier l'image dans le répertoire htdocs
+            String nomFichier = selectedFile.getName();
+            Path destination = Paths.get(CHEMIN_HTDOCS, "img", nomFichier);
+            try {
+                Files.copy(selectedFile.toPath(), destination);
+                // Mettre à jour le champ de texte de la photo avec le nouveau chemin de la photo sélectionnée
+                article.setPhoto_article(URL_HTDOCS + "img/" + nomFichier);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Gérer l'exception si nécessaire
+            }
         }
     }
+
 
 
 }

@@ -195,12 +195,11 @@ public class ServiceCommande implements IServiceCommande<Commande> {
     @Override
     public List<Commande> afficherCommande() throws SQLException {
         List<Commande> commandes = new ArrayList<>();
-        String sql = "SELECT c.id_commande, c.nombre_article, c.prix_totale, c.delais_commande, p.id_personne, p.nom_personne, p.prenom_personne, GROUP_CONCAT(a.id_article) as id_articles, GROUP_CONCAT(a.nom_article) as nom_articles " +
+        String sql = "SELECT c.id_commande, c.nombre_article, c.prix_totale, c.delais_commande, u.id, u.nom_personne, u.prenom_personne, GROUP_CONCAT(a.id_article) as id_articles, GROUP_CONCAT(a.nom_article) as nom_articles " +
                 "FROM commande c " +
                 "INNER JOIN commande_article ca ON c.id_commande = ca.id_commande " +
                 "INNER JOIN article a ON ca.id_article = a.id_article " +
-                "INNER JOIN client cl ON c.id_personne = cl.id_personne " +
-                "INNER JOIN personne p ON cl.id_personne = p.id_personne " +
+                "INNER JOIN user u ON c.id_personne = u.id " + // Utilisation de la table user au lieu de client
                 "GROUP BY c.id_commande";
         try (Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(sql)) {
@@ -210,7 +209,7 @@ public class ServiceCommande implements IServiceCommande<Commande> {
                 commande.setNombre_Article(rs.getInt("nombre_article"));
                 commande.setPrix_Totale(rs.getDouble("prix_totale"));
                 commande.setDelais_Commande(rs.getDate("delais_commande"));
-                commande.setId_Personne(rs.getInt("id_personne"));
+                commande.setId_Personne(rs.getInt("id"));
                 commande.setNom_Personne(rs.getString("nom_personne"));
                 commande.setPrenom_Personne(rs.getString("prenom_personne"));
 
@@ -229,6 +228,7 @@ public class ServiceCommande implements IServiceCommande<Commande> {
         }
         return commandes;
     }
+
 
 
 

@@ -16,11 +16,13 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionMedecin.ServiceClient;
 import tn.esprit.entities.gestionTransport.Station;
 import tn.esprit.entities.gestionTransport.billet;
 import tn.esprit.services.gestionTransport.BilletService;
 import tn.esprit.services.gestionTransport.StationService;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -109,13 +111,13 @@ BilletService bs=new BilletService();
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
-                                ServiceClient serviceClient = new ServiceClient();
+                                ServiceUser ServiceUser = new ServiceUser();
                                 String destination = bi.getDestination_voyage();
                                 String prix = bi.getPrix() + "DT";
                                 String duree = bi.getDuree();
                                 String show = station.getNom_station() + "/" + station.getAdress_station() + "/" + station.getType();
                                 Timestamp timestamp = bi.getDate_depart();
-                                Client client = serviceClient.getClientById(bi.getId_personne());
+                                User user = ServiceUser.getOneById(bi.getId_personne());
 // Format the timestamp to include the full month name
                                 DateFormat format = new SimpleDateFormat("dd-MMM-yyyy hh:mm");
                                 String timestampAsString = format.format(timestamp);
@@ -126,7 +128,7 @@ BilletService bs=new BilletService();
 
 
 // Add details to the HBox with styled Labels
-                                Label clientlabel = new Label(client.getNom_personne());
+                                Label clientlabel = new Label(user.getNom_personne());
                                 clientlabel.setStyle("-fx-font-weight: bold; -fx-text-fill: black; -fx-pref-width: 150; -fx-pref-height:   21");
 
                                 Label nomPrenomDoctorLabel = new Label(destination);

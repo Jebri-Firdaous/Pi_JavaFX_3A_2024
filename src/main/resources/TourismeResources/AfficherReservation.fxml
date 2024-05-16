@@ -16,32 +16,38 @@
     <children>
         <fx:include source="../navBar.fxml" />
 
-        <ListView fx:id="listeView" layoutX="111.0" layoutY="234.0" prefHeight="452.0" prefWidth="839.0" style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6; -fx-border-color: #18405A; -fx-border-radius: 5px; -fx-border-width: 3px;" />
+        <ListView fx:id="listeView" layoutX="111.0" layoutY="261.0" prefHeight="425.0" prefWidth="839.0" style="-fx-font-family: Arial; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2874A6; -fx-border-color: #18405A; -fx-border-radius: 5px; -fx-border-width: 1.5;" />
         <ImageView fitHeight="572.0" fitWidth="1028.0" layoutX="231.0" layoutY="223.0" opacity="0.24">
             <image>
                 <Image url="@reservation.png" />
             </image>
         </ImageView>
-        <Pane layoutX="111.0" layoutY="199.0" prefHeight="5.0" prefWidth="1045.0" style="-fx-background-color: #154360;" />
-        <Button layoutX="1012.0" layoutY="595.0" mnemonicParsing="false" onAction="#reservationModifier" prefHeight="21.0" prefWidth="152.0" style="-fx-background-color: B0E847;" text="Modifier" textFill="WHITE">
+        <Button layoutX="989.0" layoutY="587.0" mnemonicParsing="false" onAction="#reservationModifier" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Modifier" textFill="WHITE">
             <font>
                 <Font name="System Bold Italic" size="17.0" />
             </font>
         </Button>
-        <Button layoutX="1012.0" layoutY="656.0" mnemonicParsing="false" onAction="#reservationSupprimer" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: B0E847;" text="Supprimer" textFill="WHITE">
+        <Button layoutX="989.0" layoutY="648.0" mnemonicParsing="false" onAction="#reservationSupprimer" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Supprimer" textFill="WHITE">
             <font>
                 <Font name="System Bold Italic" size="17.0" />
             </font>
         </Button>
-        <Text fx:id="myText" layoutX="254.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sélectionner une Réservation" wrappingWidth="758.16943359375">
+        <Text fx:id="myText" layoutX="254.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="758.16943359375">
             <font>
                 <Font name="Comic Sans MS" size="55.0" />
             </font>
         </Text>
-        <ComboBox fx:id="triComboBox" layoutX="1012.0" layoutY="247.0" onAction="#trierReservation" prefHeight="31.0" prefWidth="168.0" promptText="Trier par prix" style="-fx-background-color: transparent; -fx-border-color: #000000;" />
-        <Button fx:id="reservationPDF" layoutX="1012.0" layoutY="537.0" mnemonicParsing="false" onAction="#clickPDF" prefHeight="16.0" prefWidth="152.0" style="-fx-background-color: #0059FF;" text="PDF" textFill="WHITE">
+        <ComboBox fx:id="triComboBox" layoutX="769.0" layoutY="215.0" onAction="#trierReservation" prefHeight="38.0" prefWidth="181.0" promptText="Trier par prix" style="-fx-background-color: transparent; -fx-border-color: #000000;" />
+        <Button fx:id="reservationPDF" layoutX="989.0" layoutY="528.0" mnemonicParsing="false" onAction="#clickPDF" prefHeight="38.0" prefWidth="152.0" style="-fx-background-color: #0059FF; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white; -fx-background-radius: 50;" text="PDF" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></Button>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+      <Label fx:id="LAbel" layoutX="343.0" layoutY="142.0" prefHeight="48.0" prefWidth="580.0" styleClass="title" stylesheets="@../ParkingResources/Button.css" text="Sélectionner une Réservation" textFill="#57c0dd">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Label>
+      <Pane layoutX="121.0" layoutY="200.0" prefHeight="5.0" prefWidth="1045.0" style="-fx-background-color: black; -fx-pref-height: 1.5;" />
     </children>
 </AnchorPane>

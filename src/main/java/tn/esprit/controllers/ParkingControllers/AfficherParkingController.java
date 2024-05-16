@@ -16,12 +16,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.ParkingEntities.Parking;
 import tn.esprit.services.ParkingServices.ParkingService;
+
+import javafx.scene.image.ImageView;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -44,25 +45,39 @@ public class AfficherParkingController {
     public ListView<Parking> listid;
     public Button modifB;
     public Button delB;
+
+    @FXML
+    private Button listePlaceB;
+    @FXML
+    private ImageView image;
     Parking currentParkingSelected;
     private MapView mapView;
+    private void hideImage() {
+        image.setVisible(false);
+
+    }
+    private void showImage() {
+        image.setVisible(true);
+
+    }
 
     @FXML
     void initialize(){
         String yourApiKey = "AAPK35cf4b021e7a4c019b63243490179ac2jBL4IBgUxMIrLCpGR5HmtaB-FMYQ85qBAkLF6T5MDlW9AIDXn06SI6mVpyKvGmuy";
         ArcGISRuntimeEnvironment.setApiKey(yourApiKey);
         mapView = new MapView();
-        mapView.setPrefWidth(534);
-        mapView.setPrefHeight(226);
+        mapView.setPrefWidth(645);
+        mapView.setPrefHeight(265);
         System.out.println(mapView.getStylesheets());
         grp1.getChildren().add(1, mapView);
-        grp1.getChildren().get(1).setTranslateX(7);
+        grp1.getChildren().get(1).setTranslateX(20);
         grp1.getChildren().get(1).setTranslateY(14);
         ArcGISMap map = new ArcGISMap(BasemapStyle.ARCGIS_TOPOGRAPHIC);
         mapView.setMap(map);
         try {
             List<Parking> parkings = new ArrayList<>();
             parkings= ps.recuperer();
+
 
             ObservableList<Parking> data1 = FXCollections.observableArrayList(parkings);
 
@@ -71,9 +86,20 @@ public class AfficherParkingController {
                 if (newValue != null) {
                     grp1.setVisible(true);
                     details(newValue);
+                    hideImage();
+                    delB.setVisible(true);
+                    modifB.setVisible(true);
+                    listePlaceB.setVisible(true);
                 }
                 else{
                     grp1.setVisible(false);
+                    showImage();
+                    delB.setVisible(false);
+                    modifB.setVisible(false);
+                    listePlaceB.setVisible(false);
+
+
+
                 }
             });
 
@@ -83,6 +109,7 @@ public class AfficherParkingController {
                 public Node call(Integer pageIndex) {
                     int fromIndex = pageIndex * 5;
                     int toIndex = Math.min(fromIndex + 5, data1.size());
+
                     listid.setItems(FXCollections.observableArrayList(data1.subList(fromIndex, toIndex)));
                     listid.setCellFactory(new Callback<ListView<Parking>, ListCell<Parking>>() {
                         @Override
@@ -166,7 +193,7 @@ public class AfficherParkingController {
         try {
             Parking parking = listid.getSelectionModel().getSelectedItem();
             ps.supprimer(listid.getSelectionModel().getSelectedItem().getRef());
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Java\\PIDEV\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\data.txt", true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\version_final_projet\\ProjetPDEV3A8-Smart-City-Codemasters\\src\\main\\resources\\ParkingResources\\data.txt", true))) {
                 StringJoiner joiner = new StringJoiner(",");
                 joiner.add(Integer.toString(parking.getRef()));
                 joiner.add(parking.getNom());
@@ -194,7 +221,7 @@ public class AfficherParkingController {
 //        Stage s= (Stage) addB.getScene().getWindow();
 //        System.out.println(stage.getUserData());
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/AfficherPlaces.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParkingResources/afficherPlace.fxml"));
             Parent root=loader.load();
             AfficherPlaceController ctr= loader.getController();
             ctr.init(listid.getSelectionModel().getSelectedItem().getRef());

@@ -10,14 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.entities.gestionUserEntities.Client;
+import tn.esprit.entities.gestionUserEntities.User;
 import tn.esprit.services.gestionUserServices.ServiceClient;
+import tn.esprit.services.gestionUserServices.ServiceUser;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 
 public class AjoutClientController {
-    public ServiceClient sc = new ServiceClient();
+    public ServiceUser sc = new ServiceUser();
 
     @FXML
     private Label prenomInvalid;
@@ -220,24 +222,32 @@ public class AjoutClientController {
         String mailSaisi = mail.getText();
         String mdpSaisi = mdp.getText();
         String ageSaise = age.getText();
-        String numsaisie = tel.getText();
+        String telf = tel.getText();
+        int numsaisie = Integer.parseInt(tel.getText());
+        int ageClient = Integer.parseInt(age.getText());
 
 
-        if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !numsaisie.isEmpty() && !ageSaise.isEmpty() && !mdpSaisi.isEmpty() && !genreSelected.isEmpty()) {
-            if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isvalideAge(ageSaise) && isValidNum(numsaisie) && isvalideAge(ageSaise)) {
+
+        if (!nomSaisi.isEmpty() && !prenomSaisi.isEmpty() && !mailSaisi.isEmpty() && !telf.isEmpty() && !ageSaise.isEmpty() && !mdpSaisi.isEmpty() && !genreSelected.isEmpty()) {
+            if (isValidName(nomSaisi) && isValidName(prenomSaisi) && isValidEmail(mailSaisi) && isValidPassword(mdpSaisi) && isvalideAge(ageSaise) && isValidNum(telf) && isvalideAge(ageSaise)) {
                 try {
-                    sc.ajouter(new Client(nom.getText(), prenom.getText(), Integer.parseInt(tel.getText()),
-                            mail.getText(), mdp.getText(), "", genreSelected, Integer.parseInt(age.getText())));
+                    User newUser = new User(nomSaisi, prenomSaisi,numsaisie, mailSaisi, mdpSaisi, "", genreSelected, ageClient, "[\"CLIENT\"]", null, false, false);
+
+                    sc.ajouterClient(newUser);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setContentText("Compte ajoutée avec succes!");
                     alert.showAndWait();
+                    ToAfficherListeClient();
                     nom.setText("");
                     prenom.setText("");
                     mail.setText("");
                     mdp.setText("");
+                    tel.setText("");
 
                     age.setText("");
+
+
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);

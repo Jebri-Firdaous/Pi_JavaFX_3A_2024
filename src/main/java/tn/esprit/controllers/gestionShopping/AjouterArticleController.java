@@ -14,6 +14,13 @@ import tn.esprit.services.gestionShopping.ServiceArticle;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.function.UnaryOperator;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class AjouterArticleController {
     @FXML
@@ -38,9 +45,7 @@ public class AjouterArticleController {
 
 
     @FXML
-
     void initialize() {
-
 
 
         typeArticleCB.getItems().addAll(Article.TypeArticle.values());
@@ -57,41 +62,41 @@ public class AjouterArticleController {
 
                     if (!change.getControlNewText().matches("\\d*")) {
 
-                    change.setText("");
+                        change.setText("");
+
+                    }
 
                 }
 
-            }
-
                 return change;
 
-        }
+            }
 
-    }));
+        }));
 
         prixArticleTF.setTextFormatter(new TextFormatter<>(new IntegerStringConverter(), null, new UnaryOperator<TextFormatter.Change>() {
 
-        @Override
+            @Override
 
-        public TextFormatter.Change apply(TextFormatter.Change change) {
+            public TextFormatter.Change apply(TextFormatter.Change change) {
 
-            if (change.isContentChange()) {
+                if (change.isContentChange()) {
 
-                if (!change.getControlNewText().matches("\\d*")) {
+                    if (!change.getControlNewText().matches("\\d*")) {
 
-                change.setText("");
+                        change.setText("");
+
+                    }
+
+                }
+
+                return change;
 
             }
 
-        }
-
-        return change;
+        }));
 
     }
-
-}));
-
-        }
 
     @FXML
     void ajouterArticle() {
@@ -132,7 +137,6 @@ public class AjouterArticleController {
     }
 
 
-
     private void afficherAlerte(Alert.AlertType type, String titre, String contenu) {
         Alert alert = new Alert(type);
         alert.setTitle(titre);
@@ -142,9 +146,12 @@ public class AjouterArticleController {
     }
 
     private String cheminPhotoSelectionne = "";
+    private final String CHEMIN_HTDOCS = "C:/xampp/htdocs"; // Chemin vers htdocs
+    private final String URL_HTDOCS = "http://localhost/"; // URL de base pour accéder à htdocs
+
 
     @FXML
-    private String insererPhoto() {
+    public String insererPhoto() {
         if (!cheminPhotoSelectionne.isEmpty()) {
             return cheminPhotoSelectionne;
         }
@@ -154,10 +161,20 @@ public class AjouterArticleController {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
         );
-        File selectedFile = fileChooser.showOpenDialog(null);
+
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
         if (selectedFile != null) {
-            cheminPhotoSelectionne = selectedFile.getAbsolutePath();
-            return cheminPhotoSelectionne;
+            // Copier l'image dans le répertoire htdocs
+            String nomFichier = selectedFile.getName();
+            Path destination = Paths.get(CHEMIN_HTDOCS, "img", nomFichier);
+            try {
+                Files.copy(selectedFile.toPath(), destination);
+                cheminPhotoSelectionne = URL_HTDOCS + "img/" + nomFichier;
+                return cheminPhotoSelectionne;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "";
+            }
         } else {
             return "";
         }

@@ -14,19 +14,13 @@
 <AnchorPane prefHeight="739" prefWidth="1228" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.RecycleBinController">
     <children>
         <fx:include source="../navBar.fxml" />
-        <BorderPane layoutX="144.0" layoutY="139.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
-            <center>
-                <VBox fx:id="listVB" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <Group>
-                            <children>
-                                <Button fx:id="addB" layoutX="428.0" layoutY="553.0" mnemonicParsing="false" onAction="#returnP" prefWidth="141.0" style="-fx-pref-width: 130;" text="Recuperer" />
-                            </children>
-                        </Group>
-                    </children>
-                </VBox>
-            </center>
-        </BorderPane>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+          <VBox fx:id="listVB" alignment="CENTER" layoutX="57.0" layoutY="190.0" prefHeight="360.0" prefWidth="1114.0">
+              <children>
+                  <Group />
+              </children>
+          </VBox>
+              <Button fx:id="addB" layoutX="559.0" layoutY="556.0" mnemonicParsing="false" onAction="#returnP" prefWidth="141.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Recuperer" />
     </children>
     <stylesheets>
         <URL value="@style.css" />

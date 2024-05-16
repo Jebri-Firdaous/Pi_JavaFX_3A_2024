@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
@@ -16,47 +17,67 @@
 <AnchorPane prefHeight="739" prefWidth="1228" styleClass="bgimage" stylesheets="@Button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ParkingControllers.AjouterPlaceController">
     <children>
         <fx:include source="../navBar.fxml" />
-        <BorderPane layoutX="144.0" layoutY="119.0" prefHeight="661.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
-            <center>
-                <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="343.0" prefWidth="597.0" style="-fx-background-color: rgba(211,211,211,0.16); -fx-background-radius: 20; -fx-border-width: 2px; -fx-border-color: rgba(128,127,127,0.25); -fx-border-radius: 20;" BorderPane.alignment="CENTER">
-                    <children>
-                        <Group layoutX="-4.0" layoutY="-46.0">
-                            <children>
-                                <Label fx:id="errNum" layoutX="134.0" layoutY="164.0" prefHeight="21.0" prefWidth="286.0" styleClass="err" textAlignment="CENTER" textFill="RED">
-                                    <font>
-                                        <Font size="12.0" />
-                                    </font>
-                                </Label>
-                                <Button fx:id="AddBP" layoutX="461.0" layoutY="338.0" mnemonicParsing="false" onAction="#ajouterPlace" text="Ajouter" />
-                                <Label fx:id="errType" layoutX="134.0" layoutY="247.0" prefHeight="21.0" prefWidth="276.0" styleClass="err" textAlignment="CENTER" textFill="RED">
-                                    <font>
-                                        <Font size="12.0" />
-                                    </font>
-                                </Label>
-                                <Label fx:id="typeL" layoutX="35.0" layoutY="218.0" text="Type">
-                                    <font>
-                                        <Font name="Arial Rounded MT Bold" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Button fx:id="Cancel2" layoutX="331.0" layoutY="338.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" text="Annuler" />
-                                <TextField fx:id="numTF" layoutX="132.0" layoutY="133.0" onKeyReleased="#testNum" />
-                                <ComboBox fx:id="typeCB" layoutX="132.0" layoutY="216.0" prefWidth="150.0" promptText="&lt;---------&gt;" />
-                                <Label fx:id="numL" layoutX="37.0" layoutY="135.0" text="Num">
-                                    <font>
-                                        <Font name="Arial Rounded MT Bold" size="24.0" />
-                                    </font>
-                                </Label>
-                                <Label layoutX="134.0" layoutY="-32.0" styleClass="title" text="Ajouter Place">
-                                    <font>
-                                        <Font name="Cooper Black" size="36.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                        </Group>
-                    </children>
-                </Pane>
-            </center>
-        </BorderPane>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
+              <Button fx:id="AddBP" layoutX="388.0" layoutY="458.0" minWidth="130.0" mnemonicParsing="false" onAction="#ajouterPlace" prefHeight="36.0" prefWidth="130.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Ajouter" />
+              <Label fx:id="typeL" style="-fx-font-family: Arial; -fx-font-size: 20; -fx-font-weight: bold;" text="Type" visible="false">
+                  <font>
+                      <Font name="Arial Rounded MT Bold" size="24.0" />
+                  </font>
+              </Label>
+              <Button fx:id="Cancel2" layoutX="234.0" layoutY="458.0" minWidth="131.0" mnemonicParsing="false" onAction="#naviguezVersAffichage" prefHeight="36.0" prefWidth="131.0" style="-fx-background-color: #57C0DD; -fx-background-radius: 50; -fx-border-radius: 12; -fx-font-weight: bold; -fx-font-size: 16; -fx-font-family: Arial; -fx-text-fill: white;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+              <Label fx:id="numL" style="-fx-font-family: Arial; -fx-font-size: 20; -fx-font-weight: bold;" text="Num" visible="false">
+                  <font>
+                      <Font name="Arial Bold" size="15.0" />
+                  </font>
+              </Label>
+              <Label layoutX="246.0" layoutY="251.0" styleClass="title" text="Ajouter Place" textFill="#57c0dd">
+                  <font>
+                      <Font name="Arial Bold" size="20.0" />
+                  </font>
+              </Label>
+      <ImageView fitHeight="385.0" fitWidth="521.0" layoutX="648.0" layoutY="238.0" opacity="0.59" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@place.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="199.0" layoutY="332.0" prefHeight="126.0" prefWidth="366.0">
+         <children>
+            <VBox prefHeight="42.0" prefWidth="380.0">
+               <children>
+                          <TextField fx:id="numTF" onKeyReleased="#testNum" prefHeight="42.0" prefWidth="287.0" promptText="Numéro place" />
+               </children>
+            </VBox>
+            <VBox prefHeight="11.0" prefWidth="380.0">
+               <children>
+                          <Label fx:id="errNum" prefHeight="21.0" prefWidth="286.0" styleClass="err" textAlignment="CENTER" textFill="RED">
+                              <font>
+                                  <Font size="12.0" />
+                              </font>
+                          </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="42.0" prefWidth="380.0">
+               <children>
+                          <ComboBox fx:id="typeCB" prefHeight="42.0" prefWidth="372.0" promptText="Type" />
+               </children>
+            </VBox>
+            <VBox prefHeight="11.0" prefWidth="380.0">
+               <children>
+                          <Label fx:id="errType" prefHeight="22.0" prefWidth="290.0" styleClass="err" textAlignment="CENTER" textFill="RED">
+                              <font>
+                                  <Font size="12.0" />
+                              </font>
+                          </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="11.0" prefWidth="100.0" />
+         </children>
+      </VBox>
+      <Rectangle fill="#979494" height="400.0" layoutX="610.0" layoutY="210.0" width="2.0" />
     </children>
     <stylesheets>
         <URL value="@style.css" />

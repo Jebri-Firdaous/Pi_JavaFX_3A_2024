@@ -42,11 +42,7 @@
             <Image url="@train.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="87.0" fitWidth="88.0" layoutX="7.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@logo.png" />
-         </image>
-      </ImageView>
+      <Label fx:id="labeldisconnect" text="Label" visible="false" />
   
       
    </children>
